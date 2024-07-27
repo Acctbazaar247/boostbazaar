@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .center {
+    @apply flex items-center justify-center text-center;
+  }
+  .d-center {
+    @apply block mx-auto;
+  }
+  .heading {
+    @apply text-primary text-[45px] leading-[68px];
+  }
+}
+
+body {
+  @apply bg-grey text-black overflow-x-hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e5e5e5cd;
+  box-shadow: inset 0 0 3px #cccccc;
+  border-radius: 4px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bdbdbddd;
+  border-radius: 5px;
+  cursor: grabbing;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
