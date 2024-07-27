@@ -42,11 +42,11 @@ const Banner = () => {
           <h2 className="text-primary/70 border w-fit border-primary/70 rounded-xl text-xs py-2 px-4">
             Unlimited Packages For You
           </h2>
-          <h1 className="heading font-medium pt-5 text-black leading-[62px]">
+          <h1 className="heading font-medium pt-5 text-black">
             Giving Your Brand <span className="text-primary">Unlimited</span>{" "}
-            <br /> Outreach Is Our Priority
+            Outreach Is Our Priority
           </h1>
-          <p className="font-light text-dark-grey max-w-[540px] py-6">
+          <p className="font-light text-dark-grey max-w-[540px] py-4 2xl:py-6">
             Get your Brands Pictures, Videos buzzing with Followers, Likes,
             Views, etc without breaking a sweat.
           </p>
@@ -65,16 +65,16 @@ const Banner = () => {
               iconPosition="left"
             />
           </div>
-          <p className="font-light text-dark-grey py-9">
+          <p className="font-light text-dark-grey py-6 2xl:py-9">
             Elevate your online presence with unlimited outreach.
           </p>
 
-          <div className="pb-20 flex items-center gap-6">
+          <div className="pb-10 2xl:pb-20 flex items-center gap-6">
             <div className="flex -space-x-4 rtl:space-x-reverse">
               {avatars.map((av, i) => (
                 <Image
                   key={i}
-                  className=""
+                  className="max-2xl:size-10"
                   src={av.image}
                   alt="banner image"
                   width={45}
@@ -83,7 +83,7 @@ const Banner = () => {
               ))}
 
               <Link
-                className="flex items-center justify-center text-center size-[45px] text-xs font-medium text-white bg-[#D4D4D8] border-2 border-white rounded-full hover:bg-gray-600"
+                className="flex items-center justify-center text-center max-2xl:size-10 2xl:size-[45px] text-xs font-medium text-white bg-[#D4D4D8] border-2 border-white rounded-full hover:bg-gray-600"
                 href="#"
               >
                 +30k
@@ -101,7 +101,7 @@ const Banner = () => {
         {/* this is right side div  */}
         <div className=" flex items-end justify-end">
           <Image
-            className="-mb-6 aspect-square"
+            className="-mb-5 2xl:-mb-6 max-2xl:w-[480px] aspect-square"
             src={"/image/banner.png"}
             alt="banner image"
             width={600}
@@ -115,13 +115,15 @@ const Banner = () => {
           {bannerData.map((bann, i) => (
             <div key={i} className="center gap-1">
               <Image
-                className=""
+                className="max-2xl:w-9 h-auto"
                 src={bann.image}
                 alt="banner image"
                 width={i == 0 ? 50 : 45}
                 height={i == 0 ? 50 : 45}
               />
-              <h2 className="text-3xl font-light text-white">{bann.title}</h2>
+              <h2 className="xl:text-2xl 2xl:text-3xl font-light text-white">
+                {bann.title}
+              </h2>
             </div>
           ))}
         </div>

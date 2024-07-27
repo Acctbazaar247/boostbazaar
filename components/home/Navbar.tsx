@@ -24,16 +24,16 @@ const Navbar = () => {
             alt="logo"
             width={180}
             height={30}
-            className="object-cover"
+            className="max-sm:w-3 object-cover"
           />
         </Link>
-        <div className="flex items-center gap-9">
+        <div className="flex items-center gap-3 md:gap-9">
           {navLinks.map((nav) => (
             <Link
               key={nav.label}
               onClick={() => setActiveTab(nav.label)}
               href={nav.path}
-              className={`block font-medium text-lg ${
+              className={`block font-medium text-sm md:text-lg ${
                 nav.label === activeTab ? "text-primary" : "text-dark-grey"
               }`}
             >
@@ -41,8 +41,8 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <div className="flex items-center gap-4">
-          <AppButton className="px-12" variant="outlined" label="Log in" />
+        <div className="flex items-center gap-2 md:gap-4">
+          <AppButton className="md:px-12" variant="outlined" label="Log in" />
           <AppButton label="Create Account" icon={<AiOutlineUser />} />
         </div>
       </header>

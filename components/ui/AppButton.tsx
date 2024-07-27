@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -26,23 +27,28 @@ const AppButton = ({
   iconPosition = "right",
   onClick,
 }: TAppButton) => {
-  const filledClass =
-    "border border-primary bg-primary text-white px-4 py-2  rounded-xl hover:bg-primary/95 transition-all ";
-  const outlineClass =
-    "text-primary px-4 py-2  rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all";
-  const noDesignClass =
-    "text-white/80 px-4 py-2 hover:text-white  transition-all";
-
   return href ? (
     <Link key={label} href={href} className="block min-w-fit">
       <button
-        className={`${icon && "flex items-center gap-2"} ${
+        className={cn(
+          "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
+          icon && "flex items-center gap-1 md:gap-2",
           variant === "filled"
-            ? filledClass
+            ? "btnFilled"
             : variant === "outlined"
-            ? outlineClass
-            : noDesignClass
-        } text-sm md:text-base lg:text-lg xl:text-xl font-medium min-w-fit ${className} `}
+            ? "btnOutlined"
+            : "btnNoDesign",
+          className
+        )}
+        // className={cn(
+        //   `${icon && "flex items-center gap-2"} ${
+        //     variant === "filled"
+        //       ? filledClass
+        //       : variant === "outlined"
+        //       ? outlineClass
+        //       : noDesignClass
+        //   } text-sm md:text-base lg:text-lg xl:text-xl font-medium min-w-fit ${className}`
+        // )}
         type={type}
       >
         {iconPosition === "left" && icon} {label}{" "}
@@ -52,13 +58,16 @@ const AppButton = ({
   ) : (
     <button
       key={label}
-      className={`${icon && "flex items-center gap-2"} ${
+      className={cn(
+        "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
+        icon && "flex items-center gap-1 md:gap-2",
         variant === "filled"
-          ? filledClass
+          ? "btnFilled"
           : variant === "outlined"
-          ? outlineClass
-          : noDesignClass
-      } text-sm md:text-base xl:text-lg min-w-fit font-light ${className}`}
+          ? "btnOutlined"
+          : "btnNoDesign",
+        className
+      )}
       type={type}
       onClick={() => {
         if (onClick) {

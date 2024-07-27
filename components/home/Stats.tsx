@@ -18,7 +18,7 @@ const Stats = () => {
       <div className="container lg:px-12 center justify-between py-12">
         {stats.map((stat) => (
           <div key={stat.text} className="text-center">
-            <h1 className="text-[80px] text-primary leading-[120px] font-medium">
+            <h1 className="text-7xl 2xl:text-[80px] text-primary leading-[90px] 2xl:leading-[120px] font-medium">
               {stat.amount}
             </h1>
             <p className="text-3xl font-light">{stat.text}</p>

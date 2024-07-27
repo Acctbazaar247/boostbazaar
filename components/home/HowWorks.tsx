@@ -33,6 +33,7 @@ const HowWorks = () => {
       image: "/image/h6.png ",
     },
   ];
+
   return (
     <section className="container pt-20">
       <h3 className="bg-primary/5 w-fit mx-auto rounded px-3 py-1.5 text-xs text-primary/70">
@@ -67,8 +68,10 @@ const HowWorks = () => {
               className="aspect-square rounded-full"
               alt={card.title}
             />
-            <h2 className="text-primary text-3xl pt-11">{card.title}</h2>
-            <p className="text-dark-grey text-lg pt-2">{card.text}</p>
+            <h2 className="text-primary text-[26px] 2xl:text-3xl pt-11">
+              {card.title}
+            </h2>
+            <p className="text-dark-grey 2xl:text-lg pt-2">{card.text}</p>
           </div>
         ))}
       </div>

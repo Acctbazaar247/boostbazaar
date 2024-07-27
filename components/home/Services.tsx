@@ -78,7 +78,7 @@ const Services = () => {
                 width={400}
                 height={180}
                 alt="logo"
-                className="w-full h-44"
+                className="w-full h-auto 2xl:h-44"
               />
             </div>
             <h3 className="text-2xl pb-16 pt-8">{service.title}</h3>
