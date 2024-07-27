@@ -37,8 +37,8 @@ const Services = () => {
   ];
 
   return (
-    <section id="Services" className="container">
-      <div className="bg-primary-7 relative  py-20 center flex-col rounded-t-lg shadow-md -mb-0.5">
+    <section id="Services" className="container scroll-m-28 md:scroll-m-44">
+      <div className="bg-primary-7 relative pt-16 pb-10 md:py-20 center flex-col rounded-t-lg shadow-md -mb-0.5">
         <h1 className="heading">Our Services</h1>
         <p className="leading-6 text-dark-grey">
           Unlimited services that keeps your brand atop
@@ -66,7 +66,7 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-4 gap-2 md:gap-10">
         {servicesData.map((service, i) => (
           <div
             key={i}
@@ -81,7 +81,9 @@ const Services = () => {
                 className="w-full h-auto 2xl:h-44"
               />
             </div>
-            <h3 className="text-2xl pb-16 pt-8">{service.title}</h3>
+            <h3 className="text-sm md:text-2xl pb-5 md:pb-16 pt-2 md:pt-8">
+              {service.title}
+            </h3>
           </div>
         ))}
       </div>

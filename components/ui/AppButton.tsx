@@ -31,7 +31,7 @@ const AppButton = ({
     <Link key={label} href={href} className="block min-w-fit">
       <button
         className={cn(
-          "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
+          "text-xs md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
           icon && "flex items-center gap-1 md:gap-2",
           variant === "filled"
             ? "btnFilled"
@@ -47,7 +47,7 @@ const AppButton = ({
         //       : variant === "outlined"
         //       ? outlineClass
         //       : noDesignClass
-        //   } text-sm md:text-base lg:text-lg xl:text-xl font-medium min-w-fit ${className}`
+        //   } text-xs md:text-base lg:text-lg xl:text-xl font-medium min-w-fit ${className}`
         // )}
         type={type}
       >
@@ -59,7 +59,7 @@ const AppButton = ({
     <button
       key={label}
       className={cn(
-        "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
+        "text-xs md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
         icon && "flex items-center gap-1 md:gap-2",
         variant === "filled"
           ? "btnFilled"

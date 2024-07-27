@@ -35,10 +35,10 @@ const Banner = () => {
   ];
 
   return (
-    <section id="Home" className="h-screen">
-      <div className="h-[89%] container grid grid-cols-1 md:grid-cols-2">
+    <section id="Home" className="md:h-screen">
+      <div className="md:h-[89%] container grid grid-cols-1 md:grid-cols-2">
         {/* this is left div  */}
-        <div className="flex flex-col  justify-end h-full">
+        <div className="flex flex-col max-sm:pt-28 justify-end md:h-full">
           <h2 className="text-primary/70 border w-fit border-primary/70 rounded-xl text-xs py-2 px-4">
             Unlimited Packages For You
           </h2>
@@ -55,14 +55,16 @@ const Banner = () => {
             <AppButton
               icon={<MdOutlineHomeRepairService />}
               label="Services"
-              className="px-14"
+              className="px-14 py-2"
+              href="#Services"
             />
             <AppButton
               label="Contact Us"
               variant="outlined"
-              className="px-12"
+              className="px-12 py-2"
               icon={<FaUser className="text-sm" />}
               iconPosition="left"
+              href="#Contact"
             />
           </div>
           <p className="font-light text-dark-grey py-6 2xl:py-9">
@@ -93,7 +95,7 @@ const Banner = () => {
               {Array(5)
                 .fill(0)
                 .map((_, index) => (
-                  <FaStar className="text-[#F0C867] text-lg" key={index} />
+                  <FaStar className="text-[#F0C867] md:text-lg" key={index} />
                 ))}
             </div>
           </div>
@@ -101,7 +103,7 @@ const Banner = () => {
         {/* this is right side div  */}
         <div className=" flex items-end justify-end">
           <Image
-            className="-mb-5 2xl:-mb-6 max-2xl:w-[480px] aspect-square"
+            className="-mb-4 md:-mb-5 2xl:-mb-6 max-2xl:w-[480px] aspect-square"
             src={"/image/banner.png"}
             alt="banner image"
             width={600}
@@ -110,18 +112,18 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="h-[11%] bg-primary center">
-        <div className="container flex items-center justify-between">
+      <div className="md:h-[11%] bg-primary center">
+        <div className="container flex items-center justify-between max-sm:py-2">
           {bannerData.map((bann, i) => (
             <div key={i} className="center gap-1">
               <Image
-                className="max-2xl:w-9 h-auto"
+                className="max-sm:w-3 max-2xl:w-9 h-auto"
                 src={bann.image}
                 alt="banner image"
                 width={i == 0 ? 50 : 45}
                 height={i == 0 ? 50 : 45}
               />
-              <h2 className="xl:text-2xl 2xl:text-3xl font-light text-white">
+              <h2 className="max-sm:text-[10px] xl:text-2xl 2xl:text-3xl font-light text-white">
                 {bann.title}
               </h2>
             </div>
@@ -130,10 +132,24 @@ const Banner = () => {
       </div>
 
       {/* this is grid image  */}
-      <div className="absolute w-full  -z-10 top-0 select-none">
+      <div className="absolute w-full -z-10 top-0 select-none">
         <div className="container">
           <Image
-            className="w-10/12 mx-auto h-[90dvh]"
+            className="md:w-10/12 mx-auto md:h-[90dvh]"
+            src={"/image/banner-b.png"}
+            alt="banner image"
+            width={1600}
+            height={1200}
+          />
+          <Image
+            className="md:hidden md:w-10/12 mx-auto md:h-[90dvh]"
+            src={"/image/banner-b.png"}
+            alt="banner image"
+            width={1600}
+            height={1200}
+          />
+          <Image
+            className="md:hidden md:w-10/12 mx-auto md:h-[90dvh]"
             src={"/image/banner-b.png"}
             alt="banner image"
             width={1600}

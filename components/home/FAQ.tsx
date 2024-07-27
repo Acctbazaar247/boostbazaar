@@ -21,12 +21,12 @@ const FAQ = () => {
     },
   ];
   return (
-    <section id="FAQ" className="container">
+    <section id="FAQ" className="container  scroll-m-28 md:scroll-m-44">
       <h1 className="heading max-w-[400px]">Frequently Asked Questions</h1>
       <p className="text-dark-grey text-lg font-light">
         Can’t find what you are looking for?
       </p>
-      <div className="pt-2.5 grid grid-cols-2">
+      <div className="pt-2.5 md:grid grid-cols-2">
         <div className="">
           <h2 className="text-2xl">We would like to have a chat with you.</h2>
           <div className="flex gap-4">
@@ -52,7 +52,7 @@ const FAQ = () => {
               src={"/image/faq.png"}
               width={385}
               height={385}
-              className="aspect-square"
+              className="max-sm:w-1/2 aspect-square"
               alt="faq icon"
             />
           </div>

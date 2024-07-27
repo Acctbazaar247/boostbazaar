@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const WhyChoose = () => {
   return (
-    <section className="py-52 2xl:py-56 container grid grid-cols-1 md:grid-cols-2 gap-7">
+    <section className="py-20 md:py-52 2xl:py-56 container grid grid-cols-1 md:grid-cols-2 md:gap-7">
       <Image
         src={"/image/why-choose.png"}
         className="w-full"
@@ -10,7 +10,7 @@ const WhyChoose = () => {
         height={660}
         alt="why chose image"
       />
-      <div className="py-16 2xl:py-20 pr-10 2xl:pr-12 space-y-8">
+      <div className="py-16 2xl:py-20 md:pr-10 2xl:pr-12 space-y-8">
         <h1 className="heading">Why Choose Us?</h1>
         <p className="text-dark-grey text-xl 2xl:text-2xl font-light leading-8">
           BoostBazaar is an innovative platform designed to offer a
@@ -20,7 +20,7 @@ const WhyChoose = () => {
           The goal is to create a platform that is both esthetically pleasing
           and user- friendly.
         </p>
-        <p className="text-dark-grey  text-xl 2xl:text-2xl font-light leading-8">
+        <p className="text-dark-grey text-xl 2xl:text-2xl font-light leading-8">
           We ensure adequate security, services and satisfaction.
         </p>
         <Image

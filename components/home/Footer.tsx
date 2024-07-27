@@ -18,24 +18,28 @@ const Footer = () => {
 
   return (
     <div className="bg-primary/5">
-      <div className="container flex items-center justify-between border-b border-black/30 pb-8 pt-32">
+      <div className="container flex items-center justify-between border-b border-black/30 pb-8 pt-24 md:pt-32">
         <Image
           src={"/image/logo.png"}
           width={280}
           height={50}
           alt="logo"
-          className=""
+          className="max-sm:w-28"
         />
-        <div className="flex items-center gap-9 h-fit">
+        <div className="flex items-center gap-3 md:gap-9 h-fit">
           {navLinks.map((nav) => (
-            <Link key={nav.label} href={nav.path} className={`block text-base`}>
+            <Link
+              key={nav.label}
+              href={nav.path}
+              className={`block text-sm md:text-base`}
+            >
               {nav.label}
             </Link>
           ))}
         </div>
       </div>
 
-      <div className="center gap-4 pt-14 pb-8">
+      <div className="center gap-4 pt-10 2xl:pt-14 pb-8">
         {socialLinks?.map((link, i) => (
           <Link key={i} href={link.link}>
             <Image
