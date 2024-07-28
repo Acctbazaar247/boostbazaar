@@ -51,7 +51,7 @@ const Banner = () => {
             Views, etc without breaking a sweat.
           </p>
 
-          <div className="flex items-center justify-between md:gap-5">
+          <div className="flex items-center max-sm:justify-between md:gap-5">
             <AppButton
               icon={<MdOutlineHomeRepairService />}
               label="Services"

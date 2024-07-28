@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { IoIosArrowUp } from "react-icons/io";
+import FaqCard from "./FaqCard";
+import AnimationWrapper from "../ui/AnimationWrapper";
 
 const FAQ = () => {
   const faqCards = [
@@ -59,20 +61,9 @@ const FAQ = () => {
         </div>
         <div className="">
           {faqCards.map((faq, i) => (
-            <div
-              key={faq.text}
-              className={`border-b border-b-black/30 pb-6 ${
-                i !== 0 && "pt-8 md:pt-12"
-              }`}
-            >
-              <h2 className="text-xl md:text-2xl md:leading-9 pb-6 flex items-center gap-2.5">
-                <IoIosArrowUp className="text-dark-grey" />
-                {faq.title}
-              </h2>
-              <p className="text-lg md:text-xl md:leading-7 font-light px-4 text-black/90">
-                {faq.text}
-              </p>
-            </div>
+            <AnimationWrapper key={i} transition={{ delay: i * 0.08 }}>
+              <FaqCard i={i} faq={faq} />
+            </AnimationWrapper>
           ))}
         </div>
       </div>
