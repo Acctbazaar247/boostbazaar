@@ -62,14 +62,14 @@ const FAQ = () => {
             <div
               key={faq.text}
               className={`border-b border-b-black/30 pb-6 ${
-                i !== 0 && "pt-12"
+                i !== 0 && "pt-8 md:pt-12"
               }`}
             >
-              <h2 className="text-2xl leading-9 pb-6 flex items-center gap-2.5">
+              <h2 className="text-xl md:text-2xl md:leading-9 pb-6 flex items-center gap-2.5">
                 <IoIosArrowUp className="text-dark-grey" />
                 {faq.title}
               </h2>
-              <p className="text-xl leading-7 font-light px-4 text-black/90">
+              <p className="text-lg md:text-xl md:leading-7 font-light px-4 text-black/90">
                 {faq.text}
               </p>
             </div>

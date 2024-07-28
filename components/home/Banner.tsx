@@ -38,7 +38,7 @@ const Banner = () => {
     <section id="Home" className="md:h-screen">
       <div className="md:h-[89%] container grid grid-cols-1 md:grid-cols-2">
         {/* this is left div  */}
-        <div className="flex flex-col max-sm:pt-28 justify-end md:h-full">
+        <div className="flex flex-col max-sm:pt-24 justify-end md:h-full">
           <h2 className="text-primary/70 border w-fit border-primary/70 rounded-xl text-xs py-2 px-4">
             Unlimited Packages For You
           </h2>
@@ -51,17 +51,17 @@ const Banner = () => {
             Views, etc without breaking a sweat.
           </p>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center justify-between md:gap-5">
             <AppButton
               icon={<MdOutlineHomeRepairService />}
               label="Services"
-              className="px-14 py-2"
+              className="px-11 md:px-14 py-2"
               href="#Services"
             />
             <AppButton
               label="Contact Us"
               variant="outlined"
-              className="px-12 py-2"
+              className="px-9 md:px-12 py-2"
               icon={<FaUser className="text-sm" />}
               iconPosition="left"
               href="#Contact"
@@ -117,7 +117,7 @@ const Banner = () => {
           {bannerData.map((bann, i) => (
             <div key={i} className="center gap-1">
               <Image
-                className="max-sm:w-3 max-2xl:w-9 h-auto"
+                className="max-sm:w-3.5 max-2xl:w-9 h-auto"
                 src={bann.image}
                 alt="banner image"
                 width={i == 0 ? 50 : 45}

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const WhyChoose = () => {
   return (
-    <section className="py-20 md:py-52 2xl:py-56 container grid grid-cols-1 md:grid-cols-2 md:gap-7">
+    <section className="pt-20 pb-8 md:py-52 2xl:py-56 container grid grid-cols-1 md:grid-cols-2 md:gap-7">
       <Image
         src={"/image/why-choose.png"}
         className="w-full"
@@ -28,7 +28,7 @@ const WhyChoose = () => {
           width={200}
           height={50}
           alt="logo"
-          className="pt-8 2xl:pt-16"
+          className="lg:pt-8 2xl:pt-16"
         />
       </div>
     </section>

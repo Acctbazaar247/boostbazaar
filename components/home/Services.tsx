@@ -66,7 +66,7 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 md:gap-10">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-10">
         {servicesData.map((service, i) => (
           <div
             key={i}
@@ -81,7 +81,7 @@ const Services = () => {
                 className="w-full h-auto 2xl:h-44"
               />
             </div>
-            <h3 className="text-sm md:text-2xl pb-5 md:pb-16 pt-2 md:pt-8">
+            <h3 className="text-base md:text-2xl pb-8 md:pb-16 pt-4 md:pt-8">
               {service.title}
             </h3>
           </div>

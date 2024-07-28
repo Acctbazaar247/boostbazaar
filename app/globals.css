@@ -13,13 +13,13 @@
     @apply text-primary text-4xl 2xl:text-[45px] leading-[50px] 2xl:leading-[68px];
   }
   .btnFilled {
-    @apply border border-primary bg-primary text-white px-2 md:px-4 py-0.5 md:py-2  rounded md:rounded-xl hover:bg-primary/95 transition-all;
+    @apply border border-primary bg-primary text-white px-4 py-1 md:py-2  rounded md:rounded-xl hover:bg-primary/95 transition-all;
   }
   .btnOutlined {
-    @apply text-primary px-2 md:px-4 py-0.5 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all;
+    @apply text-primary px-4 py-1 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all;
   }
   .btnNoDesign {
-    @apply text-white/80 px-2 md:px-4 py-0.5 md:py-2 hover:text-white  transition-all;
+    @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
   }
 }
 
