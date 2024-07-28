@@ -20,9 +20,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/image/favicon.png" sizes="any" />
-      </head>
       <body className={poppins.className}>{children}</body>
     </html>
   );

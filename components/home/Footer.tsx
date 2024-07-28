@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Logo from "../ui/Logo";
 
 const Footer = () => {
   const navLinks = [
@@ -19,13 +20,7 @@ const Footer = () => {
   return (
     <div className="bg-primary/5">
       <div className="container flex items-center justify-between border-b border-black/30 pb-8 pt-24 md:pt-32">
-        <Image
-          src={"/image/logo.png"}
-          width={280}
-          height={50}
-          alt="logo"
-          className="max-sm:w-28"
-        />
+        <Logo variant="sm" />
         <div className="flex items-center gap-3 md:gap-9 h-fit">
           {navLinks.map((nav) => (
             <Link

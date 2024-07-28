@@ -7,6 +7,7 @@ import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
 import { Drawer } from "antd";
+import Logo from "../ui/Logo";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("Home");
@@ -22,15 +23,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 md:top-10 left-0 w-full z-50">
       <header className="w-full md:container bg-white md:rounded-xl py-2.5 md:py-4 px-4 md:px-11 flex items-center justify-between">
-        <Link href={"/"}>
-          <Image
-            src={"/image/logo.png"}
-            alt="logo"
-            width={180}
-            height={30}
-            className="max-sm:w-28 object-cover"
-          />
-        </Link>
+        <Logo variant="sm" />
         <div className="max-sm:hidden flex items-center gap-2 md:gap-9">
           {navLinks.map((nav) => (
             <Link
@@ -70,19 +63,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <Drawer
             width={300}
-            title={
-              <>
-                <Link href={"/"}>
-                  <Image
-                    src={"/image/logo.png"}
-                    alt="logo"
-                    width={180}
-                    height={30}
-                    className="max-sm:w-28 object-cover"
-                  />
-                </Link>
-              </>
-            }
+            title={<Logo variant="md" />}
             placement={"left"}
             closable={false}
             onClose={() => setMobileMenu(false)}

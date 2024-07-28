@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Logo from "../ui/Logo";
 
 const WhyChoose = () => {
   return (
@@ -23,13 +24,8 @@ const WhyChoose = () => {
         <p className="text-dark-grey text-xl 2xl:text-2xl font-light leading-8">
           We ensure adequate security, services and satisfaction.
         </p>
-        <Image
-          src={"/image/logo.png"}
-          width={200}
-          height={50}
-          alt="logo"
-          className="lg:pt-8 2xl:pt-16"
-        />
+
+        <Logo parentClassName="lg:pt-8 2xl:pt-12" />
       </div>
     </section>
   );

@@ -4,32 +4,32 @@ const HowWorks = () => {
   const cardData = [
     {
       title: "Create Account",
-      text: "Create an account in less than a minute on BoostBazar.",
+      text: "Sign up for an account on BoostBazaar in less than a minute.",
       image: "/image/h1.png",
     },
     {
-      title: "Create Account",
-      text: "Create an account in less than a minute on BoostBazar.",
+      title: "Fund Account",
+      text: "Add funds to your account using your local currency or cryptocurrency.",
       image: "/image/h2.png",
     },
     {
-      title: "Create Account",
-      text: "Create an account in less than a minute on BoostBazar.",
+      title: "Choose a Service",
+      text: "Select the boosting service you want our AI to process for you.",
       image: "/image/h3.png",
     },
     {
-      title: "Create Account",
-      text: "Create an account in less than a minute on BoostBazar.",
+      title: "Input Link",
+      text: "Copy and paste the link of the platform,profile or content you want to boost or engage.",
       image: "/image/h4.png",
     },
     {
-      title: "Create Account",
-      text: "Create an account in less than a minute on BoostBazar.",
+      title: "Work in Progress",
+      text: "Sit back and watch as our AI delivers the service within seconds.",
       image: "/image/h5.png",
     },
     {
-      title: "Create Account",
-      text: "Create an account in less than a minute on BoostBazar.",
+      title: "Complete",
+      text: "Once the process is completed, you will receive a notification on your dashboard.",
       image: "/image/h6.png ",
     },
   ];
