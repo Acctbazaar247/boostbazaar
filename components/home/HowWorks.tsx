@@ -30,7 +30,7 @@ const HowWorks = () => {
     {
       title: "Complete",
       text: "Once the process is completed, you will receive a notification on your dashboard.",
-      image: "/image/h6.png ",
+      image: "/image/h6.png",
     },
   ];
 
