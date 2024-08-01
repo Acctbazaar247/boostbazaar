@@ -6,8 +6,24 @@ import Link from "next/link";
 import { FaStar, FaUser } from "react-icons/fa";
 import { MdOutlineHomeRepairService } from "react-icons/md";
 import Marquee from "react-fast-marquee";
+import { useEffect, useState } from "react";
 
 const Banner = () => {
+  const [speed, setSpeed] = useState(50);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSpeed(window.innerWidth > 668 ? 40 : 30);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const bannerData = [
     {
       image: "/image/b1.png",
@@ -120,7 +136,7 @@ const Banner = () => {
 
       <div className="md:h-[11%] bg-primary center  max-sm:py-2">
         <Marquee
-          speed={window.innerWidth > 668 ? 40 : 30}
+          speed={speed}
           direction="right"
           className="w-fit"
           autoFill={true}
