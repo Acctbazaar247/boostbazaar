@@ -37,7 +37,11 @@ const Services = () => {
   ];
 
   return (
-    <section id="Services" className="container scroll-m-28 md:scroll-m-44">
+    <section
+      data-aos="fade-up"
+      id="Services"
+      className="container scroll-m-28 md:scroll-m-44"
+    >
       <div className="bg-primary-7 relative pt-16 pb-10 md:py-20 center flex-col rounded-t-lg shadow-md -mb-0.5">
         <h1 className="heading">Our Services</h1>
         <p className="leading-6 text-dark-grey">

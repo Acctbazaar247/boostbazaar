@@ -35,7 +35,7 @@ const HowWorks = () => {
   ];
 
   return (
-    <section className="container pt-20">
+    <section data-aos="fade-up" className="container pt-20">
       <h3 className="bg-primary/5 w-fit mx-auto rounded md:px-3 py-1.5 text-xs text-primary/70">
         Social Media Marketing
       </h3>

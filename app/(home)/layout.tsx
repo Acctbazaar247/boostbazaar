@@ -7,7 +7,7 @@ const HomeLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <section>
+    <section className="overflow-hidden">
       <Navbar />
       {children}
       <Footer />

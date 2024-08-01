@@ -18,7 +18,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-primary/5">
+    <div data-aos="zoom-in" className="bg-primary/5">
       <div className="container flex items-center justify-between border-b border-black/30 pb-8 pt-24 md:pt-32">
         <Logo variant="sm" />
         <div className="flex items-center gap-3 md:gap-9 h-fit">

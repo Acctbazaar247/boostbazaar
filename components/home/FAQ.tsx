@@ -24,12 +24,14 @@ const FAQ = () => {
   ];
   return (
     <section id="FAQ" className="container  scroll-m-28 md:scroll-m-44">
-      <h1 className="heading max-w-[400px]">Frequently Asked Questions</h1>
-      <p className="text-dark-grey text-lg font-light">
+      <h1 data-aos="fade-right" className="heading max-w-[400px]">
+        Frequently Asked Questions
+      </h1>
+      <p data-aos="fade-right" className="text-dark-grey text-lg font-light">
         Can’t find what you are looking for?
       </p>
       <div className="pt-2.5 md:grid grid-cols-2">
-        <div className="">
+        <div data-aos="fade-right" className="">
           <h2 className="text-2xl">We would like to have a chat with you.</h2>
           <div className="flex gap-4">
             <Image
@@ -59,7 +61,7 @@ const FAQ = () => {
             />
           </div>
         </div>
-        <div className="">
+        <div data-aos="fade-left" className="">
           {faqCards.map((faq, i) => (
             <AnimationWrapper key={i} transition={{ delay: i * 0.08 }}>
               <FaqCard i={i} faq={faq} />

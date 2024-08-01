@@ -21,6 +21,7 @@ const ContactUs = () => {
   return (
     <section
       id="Contact"
+      data-aos="fade-up"
       className="w-[85%] mx-auto md:container bg-primary px-4 md:px-16 py-10 md:py-16 rounded-xl md:rounded-[20px] mt-20 md:mt-24 -mb-10 md:-mb-16 flex max-sm:flex-col max-sm:gap-5 items-center justify-between"
     >
       {contactsData.map((contact, i) => (

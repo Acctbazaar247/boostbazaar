@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import AppButton from "../ui/AppButton";
 import Link from "next/link";
 import { FaStar, FaUser } from "react-icons/fa";
 import { MdOutlineHomeRepairService } from "react-icons/md";
+import Marquee from "react-fast-marquee";
 
 const Banner = () => {
   const bannerData = [
@@ -38,7 +41,10 @@ const Banner = () => {
     <section id="Home" className="md:h-screen">
       <div className="md:h-[89%] container grid grid-cols-1 md:grid-cols-2">
         {/* this is left div  */}
-        <div className="flex flex-col max-sm:pt-24 justify-end md:h-full">
+        <div
+          data-aos="fade-right"
+          className="flex flex-col max-sm:pt-24 justify-end md:h-full"
+        >
           <h2 className="text-primary/70 border w-fit border-primary/70 rounded-xl text-xs py-2 px-4">
             Unlimited Packages For You
           </h2>
@@ -101,7 +107,7 @@ const Banner = () => {
           </div>
         </div>
         {/* this is right side div  */}
-        <div className=" flex items-end justify-end">
+        <div data-aos="fade-left" className=" flex items-end justify-end">
           <Image
             className="-mb-4 md:-mb-5 2xl:-mb-6 max-2xl:w-[480px] aspect-square"
             src={"/image/banner.png"}
@@ -112,10 +118,15 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="md:h-[11%] bg-primary center">
-        <div className="container flex items-center justify-between max-sm:py-2">
+      <div className="md:h-[11%] bg-primary center  max-sm:py-2">
+        <Marquee
+          speed={window.innerWidth > 668 ? 40 : 30}
+          direction="right"
+          className="w-fit"
+          autoFill={true}
+        >
           {bannerData.map((bann, i) => (
-            <div key={i} className="center gap-1">
+            <div key={i} className="center gap-1 pl-5 lg:pl-40">
               <Image
                 className="max-sm:w-3.5 max-2xl:w-9 h-auto"
                 src={bann.image}
@@ -128,11 +139,14 @@ const Banner = () => {
               </h2>
             </div>
           ))}
-        </div>
+        </Marquee>
       </div>
 
       {/* this is grid image  */}
-      <div className="absolute w-full -z-10 top-0 select-none">
+      <div
+        data-aos="zoom-in"
+        className="absolute w-full -z-10 top-0 select-none"
+      >
         <div className="container">
           <Image
             className="md:w-10/12 mx-auto md:h-[90dvh]"

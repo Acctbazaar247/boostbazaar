@@ -1,3 +1,4 @@
+import Aos from "@/components/home/AOS";
 import Banner from "@/components/home/Banner";
 import ContactUs from "@/components/home/ContactUs";
 import FAQ from "@/components/home/FAQ";
@@ -9,6 +10,7 @@ import WhyChoose from "@/components/home/WhyChoose";
 const page = () => {
   return (
     <section className="">
+      <Aos />
       <Banner />
       <HowWorks />
       <Stats />
