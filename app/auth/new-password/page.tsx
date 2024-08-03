@@ -1,5 +1,19 @@
+import AuthWrapper from "@/components/auth/AuthWrapper";
+import NewPassword from "@/components/auth/NewPassword";
+import AnimationWrapper from "@/components/ui/AnimationWrapper";
+
 const page = () => {
-  return <div className="">This is page Components</div>;
+  return (
+    <AnimationWrapper>
+      <AuthWrapper
+        src="/image/new-password.png"
+        title="New password"
+        subTitle="Enter your new password."
+      >
+        <NewPassword />
+      </AuthWrapper>
+    </AnimationWrapper>
+  );
 };
 
 export default page;

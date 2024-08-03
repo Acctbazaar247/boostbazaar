@@ -23,6 +23,18 @@
   .btnNoDesign {
     @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
   }
+  .input-box {
+    @apply w-[100%] rounded-lg outline-none p-2 md:p-3 2xl:p-4 bg-grey pl-12 border border-dark-grey/50 placeholder:text-dark-grey placeholder:font-light;
+  }
+
+  input:disabled,
+  input:disabled ~ .input-icon {
+    @apply opacity-50;
+  }
+
+  .input-icon {
+    @apply absolute left-4 top-1/2 -translate-y-1/2 text-dark-grey md:text-lg;
+  }
 }
 
 body {
