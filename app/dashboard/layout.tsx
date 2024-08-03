@@ -8,7 +8,7 @@ const DashboardLayout = ({
   return (
     <>
       <NavbarUser />
-      <section className="bg-[#FAFAFA] max-h-[calc(100dvh-64px)] overflow-hidden">
+      <section className="max-h-[calc(100dvh-72px)] overflow-x-hidden overflow-y-auto">
         {children}
       </section>
     </>

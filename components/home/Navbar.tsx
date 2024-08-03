@@ -6,18 +6,25 @@ import AppButton from "../ui/AppButton";
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
-import { Drawer } from "antd";
+import { Avatar, Drawer } from "antd";
 import Logo from "../ui/Logo";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenu, setMobileMenu] = useState(false);
 
+  const user = {
+    email: "email",
+    role: "user",
+    name: "Rakibul Hasan",
+  };
+
   const navLinks = [
     { label: "Home", path: "#Home" },
     { label: "Services", path: "#Services" },
     { label: "FAQ", path: "#FAQ" },
     { label: "Contact", path: "#Contact" },
+    { label: "Dashboard", path: "/dashboard" },
   ];
 
   return (
@@ -25,32 +32,56 @@ const Navbar = () => {
       <header className="w-full md:container bg-white md:rounded-xl py-2.5 md:py-4 px-4 md:px-11 flex items-center justify-between">
         <Logo variant="sm" />
         <div className="max-sm:hidden flex items-center gap-2 md:gap-9">
-          {navLinks.map((nav) => (
-            <Link
-              key={nav.label}
-              onClick={() => setActiveTab(nav.label)}
-              href={nav.path}
-              className={`block font-light md:font-medium text-[10px] md:text-lg ${
-                nav.label === activeTab ? "text-primary" : "text-dark-grey"
-              }`}
-            >
-              {nav.label}
-            </Link>
-          ))}
+          {navLinks.map((nav) =>
+            nav.label === "Dashboard" ? (
+              user?.email && (
+                <Link
+                  key={nav.label}
+                  onClick={() => setActiveTab(nav.label)}
+                  href={user?.role === "admin" ? "/admin-dashboard" : nav.path}
+                  className={`block font-light md:font-medium text-[10px] md:text-lg ${
+                    nav.label === activeTab ? "text-primary" : "text-dark-grey"
+                  }`}
+                >
+                  {nav.label}
+                </Link>
+              )
+            ) : (
+              <Link
+                key={nav.label}
+                onClick={() => setActiveTab(nav.label)}
+                href={nav.path}
+                className={`block font-light md:font-medium text-[10px] md:text-lg ${
+                  nav.label === activeTab ? "text-primary" : "text-dark-grey"
+                }`}
+              >
+                {nav.label}
+              </Link>
+            )
+          )}
         </div>
         <div className="max-sm:hidden flex items-center gap-2 md:gap-4">
-          <AppButton
-            className=" md:px-12"
-            variant="outlined"
-            label="Log in"
-            href="/auth/sign-in"
-          />
-          <AppButton
-            className="px-6"
-            label="Create Account"
-            icon={<AiOutlineUser />}
-            href="/auth/sign-up"
-          />
+          {user?.email ? (
+            <div className="flex items-center gap-1">
+              <Avatar size={"large"} src="/image/ai1.png" />
+              <p className="text-lg font-medium">{user?.name}</p>
+            </div>
+          ) : (
+            <>
+              <AppButton
+                className=" md:px-12"
+                variant="outlined"
+                label="Log in"
+                href="/auth/sign-in"
+              />
+              <AppButton
+                className="px-6"
+                label="Create Account"
+                icon={<AiOutlineUser />}
+                href="/auth/sign-up"
+              />
+            </>
+          )}
         </div>
 
         <button
