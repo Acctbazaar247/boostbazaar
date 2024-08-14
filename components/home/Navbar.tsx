@@ -8,16 +8,15 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
 import { Avatar, Drawer } from "antd";
 import Logo from "../ui/Logo";
+import { useAppSelector } from "@/redux/hook";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  const user = {
-    email: "email",
-    role: "user",
-    name: "Rakibul Hasan",
-  };
+  const user = useAppSelector(selectCurrentUser);
+  console.log("🚀 ~ Navbar ~ user:", user);
 
   const navLinks = [
     { label: "Home", path: "#Home" },

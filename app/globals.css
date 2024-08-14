@@ -24,7 +24,7 @@
     @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
   }
   .input-box {
-    @apply w-[100%] rounded-lg outline-none p-2 md:p-3 2xl:p-4 bg-grey pl-12 border border-dark-grey/50 placeholder:text-dark-grey placeholder:font-light;
+    @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-grey pl-4 2xl:pl-10 border border-dark-grey/50 placeholder:text-dark-grey placeholder:font-light;
   }
 
   input:disabled,

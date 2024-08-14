@@ -6,20 +6,20 @@ import AppButton from "../ui/AppButton";
 import Link from "next/link";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { TbNumber123 } from "react-icons/tb";
-import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { selectCurrentUser } from "@/redux/features/auth/authSlice";
-import { useRouter } from "next/navigation";
 import {
   useResendEmailMutation,
   useVerifyUserMutation,
 } from "@/redux/features/auth/authApi";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   code: string;
 }
 
-const ResetPassword = () => {
+const VerifyUser = () => {
   const {
     register,
     handleSubmit,
@@ -55,6 +55,7 @@ const ResetPassword = () => {
         toast.error(res?.message);
       });
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -82,6 +83,7 @@ const ResetPassword = () => {
         Don&apos;t receive code?{" "}
         <button
           onClick={handleResend}
+          disabled={resendLoading}
           type="button"
           className="text-primary font-medium"
         >
@@ -99,4 +101,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default VerifyUser;
