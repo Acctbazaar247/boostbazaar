@@ -37,7 +37,7 @@ const ComplainForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="border border-primary/80 rounded-lg p-8 space-y-8"
+      className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-4 md:space-y-8"
     >
       <AppFormInput
         name="subject"

@@ -24,12 +24,13 @@ const ProfileForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="border border-primary/80 rounded-lg p-8 space-y-8"
+      className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-4 md:space-y-8"
     >
       <AppFormInput
         name="password"
         type="number"
         label="Current password"
+        className="pl-4"
         register={register}
         required
         placeholder="*******"
@@ -40,6 +41,7 @@ const ProfileForm = () => {
         name="newPassword"
         type="text"
         label="New Password"
+        className="pl-4"
         register={register}
         required
         placeholder="*******"
@@ -50,6 +52,7 @@ const ProfileForm = () => {
         name="confirmPassword"
         type="text"
         label="Confirm New Password"
+        className="pl-4"
         register={register}
         required
         placeholder="*******"

@@ -80,7 +80,7 @@ const page = () => {
       <Marquee
         speed={40}
         direction="right"
-        className="w-fit bg-primary/5 my-16 py-3 text-sm"
+        className="w-fit bg-primary/5 my-10 md:my-16 py-3 text-sm"
         autoFill={true}
       >
         {marqueTexts.map((text, i) => (
@@ -92,7 +92,7 @@ const page = () => {
       </Marquee>
 
       <div className="container">
-        <div className="grid grid-cols-2 gap-20">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-20">
           <div className="border border-primary/50 bg-primary/10 p-5 space-y-5 rounded-lg">
             <div className="flex items-center justify-between">
               <h3 className="text-dark-grey">Main balance</h3>
@@ -121,7 +121,7 @@ const page = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-10 pt-20">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-10 pt-10 md:pt-20">
           {servicesData.map((service, i) => (
             <div
               key={i}

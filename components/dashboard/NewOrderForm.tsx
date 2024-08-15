@@ -24,16 +24,17 @@ const NewOrderForm = () => {
   };
 
   return (
-    <div className="py-20">
+    <div className="py-10 md:py-20">
       <h1 className="heading pb-4">New Order</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border border-primary/80 rounded-lg p-8 space-y-5"
+        className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-5"
       >
         <AppFormInput
           name="category"
           type="text"
           label="Category"
+          className="pl-4"
           register={register}
           required
           placeholder="Enter category"
@@ -44,6 +45,7 @@ const NewOrderForm = () => {
           name="service"
           type="text"
           label="Service"
+          className="pl-4"
           register={register}
           required
           placeholder="Enter service"
@@ -53,6 +55,7 @@ const NewOrderForm = () => {
           name="link"
           type="text"
           label="Link"
+          className="pl-4"
           register={register}
           required
           placeholder="Enter link"
@@ -62,6 +65,7 @@ const NewOrderForm = () => {
           name="quantity"
           type="text"
           label="Quantity"
+          className="pl-4"
           register={register}
           required
           placeholder="Enter quantity"
@@ -71,6 +75,7 @@ const NewOrderForm = () => {
           name="charge"
           type="text"
           label="Charge"
+          className="pl-4"
           register={register}
           required
           placeholder="Enter charge"

@@ -40,7 +40,7 @@ const Page = () => {
         Love in sharing, refer your friends.
       </p>
 
-      <div className="my-12 rounded-2xl border border-primary p-8">
+      <div className="my-12 rounded-2xl border border-primary p-4 md:p-8">
         <div className="space-y-4">
           <h3 className="text-lg font-medium">Friends e-mail</h3>
           <div className="grid grid-cols-12">
@@ -53,7 +53,7 @@ const Page = () => {
             <button
               disabled={isLoading}
               onClick={handleSendToChange}
-              className="w-full bg-primary hover:bg-primary/90 text-xl col-span-2 text-white rounded-r-lg"
+              className="w-full bg-primary hover:bg-primary/90 md:text-xl col-span-2 text-white rounded-r-lg"
             >
               Send
             </button>
@@ -64,19 +64,19 @@ const Page = () => {
         <div className="flex items-center justify-between">
           <button className="flex gap-1 items-center justify-center flex-col">
             <Image width={40} height={40} src={"/image/copy.png"} alt="image" />
-            <p className="text-lg font-medium">copy</p>
+            <p className="md:text-lg font-medium">copy</p>
           </button>
           <button className="flex gap-1 items-center justify-center flex-col">
             <Image width={40} height={40} src={"/image/s2.png"} alt="image" />
-            <p className="text-lg font-medium">Share</p>
+            <p className="md:text-lg font-medium">Share</p>
           </button>
           <button className="flex gap-1 items-center justify-center flex-col">
             <Image width={40} height={40} src={"/image/s3.png"} alt="image" />
-            <p className="text-lg font-medium">Tweet</p>
+            <p className="md:text-lg font-medium">Tweet</p>
           </button>
           <button className="flex gap-1 items-center justify-center flex-col">
             <Image width={40} height={40} src={"/image/s4.png"} alt="image" />
-            <p className="text-lg font-medium">Post</p>
+            <p className="md:text-lg font-medium">Post</p>
           </button>
         </div>
       </div>

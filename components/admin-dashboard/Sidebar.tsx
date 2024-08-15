@@ -12,9 +12,11 @@ import Link from "next/link";
 import { useAppDispatch } from "@/redux/hook";
 import { logOut } from "@/redux/features/auth/authSlice";
 import { cn } from "@/utils/cn";
+import { usePathname } from "next/navigation";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch();
+  const pathname = usePathname();
   const navLinks = [
     {
       label: "",
@@ -98,7 +100,10 @@ const Sidebar = ({ className }: { className?: string }) => {
               <Link
                 key={i}
                 href={nav.path}
-                className="text-black hover:text-primary flex items-center gap-2 py-1.5"
+                className={cn(
+                  "text-black hover:text-primary flex items-center gap-2 py-1.5",
+                  pathname === nav.path && "text-primary"
+                )}
               >
                 {nav.icon} {nav.label}
               </Link>

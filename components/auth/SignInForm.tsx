@@ -34,7 +34,6 @@ const SignInForm = () => {
     await signInUser(data)
       .unwrap()
       .then((res) => {
-        console.log(data);
         toast.success(res?.message);
         dispatch(
           setUser({ user: res.data.user, accessToken: res.data.accessToken })

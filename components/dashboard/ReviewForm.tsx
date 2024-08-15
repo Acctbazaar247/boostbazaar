@@ -42,7 +42,7 @@ const ReviewForm = () => {
 
   return (
     <>
-      <div className="max-w-md mx-auto space-y-8 text-center pb-10">
+      <div className="max-w-md mx-auto space-y-4 md:space-y-8 text-center pb-10">
         <p className="text-sm text-dark-grey/80">Tap the Stars to Choose</p>
 
         <Rate
@@ -58,7 +58,7 @@ const ReviewForm = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border border-primary/80 rounded-lg p-8 space-y-8"
+        className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-4 md:space-y-8"
       >
         <AppFormInput
           name="title"
