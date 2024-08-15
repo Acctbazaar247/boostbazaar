@@ -1,23 +1,24 @@
 import { baseApi } from "../../api/baseApi";
 import { tagTypes } from "../../api/tagTypesList";
 
-const blogApi = baseApi.injectEndpoints({
+const userDashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    createBlog: builder.mutation({
-      query: (blogData) => ({
-        url: "/blog",
+    createReview: builder.mutation({
+      query: (reviewData) => ({
+        url: "/review",
         method: "POST",
-        body: blogData,
+        body: reviewData,
       }),
-      invalidatesTags: [tagTypes.blog],
+      invalidatesTags: [tagTypes.review],
     }),
 
-    getBlogs: builder.query({
-      query: (filterOptions) => ({
-        url: `/blogs${filterOptions ? `?${filterOptions}` : ""}`,
-        method: "GET",
+    createTicket: builder.mutation({
+      query: (ticketData) => ({
+        url: "/ticket",
+        method: "POST",
+        body: ticketData,
       }),
-      providesTags: [tagTypes.blog],
+      invalidatesTags: [tagTypes.review],
     }),
 
     getTrendingBlogs: builder.query({
@@ -25,7 +26,7 @@ const blogApi = baseApi.injectEndpoints({
         url: `/trending-blogs${filterOptions ? `?${filterOptions}` : ""}`,
         method: "GET",
       }),
-      providesTags: [tagTypes.blog],
+      providesTags: [tagTypes.review],
     }),
 
     getBlogBySlug: builder.query({
@@ -39,7 +40,7 @@ const blogApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags: [tagTypes.blog, tagTypes.comment],
+      providesTags: [tagTypes.review, tagTypes.comment],
     }),
 
     getMyBlogs: builder.query({
@@ -47,7 +48,7 @@ const blogApi = baseApi.injectEndpoints({
         url: `/my-blogs${filterOptions ? `?${filterOptions}` : ""}`,
         method: "GET",
       }),
-      providesTags: [tagTypes.blog],
+      providesTags: [tagTypes.review],
     }),
 
     getIsLikedByUser: builder.query({
@@ -55,7 +56,7 @@ const blogApi = baseApi.injectEndpoints({
         url: `/isLiked-by-user?id=${id}`,
         method: "GET",
       }),
-      providesTags: [tagTypes.blog, tagTypes.notification],
+      providesTags: [tagTypes.review, tagTypes.notification],
     }),
 
     updateBlog: builder.mutation({
@@ -64,7 +65,7 @@ const blogApi = baseApi.injectEndpoints({
         method: "PUT",
         body: updatedData.data,
       }),
-      invalidatesTags: [tagTypes.blog],
+      invalidatesTags: [tagTypes.review],
     }),
 
     likeBlog: builder.mutation({
@@ -73,7 +74,7 @@ const blogApi = baseApi.injectEndpoints({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: [tagTypes.blog],
+      invalidatesTags: [tagTypes.review],
     }),
 
     deleteBlog: builder.mutation({
@@ -81,19 +82,19 @@ const blogApi = baseApi.injectEndpoints({
         url: `/blog/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: [tagTypes.blog],
+      invalidatesTags: [tagTypes.review],
     }),
   }),
 });
 
 export const {
-  useCreateBlogMutation,
+  useCreateReviewMutation,
   useGetBlogBySlugQuery,
-  useGetBlogsQuery,
+  useCreateTicketMutation,
   useGetTrendingBlogsQuery,
   useUpdateBlogMutation,
   useDeleteBlogMutation,
   useGetMyBlogsQuery,
   useLikeBlogMutation,
   useGetIsLikedByUserQuery,
-} = blogApi;
+} = userDashboardApi;

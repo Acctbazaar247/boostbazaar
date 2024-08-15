@@ -25,21 +25,24 @@ const SignInForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [signInUser, { isLoading }] = useLoginMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
     await signInUser(data)
       .unwrap()
       .then((res) => {
+        console.log(data);
         toast.success(res?.message);
-        dispatch(setUser({ user: res.user, accessToken: res.accessToken }));
-        if (res.user.role === "superAdmin") {
-          router.push("/dashboard");
+        dispatch(
+          setUser({ user: res.data.user, accessToken: res.data.accessToken })
+        );
+        if (res?.user?.role === "admin") {
+          router.push("/admin-dashboard");
         } else {
-          router.push("/");
+          router.push("/dashboard");
         }
       })
       .catch((res) => {

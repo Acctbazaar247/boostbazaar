@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useSignupUserMutation } from "@/redux/features/auth/authApi";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { selectCurrentUser, setUser } from "@/redux/features/auth/authSlice";
+import { setUser, useCurrentToken } from "@/redux/features/auth/authSlice";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -27,7 +27,7 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const user = useAppSelector(selectCurrentUser);
+  const token = useAppSelector(useCurrentToken);
 
   const router = useRouter();
 
@@ -39,7 +39,10 @@ const SignUpForm = () => {
       .unwrap()
       .then((res) => {
         toast.success(res?.message);
-        dispatch(setUser({ user: { email: data.email } }));
+        dispatch(
+          setUser({ user: res.data.user, accessToken: res.data.accessToken })
+        );
+        router.push("/");
       })
       .catch((res) => {
         toast.error(res?.message);
@@ -47,8 +50,8 @@ const SignUpForm = () => {
   };
 
   useEffect(() => {
-    if (user?.email) {
-      router.push("/auth/verify-user");
+    if (token) {
+      router.push("/");
     }
   }, []);
 

@@ -9,13 +9,17 @@ import { FaBars } from "react-icons/fa6";
 import { Avatar, Drawer } from "antd";
 import Logo from "../ui/Logo";
 import { useAppSelector } from "@/redux/hook";
-import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import {
+  selectCurrentUser,
+  useCurrentToken,
+} from "@/redux/features/auth/authSlice";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const user = useAppSelector(selectCurrentUser);
+  const token = useAppSelector(useCurrentToken);
   console.log("🚀 ~ Navbar ~ user:", user);
 
   const navLinks = [
@@ -33,7 +37,7 @@ const Navbar = () => {
         <div className="max-sm:hidden flex items-center gap-2 md:gap-9">
           {navLinks.map((nav) =>
             nav.label === "Dashboard" ? (
-              user?.email && (
+              token && (
                 <Link
                   key={nav.label}
                   onClick={() => setActiveTab(nav.label)}
@@ -62,7 +66,7 @@ const Navbar = () => {
         <div className="max-sm:hidden flex items-center gap-2 md:gap-4">
           {user?.email ? (
             <div className="flex items-center gap-1">
-              <Avatar size={"large"} src="/image/ai1.png" />
+              <Avatar size={"large"} src={user.profileImg} />
               <p className="text-lg font-medium">{user?.name}</p>
             </div>
           ) : (

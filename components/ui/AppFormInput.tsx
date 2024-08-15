@@ -9,6 +9,7 @@ type TAppFormInput = {
   type: "password" | "number" | "text" | "date" | "url" | "file" | "email";
   placeholder: string;
   label: string;
+  className?: string;
   icon?: any;
   register: UseFormRegister<any>;
   required?: true | false;
@@ -25,6 +26,7 @@ const AppFormInput = ({
   required,
   error,
   disabled,
+  className,
   label,
 }: TAppFormInput) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -46,7 +48,7 @@ const AppFormInput = ({
           min={0}
           disabled={disabled}
           placeholder={placeholder}
-          className={`input-box ${error && "border-red"}`}
+          className={`input-box ${error && "border-red"} ${className}`}
         />
         <span className={`input-icon ${error && "text-red"}`}>{icon}</span>
 

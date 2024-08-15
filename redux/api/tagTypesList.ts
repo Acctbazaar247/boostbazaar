@@ -1,6 +1,6 @@
 export enum tagTypes {
   user = "user",
-  blog = "blog",
+  review = "review",
   comment = "comment",
   notification = "notification",
 }

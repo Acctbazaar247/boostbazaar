@@ -1,8 +1,11 @@
 "use client";
 
+import { logOut, selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { Avatar } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BiMessageAltEdit } from "react-icons/bi";
 import { LuLogOut } from "react-icons/lu";
 import { MdAddShoppingCart } from "react-icons/md";
 import { PiCardholderDuotone, PiUserList } from "react-icons/pi";
@@ -35,6 +38,11 @@ const NavbarUser = () => {
       path: "/dashboard/profile",
     },
     {
+      label: "Complain",
+      icon: <BiMessageAltEdit />,
+      path: "/dashboard/complain",
+    },
+    {
       label: "Refer",
       icon: <VscUngroupByRefType />,
       path: "/dashboard/refer",
@@ -46,11 +54,13 @@ const NavbarUser = () => {
     },
   ];
 
+  const user = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
   return (
     <section className="py-4 bg-primary/5">
       <div className="w-11/12 mx-auto flex items-center justify-between">
         <div className="flex items-center gap-1">
-          <Avatar size={"large"} src="/image/ai1.png" />
+          <Avatar size={"large"} src={user?.profileImg} />
           <span>Hello</span>
           <p className="text-lg font-medium">Rakibul Hasan!</p>
         </div>
@@ -68,7 +78,10 @@ const NavbarUser = () => {
             </Link>
           ))}
         </div>
-        <button className="flex items-center gap-1 text-red text-lg">
+        <button
+          onClick={() => dispatch(logOut())}
+          className="flex items-center gap-1 text-red text-lg"
+        >
           <LuLogOut />
           Log out
         </button>

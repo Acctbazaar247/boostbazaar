@@ -59,8 +59,8 @@ export interface TFlat {
 }
 
 export const USER_ROLE = {
-  ADMIN: "ADMIN",
-  USER: "USER",
+  admin: "admin",
+  user: "user",
 } as const;
 
 export const BookingStatus = {
