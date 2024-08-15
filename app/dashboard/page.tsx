@@ -83,8 +83,8 @@ const page = () => {
         className="w-fit bg-primary/5 my-16 py-3 text-sm"
         autoFill={true}
       >
-        {marqueTexts.map((text) => (
-          <p key={text} className=" flex items-center gap-1 pl-12">
+        {marqueTexts.map((text, i) => (
+          <p key={text + i} className=" flex items-center gap-1 pl-12">
             <GoDotFill />
             {text}
           </p>

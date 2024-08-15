@@ -7,7 +7,7 @@ const DashboardLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <PrivetLayout>
+    <PrivetLayout roles={["user"]}>
       <NavbarUser />
       <section className="max-h-[calc(100dvh-72px)] overflow-x-hidden overflow-y-auto">
         {children}

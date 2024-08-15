@@ -7,8 +7,8 @@ import { useState } from "react";
 import { Rate } from "antd";
 import { cn } from "@/utils/cn";
 import { toast } from "react-toastify";
-import { useCreateReviewMutation } from "@/redux/features/user-dashboard/blogApi";
 import AppFormTextArea from "../ui/AppFormTextArea";
+import { useCreateReviewMutation } from "@/redux/features/dashboard/dashboardApi";
 
 interface FormData {
   title: string;

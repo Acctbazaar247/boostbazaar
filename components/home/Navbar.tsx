@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import AppButton from "../ui/AppButton";
 import { useState } from "react";
@@ -8,19 +7,20 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
 import { Avatar, Drawer } from "antd";
 import Logo from "../ui/Logo";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
+  logOut,
   selectCurrentUser,
   useCurrentToken,
 } from "@/redux/features/auth/authSlice";
+import { LuLogOut, LuUser2 } from "react-icons/lu";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenu, setMobileMenu] = useState(false);
-
+  const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
   const token = useAppSelector(useCurrentToken);
-  console.log("🚀 ~ Navbar ~ user:", user);
 
   const navLinks = [
     { label: "Home", path: "#Home" },
@@ -64,9 +64,9 @@ const Navbar = () => {
           )}
         </div>
         <div className="max-sm:hidden flex items-center gap-2 md:gap-4">
-          {user?.email ? (
+          {token && user ? (
             <div className="flex items-center gap-1">
-              <Avatar size={"large"} src={user.profileImg} />
+              <Avatar icon={<LuUser2 />} size={"large"} src={user.profileImg} />
               <p className="text-lg font-medium">{user?.name}</p>
             </div>
           ) : (
@@ -87,6 +87,7 @@ const Navbar = () => {
           )}
         </div>
 
+        {/* this is for mobile drawaer  */}
         <button
           onClick={() => setMobileMenu(true)}
           className="transition-all ml-auto mr-1 md:hidden flex justify-center items-center border border-black p-1 rounded"
@@ -94,17 +95,35 @@ const Navbar = () => {
           <FaBars />
         </button>
 
-        <div className="md:hidden">
-          <Drawer
-            width={300}
-            title={<Logo variant="md" />}
-            placement={"left"}
-            closable={false}
-            onClose={() => setMobileMenu(false)}
-            open={mobileMenu}
-          >
-            <div className="space-y-2">
-              {navLinks.map((nav) => (
+        <Drawer
+          width={300}
+          className="md:hidden"
+          title={<Logo variant="md" />}
+          placement={"left"}
+          closable={false}
+          onClose={() => setMobileMenu(false)}
+          open={mobileMenu}
+        >
+          <div className="space-y-2">
+            {navLinks.map((nav) =>
+              nav.label === "Dashboard" ? (
+                token && (
+                  <Link
+                    key={nav.label}
+                    onClick={() => setActiveTab(nav.label)}
+                    href={
+                      user?.role === "admin" ? "/admin-dashboard" : nav.path
+                    }
+                    className={`block font-medium  md:text-lg ${
+                      nav.label === activeTab
+                        ? "text-primary"
+                        : "text-dark-grey"
+                    }`}
+                  >
+                    {nav.label}
+                  </Link>
+                )
+              ) : (
                 <Link
                   key={nav.label}
                   onClick={() => setActiveTab(nav.label)}
@@ -115,22 +134,34 @@ const Navbar = () => {
                 >
                   {nav.label}
                 </Link>
-              ))}
-              <AppButton
-                className=" md:px-12"
-                variant="outlined"
-                label="Log in"
-                href="/auth/sign-in"
-              />
-              <AppButton
-                className="px-6"
-                label="Create Account"
-                icon={<AiOutlineUser />}
-                href="/auth/sign-up"
-              />
-            </div>
-          </Drawer>
-        </div>
+              )
+            )}
+            {token && user ? (
+              <button
+                onClick={() => dispatch(logOut())}
+                className="flex items-center gap-1 text-red text-lg"
+              >
+                <LuLogOut />
+                Log out
+              </button>
+            ) : (
+              <>
+                <AppButton
+                  className=" md:px-12"
+                  variant="outlined"
+                  label="Log in"
+                  href="/auth/sign-in"
+                />
+                <AppButton
+                  className="px-6"
+                  label="Create Account"
+                  icon={<AiOutlineUser />}
+                  href="/auth/sign-up"
+                />
+              </>
+            )}
+          </div>
+        </Drawer>
       </header>
     </nav>
   );

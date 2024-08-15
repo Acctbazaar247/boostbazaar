@@ -18,15 +18,24 @@ const userDashboardApi = baseApi.injectEndpoints({
         method: "POST",
         body: ticketData,
       }),
-      invalidatesTags: [tagTypes.review],
+      // invalidatesTags: [tagTypes.review],
     }),
 
-    getTrendingBlogs: builder.query({
+    sendInvitation: builder.mutation({
+      query: (referral) => ({
+        url: "/referral/send-invitation",
+        method: "POST",
+        body: referral,
+      }),
+      // invalidatesTags: [tagTypes.review],
+    }),
+
+    getTickets: builder.query({
       query: (filterOptions) => ({
-        url: `/trending-blogs${filterOptions ? `?${filterOptions}` : ""}`,
+        url: `/ticket${filterOptions ? `?${filterOptions}` : ""}`,
         method: "GET",
       }),
-      providesTags: [tagTypes.review],
+      providesTags: [tagTypes.dashboard],
     }),
 
     getBlogBySlug: builder.query({
@@ -40,7 +49,7 @@ const userDashboardApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags: [tagTypes.review, tagTypes.comment],
+      providesTags: [tagTypes.review, tagTypes.dashboard],
     }),
 
     getMyBlogs: builder.query({
@@ -56,7 +65,7 @@ const userDashboardApi = baseApi.injectEndpoints({
         url: `/isLiked-by-user?id=${id}`,
         method: "GET",
       }),
-      providesTags: [tagTypes.review, tagTypes.notification],
+      providesTags: [tagTypes.review, tagTypes.dashboard],
     }),
 
     updateBlog: builder.mutation({
@@ -91,10 +100,11 @@ export const {
   useCreateReviewMutation,
   useGetBlogBySlugQuery,
   useCreateTicketMutation,
-  useGetTrendingBlogsQuery,
+  useGetTicketsQuery,
   useUpdateBlogMutation,
   useDeleteBlogMutation,
   useGetMyBlogsQuery,
   useLikeBlogMutation,
   useGetIsLikedByUserQuery,
+  useSendInvitationMutation,
 } = userDashboardApi;

@@ -12,7 +12,7 @@
     @apply block mx-auto;
   }
   .heading {
-    @apply text-primary text-4xl 2xl:text-[45px] leading-[50px] 2xl:leading-[68px];
+    @apply text-primary text-3xl md:text-4xl 2xl:text-[45px] leading-[50px] 2xl:leading-[68px];
   }
   .btnFilled {
     @apply border border-primary bg-primary text-white px-4 py-1 md:py-2  rounded md:rounded-xl hover:bg-primary/95 transition-all;
@@ -24,7 +24,7 @@
     @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
   }
   .input-box {
-    @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-grey pl-4 2xl:pl-10 border border-dark-grey/50 placeholder:text-dark-grey placeholder:font-light;
+    @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-grey pl-10 border border-dark-grey/50 placeholder:text-dark-grey placeholder:font-light;
   }
 
   input:disabled,
@@ -64,4 +64,11 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #bdbdbd;
+}
+
+@media only screen and (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
 }

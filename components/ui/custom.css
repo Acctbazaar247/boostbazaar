@@ -1,0 +1,52 @@
+/* this is antd design table change  */
+.ant-table-thead .ant-table-cell {
+  background-color: white !important;
+  border: none;
+}
+.ant-table-thead .ant-table-cell::before {
+  position: absolute !important;
+  top: 50%;
+  inset-inline-end: 0;
+  width: 0px !important;
+  height: 0em !important;
+  background-color: #fff;
+  transform: translateY(-50%);
+  transition: background-color 0.2s;
+  content: "";
+}
+.ant-table-thead .ant-table-cell:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}
+.ant-table-tbody .ant-table-cell {
+  padding: 12px !important;
+}
+.ant-modal-header .ant-modal-title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+.ant-table-cell,
+.ant-table-cell > div {
+  font-weight: 400;
+}
+
+.ant-modal-content {
+  border-radius: 16px !important;
+  width: fit-content !important;
+  margin: auto !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .ant-modal-header .ant-modal-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+  }
+  .ant-modal-content {
+    border-radius: 8px !important;
+  }
+  .ant-table-cell,
+  .ant-table-cell > div {
+    padding: 10px !important;
+  }
+}

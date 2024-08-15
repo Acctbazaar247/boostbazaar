@@ -39,7 +39,7 @@ const SignInForm = () => {
         dispatch(
           setUser({ user: res.data.user, accessToken: res.data.accessToken })
         );
-        if (res?.user?.role === "admin") {
+        if (res?.data?.user?.role === "admin") {
           router.push("/admin-dashboard");
         } else {
           router.push("/dashboard");

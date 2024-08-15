@@ -4,8 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import AppButton from "../ui/AppButton";
 import AppFormInput from "../ui/AppFormInput";
 import AppFormTextArea from "../ui/AppFormTextArea";
-import { useCreateTicketMutation } from "@/redux/features/user-dashboard/blogApi";
 import { toast } from "react-toastify";
+import { useCreateTicketMutation } from "@/redux/features/dashboard/dashboardApi";
 
 interface FormData {
   subject: string;
