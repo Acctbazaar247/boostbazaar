@@ -6,11 +6,12 @@ type TAppTabs = {
     label: string;
     value?: string;
   }[];
+  className?: string;
   activeTab: string;
   setActiveTab: Dispatch<SetStateAction<string>>;
 };
 
-const AppTabs = ({ tabs, activeTab, setActiveTab }: TAppTabs) => {
+const AppTabs = ({ className, tabs, activeTab, setActiveTab }: TAppTabs) => {
   return (
     <AnimatePresence>
       <div className={`flex gap-2 md:gap-8 border-b border-b-[#EAECEE]`}>
@@ -22,7 +23,7 @@ const AppTabs = ({ tabs, activeTab, setActiveTab }: TAppTabs) => {
               activeTab === (tab.value ? tab.value : tab.label)
                 ? "text-primary"
                 : "hover:text-primary text-[#827E7E]"
-            } relative px-2 py-1 md:py-1.5 text-xs md:text-sm font-medium transition`}
+            } relative px-2 py-1 md:py-1.5 text-xs md:text-sm font-medium transition ${className}`}
             style={{
               WebkitTapHighlightColor: "transparent",
             }}

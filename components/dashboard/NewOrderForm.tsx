@@ -45,7 +45,6 @@ const NewOrderForm = () => {
   );
 
   useEffect(() => {
-    console.log("🚀 ~ NewOrderForm ~ services:", categorizedService);
     dispatch(setCategorizedService(categorizeServices(services)));
 
     const selectedCategory = categorizedService.find(
@@ -58,7 +57,7 @@ const NewOrderForm = () => {
     } else {
       setSelectServices([]);
     }
-  }, [category]);
+  }, [category, services]);
 
   function calculateCharge(quantity: number, ratePerThousand: number): string {
     return ((quantity / 1000) * ratePerThousand).toFixed(2);

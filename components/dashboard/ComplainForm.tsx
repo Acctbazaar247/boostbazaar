@@ -30,7 +30,7 @@ const ComplainForm = () => {
         reset();
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 

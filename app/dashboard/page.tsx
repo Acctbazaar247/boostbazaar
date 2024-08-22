@@ -6,7 +6,10 @@ import {
 } from "@/components/dashboard/dashboardData";
 import NewOrderForm from "@/components/dashboard/NewOrderForm";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
-import { useGetServicesQuery } from "@/redux/features/dashboard/dashboardApi";
+import {
+  useGetMainBalanceQuery,
+  useGetServicesQuery,
+} from "@/redux/features/dashboard/dashboardApi";
 import {
   setCategorizedService,
   setCategory,
@@ -29,6 +32,8 @@ const Page = () => {
     "We are thrilled to announce to our july customers who purchased our service above ",
     "We are thrilled to announce to our july customers who purchased our service above ",
   ];
+
+  const { data: balance } = useGetMainBalanceQuery("");
 
   const { services } = useAppSelector((store) => store.service);
   const { data, isSuccess, refetch } = useGetServicesQuery("", {
@@ -76,7 +81,7 @@ const Page = () => {
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
               <FaNairaSign />
-              000,00.00
+              {balance?.amount || 0}
             </h1>
           </div>
 

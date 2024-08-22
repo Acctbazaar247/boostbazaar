@@ -45,7 +45,7 @@ const SignUpForm = () => {
         router.push("/");
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 

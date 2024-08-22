@@ -22,7 +22,7 @@ const Page = () => {
         toast.success(res?.message);
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 

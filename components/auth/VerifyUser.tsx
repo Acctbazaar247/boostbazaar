@@ -40,7 +40,7 @@ const VerifyUser = () => {
         // dispatch(setUser({ user: { email: data.email } }));
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 
@@ -52,7 +52,7 @@ const VerifyUser = () => {
         // dispatch(setUser({ user: { email: data.email } }));
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 

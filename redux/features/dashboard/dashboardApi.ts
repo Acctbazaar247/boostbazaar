@@ -45,6 +45,21 @@ const userDashboardApi = baseApi.injectEndpoints({
       }),
       // providesTags: [tagTypes.dashboard],
     }),
+    getMainBalance: builder.query({
+      query: () => ({
+        url: `/currency/single-user-currency`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
+
+    getDepositHistory: builder.query({
+      query: (id) => ({
+        url: `/currency?ownById=${id}`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
     createOrder: builder.mutation({
       query: (orderData) => ({
         url: "/order",
@@ -61,16 +76,6 @@ const userDashboardApi = baseApi.injectEndpoints({
       }),
       // invalidatesTags: [tagTypes.review],s
     }),
-    uploadImage: builder.mutation({
-      query: (info) => {
-        return {
-          url: `https://acct-media-server.onrender.com/api/v1/uploadImg`,
-          method: "POST",
-          body: info,
-        };
-      },
-      invalidatesTags: [tagTypes.user],
-    }),
   }),
 });
 
@@ -82,5 +87,6 @@ export const {
   useGetServicesQuery,
   useCreateOrderMutation,
   useCurrencyRequestMutation,
-  useUploadImageMutation,
+  useGetMainBalanceQuery,
+  useGetDepositHistoryQuery,
 } = userDashboardApi;

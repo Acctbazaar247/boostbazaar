@@ -2,34 +2,79 @@
 
 import ProfileForm from "@/components/dashboard/ProfileForm";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
-import { selectCurrentUser } from "@/redux/features/auth/authSlice";
-import { useUploadImageMutation } from "@/redux/features/dashboard/dashboardApi";
-import { useAppSelector } from "@/redux/hook";
+import { useUpdateUserMutation } from "@/redux/features/auth/authApi";
+import {
+  selectCurrentUser,
+  setUserProfileImage,
+} from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 const Page = () => {
   const user = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
+  const [profileImage, setProfileImage] = useState(
+    user?.profileImg === "/assets/demo-user.png"
+      ? "/image/camera.png"
+      : user?.profileImg
+  );
 
-  const [profileImage, setProfileImage] = useState("/image/camera.png");
-  const [updateUserProfile, { isSuccess }] = useUploadImageMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   const handleProfileUpload = async () => {
-    if (!profileImage) {
-      toast.error("Please Select profile image and try again");
-    } else {
-      const loadingToast = toast.loading("Uploading...🚀");
-      await updateUserProfile({ profileImg: profileImage })
-        .unwrap()
-        .then((res: any) => {
-          toast.dismiss(loadingToast);
-          toast.success(res?.message || "Profile Image update Successful 👍");
-        })
-        .catch((res: any) => {
-          toast.dismiss(loadingToast);
-          toast.error(res?.data?.message || "something went wrong");
-        });
+    if (!profileImage || profileImage === "/image/camera.png") {
+      toast.error("Please select a profile image and try again");
+      return;
+    }
+
+    const loadingToast = toast.loading("Uploading...🚀");
+
+    try {
+      // Create a new FormData instance
+      const formData = new FormData();
+
+      // If profileImage is a base64 string, convert it to a Blob and append it to FormData
+      if (profileImage.startsWith("data:image")) {
+        const blob = await (await fetch(profileImage)).blob();
+        formData.append("image", blob, "profileImage.png");
+      } else {
+        formData.append("image", profileImage);
+      }
+
+      // Perform the fetch request
+      const response = await fetch(
+        "https://acct-media-server.onrender.com/api/v1/uploadImg",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong during the upload");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      if (data.data) {
+        dispatch(setUserProfileImage(data.data.url));
+        const submittedData = {
+          id: user?.id,
+          data: {
+            profileImg: data.data.url,
+          },
+        };
+        await updateUser(submittedData)
+          .unwrap()
+          .then((res) => {});
+      }
+      toast.dismiss(loadingToast);
+      toast.success(data.message || "Profile image updated successfully 👍");
+    } catch (error: any) {
+      toast.dismiss(loadingToast);
+      toast.error(error.message || "Something went wrong");
     }
   };
 
@@ -52,6 +97,7 @@ const Page = () => {
       reader.readAsDataURL(file);
     }
   };
+  console.log(profileImage);
   return (
     <AnimationWrapper className="py-12 container">
       <h1 className="heading">Profile</h1>

@@ -5,10 +5,7 @@ import AppButton from "../ui/AppButton";
 import AppFormInput from "../ui/AppFormInput";
 import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
 import { useAppSelector } from "@/redux/hook";
-import {
-  selectCurrentUser,
-  useCurrentToken,
-} from "@/redux/features/auth/authSlice";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 
 interface FormData {
@@ -22,30 +19,32 @@ const ProfileForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormData>();
 
-  const token = useAppSelector(useCurrentToken);
   const user = useAppSelector(selectCurrentUser);
-  const [changePassword] = useChangePasswordMutation();
+  const [changePassword, { isLoading }] = useChangePasswordMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     if (data.newPassword !== data.confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
+
     const submittedData = {
-      token,
       email: user?.email,
-      password: data.password,
+      password: data.newPassword,
+      prePassword: data.password,
     };
 
     await changePassword(submittedData)
       .unwrap()
       .then((res) => {
         toast.success(res?.message);
+        reset();
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 
@@ -87,7 +86,12 @@ const ProfileForm = () => {
         error={errors.confirmPassword}
       />
 
-      <AppButton type="submit" className="w-full py-3" label="Confirm" />
+      <AppButton
+        disabled={isLoading}
+        type="submit"
+        className="w-full py-3"
+        label="Confirm"
+      />
     </form>
   );
 };
