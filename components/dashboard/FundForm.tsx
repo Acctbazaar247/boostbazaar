@@ -3,6 +3,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import AppButton from "../ui/AppButton";
 import AppFormInput from "../ui/AppFormInput";
+import AppFormSelect from "../ui/AppFormSelect";
+import { useCurrencyRequestMutation } from "@/redux/features/dashboard/dashboardApi";
+import { toast } from "react-toastify";
 
 interface FormData {
   amount: number;
@@ -13,12 +16,33 @@ const FundForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
+    reset,
   } = useForm<FormData>();
-
+  const [createCurrencyRequest, { isLoading }] = useCurrencyRequestMutation();
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log(data);
+    const submittedData = {
+      data: { amount: data.amount },
+      method: data.method,
+    };
+
+    await createCurrencyRequest(submittedData)
+      .unwrap()
+      .then((res) => {
+        toast.success(res?.message);
+        reset();
+      })
+      .catch((res) => {
+        toast.error(res?.data?.message);
+      });
   };
+
+  const options = [
+    { label: "Paystack", value: "paystack" },
+    { label: "Cryptomus", value: "cryptomus" },
+  ];
 
   return (
     <div className="py-10 md:py-20">
@@ -38,18 +62,21 @@ const FundForm = () => {
           error={errors.amount}
         />
 
-        <AppFormInput
+        <AppFormSelect
           name="method"
-          type="text"
           label="Deposit Method"
-          className="pl-4"
-          register={register}
           required
           placeholder="Enter method"
-          error={errors.method}
+          options={options}
+          control={control}
         />
 
-        <AppButton type="submit" className="w-full py-3" label="Confirm" />
+        <AppButton
+          disabled={isLoading}
+          type="submit"
+          className="w-full py-3"
+          label="Confirm"
+        />
       </form>
     </div>
   );

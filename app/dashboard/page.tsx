@@ -1,79 +1,50 @@
+"use client";
+
+import {
+  servicesCategory,
+  servicesData,
+} from "@/components/dashboard/dashboardData";
 import NewOrderForm from "@/components/dashboard/NewOrderForm";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
+import { useGetServicesQuery } from "@/redux/features/dashboard/dashboardApi";
+import {
+  setCategorizedService,
+  setCategory,
+  setService,
+} from "@/redux/features/dashboard/serviceSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { CategorizedService } from "@/types";
+import { categorizeServices } from "@/utils/categorizedArray";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import { FaNairaSign } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
-const page = () => {
+const Page = () => {
+  const dispatch = useAppDispatch();
   const marqueTexts = [
     "We are thrilled to announce to our july customers who purchased our service above ",
     "We are thrilled to announce to our july customers who purchased our service above ",
     "We are thrilled to announce to our july customers who purchased our service above ",
   ];
-  const servicesData = [
-    {
-      image: "/image/service1.png",
-      title: "Facebook",
-    },
-    {
-      image: "/image/service2.png",
-      title: "Instagram",
-    },
-    {
-      image: "/image/service5.png",
-      title: "Telegram",
-    },
-    {
-      image: "/image/service6.png",
-      title: "Youtube",
-    },
-    {
-      image: "/image/service4.png",
-      title: "X",
-    },
-    {
-      image: "/image/service7.png",
-      title: "Tiktok",
-    },
-    {
-      image: "/image/service3.png",
-      title: "Linkedin",
-    },
 
-    {
-      image: "/image/service8.png",
-      title: "Shopify",
-    },
-    {
-      image: "/image/service9.png",
-      title: "Snapchat",
-    },
-    {
-      image: "/image/service10.png",
-      title: "Google",
-    },
-    {
-      image: "/image/service11.png",
-      title: "Website",
-    },
-    {
-      image: "/image/service12.png",
-      title: "Likee",
-    },
-    {
-      image: "/image/service13.png",
-      title: "Twitch",
-    },
-    {
-      image: "/image/service14.png",
-      title: "Reviews",
-    },
-    {
-      image: "/image/service15.png",
-      title: "Others",
-    },
-  ];
+  const { services } = useAppSelector((store) => store.service);
+  const { data, isSuccess, refetch } = useGetServicesQuery("", {
+    skip: services.length > 0,
+  });
+
+  useEffect(() => {
+    if (data) {
+      console.log("set again");
+      dispatch(setService(data?.data));
+    }
+    if (services?.length === 0) {
+      refetch();
+      console.log("refetch now");
+    }
+  }, [isSuccess, data]);
 
   return (
     <AnimationWrapper>
@@ -96,9 +67,12 @@ const page = () => {
           <div className="border border-primary/50 bg-primary/10 p-5 space-y-5 rounded-lg">
             <div className="flex items-center justify-between">
               <h3 className="text-dark-grey">Main balance</h3>
-              <button className="bg-white text-primary font-light rounded px-2 py-1">
+              <Link
+                href={"/dashboard/fund"}
+                className="bg-white text-primary font-light rounded px-2 py-1"
+              >
                 Add funds
-              </button>
+              </Link>
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
               <FaNairaSign />
@@ -110,9 +84,12 @@ const page = () => {
           <div className="border border-primary/50 bg-primary/10 p-5 space-y-5 rounded-lg">
             <div className="flex items-center justify-between">
               <h3 className="text-dark-grey">Spend</h3>
-              <button className="bg-white text-primary font-light rounded px-2 py-1">
+              <Link
+                href={"/dashboard/history"}
+                className="bg-white text-primary font-light rounded px-2 py-1"
+              >
                 History
-              </button>
+              </Link>
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
               <FaNairaSign />
@@ -123,9 +100,11 @@ const page = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-10 pt-10 md:pt-20">
           {servicesData.map((service, i) => (
-            <div
+            <Link
               key={i}
-              className="bg-white drop-shadow-md border border-primary/50 rounded-lg text-center"
+              href={"/dashboard/#new-order-form"}
+              onClick={() => dispatch(setCategory(service.title))}
+              className="bg-white block hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
             >
               <div className="relative">
                 <Image
@@ -139,7 +118,7 @@ const page = () => {
               <h3 className="text-base md:text-2xl pb-8 md:pb-16 pt-4 md:pt-8">
                 {service.title}
               </h3>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -149,4 +128,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

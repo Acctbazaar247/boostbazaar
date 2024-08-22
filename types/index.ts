@@ -106,3 +106,20 @@ export interface TBlog {
 export interface TNotification {
   deletedDocCount: string;
 }
+
+export interface IService {
+  category: string;
+  dripfeed: boolean;
+  max: string;
+  min: string;
+  name: string;
+  rate: string;
+  refill: boolean;
+  service: string;
+  type: string;
+}
+
+export interface CategorizedService {
+  name: string;
+  services: IService[];
+}

@@ -14,6 +14,9 @@ type TAppFormInput = {
   register: UseFormRegister<any>;
   required?: true | false;
   disabled?: boolean;
+  min?: number | string;
+  max?: number | string;
+  value?: number | string;
   error?: any;
 };
 
@@ -28,6 +31,9 @@ const AppFormInput = ({
   disabled,
   className,
   label,
+  min,
+  max,
+  value,
 }: TAppFormInput) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -40,12 +46,14 @@ const AppFormInput = ({
         <input
           {...register(name, {
             ...(required && { required: true }),
-            ...(type === "number" && { valueAsNumber: true }),
+            ...(type === "number" && { valueAsNumber: true, min, max }),
           })}
           type={
             type === "password" ? (passwordVisible ? "text" : "password") : type
           }
-          min={0}
+          min={min || 0}
+          max={max}
+          value={value}
           disabled={disabled}
           placeholder={placeholder}
           className={`input-box ${error && "border-red"} ${className}`}

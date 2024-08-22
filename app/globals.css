@@ -72,3 +72,33 @@ html {
     height: 5px;
   }
 }
+
+/* this is antd design ovverright custom code for large screen device  */
+.ant-select {
+  height: 55px !important;
+  display: block !important;
+}
+
+.ant-select-selection {
+  border-radius: 8px !important;
+  outline: none !important;
+}
+
+.ant-select-selector {
+  background-color: transparent !important;
+  border-color: rgb(144 144 161 / 0.5) !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+
+.ant-select-arrow {
+  color: #475569 !important;
+}
+
+.ant-select .ant-select-selection-item,
+.ant-select .ant-select-selection-placeholder {
+  flex: none !important;
+}

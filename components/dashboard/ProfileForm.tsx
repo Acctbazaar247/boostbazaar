@@ -3,6 +3,13 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import AppButton from "../ui/AppButton";
 import AppFormInput from "../ui/AppFormInput";
+import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
+import { useAppSelector } from "@/redux/hook";
+import {
+  selectCurrentUser,
+  useCurrentToken,
+} from "@/redux/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 interface FormData {
   password: number;
@@ -17,8 +24,29 @@ const ProfileForm = () => {
     formState: { errors },
   } = useForm<FormData>();
 
+  const token = useAppSelector(useCurrentToken);
+  const user = useAppSelector(selectCurrentUser);
+  const [changePassword] = useChangePasswordMutation();
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
+    if (data.newPassword !== data.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    const submittedData = {
+      token,
+      email: user?.email,
+      password: data.password,
+    };
+
+    await changePassword(submittedData)
+      .unwrap()
+      .then((res) => {
+        toast.success(res?.message);
+      })
+      .catch((res) => {
+        toast.error(res?.message);
+      });
   };
 
   return (
@@ -28,7 +56,7 @@ const ProfileForm = () => {
     >
       <AppFormInput
         name="password"
-        type="number"
+        type="password"
         label="Current password"
         className="pl-4"
         register={register}
@@ -39,7 +67,7 @@ const ProfileForm = () => {
 
       <AppFormInput
         name="newPassword"
-        type="text"
+        type="password"
         label="New Password"
         className="pl-4"
         register={register}
@@ -50,7 +78,7 @@ const ProfileForm = () => {
 
       <AppFormInput
         name="confirmPassword"
-        type="text"
+        type="password"
         label="Confirm New Password"
         className="pl-4"
         register={register}

@@ -38,73 +38,49 @@ const userDashboardApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.dashboard],
     }),
 
-    getBlogBySlug: builder.query({
-      query: ({ slug, mode }) => {
-        let url = `/blog/${slug}`;
-        if (mode) {
-          url += `?mode=${mode}`;
-        }
+    getServices: builder.query({
+      query: () => ({
+        url: `/service`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
+    createOrder: builder.mutation({
+      query: (orderData) => ({
+        url: "/order",
+        method: "POST",
+        body: orderData,
+      }),
+      // invalidatesTags: [tagTypes.review],s
+    }),
+    currencyRequest: builder.mutation({
+      query: (currency) => ({
+        url: `/currency-request/${currency.method}`,
+        method: "POST",
+        body: currency.data,
+      }),
+      // invalidatesTags: [tagTypes.review],s
+    }),
+    uploadImage: builder.mutation({
+      query: (info) => {
         return {
-          url,
-          method: "GET",
+          url: `https://acct-media-server.onrender.com/api/v1/uploadImg`,
+          method: "POST",
+          body: info,
         };
       },
-      providesTags: [tagTypes.review, tagTypes.dashboard],
-    }),
-
-    getMyBlogs: builder.query({
-      query: (filterOptions) => ({
-        url: `/my-blogs${filterOptions ? `?${filterOptions}` : ""}`,
-        method: "GET",
-      }),
-      providesTags: [tagTypes.review],
-    }),
-
-    getIsLikedByUser: builder.query({
-      query: (id) => ({
-        url: `/isLiked-by-user?id=${id}`,
-        method: "GET",
-      }),
-      providesTags: [tagTypes.review, tagTypes.dashboard],
-    }),
-
-    updateBlog: builder.mutation({
-      query: (updatedData) => ({
-        url: `/blog/${updatedData.slug}`,
-        method: "PUT",
-        body: updatedData.data,
-      }),
-      invalidatesTags: [tagTypes.review],
-    }),
-
-    likeBlog: builder.mutation({
-      query: (data) => ({
-        url: `/like-blog`,
-        method: "PUT",
-        body: data,
-      }),
-      invalidatesTags: [tagTypes.review],
-    }),
-
-    deleteBlog: builder.mutation({
-      query: (id) => ({
-        url: `/blog/${id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: [tagTypes.review],
+      invalidatesTags: [tagTypes.user],
     }),
   }),
 });
 
 export const {
   useCreateReviewMutation,
-  useGetBlogBySlugQuery,
   useCreateTicketMutation,
   useGetTicketsQuery,
-  useUpdateBlogMutation,
-  useDeleteBlogMutation,
-  useGetMyBlogsQuery,
-  useLikeBlogMutation,
-  useGetIsLikedByUserQuery,
   useSendInvitationMutation,
+  useGetServicesQuery,
+  useCreateOrderMutation,
+  useCurrencyRequestMutation,
+  useUploadImageMutation,
 } = userDashboardApi;
