@@ -51,6 +51,13 @@ const authApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
+    getUsers: builder.query({
+      query: () => ({
+        url: `/users`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
   }),
 });
 
@@ -62,4 +69,5 @@ export const {
   useResendEmailMutation,
   useForgotPasswordMutation,
   useUpdateUserMutation,
+  useGetUsersQuery,
 } = authApi;

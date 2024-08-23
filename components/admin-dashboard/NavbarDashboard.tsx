@@ -24,7 +24,7 @@ const NavbarDashboard = () => {
         <div className="flex items-center gap-8 max-md:hidden">
           <TbMessage className="text-2xl text-black/80 cursor-pointer" />
           <VscBell className="text-2xl text-black/80 cursor-pointer" />
-          <Avatar icon={<LuUser2 />} size={"large"} />
+          <Avatar src={user?.profileImg} icon={<LuUser2 />} size={"large"} />
         </div>
 
         <button

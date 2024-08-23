@@ -1,41 +1,44 @@
 "use client";
 
 import AppTable from "@/components/ui/AppTable";
+import { useGetUsersQuery } from "@/redux/features/auth/authApi";
 import { useGetTicketsQuery } from "@/redux/features/dashboard/dashboardApi";
 import { useState } from "react";
 
 const Page = () => {
   const [page, setPage] = useState(1);
 
+  const { data: usersData } = useGetUsersQuery("");
+
   const columns = [
     {
-      title: "Complaint",
-      dataIndex: "ownBy",
+      title: "Name",
+      dataIndex: "name",
       className: "min-w-[150px]",
-      render: (ownBy: any, record: any) => {
+      render: (name: any, record: any) => {
         return (
           <div className="flex items-center gap-1">
             <img
-              src={ownBy?.profileImg}
+              src={record?.profileImg}
               alt=""
               className="rounded-full w-10 h-10"
             />
             <div className="text-dark-grey">
-              <h3 className=" text-lg">{ownBy?.name}</h3>
-              <p>{ownBy?.email}</p>
+              <h3 className=" text-lg">{name}</h3>
+              <p>{record?.email}</p>
             </div>
           </div>
         );
       },
     },
     {
-      title: "Subject",
-      dataIndex: "subject",
+      title: "Role",
+      dataIndex: "role",
       className: "min-w-[150px]",
     },
     {
-      title: "Details",
-      dataIndex: "message",
+      title: "Amount",
+      dataIndex: "Currency.amount",
       className: "min-w-[145px]",
     },
   ];
