@@ -5,6 +5,7 @@ import { TTokenUser } from "@/types";
 type TIState = {
   user: TTokenUser | null;
   accessToken: string | null;
+  otp: number | null;
 };
 
 const initialState: TIState = {
@@ -16,6 +17,7 @@ const initialState: TIState = {
     role: "",
   },
   accessToken: "",
+  otp: null,
 };
 
 const authSlice = createSlice({
@@ -37,10 +39,14 @@ const authSlice = createSlice({
         state.user.profileImg = action.payload;
       }
     },
+    setOtp: (state, action) => {
+      state.otp = action.payload;
+    },
   },
 });
 
-export const { setUser, logOut, setUserProfileImage } = authSlice.actions;
+export const { setUser, logOut, setUserProfileImage, setOtp } =
+  authSlice.actions;
 export default authSlice.reducer;
 
 export const useCurrentToken = (state: RootState) => state.auth.accessToken;

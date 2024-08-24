@@ -8,7 +8,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { TbNumber123 } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { selectCurrentUser, setOtp } from "@/redux/features/auth/authSlice";
 import { useRouter } from "next/navigation";
 import {
   useForgotPasswordMutation,
@@ -38,7 +38,8 @@ const ResetPassword = () => {
       .unwrap()
       .then((res) => {
         toast.success(res?.message);
-        // dispatch(setUser({ user: { email: data.email } }));
+        dispatch(setOtp(data.code));
+        router.push("/auth/new-password");
       })
       .catch((res) => {
         toast.error(res?.data?.message);

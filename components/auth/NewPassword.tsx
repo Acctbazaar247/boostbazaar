@@ -6,6 +6,11 @@ import AppButton from "../ui/AppButton";
 import Link from "next/link";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { MdOutlineLock } from "react-icons/md";
+import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
+import { useAppSelector } from "@/redux/hook";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   password: string;
@@ -18,9 +23,33 @@ const NewPassword = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+  const router = useRouter();
+  const user = useAppSelector(selectCurrentUser);
+  const { otp } = useAppSelector((state) => state.auth);
+
+  const [changePassword, { isLoading }] = useChangePasswordMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
+    if (data.password !== data.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    const submittedData = {
+      otp: otp,
+      email: user?.email,
+      password: data.password,
+    };
+    await changePassword(submittedData)
+      .unwrap()
+      .then((res) => {
+        console.log("🚀 ~ .then ~ res:", res);
+        toast.success(res?.message);
+        // dispatch(setOtp({ otp: res.code }));
+        router.push("/auth/sign-in");
+      })
+      .catch((res) => {
+        toast.error(res?.data?.message);
+      });
   };
 
   return (
@@ -49,7 +78,12 @@ const NewPassword = () => {
         error={errors.confirmPassword}
       />
       <div className="pt-8">
-        <AppButton type="submit" className="w-full py-3" label="Confirm" />
+        <AppButton
+          disabled={isLoading}
+          type="submit"
+          className="w-full py-3"
+          label="Confirm"
+        />
       </div>
 
       <Link

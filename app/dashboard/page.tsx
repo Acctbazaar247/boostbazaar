@@ -36,7 +36,6 @@ const Page = () => {
 
   const { data: balance } = useGetMainBalanceQuery("");
   const { data: spendData } = useGetSpendHistoryQuery("");
-  console.log("🚀 ~ Page ~ spendData:", spendData);
 
   const { services } = useAppSelector((store) => store.service);
   const { data, isSuccess, refetch } = useGetServicesQuery("", {
