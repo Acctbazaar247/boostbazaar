@@ -36,11 +36,11 @@ const Sidebar = ({ className }: { className?: string }) => {
           label: "Tickets",
           path: "/admin-dashboard/tickets",
         },
-        {
-          icon: <TbUserShield />,
-          label: "Agents",
-          path: "/admin-dashboard/agents",
-        },
+        // {
+        //   icon: <TbUserShield />,
+        //   label: "Agents",
+        //   path: "/admin-dashboard/agents",
+        // },
         {
           icon: <LuUsers />,
           label: "Customers",

@@ -32,10 +32,19 @@ const userDashboardApi = baseApi.injectEndpoints({
 
     getTickets: builder.query({
       query: (filterOptions) => ({
-        url: `/ticket${filterOptions ? `?${filterOptions}` : ""}`,
+        url: `/ticket${filterOptions ? `?status=${filterOptions}` : ""}`,
         method: "GET",
       }),
-      providesTags: [tagTypes.dashboard],
+      providesTags: [tagTypes.ticket],
+    }),
+
+    updateTicket: builder.mutation({
+      query: (orderData) => ({
+        url: `/ticket/${orderData.id}`,
+        method: "PATCH",
+        body: orderData.data,
+      }),
+      invalidatesTags: [tagTypes.ticket],
     }),
 
     getServices: builder.query({
@@ -81,6 +90,13 @@ const userDashboardApi = baseApi.injectEndpoints({
       }),
       // providesTags: [tagTypes.dashboard],
     }),
+    getOrders: builder.query({
+      query: () => ({
+        url: `/order`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
     createOrder: builder.mutation({
       query: (orderData) => ({
         url: "/order",
@@ -113,4 +129,6 @@ export const {
   useGetCurrencyQuery,
   useGetAdminOverviewQuery,
   useGetSpendHistoryQuery,
+  useGetOrdersQuery,
+  useUpdateTicketMutation,
 } = userDashboardApi;

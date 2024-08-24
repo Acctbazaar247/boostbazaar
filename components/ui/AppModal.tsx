@@ -52,7 +52,7 @@ const AppModal = ({
           <div>
             <h1 className="title text-xl ">{title}</h1>
             {subTitle && (
-              <p className="text-textGrey text-xs md:text-sm font-normal w-fit">
+              <p className="text-dark-grey text-xs md:text-sm font-normal w-fit">
                 {subTitle}
               </p>
             )}
@@ -74,7 +74,7 @@ const AppModal = ({
                       cancelButtonAction();
                     }
                   }}
-                  className="roundedBtn text-textBlack bg-[#E8E8E8] hover:bg-textGreyBlack/15 text-sm"
+                  className="text-black px-4 py-1 rounded-full bg-[#E8E8E8] hover:bg-textGreyBlack/15 text-sm"
                 >
                   {cancelButtonTitle}
                 </button>
@@ -88,7 +88,7 @@ const AppModal = ({
                       primaryButtonAction();
                     }
                   }}
-                  className="roundedBtn text-sm"
+                  className="bg-primary px-4 py-1 rounded-full text-white text-sm"
                 >
                   {primaryButtonTitle}
                 </button>

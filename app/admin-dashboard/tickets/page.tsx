@@ -1,24 +1,70 @@
 "use client";
 
 import AppModal from "@/components/ui/AppModal";
+import AppPopover from "@/components/ui/AppPopover";
 import AppTable from "@/components/ui/AppTable";
 import AppTabs from "@/components/ui/AppTabs";
-import { useGetTicketsQuery } from "@/redux/features/dashboard/dashboardApi";
+import {
+  useGetTicketsQuery,
+  useUpdateTicketMutation,
+} from "@/redux/features/dashboard/dashboardApi";
 import { cn } from "@/utils/cn";
 import { getTimeAgo } from "@/utils/getTimeAgo";
 import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { toast } from "react-toastify";
+
+enum ETickets {
+  open = "open",
+  closed = "closed",
+  sloved = "sloved",
+}
 
 const Page = () => {
   const tabs = [
     { label: "Tickets", value: "tickets" },
-    { label: "Opened", value: "opened" },
-    { label: "Solved", value: "solved" },
+    { label: "Opened", value: "open" },
+    { label: "Solved", value: "sloved" },
     { label: "Closed", value: "closed" },
   ];
+
+  const statusOptions = [
+    {
+      status: ETickets.open,
+    },
+    {
+      status: ETickets.closed,
+    },
+    {
+      status: ETickets.sloved,
+    },
+  ];
+
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState(tabs[0].value);
 
-  const ticketQuery = useGetTicketsQuery("");
+  const ticketQuery = useGetTicketsQuery(
+    activeTab === "tickets" ? "" : activeTab
+  );
+
+  const [updateTicket] = useUpdateTicketMutation();
+
+  const handleStatusUpdate = async (status: string, id: string) => {
+    const updateData = {
+      id,
+      data: { status },
+    };
+    await updateTicket(updateData)
+      .unwrap()
+      .then((res) => {
+        toast.success("Status updated successful!", { toastId: 1 });
+      })
+      .catch((res: any) => {
+        return toast.error(res?.data.message || "Something went wrong!", {
+          toastId: 1,
+        });
+      });
+  };
 
   const columns = [
     {
@@ -51,23 +97,85 @@ const Page = () => {
       dataIndex: "message",
       className: "min-w-[120px] md:min-w-[145px]",
     },
+    // {
+    //   title: "Status",
+    //   dataIndex: "status",
+    //   className: "md:min-w-[150px]",
+    //   render: (status: string) => {
+    //     return (
+    //       <div className={`flex items-center gap-1`}>
+    //         <span
+    //           className={cn(
+    //             "text-white rounded-full px-3",
+    //             status === "open" && "bg-primary",
+    //             status === "closed" && "bg-[#71717A80]",
+    //             status === "solved" && "bg-[#058803]"
+    //           )}
+    //         >
+    //           {status}
+    //         </span>
+    //       </div>
+    //     );
+    //   },
+    // },
     {
       title: "Status",
       dataIndex: "status",
-      className: "md:min-w-[150px]",
-      render: (status: string) => {
+      className: "min-w-[85px]",
+      render: (status: any, record: any) => {
         return (
-          <div className={`flex items-center gap-1`}>
-            <span
-              className={cn(
-                "text-white rounded-full px-3",
-                status === "open" && "bg-primary",
-                status === "closed" && "bg-[#71717A80]",
-                status === "solved" && "bg-[#058803]"
-              )}
-            >
-              {status}
-            </span>
+          <div className="flex items-center gap-2">
+            <div className="pt-1 flex items-center gap-1">
+              <AppPopover
+                arrow={true}
+                button={
+                  <div
+                    className={cn(
+                      "text-white rounded-full flex items-center gap-1 px-3 cursor-pointer",
+                      status === ETickets.open && "bg-primary",
+                      status === ETickets.closed && "bg-[#71717A80]",
+                      status === ETickets.sloved && "bg-[#058803]"
+                    )}
+                  >
+                    {status}
+
+                    <IoIosArrowDown />
+                  </div>
+                }
+              >
+                <div className="flex flex-col items-end text-end">
+                  {statusOptions.map(
+                    (stat) =>
+                      stat.status !== status && (
+                        <AppModal
+                          key={stat.status}
+                          button={
+                            <button className="hover:bg-blue-50 w-full">
+                              {stat.status}
+                            </button>
+                          }
+                          cancelButtonTitle="No, Don’t"
+                          primaryButtonTitle="Yes. Update"
+                          primaryButtonAction={() =>
+                            handleStatusUpdate(stat.status, record?.id)
+                          }
+                        >
+                          <div className="max-w-80">
+                            <p className="text-center text-[#828282] pt-4 text-lg">
+                              Are you sure Update status {record?.status} to
+                              <span className="text-textDark font-medium">
+                                {" "}
+                                {stat.status}
+                              </span>{" "}
+                              from this Tickets list?
+                            </p>
+                          </div>
+                        </AppModal>
+                      )
+                  )}
+                </div>
+              </AppPopover>
+            </div>
           </div>
         );
       },
