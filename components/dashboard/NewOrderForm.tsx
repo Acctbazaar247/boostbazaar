@@ -60,7 +60,7 @@ const NewOrderForm = () => {
   }, [category, services]);
 
   function calculateCharge(quantity: number, ratePerThousand: number): string {
-    return ((quantity / 1000) * ratePerThousand).toFixed(2);
+    return ((quantity / 1000) * (ratePerThousand * 1.1)).toFixed(2);
   }
 
   useEffect(() => {
