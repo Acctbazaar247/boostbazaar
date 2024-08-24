@@ -23,6 +23,13 @@ const authApi = baseApi.injectEndpoints({
         // body: userInfo,
       }),
     }),
+    verifyForgotUser: builder.mutation({
+      query: (userInfo) => ({
+        url: "/auth/verify-forgot-token",
+        method: "POST",
+        body: userInfo,
+      }),
+    }),
     verifyUser: builder.mutation({
       query: (userInfo) => ({
         url: "/auth/verify-signup-token",
@@ -70,4 +77,5 @@ export const {
   useForgotPasswordMutation,
   useUpdateUserMutation,
   useGetUsersQuery,
+  useVerifyForgotUserMutation,
 } = authApi;

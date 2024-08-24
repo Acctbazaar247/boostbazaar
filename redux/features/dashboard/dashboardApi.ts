@@ -74,6 +74,13 @@ const userDashboardApi = baseApi.injectEndpoints({
       }),
       // providesTags: [tagTypes.dashboard],
     }),
+    getSpendHistory: builder.query({
+      query: () => ({
+        url: `/users/info/spend`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
     createOrder: builder.mutation({
       query: (orderData) => ({
         url: "/order",
@@ -105,4 +112,5 @@ export const {
   useGetDepositHistoryQuery,
   useGetCurrencyQuery,
   useGetAdminOverviewQuery,
+  useGetSpendHistoryQuery,
 } = userDashboardApi;

@@ -11,8 +11,8 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useRouter } from "next/navigation";
 import {
-  useResendEmailMutation,
-  useVerifyUserMutation,
+  useForgotPasswordMutation,
+  useVerifyForgotUserMutation,
 } from "@/redux/features/auth/authApi";
 
 interface FormData {
@@ -28,8 +28,9 @@ const ResetPassword = () => {
 
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const [verifyUser, { isLoading }] = useVerifyUserMutation();
-  const [resendEmail, { isLoading: resendLoading }] = useResendEmailMutation();
+  const [verifyUser, { isLoading }] = useVerifyForgotUserMutation();
+  const [resendEmail, { isLoading: resendLoading }] =
+    useForgotPasswordMutation();
   const user = useAppSelector(selectCurrentUser);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {

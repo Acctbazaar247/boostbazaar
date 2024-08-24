@@ -8,8 +8,6 @@ import { useState } from "react";
 const Page = () => {
   const [page, setPage] = useState(1);
 
-  const { data: usersData } = useGetUsersQuery("");
-
   const columns = [
     {
       title: "Name",
@@ -38,17 +36,22 @@ const Page = () => {
     },
     {
       title: "Amount",
-      dataIndex: "Currency.amount",
+      dataIndex: "Currency",
       className: "min-w-[145px]",
+      render: (Currency: any) => (
+        <div className="flex items-center gap-1 justify-center">
+          {Currency?.amount}
+        </div>
+      ),
     },
   ];
 
-  const ticketQuery = useGetTicketsQuery("");
+  const userQuery = useGetUsersQuery("");
 
   return (
     <div className="">
       <h1 className="heading pb-10">Customers</h1>
-      <AppTable setPage={setPage} columns={columns} infoQuery={ticketQuery} />
+      <AppTable setPage={setPage} columns={columns} infoQuery={userQuery} />
     </div>
   );
 };
