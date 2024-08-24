@@ -25,7 +25,6 @@ const FundForm = () => {
   const [createCurrencyRequest, { isLoading }] = useCurrencyRequestMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
     const submittedData = {
       data: { amount: data.amount },
       method: data.method,
@@ -34,13 +33,13 @@ const FundForm = () => {
     await createCurrencyRequest(submittedData)
       .unwrap()
       .then((res) => {
-        toast.success(res?.message);
-        reset();
+        // toast.success(res?.message);
         if (res?.data?.url) {
           router.replace(res?.data?.url);
           // redirect(res.data.url);
           // return { props: {} };
         }
+        reset();
       })
       .catch((res) => {
         toast.error(res?.data?.message);

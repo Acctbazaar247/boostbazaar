@@ -83,7 +83,7 @@ const Page = () => {
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
               <FaNairaSign />
-              {balance?.amount || 0}
+              {balance?.data?.amount}
             </h1>
           </div>
 
