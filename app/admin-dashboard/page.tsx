@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { FaNairaSign } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
-import ReactApexChart from "react-apexcharts";
 import {
   useGetAdminOverviewQuery,
   useGetCurrencyQuery,
@@ -15,6 +14,7 @@ import { formatDate } from "@/utils/formateDate";
 import { ApexOptions } from "apexcharts";
 import { useGetUsersQuery } from "@/redux/features/auth/authApi";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 enum EAccountCategory {
   YOUTUBE = "Youtube",
@@ -28,42 +28,14 @@ type TTrafic = {
   count: number;
 };
 
-// Sample data
-const trafficData: TTrafic[] = [
-  { accountCategory: EAccountCategory.YOUTUBE, count: 143382 },
-  { accountCategory: EAccountCategory.FACEBOOK, count: 87974 },
-  { accountCategory: EAccountCategory.INSTAGRAM, count: 45211 },
-  { accountCategory: EAccountCategory.TWITTER, count: 45211 },
-];
-
 const Page = () => {
+  const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+    ssr: false, // This ensures the component is only rendered on the client side
+  });
+
   const { data: transactions } = useGetCurrencyQuery("");
   const { data: adminOverview } = useGetAdminOverviewQuery("");
   const { data: usersData } = useGetUsersQuery("");
-  console.log("🚀 ~ Page ~ usersData:", usersData);
-
-  // const stats = [
-  //   {
-  //     label: "Today’s Sale",
-  //     value: "200,000.00",
-  //     isNiger: true,
-  //   },
-  //   {
-  //     label: "Total Sales",
-  //     value: "3,000,000.00",
-  //     isNiger: true,
-  //   },
-  //   {
-  //     label: "Total ORders",
-  //     value: "84,382",
-  //     isNiger: false,
-  //   },
-  //   {
-  //     label: "Total Customers",
-  //     value: "33,000",
-  //     isNiger: false,
-  //   },
-  // ];
 
   type OriginalData = {
     totalOrder: number;
@@ -105,27 +77,13 @@ const Page = () => {
 
   const stats = transformData(adminOverview?.data);
 
-  const trafficStat = [
-    {
-      label: "Youtube",
-      value: "1,43,382",
-    },
-    {
-      label: "Facebook",
-      value: "87,974",
-    },
-    {
-      label: "Instagram",
-      value: "45,211",
-    },
-    {
-      label: "Twitter",
-      value: "45,211",
-    },
-  ];
+  const series = (adminOverview?.data?.trafic || []).map(
+    (data: TTrafic) => data.count
+  );
 
-  const series = trafficData.map((data) => data.count);
-  const labels = trafficData.map((data) => data.accountCategory);
+  const labels = (adminOverview?.data?.trafic || []).map(
+    (data: TTrafic) => data.accountCategory
+  );
 
   const options: ApexOptions = {
     chart: {
@@ -190,15 +148,15 @@ const Page = () => {
         <div className="col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <p className="font-bold text-black pb-2">Sales Report</p>
           <div className="space-y-1">
-            {trafficStat.map((traffic) => (
-              <div key={traffic.label} className="space-y-2">
+            {(adminOverview?.data?.trafic || []).map((traffic: TTrafic) => (
+              <div key={traffic.accountCategory} className="space-y-2">
                 <p className="flex items-center justify-between font-medium text-sm">
-                  <span>{traffic.label}</span>
-                  <span>{traffic.value}</span>
+                  <span>{traffic.accountCategory}</span>
+                  <span>{traffic.count}</span>
                 </p>
                 <input
                   type="range"
-                  value={traffic.value}
+                  value={traffic.count}
                   readOnly
                   className="w-full"
                 />
@@ -288,7 +246,7 @@ const Page = () => {
                     <FaNairaSign />
                     {user?.Currency?.amount}
                   </p>
-                  <p className="text-[#8DD56C] text-sm">Online</p>
+                  {/* <p className="text-[#8DD56C] text-sm">Online</p> */}
                 </div>
               </div>
             ))}

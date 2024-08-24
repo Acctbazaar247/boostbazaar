@@ -145,10 +145,10 @@ const Page = () => {
             <span className="text-sm md:text-2xl font-medium">Email: </span>
             {user?.email}
           </p>
-          <p className="md:text-lg">
+          {/* <p className="md:text-lg">
             <span className="text-sm md:text-2xl font-medium">Status: </span>
             Online
-          </p>
+          </p> */}
         </div>
       </div>
       <ProfileForm />
