@@ -6,7 +6,12 @@ type TIState = {
   user: TTokenUser | null;
   accessToken: string | null;
   otp: number | null;
+  theme: string;
 };
+
+const darkThemePreference = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-color-scheme:dark)").matches;
 
 const initialState: TIState = {
   user: {
@@ -18,6 +23,7 @@ const initialState: TIState = {
   },
   accessToken: "",
   otp: null,
+  theme: darkThemePreference() ? "dark" : "light",
 };
 
 const authSlice = createSlice({
@@ -39,13 +45,16 @@ const authSlice = createSlice({
         state.user.profileImg = action.payload;
       }
     },
+    setTheme: (state, action) => {
+      state.theme = action.payload;
+    },
     setOtp: (state, action) => {
       state.otp = action.payload;
     },
   },
 });
 
-export const { setUser, logOut, setUserProfileImage, setOtp } =
+export const { setUser, logOut, setUserProfileImage, setOtp, setTheme } =
   authSlice.actions;
 export default authSlice.reducer;
 

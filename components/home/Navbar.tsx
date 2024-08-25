@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import AppButton from "../ui/AppButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
 import { Avatar, Drawer } from "antd";
@@ -11,9 +11,11 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   logOut,
   selectCurrentUser,
+  setTheme,
   useCurrentToken,
 } from "@/redux/features/auth/authSlice";
 import { LuLogOut, LuUser2 } from "react-icons/lu";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("Home");
@@ -21,6 +23,7 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
   const token = useAppSelector(useCurrentToken);
+  const { theme } = useAppSelector((state) => state.auth);
 
   const navLinks = [
     { label: "Home", path: "#Home" },
@@ -29,6 +32,10 @@ const Navbar = () => {
     { label: "Contact", path: "#Contact" },
     { label: "Dashboard", path: "/dashboard" },
   ];
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <nav className="fixed top-0 md:top-10 left-0 w-full z-50">
@@ -62,6 +69,19 @@ const Navbar = () => {
               </Link>
             )
           )}
+
+          <button
+            className="bg-grey hover:bg-black/10 size-10 rounded-full flex items-center justify-center"
+            onClick={() =>
+              dispatch(setTheme(theme === "light" ? "dark" : "light"))
+            }
+          >
+            {theme === "light" ? (
+              <FiMoon className="text-xl block" />
+            ) : (
+              <FiSun className="text-xl block" />
+            )}
+          </button>
         </div>
         <div className="max-sm:hidden flex items-center gap-2 md:gap-4">
           {token && user ? (
