@@ -2,19 +2,19 @@
 
 import {
   servicesCategory,
-  servicesData,
+  servicesData
 } from "@/components/dashboard/dashboardData";
 import NewOrderForm from "@/components/dashboard/NewOrderForm";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import {
   useGetMainBalanceQuery,
   useGetServicesQuery,
-  useGetSpendHistoryQuery,
+  useGetSpendHistoryQuery
 } from "@/redux/features/dashboard/dashboardApi";
 import {
   setCategorizedService,
   setCategory,
-  setService,
+  setService
 } from "@/redux/features/dashboard/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { CategorizedService } from "@/types";
@@ -31,7 +31,7 @@ const Page = () => {
   const marqueTexts = [
     "We are thrilled to announce to our july customers who purchased our service above ",
     "We are thrilled to announce to our july customers who purchased our service above ",
-    "We are thrilled to announce to our july customers who purchased our service above ",
+    "We are thrilled to announce to our july customers who purchased our service above "
   ];
 
   const { data: balance } = useGetMainBalanceQuery("");
@@ -39,7 +39,7 @@ const Page = () => {
 
   const { services } = useAppSelector((store) => store.service);
   const { data, isSuccess, refetch } = useGetServicesQuery("", {
-    skip: services.length > 0,
+    skip: services.length > 0
   });
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const Page = () => {
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
               <FaNairaSign />
-              {balance?.data?.amount}
+              {balance?.data?.amount.toFixed(2)}
             </h1>
           </div>
 
@@ -111,9 +111,9 @@ const Page = () => {
               key={i}
               href={"/dashboard/#new-order-form"}
               onClick={() => dispatch(setCategory(service.title))}
-              className="bg-white block hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
+              className="bg-white flex justify-center p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
             >
-              <div className="relative">
+              {/* <div className="relative">
                 <Image
                   src={service.image}
                   width={400}
@@ -121,10 +121,9 @@ const Page = () => {
                   alt="logo"
                   className="w-full h-auto"
                 />
-              </div>
-              <h3 className="text-base md:text-2xl pb-8 md:pb-16 pt-4 md:pt-8">
-                {service.title}
-              </h3>
+              </div> */}
+              {<service.icon className="text-3xl"></service.icon>}
+              <h3 className="text-base md:text-2xl  ">{service.title}</h3>
             </Link>
           ))}
         </div>

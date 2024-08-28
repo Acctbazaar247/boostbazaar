@@ -60,19 +60,19 @@ export interface TFlat {
 
 export const USER_ROLE = {
   admin: "admin",
-  user: "user",
+  user: "user"
 } as const;
 
 export const BookingStatus = {
   PENDING: "PENDING",
   APPROVED: "APPROVED",
-  REJECTED: "REJECTED",
+  REJECTED: "REJECTED"
 };
 
 export const NotificationType = {
   comment: "comment",
   reply: "reply",
-  like: "like",
+  like: "like"
 };
 
 export type TUserRole = keyof typeof USER_ROLE;

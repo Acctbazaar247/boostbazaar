@@ -5,7 +5,7 @@ import { FaNairaSign } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 import {
   useGetAdminOverviewQuery,
-  useGetCurrencyQuery,
+  useGetCurrencyQuery
 } from "@/redux/features/dashboard/dashboardApi";
 import { BsThreeDots } from "react-icons/bs";
 import { cn } from "@/utils/cn";
@@ -15,12 +15,15 @@ import { ApexOptions } from "apexcharts";
 import { useGetUsersQuery } from "@/redux/features/auth/authApi";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { Progress } from "antd";
+import Loading from "@/components/ui/Loading";
+import { useMemo } from "react";
 
 enum EAccountCategory {
   YOUTUBE = "Youtube",
   FACEBOOK = "Facebook",
   INSTAGRAM = "Instagram",
-  TWITTER = "Twitter",
+  TWITTER = "Twitter"
 }
 
 type TTrafic = {
@@ -30,12 +33,19 @@ type TTrafic = {
 
 const Page = () => {
   const ReactApexChart = dynamic(() => import("react-apexcharts"), {
-    ssr: false, // This ensures the component is only rendered on the client side
+    ssr: false // This ensures the component is only rendered on the client side
   });
 
   const { data: transactions } = useGetCurrencyQuery("");
-  const { data: adminOverview } = useGetAdminOverviewQuery("");
+  const { data: adminOverview, isLoading } = useGetAdminOverviewQuery("");
   const { data: usersData } = useGetUsersQuery("");
+  const maxValue = useMemo(() => {
+    if (!adminOverview?.data?.trafic?.length) return 0;
+    console.log(adminOverview.data.trafic);
+    return Math.max(
+      ...adminOverview.data.trafic.map((single: any) => single.count)
+    );
+  }, [adminOverview]);
 
   type OriginalData = {
     totalOrder: number;
@@ -55,23 +65,23 @@ const Page = () => {
       {
         label: "Today’s Sale",
         value: data?.totalTodaySale.toLocaleString(), // Format number with commas
-        isNiger: true,
+        isNiger: true
       },
       {
         label: "Total Sales",
         value: data?.totalSale.toLocaleString(), // Format number with commas
-        isNiger: true,
+        isNiger: true
       },
       {
         label: "Total Orders",
         value: data?.totalOrder.toLocaleString(), // Format number with commas
-        isNiger: false,
+        isNiger: false
       },
       {
         label: "Total Customers",
         value: data?.totalUser.toLocaleString(), // Format number with commas
-        isNiger: false,
-      },
+        isNiger: false
+      }
     ];
   };
 
@@ -88,27 +98,30 @@ const Page = () => {
   const options: ApexOptions = {
     chart: {
       width: 380,
-      type: "pie",
+      type: "pie"
     },
     labels: labels,
     legend: {
-      show: false,
+      show: false
     },
     responsive: [
       {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200,
+            width: 200
           },
           legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
+            position: "bottom"
+          }
+        }
+      }
+    ]
   };
-
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  const roundedMaxCount = Math.ceil(maxValue / 10) * 10;
   return (
     <div className="space-y-6 pb-10">
       <h2 className="text-dark-grey">
@@ -148,20 +161,33 @@ const Page = () => {
         <div className="col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <p className="font-bold text-black pb-2">Sales Report</p>
           <div className="space-y-1">
-            {(adminOverview?.data?.trafic || []).map((traffic: TTrafic) => (
-              <div key={traffic.accountCategory} className="space-y-2">
-                <p className="flex items-center justify-between font-medium text-sm">
-                  <span>{traffic.accountCategory}</span>
-                  <span>{traffic.count}</span>
-                </p>
-                <input
-                  type="range"
-                  value={traffic.count}
-                  readOnly
-                  className="w-full"
-                />
-              </div>
-            ))}
+            {(adminOverview?.data?.trafic.slice(0, 4) || []).map(
+              (traffic: TTrafic) => (
+                <div key={traffic.accountCategory} className="space-y-2">
+                  <p className="flex items-center justify-between font-medium text-sm">
+                    <span>{traffic.accountCategory}</span>
+                    <span>{traffic.count}</span>
+                  </p>
+                  {/* <Progress
+                  percent={traffic.count}
+                  success={{ percent: maxValue }}
+                ></Progress> */}
+                  <Progress
+                    percent={(traffic.count / roundedMaxCount) * 100}
+                    showInfo={false}
+                    // success={{ percent: traffic.count }}
+                    // strokeColor="#5D5FDF"
+                    strokeWidth={10} // Set a fixed height for all progress bars
+                  />
+                  {/* <input
+                    type="range"
+                    value={traffic.count}
+                    readOnly
+                    className="w-full"
+                  /> */}
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -244,7 +270,7 @@ const Page = () => {
                   <p className="text-black flex items-center gap-1">
                     {" "}
                     <FaNairaSign />
-                    {user?.Currency?.amount}
+                    {user?.Currency?.amount.toFixed(2)}
                   </p>
                   {/* <p className="text-[#8DD56C] text-sm">Online</p> */}
                 </div>
@@ -253,7 +279,7 @@ const Page = () => {
           </div>
           <Link
             href={"admin-dashboard/customer"}
-            className="text-dark-grey uppercase flex items-center gap-1"
+            className="text-dark-grey uppercase flex items-center mt-3 gap-1"
           >
             See All customers <IoIosArrowForward />
           </Link>

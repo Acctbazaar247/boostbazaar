@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import AppRenderReduxData from "./AppRenderReduxData";
 import AppTableSkeleton from "./AppTableSkeleton";
 import "./custom.css";
+import { cn } from "@/utils/cn";
 
 type TTableProps = {
   columns: any;
@@ -10,6 +11,7 @@ type TTableProps = {
   header?: boolean;
   infoQuery?: any;
   setPage?: (value: number) => void;
+  rowClassName: any;
 };
 
 const AppTable = ({
@@ -17,7 +19,8 @@ const AppTable = ({
   infoQuery,
   columns,
   loadingComponent,
-  setPage,
+  rowClassName,
+  setPage
 }: TTableProps) => {
   return (
     <div className="overflow-x-auto w-full">
@@ -31,7 +34,7 @@ const AppTable = ({
               <Table
                 showHeader={header}
                 columns={columns}
-                rowClassName={"bg-[#FAFAFA]"}
+                rowClassName={(data) => cn("bg-[#FAFAFA]", rowClassName(data))}
                 dataSource={
                   Array.isArray(data?.data) ? data?.data : [data?.data]
                 }
@@ -43,7 +46,7 @@ const AppTable = ({
                         pageSize: data?.meta?.limit,
                         total: data?.meta?.total,
                         current: data?.meta?.page,
-                        showSizeChanger: false,
+                        showSizeChanger: false
                       }
                     : false
                 }

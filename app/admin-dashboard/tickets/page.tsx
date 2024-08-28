@@ -6,7 +6,7 @@ import AppTable from "@/components/ui/AppTable";
 import AppTabs from "@/components/ui/AppTabs";
 import {
   useGetTicketsQuery,
-  useUpdateTicketMutation,
+  useUpdateTicketMutation
 } from "@/redux/features/dashboard/dashboardApi";
 import { cn } from "@/utils/cn";
 import { getTimeAgo } from "@/utils/getTimeAgo";
@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 enum ETickets {
   open = "open",
   closed = "closed",
-  sloved = "sloved",
+  sloved = "sloved"
 }
 
 const Page = () => {
@@ -25,19 +25,19 @@ const Page = () => {
     { label: "Tickets", value: "tickets" },
     { label: "Opened", value: "open" },
     { label: "Solved", value: "sloved" },
-    { label: "Closed", value: "closed" },
+    { label: "Closed", value: "closed" }
   ];
 
   const statusOptions = [
     {
-      status: ETickets.open,
+      status: ETickets.open
     },
     {
-      status: ETickets.closed,
+      status: ETickets.closed
     },
     {
-      status: ETickets.sloved,
-    },
+      status: ETickets.sloved
+    }
   ];
 
   const [page, setPage] = useState(1);
@@ -52,7 +52,7 @@ const Page = () => {
   const handleStatusUpdate = async (status: string, id: string) => {
     const updateData = {
       id,
-      data: { status },
+      data: { status }
     };
     await updateTicket(updateData)
       .unwrap()
@@ -61,7 +61,7 @@ const Page = () => {
       })
       .catch((res: any) => {
         return toast.error(res?.data.message || "Something went wrong!", {
-          toastId: 1,
+          toastId: 1
         });
       });
   };
@@ -85,17 +85,17 @@ const Page = () => {
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Subject",
       dataIndex: "subject",
-      className: "min-w-[130px] md:min-w-[150px]",
+      className: "min-w-[130px] md:min-w-[150px]"
     },
     {
       title: "Details",
       dataIndex: "message",
-      className: "min-w-[120px] md:min-w-[145px]",
+      className: "min-w-[120px] md:min-w-[145px]"
     },
     // {
     //   title: "Status",
@@ -178,7 +178,7 @@ const Page = () => {
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Last Message",
@@ -190,15 +190,22 @@ const Page = () => {
             {getTimeAgo(createdAt)} ago
           </div>
         );
-      },
-    },
+      }
+    }
   ];
 
   return (
     <div className="">
       <h1 className="heading pb-4 md:pb-10">Tickets</h1>
       <AppTabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
-      <AppTable setPage={setPage} columns={columns} infoQuery={ticketQuery} />
+      <AppTable
+        rowClassName={(record: any) =>
+          record.status === ETickets.sloved ? "opacity-50" : ""
+        }
+        setPage={setPage}
+        columns={columns}
+        infoQuery={ticketQuery}
+      />
     </div>
   );
 };

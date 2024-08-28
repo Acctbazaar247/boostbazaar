@@ -10,7 +10,7 @@ import { categorizeServices } from "@/utils/categorizedArray";
 import AppFormSelect from "../ui/AppFormSelect";
 import {
   setCategorizedService,
-  setCategory,
+  setCategory
 } from "@/redux/features/dashboard/serviceSlice";
 import { useEffect, useState } from "react";
 import { useCreateOrderMutation } from "@/redux/features/dashboard/dashboardApi";
@@ -32,7 +32,7 @@ const NewOrderForm = () => {
     control,
     watch,
     reset,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
 
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -77,7 +77,7 @@ const NewOrderForm = () => {
       accountCategory: category,
       quantity: data.quantity,
       japServiceId: data.service,
-      link: data.link,
+      link: data.link
     };
     console.log(data);
     await createOrder(submittedData)
@@ -107,7 +107,7 @@ const NewOrderForm = () => {
           placeholder="Enter category"
           options={servicesCategory.map((cat) => ({
             value: cat.name,
-            label: cat.name,
+            label: cat.name
           }))}
           control={control}
         />
@@ -120,7 +120,7 @@ const NewOrderForm = () => {
           placeholder="Enter service"
           options={selectServices.map((service) => ({
             label: service.name,
-            value: service.service,
+            value: service.service
           }))}
           control={control}
         />
@@ -135,18 +135,26 @@ const NewOrderForm = () => {
           placeholder="Enter link"
           error={errors.link}
         />
-        <AppFormInput
-          name="quantity"
-          type="number"
-          label="Quantity"
-          min={nowService?.min}
-          max={nowService?.max}
-          className="pl-4"
-          register={register}
-          required
-          placeholder="Enter quantity"
-          error={errors.quantity}
-        />
+        <div>
+          <AppFormInput
+            name="quantity"
+            type="number"
+            label="Quantity"
+            min={nowService?.min}
+            max={nowService?.max}
+            className="pl-4"
+            register={register}
+            required
+            placeholder="Enter quantity"
+            error={errors.quantity}
+          />
+          {nowService?.min && (
+            <div className="flex items-center gap-2 text-dark-grey font-normal]">
+              <span>Minimum Quantity: {nowService.min}</span>
+              <span>Maximum Quantity: {nowService.max}</span>
+            </div>
+          )}
+        </div>
         <AppFormInput
           name="charge"
           type="text"

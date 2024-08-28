@@ -2,7 +2,7 @@ import NavbarUser from "@/components/dashboard/NavbarUser";
 import PrivetLayout from "@/components/shared/PrivetLayout";
 
 const DashboardLayout = ({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) => {

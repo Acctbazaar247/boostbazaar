@@ -1,112 +1,129 @@
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTelegram,
+  FaYoutube,
+  FaTiktok,
+  FaLinkedin,
+  FaSpotify,
+  FaSnapchatGhost,
+  FaGoogle,
+  FaGlobe,
+  FaTwitch,
+  FaStar,
+  FaEllipsisH
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FcLike } from "react-icons/fc";
+
 export const servicesData = [
   {
-    image: "/image/service1.png",
-    title: "Facebook",
+    icon: FaFacebook,
+    title: "Facebook"
   },
   {
-    image: "/image/service2.png",
-    title: "Instagram",
+    icon: FaInstagram,
+    title: "Instagram"
   },
   {
-    image: "/image/service5.png",
-    title: "Telegram",
+    icon: FaTelegram,
+    title: "Telegram"
   },
   {
-    image: "/image/service6.png",
-    title: "Youtube",
+    icon: FaYoutube,
+    title: "Youtube"
   },
   {
-    image: "/image/service4.png",
-    title: "X",
+    icon: FaXTwitter, // Twitter icon for "X"
+    title: "X"
   },
   {
-    image: "/image/service7.png",
-    title: "Tiktok",
+    icon: FaTiktok,
+    title: "Tiktok"
   },
   {
-    image: "/image/service3.png",
-    title: "LinkedIn",
-  },
-
-  {
-    image: "/image/service8.png",
-    title: "Spotify",
+    icon: FaLinkedin,
+    title: "LinkedIn"
   },
   {
-    image: "/image/service9.png",
-    title: "Snapchat",
+    icon: FaSpotify,
+    title: "Spotify"
   },
   {
-    image: "/image/service10.png",
-    title: "Google",
+    icon: FaSnapchatGhost,
+    title: "Snapchat"
   },
   {
-    image: "/image/service11.png",
-    title: "Website",
+    icon: FaGoogle,
+    title: "Google"
   },
   {
-    image: "/image/service12.png",
-    title: "Likee",
+    icon: FaGlobe, // General web icon for "Website"
+    title: "Website"
   },
   {
-    image: "/image/service13.png",
-    title: "Twitch",
+    icon: FcLike, // "Likee" using a generic icon
+    title: "Likee"
   },
   {
-    image: "/image/service14.png",
-    title: "Reviews",
+    icon: FaTwitch,
+    title: "Twitch"
   },
   {
-    image: "/image/service15.png",
-    title: "Others",
+    icon: FaStar, // "Reviews" using a star icon
+    title: "Reviews"
   },
+  {
+    icon: FaEllipsisH, // "Others" using a generic icon
+    title: "Others"
+  }
 ];
 
 export const servicesCategory = [
   {
-    name: "Facebook",
+    name: "Facebook"
   },
   {
-    name: "Instagram",
+    name: "Instagram"
   },
   {
-    name: "Telegram",
+    name: "Telegram"
   },
   {
-    name: "Youtube",
+    name: "Youtube"
   },
   {
-    name: "X",
+    name: "X"
   },
   {
-    name: "TikTok",
+    name: "TikTok"
   },
   {
-    name: "LinkedIn",
+    name: "LinkedIn"
   },
 
   {
-    name: "Spotify",
+    name: "Spotify"
   },
   {
-    name: "Snapchat",
+    name: "Snapchat"
   },
   {
-    name: "Google",
+    name: "Google"
   },
   {
-    name: "Website",
+    name: "Website"
   },
   {
-    name: "Likee",
+    name: "Likee"
   },
   {
-    name: "Twitch",
+    name: "Twitch"
   },
   {
-    name: "Reviews",
+    name: "Reviews"
   },
   {
-    name: "Others",
-  },
+    name: "Others"
+  }
 ];

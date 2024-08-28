@@ -1,12 +1,13 @@
 "use client";
 
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import AppButton from "../ui/AppButton";
 import AppFormInput from "../ui/AppFormInput";
 import AppFormSelect from "../ui/AppFormSelect";
 import { useCurrencyRequestMutation } from "@/redux/features/dashboard/dashboardApi";
 import { toast } from "react-toastify";
 import { redirect, useRouter } from "next/navigation";
+import PaySelection from "../ui/PaySelection";
 
 interface FormData {
   amount: number;
@@ -19,17 +20,21 @@ const FundForm = () => {
     handleSubmit,
     control,
     formState: { errors },
-    reset,
+    reset
   } = useForm<FormData>();
   const router = useRouter();
   const [createCurrencyRequest, { isLoading }] = useCurrencyRequestMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
+    if (!data.method) {
+      toast.error("Please select a payment method below", { toastId: 1 });
+      return;
+    }
     const submittedData = {
       data: { amount: data.amount },
-      method: data.method,
+      method: data.method
     };
-
+    console.log(submittedData);
     await createCurrencyRequest(submittedData)
       .unwrap()
       .then((res) => {
@@ -48,7 +53,7 @@ const FundForm = () => {
 
   const options = [
     { label: "Paystack", value: "paystack" },
-    { label: "Cryptomus", value: "cryptomus" },
+    { label: "Cryptomus", value: "cryptomus" }
   ];
 
   return (
@@ -69,15 +74,21 @@ const FundForm = () => {
           error={errors.amount}
         />
 
-        <AppFormSelect
+        {/* <AppFormSelect
           name="method"
           label="Deposit Method"
           required
           placeholder="Enter method"
           options={options}
           control={control}
-        />
-
+        /> */}
+        <Controller
+          name="method"
+          control={control}
+          render={({ fieldState, field }) => {
+            return <PaySelection onChange={field.onChange}></PaySelection>;
+          }}
+        ></Controller>
         <AppButton
           disabled={isLoading}
           type="submit"

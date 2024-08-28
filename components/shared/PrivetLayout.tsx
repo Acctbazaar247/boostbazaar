@@ -6,12 +6,12 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   logOut,
   selectCurrentUser,
-  useCurrentToken,
+  useCurrentToken
 } from "@/redux/features/auth/authSlice";
 
 const PrivateLayout = ({
   children,
-  roles,
+  roles
 }: Readonly<{
   children: React.ReactNode;
   roles?: string[];
@@ -21,6 +21,11 @@ const PrivateLayout = ({
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
   const accessToken = useAppSelector(useCurrentToken);
+  const { theme } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     if (user && roles && !roles.includes(user?.role)) {
