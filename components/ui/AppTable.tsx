@@ -11,7 +11,7 @@ type TTableProps = {
   header?: boolean;
   infoQuery?: any;
   setPage?: (value: number) => void;
-  rowClassName: any;
+  rowClassName?: any;
 };
 
 const AppTable = ({
@@ -34,7 +34,11 @@ const AppTable = ({
               <Table
                 showHeader={header}
                 columns={columns}
-                rowClassName={(data) => cn("bg-[#FAFAFA]", rowClassName(data))}
+                rowClassName={
+                  rowClassName
+                    ? (data) => cn("bg-[#FAFAFA]", rowClassName(data))
+                    : cn("bg-[#FAFAFA]")
+                }
                 dataSource={
                   Array.isArray(data?.data) ? data?.data : [data?.data]
                 }

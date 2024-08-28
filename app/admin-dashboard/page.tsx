@@ -143,8 +143,8 @@ const Page = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-8 max-h-[40dvh]">
-        <div className="col-span-8 relative border border-dark-grey/20 bg-white p-4 rounded-lg flex items-center justify-center">
+      <div className="grid grid-cols-12 gap-8 ">
+        <div className="md:col-span-8 col-span-12 relative border border-dark-grey/20 bg-white p-4 rounded-lg flex items-center justify-center">
           <span className="absolute font-bold left-5 top-5 text-black">
             Sales Report
           </span>
@@ -158,7 +158,7 @@ const Page = () => {
           />
         </div>
 
-        <div className="col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
+        <div className="col-span-12 md:col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <p className="font-bold text-black pb-2">Sales Report</p>
           <div className="space-y-1">
             {(adminOverview?.data?.trafic.slice(0, 4) || []).map(
@@ -192,8 +192,8 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-8 max-h-[40dvh]">
-        <div className="col-span-8 border border-dark-grey/20 bg-white p-4 rounded-lg">
+      <div className="grid grid-cols-12 gap-8  ">
+        <div className="col-span-12 md:col-span-8 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <h2 className="flex items-center justify-between">
             <span className="font-bold text-black">Transactions</span>
             <Link
@@ -242,7 +242,7 @@ const Page = () => {
             </div>
           ))}
         </div>
-        <div className="col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
+        <div className=" col-span-12 md:col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <h2 className="font-bold text-black">Recent Customers</h2>
           <p className="text-dark-grey text-sm pb-4">View recent customers</p>
           <div className="flex flex-col gap-3">

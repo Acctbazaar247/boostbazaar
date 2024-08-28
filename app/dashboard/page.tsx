@@ -111,7 +111,7 @@ const Page = () => {
               key={i}
               href={"/dashboard/#new-order-form"}
               onClick={() => dispatch(setCategory(service.title))}
-              className="bg-white flex justify-center p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
+              className="bg-white text-dark-grey flex justify-center p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
             >
               {/* <div className="relative">
                 <Image
@@ -122,7 +122,7 @@ const Page = () => {
                   className="w-full h-auto"
                 />
               </div> */}
-              {<service.icon className="text-3xl"></service.icon>}
+              {<service.icon className="text-3xl "></service.icon>}
               <h3 className="text-base md:text-2xl  ">{service.title}</h3>
             </Link>
           ))}
