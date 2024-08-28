@@ -193,7 +193,7 @@ const Page = () => {
       </div>
 
       <div className="grid grid-cols-12 gap-8  ">
-        <div className="col-span-12 md:col-span-8 border border-dark-grey/20 bg-white p-4 rounded-lg">
+        <div className="col-span-12 2xl:col-span-8 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <h2 className="flex items-center justify-between">
             <span className="font-bold text-black">Transactions</span>
             <Link
@@ -242,7 +242,7 @@ const Page = () => {
             </div>
           ))}
         </div>
-        <div className=" col-span-12 md:col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
+        <div className=" col-span-12 2xl:col-span-4 border border-dark-grey/20 bg-white p-4 rounded-lg">
           <h2 className="font-bold text-black">Recent Customers</h2>
           <p className="text-dark-grey text-sm pb-4">View recent customers</p>
           <div className="flex flex-col gap-3">
