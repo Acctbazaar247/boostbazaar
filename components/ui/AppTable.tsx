@@ -11,7 +11,7 @@ type TTableProps = {
   header?: boolean;
   infoQuery?: any;
   setPage?: (value: number) => void;
-  rowClassName: any;
+  rowClassName?: any;
 };
 
 const AppTable = ({
@@ -20,7 +20,7 @@ const AppTable = ({
   columns,
   loadingComponent,
   rowClassName,
-  setPage
+  setPage,
 }: TTableProps) => {
   return (
     <div className="overflow-x-auto w-full">
@@ -46,7 +46,7 @@ const AppTable = ({
                         pageSize: data?.meta?.limit,
                         total: data?.meta?.total,
                         current: data?.meta?.page,
-                        showSizeChanger: false
+                        showSizeChanger: false,
                       }
                     : false
                 }
