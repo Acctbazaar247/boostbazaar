@@ -39,6 +39,10 @@ export type TTokenUser = {
   id: string;
   profileImg: string;
   role: string;
+  createAt: Date;
+  isVerified: boolean;
+  isBlocked: boolean;
+  failedLoginAttempt: number;
 };
 
 export interface TFlat {

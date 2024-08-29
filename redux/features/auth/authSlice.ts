@@ -20,10 +20,14 @@ const initialState: TIState = {
     id: "",
     profileImg: "",
     role: "",
+    isVerified: false,
+    failedLoginAttempt: 0,
+    createAt: new Date(),
+    isBlocked: false
   },
   accessToken: "",
   otp: null,
-  theme: darkThemePreference() ? "dark" : "light",
+  theme: darkThemePreference() ? "dark" : "light"
 };
 
 const authSlice = createSlice({
@@ -50,8 +54,8 @@ const authSlice = createSlice({
     },
     setOtp: (state, action) => {
       state.otp = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setUser, logOut, setUserProfileImage, setOtp, setTheme } =

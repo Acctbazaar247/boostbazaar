@@ -68,11 +68,11 @@ const PaySelection = ({
                 if (handleCryptoClick) {
                   handleCryptoClick();
                 }
-                setSelectedOption("cryptomus");
+                setSelectedOption("nowpayment");
                 // router.push("https://nowpayments.io/payment/?iid=4613115863");
               }}
               className={`w-full py-4 px-2 border rounded transition-all ${
-                selectedOption === "cryptomus"
+                selectedOption === "nowpayment"
                   ? "border-primary bg-primary/10 text-primary shadow"
                   : "text-dark-grey border-dark-grey"
               }`}

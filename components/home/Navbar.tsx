@@ -12,7 +12,7 @@ import {
   logOut,
   selectCurrentUser,
   setTheme,
-  useCurrentToken,
+  useCurrentToken
 } from "@/redux/features/auth/authSlice";
 import { LuLogOut, LuUser2 } from "react-icons/lu";
 import { FiMoon, FiSun } from "react-icons/fi";
@@ -30,7 +30,7 @@ const Navbar = () => {
     { label: "Services", path: "#Services" },
     { label: "FAQ", path: "#FAQ" },
     { label: "Contact", path: "#Contact" },
-    { label: "Dashboard", path: "/dashboard" },
+    { label: "Dashboard", path: "/dashboard" }
   ];
 
   useEffect(() => {
