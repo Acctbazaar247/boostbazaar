@@ -102,8 +102,8 @@ const Page = () => {
     <AnimationWrapper className="py-12 container">
       <h1 className="heading">Profile</h1>
 
-      <div className="flex gap-4 md:gap-10 justify-between py-6">
-        <div className="w-fit border border-primary rounded-2xl p-2 md:p-5">
+      <div className="flex max-sm:flex-col gap-4 md:gap-10 justify-between py-6">
+        <div className="w-fit max-sm:mx-auto border border-primary rounded-2xl p-3 md:p-5">
           <label
             htmlFor="uploadImg"
             className="relative block size-32 md:size-36 bg-grey rounded-full overflow-hidden"
@@ -136,7 +136,7 @@ const Page = () => {
           />
         </div>
 
-        <div className="text-sm md:w-10/12 border border-primary flex flex-col justify-evenly px-3 md:p-5 rounded-2xl">
+        <div className="text-sm md:w-10/12 border border-primary flex flex-col justify-evenly p-4 md:p-5 rounded-2xl">
           <p className=" md:text-lg">
             <span className="text-sm md:text-2xl font-medium">Name: </span>
             {user?.name}

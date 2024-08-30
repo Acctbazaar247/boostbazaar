@@ -10,6 +10,7 @@ import { useState } from "react";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useAppSelector } from "@/redux/hook";
 import Sidebar from "./Sidebar";
+import AppButton from "../ui/AppButton";
 
 const NavbarDashboard = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -39,26 +40,20 @@ const NavbarDashboard = () => {
       <Drawer
         width={300}
         className="md:hidden"
-        title={<Logo variant="md" />}
+        // title={<Logo variant="md" />}
         placement={"left"}
         closable={false}
         onClose={() => setMobileMenu(false)}
         open={mobileMenu}
       >
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <Avatar size={"small"} src={user?.profileImg} />
-            <p className="text-lg font-medium capitalize">{user?.name}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <TbMessage className="text-2xl text-black/80 cursor-pointer" />
-            <p className="text-lg font-medium capitalize">Message</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <VscBell className="text-2xl text-black/80 cursor-pointer" />
-            <p className="text-lg font-medium capitalize">Notifications</p>
-          </div>
-          <Sidebar className="shadow-none px-1 py-0 text-lg font-medium" />
+        <div className="space-y-2 max-sm:pt-14">
+          <Avatar size={"large"} src={user?.profileImg} />
+          <p className="text-lg font-medium capitalize">
+            <span className="text-dark-grey">Hello</span> {user?.name} !
+          </p>
+          <p className="pb-8">{user?.email}</p>
+
+          <Sidebar className="shadow-none md:px-1 py-0 text-base md:text-lg md:font-medium" />
         </div>
       </Drawer>
     </section>
