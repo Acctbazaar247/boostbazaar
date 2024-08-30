@@ -5,7 +5,7 @@ import { FaNairaSign } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 import {
   useGetAdminOverviewQuery,
-  useGetCurrencyQuery
+  useGetCurrencyRequestQuery
 } from "@/redux/features/dashboard/dashboardApi";
 import { BsThreeDots } from "react-icons/bs";
 import { cn } from "@/utils/cn";
@@ -36,7 +36,7 @@ const Page = () => {
     ssr: false // This ensures the component is only rendered on the client side
   });
 
-  const { data: transactions } = useGetCurrencyQuery("");
+  const { data: transactions } = useGetCurrencyRequestQuery("");
 
   const { data: adminOverview, isLoading } = useGetAdminOverviewQuery("");
 
