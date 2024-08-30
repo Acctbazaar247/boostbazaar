@@ -24,7 +24,7 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
 
   const token = useAppSelector(useCurrentToken);
@@ -42,7 +42,7 @@ const SignUpForm = () => {
         dispatch(
           setUser({ user: res.data.user, accessToken: res.data.accessToken })
         );
-        router.push("/");
+        router.push("/verify-user");
       })
       .catch((res) => {
         toast.error(res?.data?.message);
