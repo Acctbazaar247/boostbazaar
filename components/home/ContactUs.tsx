@@ -1,23 +1,7 @@
 import Image from "next/image";
+import { contactsData } from "./data";
 
 const ContactUs = () => {
-  const contactsData = [
-    {
-      image: "/image/c1.png",
-      title: "About Us",
-      text: "Know about us",
-    },
-    {
-      image: "/image/c2.png",
-      title: "Contact Us",
-      text: "Have any question?",
-    },
-    {
-      image: "/image/c3.png",
-      title: "24 / 7 support",
-      text: "Dedicated support",
-    },
-  ];
   return (
     <section
       id="Contact"
@@ -27,7 +11,7 @@ const ContactUs = () => {
       {contactsData.map((contact, i) => (
         <div
           key={i}
-          className={`text-white flex max-sm:flex-col max-sm:text-center items-center ${
+          className={`text-[#fff] flex max-sm:flex-col max-sm:text-center items-center ${
             i !== 0 && "max-sm:pt-4"
           } ${i === 1 ? "md:gap-1" : "gap-2.5"}`}
         >

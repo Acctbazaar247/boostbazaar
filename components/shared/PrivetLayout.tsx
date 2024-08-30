@@ -6,13 +6,13 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   logOut,
   selectCurrentUser,
-  useCurrentToken
+  useCurrentToken,
 } from "@/redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 
 const PrivateLayout = ({
   children,
-  roles
+  roles,
 }: Readonly<{
   children: React.ReactNode;
   roles?: string[];
@@ -22,8 +22,8 @@ const PrivateLayout = ({
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
   const accessToken = useAppSelector(useCurrentToken);
-  const { theme } = useAppSelector((state) => state.auth);
-  console.log(user);
+  const theme = useAppSelector((state) => state.auth.theme);
+
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
@@ -48,12 +48,15 @@ const PrivateLayout = ({
       router.push(redirectTo);
     }
   }, [user, roles, accessToken, pathname, router, dispatch]);
+
   if (user && !user.isVerified) {
     return null;
   }
+
   if (user && user.isBlocked) {
     return null;
   }
+
   // If user doesn't have access or is being redirected, don't render children
   if ((user && roles && !roles.includes(user?.role)) || !accessToken) {
     return null;

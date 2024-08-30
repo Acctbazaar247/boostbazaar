@@ -7,6 +7,9 @@ import { FaStar, FaUser } from "react-icons/fa";
 import { MdOutlineHomeRepairService } from "react-icons/md";
 import Marquee from "react-fast-marquee";
 import { useEffect, useState } from "react";
+import { avatars, bannerData } from "./data";
+import banner from "@/assets/image/banner.png";
+import bannerB from "@/assets/image/banner-b.png";
 
 const Banner = () => {
   const [speed, setSpeed] = useState(50);
@@ -23,35 +26,6 @@ const Banner = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const bannerData = [
-    {
-      image: "/image/b1.png",
-      title: "Instagram",
-    },
-    {
-      image: "/image/b2.png",
-      title: "Facebook",
-    },
-    {
-      image: "/image/b3.png",
-      title: "Linkedin",
-    },
-    {
-      image: "/image/b4.png",
-      title: "Telegram",
-    },
-    {
-      image: "/image/b5.png",
-      title: "Youtube",
-    },
-  ];
-
-  const avatars = [
-    { image: "/image/ai1.png" },
-    { image: "/image/ai2.png" },
-    { image: "/image/ai3.png" },
-  ];
 
   return (
     <section id="Home" className="md:h-screen">
@@ -73,7 +47,7 @@ const Banner = () => {
             Views, etc without breaking a sweat.
           </p>
 
-          <div className="flex items-center max-sm:justify-between md:gap-5">
+          <div className="flex items-center max-sm:justify-between gap-2 md:gap-5">
             <AppButton
               icon={<MdOutlineHomeRepairService />}
               label="Services"
@@ -83,7 +57,7 @@ const Banner = () => {
             <AppButton
               label="Contact Us"
               variant="outlined"
-              className="px-9 md:px-12 py-2"
+              className="px-8 md:px-12 py-2"
               icon={<FaUser className="text-sm" />}
               iconPosition="left"
               href="#Contact"
@@ -126,7 +100,7 @@ const Banner = () => {
         <div data-aos="fade-left" className=" flex items-end justify-end">
           <Image
             className="-mb-4 md:-mb-5 2xl:-mb-6 max-2xl:w-[480px] aspect-square"
-            src={"/image/banner.png"}
+            src={banner}
             alt="banner image"
             width={600}
             height={600}
@@ -150,7 +124,7 @@ const Banner = () => {
                 width={i == 0 ? 50 : 45}
                 height={i == 0 ? 50 : 45}
               />
-              <h2 className="max-sm:text-[10px] xl:text-2xl 2xl:text-3xl font-light text-white">
+              <h2 className="max-sm:text-[10px] xl:text-2xl 2xl:text-3xl font-light text-[#fff]">
                 {bann.title}
               </h2>
             </div>
@@ -166,21 +140,21 @@ const Banner = () => {
         <div className="container">
           <Image
             className="md:w-10/12 mx-auto md:h-[90dvh]"
-            src={"/image/banner-b.png"}
+            src={bannerB}
             alt="banner image"
             width={1600}
             height={1200}
           />
           <Image
             className="md:hidden md:w-10/12 mx-auto md:h-[90dvh]"
-            src={"/image/banner-b.png"}
+            src={bannerB}
             alt="banner image"
             width={1600}
             height={1200}
           />
           <Image
             className="md:hidden md:w-10/12 mx-auto md:h-[90dvh]"
-            src={"/image/banner-b.png"}
+            src={bannerB}
             alt="banner image"
             width={1600}
             height={1200}

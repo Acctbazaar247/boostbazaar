@@ -1,25 +1,18 @@
 "use client";
 
-import {
-  servicesCategory,
-  servicesData
-} from "@/components/dashboard/dashboardData";
+import { servicesData } from "@/components/dashboard/dashboardData";
 import NewOrderForm from "@/components/dashboard/NewOrderForm";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import {
   useGetMainBalanceQuery,
   useGetServicesQuery,
-  useGetSpendHistoryQuery
+  useGetSpendHistoryQuery,
 } from "@/redux/features/dashboard/dashboardApi";
 import {
-  setCategorizedService,
   setCategory,
-  setService
+  setService,
 } from "@/redux/features/dashboard/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { CategorizedService } from "@/types";
-import { categorizeServices } from "@/utils/categorizedArray";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import Marquee from "react-fast-marquee";
@@ -31,7 +24,7 @@ const Page = () => {
   const marqueTexts = [
     "We are thrilled to announce to our july customers who purchased our service above ",
     "We are thrilled to announce to our july customers who purchased our service above ",
-    "We are thrilled to announce to our july customers who purchased our service above "
+    "We are thrilled to announce to our july customers who purchased our service above ",
   ];
 
   const { data: balance } = useGetMainBalanceQuery("");
@@ -39,7 +32,7 @@ const Page = () => {
 
   const { services } = useAppSelector((store) => store.service);
   const { data, isSuccess, refetch } = useGetServicesQuery("", {
-    skip: services.length > 0
+    skip: services.length > 0,
   });
 
   useEffect(() => {

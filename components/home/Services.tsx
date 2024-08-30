@@ -1,41 +1,9 @@
 import Image from "next/image";
+import { servicesData } from "./data";
+import e from "@/assets/image/e.png";
+import se from "@/assets/image/se.png";
 
 const Services = () => {
-  const servicesData = [
-    {
-      image: "/image/service1.png",
-      title: "Facebook",
-    },
-    {
-      image: "/image/service2.png",
-      title: "Instagram",
-    },
-    {
-      image: "/image/service3.png",
-      title: "Linkedin",
-    },
-    {
-      image: "/image/service4.png",
-      title: "X",
-    },
-    {
-      image: "/image/service5.png",
-      title: "Telegram",
-    },
-    {
-      image: "/image/service6.png",
-      title: "Youtube",
-    },
-    {
-      image: "/image/service7.png",
-      title: "Tiktok",
-    },
-    {
-      image: "/image/service8.png",
-      title: "Shopify",
-    },
-  ];
-
   return (
     <section
       data-aos="fade-up"
@@ -50,21 +18,9 @@ const Services = () => {
 
         <div className="absolute top-0">
           <div className="relative">
-            <Image
-              src={"/image/e.png"}
-              width={112}
-              height={55}
-              alt="logo"
-              className=""
-            />
+            <Image src={e} width={112} height={55} alt="logo" className="" />
             <div className="absolute w-full center -top-9">
-              <Image
-                src={"/image/se.png"}
-                width={80}
-                height={80}
-                alt="logo"
-                className=""
-              />
+              <Image src={se} width={80} height={80} alt="logo" className="" />
             </div>
           </div>
         </div>

@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Logo from "../ui/Logo";
+import why from "@/assets/image/why-choose.png";
 
 const WhyChoose = () => {
   return (
     <section className="pt-20 pb-8 md:py-52 2xl:py-56 container grid grid-cols-1 md:grid-cols-2 md:gap-7">
       <Image
         data-aos="fade-right"
-        src={"/image/why-choose.png"}
+        src={why}
         className="w-full"
         width={700}
         height={660}

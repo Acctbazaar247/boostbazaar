@@ -1,22 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../ui/Logo";
+import { navLinks, socialLinks } from "./data";
 
 const Footer = () => {
-  const navLinks = [
-    { label: "Home", path: "#Home" },
-    { label: "Services", path: "#Services" },
-    { label: "FAQ", path: "#FAQ" },
-    { label: "Contact", path: "#Contact" },
-  ];
-
-  const socialLinks = [
-    { image: "/image/s1.png", link: "" },
-    { image: "/image/s2.png", link: "" },
-    { image: "/image/s3.png", link: "" },
-    { image: "/image/s4.png", link: "" },
-  ];
-
   return (
     <div data-aos="zoom-in" className="bg-primary/5">
       <div className="container flex items-center justify-between border-b border-black/30 pb-8 pt-24 md:pt-32">

@@ -15,13 +15,13 @@
     @apply text-primary text-3xl md:text-4xl 2xl:text-[45px] leading-[50px] 2xl:leading-[68px];
   }
   .btnFilled {
-    @apply border border-primary bg-primary text-white px-4 py-1 md:py-2  rounded md:rounded-xl hover:bg-primary/95 transition-all;
+    @apply border border-primary bg-primary text-[#fff] px-4 py-1 md:py-2  rounded md:rounded-xl hover:bg-primary/95 transition-all;
   }
   .btnOutlined {
-    @apply text-primary px-4 py-1 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all;
+    @apply text-primary px-4 py-1 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-[#fff] transition-all;
   }
   .btnNoDesign {
-    @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
+    @apply text-[#fff]/80 px-4 py-1 md:py-2 hover:text-[#fff]  transition-all;
   }
   .input-box {
     @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-grey pl-10 border border-dark-grey/50 placeholder:text-dark-grey placeholder:font-light;

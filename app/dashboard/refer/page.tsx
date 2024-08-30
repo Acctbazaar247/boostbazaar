@@ -53,7 +53,7 @@ const Page = () => {
             <button
               disabled={isLoading}
               onClick={handleSendToChange}
-              className="w-full bg-primary hover:bg-primary/90 md:text-xl col-span-2 text-white rounded-r-lg"
+              className="w-full bg-primary hover:bg-primary/90 md:text-xl col-span-2 text-[#fff] rounded-r-lg"
             >
               Send
             </button>

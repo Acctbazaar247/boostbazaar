@@ -12,7 +12,7 @@ import {
   logOut,
   selectCurrentUser,
   setTheme,
-  useCurrentToken
+  useCurrentToken,
 } from "@/redux/features/auth/authSlice";
 import { LuLogOut, LuUser2 } from "react-icons/lu";
 import { FiMoon, FiSun } from "react-icons/fi";
@@ -23,14 +23,14 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
   const token = useAppSelector(useCurrentToken);
-  const { theme } = useAppSelector((state) => state.auth);
+  const theme = useAppSelector((state) => state.auth.theme);
 
   const navLinks = [
     { label: "Home", path: "#Home" },
     { label: "Services", path: "#Services" },
     { label: "FAQ", path: "#FAQ" },
     { label: "Contact", path: "#Contact" },
-    { label: "Dashboard", path: "/dashboard" }
+    { label: "Dashboard", path: "/dashboard" },
   ];
 
   useEffect(() => {
@@ -108,12 +108,27 @@ const Navbar = () => {
         </div>
 
         {/* this is for mobile drawaer  */}
-        <button
-          onClick={() => setMobileMenu(true)}
-          className="transition-all ml-auto mr-1 md:hidden flex justify-center items-center border border-black p-1 rounded"
-        >
-          <FaBars />
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            className="md:hidden bg-grey hover:bg-black/10 size-7 rounded-full flex items-center justify-center"
+            onClick={() =>
+              dispatch(setTheme(theme === "light" ? "dark" : "light"))
+            }
+          >
+            {theme === "light" ? (
+              <FiMoon className="text-sm" />
+            ) : (
+              <FiSun className="text-sm" />
+            )}
+          </button>
+
+          <button
+            onClick={() => setMobileMenu(true)}
+            className="transition-all ml-auto mr-1 md:hidden flex justify-center items-center border border-black p-1 rounded"
+          >
+            <FaBars />
+          </button>
+        </div>
 
         <Drawer
           width={300}

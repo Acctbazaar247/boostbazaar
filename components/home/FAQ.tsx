@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { IoIosArrowUp } from "react-icons/io";
+import message from "@/assets/image/message.png";
+import arrow from "@/assets/image/left-arrow.png";
+import faq from "@/assets/image/faq.png";
 import FaqCard from "./FaqCard";
 import AnimationWrapper from "../ui/AnimationWrapper";
 
@@ -35,7 +37,7 @@ const FAQ = () => {
           <h2 className="text-2xl">We would like to have a chat with you.</h2>
           <div className="flex gap-4">
             <Image
-              src={"/image/message.png"}
+              src={message}
               width={60}
               height={60}
               className="aspect-square mt-5"
@@ -43,7 +45,7 @@ const FAQ = () => {
             />
             <div className="">
               <Image
-                src={"/image/left-arrow.png"}
+                src={arrow}
                 width={70}
                 height={40}
                 className="flex-none h-fit"
@@ -53,7 +55,7 @@ const FAQ = () => {
           </div>
           <div className="center justify-normal h-[85%] py-12">
             <Image
-              src={"/image/faq.png"}
+              src={faq}
               width={385}
               height={385}
               className="max-sm:w-1/2 aspect-square"

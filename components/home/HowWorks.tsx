@@ -1,39 +1,8 @@
 import Image from "next/image";
+import { cardData } from "./data";
+import arrow from "@/assets/image/arrow.png";
 
 const HowWorks = () => {
-  const cardData = [
-    {
-      title: "Create Account",
-      text: "Sign up for an account on BoostBazaar in less than a minute.",
-      image: "/image/h1.png",
-    },
-    {
-      title: "Fund Account",
-      text: "Add funds to your account using your local currency or cryptocurrency.",
-      image: "/image/h2.png",
-    },
-    {
-      title: "Choose a Service",
-      text: "Select the boosting service you want our AI to process for you.",
-      image: "/image/h3.png",
-    },
-    {
-      title: "Input Link",
-      text: "Copy and paste the link of the platform,profile or content you want to boost or engage.",
-      image: "/image/h4.png",
-    },
-    {
-      title: "Work in Progress",
-      text: "Sit back and watch as our AI delivers the service within seconds.",
-      image: "/image/h5.png",
-    },
-    {
-      title: "Complete",
-      text: "Once the process is completed, you will receive a notification on your dashboard.",
-      image: "/image/h6.png",
-    },
-  ];
-
   return (
     <section data-aos="fade-up" className="container pt-20">
       <h3 className="bg-primary/5 w-fit mx-auto rounded md:px-3 py-1.5 text-xs text-primary/70">
@@ -52,7 +21,7 @@ const HowWorks = () => {
             {i !== 2 && i !== 5 && (
               <div className="max-sm:hidden absolute -right-4 md:-right-20">
                 <Image
-                  src={"/image/arrow.png"}
+                  src={arrow}
                   alt="arrow"
                   className="max-sm:w-4 object-cover"
                   width={60}
@@ -63,7 +32,7 @@ const HowWorks = () => {
             {i % 2 === 0 && (
               <div className="absolute -right-[19px] md:-right-20">
                 <Image
-                  src={"/image/arrow.png"}
+                  src={arrow}
                   alt="arrow"
                   className="max-sm:w-4 object-cover"
                   width={60}
