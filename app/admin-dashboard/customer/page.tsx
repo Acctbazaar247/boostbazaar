@@ -40,7 +40,7 @@ const Page = () => {
       className: "min-w-[145px]",
       render: (Currency: any) => (
         <div className="flex items-center gap-1 justify-center">
-          {Currency?.amount}
+          {Currency?.amount?.toFixed(2)}
         </div>
       ),
     },

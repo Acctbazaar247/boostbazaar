@@ -78,13 +78,13 @@ const Sidebar = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "w-72 shadow-lg border-r border-dark-grey/50 flex flex-col justify-between pt-6 pb-12 px-8",
+        "md:w-72 shadow-lg md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8",
         className
       )}
     >
       {navLinks.map((navLink, index) => (
-        <div key={index} className="py-4">
-          <h3 className="text-lg font-medium text-dark-grey pb-4">
+        <div key={index} className="md:py-4">
+          <h3 className="max-sm:hidden text-lg font-medium text-dark-grey pb-4">
             {navLink.label}
           </h3>
           {navLink.navs.map((nav, i) =>
@@ -92,7 +92,7 @@ const Sidebar = ({ className }: { className?: string }) => {
               <button
                 key={i}
                 onClick={() => dispatch(logOut())}
-                className="text-black hover:text-red flex items-center gap-2 py-1.5"
+                className="text-black hover:text-red flex items-center gap-3 py-1.5 max-sm:font-normal"
               >
                 {nav.icon} {nav.label}
               </button>
@@ -101,11 +101,11 @@ const Sidebar = ({ className }: { className?: string }) => {
                 key={i}
                 href={nav.path}
                 className={cn(
-                  "text-black hover:text-primary flex items-center gap-2 py-1.5",
+                  "text-black hover:text-primary flex items-center gap-3 py-1.5 max-sm:font-normal",
                   pathname === nav.path && "text-primary"
                 )}
               >
-                {nav.icon} {nav.label}
+                <span className="text-lg">{nav.icon}</span> {nav.label}
               </Link>
             )
           )}
