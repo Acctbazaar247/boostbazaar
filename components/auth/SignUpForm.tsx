@@ -18,6 +18,7 @@ interface FormData {
   name: string;
   email: string;
   password: string;
+  accept: string;
 }
 
 const SignUpForm = () => {
@@ -25,6 +26,7 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormData>();
 
   const token = useAppSelector(useCurrentToken);
@@ -32,6 +34,8 @@ const SignUpForm = () => {
   const router = useRouter();
 
   const [userSingUp, { isLoading }] = useSignupUserMutation();
+  const accept = watch("accept");
+  console.log("🚀 ~ SignUpForm ~ accept:", !accept);
 
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<FormData> = async (data) => {
@@ -93,8 +97,7 @@ const SignUpForm = () => {
       <div className="flex gap-2 2xl:pb-8 2xl:pt-4">
         <input
           type="checkbox"
-          name="checkbox"
-          id=""
+          {...register("accept", {})}
           className="border-dark-grey h-fit mt-1 outline-none"
         />
         <p className="text-dark-grey font-light">
@@ -110,6 +113,7 @@ const SignUpForm = () => {
       </div>
       <AppButton
         disabled={isLoading}
+        shadowDisabled={!accept}
         type="submit"
         className="w-full py-3"
         label="Create account"

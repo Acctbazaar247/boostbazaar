@@ -17,6 +17,7 @@ type TAppButton = {
   iconPosition?: "left" | "right";
   onClick?: () => void;
   disabled?: boolean;
+  shadowDisabled?: boolean;
 };
 
 const AppButton = ({
@@ -29,6 +30,7 @@ const AppButton = ({
   icon,
   iconPosition = "right",
   disabled,
+  shadowDisabled,
   onClick,
 }: TAppButton) => {
   return href ? (
@@ -83,7 +85,7 @@ const AppButton = ({
   ) : (
     <button
       key={label}
-      disabled={disabled}
+      disabled={disabled || shadowDisabled}
       className={cn(
         "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit",
         icon && "flex items-center gap-1 md:gap-2",
@@ -92,7 +94,8 @@ const AppButton = ({
           : variant === "outlined"
           ? "btnOutlined"
           : "btnNoDesign",
-        className
+        className,
+        "disabled:bg-primary/50"
       )}
       type={type}
       onClick={() => {
