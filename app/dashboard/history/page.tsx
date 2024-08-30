@@ -6,7 +6,9 @@ import AppTable from "@/components/ui/AppTable";
 import AppTabs from "@/components/ui/AppTabs";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import {
+  useGetCurrencyRequestQuery,
   useGetDepositHistoryQuery,
+  useGetOrdersQuery,
   useGetTicketsQuery,
 } from "@/redux/features/dashboard/dashboardApi";
 import { useAppSelector } from "@/redux/hook";
@@ -23,7 +25,8 @@ const Page = () => {
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState(tabs[0].value);
 
-  const depositQuery = useGetDepositHistoryQuery(user?.id);
+  const orderQuery = useGetOrdersQuery(user?.id);
+  const depositQuery = useGetCurrencyRequestQuery(user?.id);
 
   const orderColumns = [
     {
@@ -36,7 +39,7 @@ const Page = () => {
     },
     {
       title: "Category",
-      dataIndex: "category",
+      dataIndex: "accountCategory",
       className: "min-w-[130px] md:min-w-[150px]",
     },
     {
@@ -45,8 +48,8 @@ const Page = () => {
       className: "min-w-[120px] md:min-w-[145px]",
     },
     {
-      title: "Service",
-      dataIndex: "service",
+      title: "Service ID",
+      dataIndex: "japServiceId",
       className: "min-w-[120px] md:min-w-[145px]",
     },
     {
@@ -84,6 +87,9 @@ const Page = () => {
       title: "Amount",
       dataIndex: "amount",
       className: "min-w-[120px] md:min-w-[145px]",
+      render: (id: any, record: any) => {
+        return <p className="text-center">{id?.toFixed(2)}</p>;
+      },
     },
     // {
     //   title: "Status",
@@ -121,7 +127,7 @@ const Page = () => {
       <AppTable
         setPage={setPage}
         columns={activeTab === "deposit" ? depositColumns : orderColumns}
-        infoQuery={activeTab === "deposit" ? depositQuery : depositQuery}
+        infoQuery={activeTab === "deposit" ? depositQuery : orderQuery}
       />
     </AnimationWrapper>
   );

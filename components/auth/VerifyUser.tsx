@@ -37,7 +37,7 @@ const VerifyUser = () => {
       .unwrap()
       .then((res) => {
         toast.success(res?.message);
-        router.push("/dashboard");
+        router.push("/");
         // dispatch(setUser({ user: { email: data.email } }));
       })
       .catch((res) => {

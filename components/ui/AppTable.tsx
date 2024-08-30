@@ -29,15 +29,13 @@ const AppTable = ({
           loadingComponent={loadingComponent || <AppTableSkeleton />}
           queryData={infoQuery}
           showData={(data) => {
-            console.log(data.data);
+            // console.log(data.data);
             return (
               <Table
                 showHeader={header}
                 columns={columns}
                 rowClassName={
-                  rowClassName
-                    ? (data) => cn("bg-[#FAFAFA]", rowClassName(data))
-                    : cn("bg-[#FAFAFA]")
+                  rowClassName ? (data) => cn("", rowClassName(data)) : cn("")
                 }
                 dataSource={
                   Array.isArray(data?.data) ? data?.data : [data?.data]

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import logo from "@/assets/image/favicon.png";
 
 type TLogo = {
   isLink?: boolean;
@@ -20,7 +21,7 @@ const Logo = ({
       className={`flex items-center select-none ${parentClassName}`}
     >
       <Image
-        src={"/image/favicon.png"}
+        src={logo}
         alt="logo"
         width={32}
         height={32}
@@ -43,7 +44,7 @@ const Logo = ({
   ) : (
     <div className={`flex items-center select-none ${parentClassName}`}>
       <Image
-        src={"/image/favicon.png"}
+        src={logo}
         alt="logo"
         width={32}
         height={32}

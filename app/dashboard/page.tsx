@@ -13,6 +13,7 @@ import {
   setService,
 } from "@/redux/features/dashboard/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { useEffect } from "react";
 import Marquee from "react-fast-marquee";
@@ -20,6 +21,7 @@ import { FaNairaSign } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
 const Page = () => {
+  const theme = useAppSelector((state) => state.auth.theme);
   const dispatch = useAppDispatch();
   const marqueTexts = [
     "We are thrilled to announce to our july customers who purchased our service above ",
@@ -69,7 +71,10 @@ const Page = () => {
               <h3 className="text-dark-grey">Main balance</h3>
               <Link
                 href={"/dashboard/fund"}
-                className="bg-white text-primary font-light rounded px-2 py-1"
+                className={cn(
+                  "bg-white font-light rounded px-2 py-1",
+                  theme === "light" ? "text-primary" : "text-[#fff]"
+                )}
               >
                 Add funds
               </Link>
@@ -86,7 +91,10 @@ const Page = () => {
               <h3 className="text-dark-grey">Spend</h3>
               <Link
                 href={"/dashboard/history"}
-                className="bg-white text-primary font-light rounded px-2 py-1"
+                className={cn(
+                  "bg-white font-light rounded px-2 py-1",
+                  theme === "light" ? "text-primary" : "text-[#fff]"
+                )}
               >
                 History
               </Link>
