@@ -148,11 +148,11 @@ const NavbarUser = () => {
               href={nav.path}
               onClick={() => setMobileMenu(false)}
               key={nav.label}
-              className={`flex items-center gap-4 md:bg-white md:px-4 py-1 md:py-2 shadow rounded-md ${
+              className={`flex items-center gap-4 md:bg-white md:px-4 py-1.5 md:py-2 md:shadow rounded-md ${
                 pathname === nav.path && "text-primary md:bg-primary/10"
               }`}
             >
-              <span className="md:bg-primary rounded p-1 text-[#fff] text-lg">
+              <span className="md:bg-primary rounded md:p-1 text-black text-lg">
                 {nav.icon}
               </span>{" "}
               {nav.label}
@@ -161,7 +161,7 @@ const NavbarUser = () => {
 
           <button
             onClick={() => dispatch(logOut())}
-            className="text-red w-full flex items-center gap-4 md:bg-white md:px-4 py-2 shadow rounded-md"
+            className="text-red w-full flex items-center gap-4 md:bg-white md:px-4 py-1.5 md:py-2 md:shadow rounded-md"
           >
             <LuLogOut className="text-lg" />
             Log out
