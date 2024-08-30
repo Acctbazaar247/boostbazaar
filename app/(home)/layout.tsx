@@ -16,7 +16,7 @@ const HomeLayout = ({
     tawk.charset = "UTF-8";
     tawk.setAttribute("crossorigin", "*");
     document.body.appendChild(tawk);
-
+    console.log(tawk.src);
     return () => {
       document.body.removeChild(tawk);
     };
