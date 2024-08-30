@@ -113,6 +113,13 @@ const userDashboardApi = baseApi.injectEndpoints({
       }),
       // invalidatesTags: [tagTypes.review],s
     }),
+    getProfile: builder.query({
+      query: () => ({
+        url: `/profile`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
   }),
 });
 
@@ -131,4 +138,5 @@ export const {
   useGetSpendHistoryQuery,
   useGetOrdersQuery,
   useUpdateTicketMutation,
+  useGetProfileQuery,
 } = userDashboardApi;

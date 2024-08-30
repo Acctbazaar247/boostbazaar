@@ -6,9 +6,11 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   logOut,
   selectCurrentUser,
+  setUser,
   useCurrentToken,
 } from "@/redux/features/auth/authSlice";
 import { toast } from "react-toastify";
+import { useGetProfileQuery } from "@/redux/features/dashboard/dashboardApi";
 
 const PrivateLayout = ({
   children,
@@ -17,10 +19,13 @@ const PrivateLayout = ({
   children: React.ReactNode;
   roles?: string[];
 }>) => {
+  const { data } = useGetProfileQuery("");
+
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const user = useAppSelector(selectCurrentUser);
+  // const user = useAppSelector(selectCurrentUser);
+  const user = data?.user;
   const accessToken = useAppSelector(useCurrentToken);
   const theme = useAppSelector((state) => state.auth.theme);
 
