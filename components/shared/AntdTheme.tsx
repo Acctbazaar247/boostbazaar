@@ -29,6 +29,9 @@ const AntdTheme = ({ children }: TAntdTheme) => {
           Table: {
             headerBg: theme === "light" ? "#fff" : "#000",
           },
+          Select: {
+            optionSelectedColor: theme === "light" ? "#fff" : "#000",
+          },
         },
       }}
     >
