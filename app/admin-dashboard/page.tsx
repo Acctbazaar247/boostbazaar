@@ -5,7 +5,7 @@ import { FaNairaSign } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 import {
   useGetAdminOverviewQuery,
-  useGetCurrencyQuery,
+  useGetCurrencyRequestQuery
 } from "@/redux/features/dashboard/dashboardApi";
 import { BsThreeDots } from "react-icons/bs";
 import { cn } from "@/utils/cn";
@@ -23,7 +23,7 @@ enum EAccountCategory {
   YOUTUBE = "Youtube",
   FACEBOOK = "Facebook",
   INSTAGRAM = "Instagram",
-  TWITTER = "Twitter",
+  TWITTER = "Twitter"
 }
 
 type TTrafic = {
@@ -33,10 +33,10 @@ type TTrafic = {
 
 const Page = () => {
   const ReactApexChart = dynamic(() => import("react-apexcharts"), {
-    ssr: false, // This ensures the component is only rendered on the client side
+    ssr: false // This ensures the component is only rendered on the client side
   });
 
-  const { data: transactions } = useGetCurrencyQuery("");
+  const { data: transactions } = useGetCurrencyRequestQuery("");
 
   const { data: adminOverview, isLoading } = useGetAdminOverviewQuery("");
 
@@ -68,23 +68,23 @@ const Page = () => {
       {
         label: "Today’s Sale",
         value: data?.totalTodaySale.toLocaleString(), // Format number with commas
-        isNiger: true,
+        isNiger: true
       },
       {
         label: "Total Sales",
         value: data?.totalSale.toLocaleString(), // Format number with commas
-        isNiger: true,
+        isNiger: true
       },
       {
         label: "Total Orders",
         value: data?.totalOrder.toLocaleString(), // Format number with commas
-        isNiger: false,
+        isNiger: false
       },
       {
         label: "Total Customers",
         value: data?.totalUser.toLocaleString(), // Format number with commas
-        isNiger: false,
-      },
+        isNiger: false
+      }
     ];
   };
 
@@ -101,25 +101,25 @@ const Page = () => {
   const options: ApexOptions = {
     chart: {
       width: 380,
-      type: "pie",
+      type: "pie"
     },
     labels: labels,
     legend: {
-      show: false,
+      show: false
     },
     responsive: [
       {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200,
+            width: 200
           },
           legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
+            position: "bottom"
+          }
+        }
+      }
+    ]
   };
   if (isLoading) {
     return <Loading></Loading>;
