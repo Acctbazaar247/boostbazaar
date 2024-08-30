@@ -1,6 +1,10 @@
 "use client";
 
-import { logOut, selectCurrentUser } from "@/redux/features/auth/authSlice";
+import {
+  logOut,
+  selectCurrentUser,
+  setTheme,
+} from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { Avatar, Drawer } from "antd";
 import Link from "next/link";
@@ -15,6 +19,7 @@ import { RiHistoryFill } from "react-icons/ri";
 import { SiReverbnation } from "react-icons/si";
 import { VscUngroupByRefType } from "react-icons/vsc";
 import Logo from "../ui/Logo";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const NavbarUser = () => {
   const pathname = usePathname();
@@ -60,6 +65,7 @@ const NavbarUser = () => {
 
   const user = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
+  const theme = useAppSelector((state) => state.auth.theme);
 
   return (
     <section className="py-4 bg-primary/5 max-md:px-4">
@@ -91,35 +97,62 @@ const NavbarUser = () => {
           Log out
         </button>
 
-        <button
+        {/* <button
           onClick={() => setMobileMenu(true)}
           className="transition-all ml-auto mr-1 md:hidden flex justify-center items-center border border-black p-1 rounded"
         >
           <FaBars />
-        </button>
+        </button> */}
+        {/* this is for mobile drawaer  */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            className="md:hidden bg-grey hover:bg-black/10 size-7 rounded-full flex items-center justify-center"
+            onClick={() =>
+              dispatch(setTheme(theme === "light" ? "dark" : "light"))
+            }
+          >
+            {theme === "light" ? (
+              <FiMoon className="text-sm" />
+            ) : (
+              <FiSun className="text-sm" />
+            )}
+          </button>
+
+          <button
+            onClick={() => setMobileMenu(true)}
+            className="transition-all ml-auto mr-1 md:hidden flex justify-center items-center border border-black p-1 rounded"
+          >
+            <FaBars />
+          </button>
+        </div>
       </div>
 
       {/* this is for mobile drawaer  */}
       <Drawer
         width={300}
         className="md:hidden"
-        title={<Logo variant="md" />}
+        // title={<Logo variant="md" />}
         placement={"left"}
         closable={false}
         onClose={() => setMobileMenu(false)}
         open={mobileMenu}
       >
-        <div className="space-y-2">
+        <div className="space-y-2 max-sm:pt-14">
+          <Avatar size={"large"} src={user?.profileImg} />
+          <p className="text-lg font-medium capitalize">
+            <span className="text-dark-grey">Hello</span> {user?.name} !
+          </p>
+          <p className="pb-8">{user?.email}</p>
           {navLinks.map((nav) => (
             <Link
               href={nav.path}
               onClick={() => setMobileMenu(false)}
               key={nav.label}
-              className={`flex items-center gap-4 bg-white px-4 py-2 shadow rounded-md ${
-                pathname === nav.path && "text-primary bg-primary/10"
+              className={`flex items-center gap-4 md:bg-white md:px-4 py-1 md:py-2 shadow rounded-md ${
+                pathname === nav.path && "text-primary md:bg-primary/10"
               }`}
             >
-              <span className="bg-primary rounded p-1 text-white">
+              <span className="md:bg-primary rounded p-1 text-[#fff] text-lg">
                 {nav.icon}
               </span>{" "}
               {nav.label}
@@ -128,9 +161,9 @@ const NavbarUser = () => {
 
           <button
             onClick={() => dispatch(logOut())}
-            className="text-red w-full flex items-center gap-4 bg-white px-4 py-2 shadow rounded-md"
+            className="text-red w-full flex items-center gap-4 md:bg-white md:px-4 py-2 shadow rounded-md"
           >
-            <LuLogOut />
+            <LuLogOut className="text-lg" />
             Log out
           </button>
         </div>

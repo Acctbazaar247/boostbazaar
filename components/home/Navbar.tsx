@@ -174,7 +174,7 @@ const Navbar = () => {
             {token && user ? (
               <button
                 onClick={() => dispatch(logOut())}
-                className="flex items-center gap-1 text-red text-lg"
+                className="flex items-center gap-1 text-red md:text-lg"
               >
                 <LuLogOut />
                 Log out
