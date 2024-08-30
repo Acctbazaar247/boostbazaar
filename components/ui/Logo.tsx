@@ -38,7 +38,7 @@ const Logo = ({
             : ""
         }`}
       >
-        oostBazaar
+        cctpanel
       </h2>
     </Link>
   ) : (
@@ -50,7 +50,7 @@ const Logo = ({
         height={32}
         className={`object-cover ${imageClassName}`}
       />
-      <h2 className="text-3xl font-semibold">oostBazar</h2>
+      <h2 className="text-3xl font-semibold">cctpanel</h2>
     </div>
   );
 };

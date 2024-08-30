@@ -8,7 +8,7 @@ const AuthWrapper = ({
   subTitle,
 }: Readonly<{
   children: React.ReactNode;
-  src: string;
+  src: any;
   title: string;
   subTitle: string;
 }>) => {
