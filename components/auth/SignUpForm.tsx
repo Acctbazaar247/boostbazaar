@@ -42,7 +42,7 @@ const SignUpForm = () => {
         dispatch(
           setUser({ user: res.data.user, accessToken: res.data.accessToken })
         );
-        router.push("/verify-user");
+        router.push("/auth/verify-user");
       })
       .catch((res) => {
         toast.error(res?.data?.message);

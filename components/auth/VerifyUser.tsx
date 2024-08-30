@@ -8,13 +8,13 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { TbNumber123 } from "react-icons/tb";
 import {
   useResendEmailMutation,
-  useVerifyUserMutation,
+  useVerifyUserMutation
 } from "@/redux/features/auth/authApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   logOut,
   selectCurrentUser,
-  setVerifiedUser,
+  setVerifiedUser
 } from "@/redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -27,7 +27,7 @@ const VerifyUser = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
 
   const router = useRouter();
@@ -99,6 +99,7 @@ const VerifyUser = () => {
 
       <Link
         href={"/auth/sign-in"}
+        onClick={() => dispatch(logOut())}
         className="text-dark-grey text-center flex items-center justify-center gap-1 font-medium"
       >
         <IoArrowBackOutline className="text-lg" /> Back to log in
