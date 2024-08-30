@@ -8,10 +8,14 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { TbNumber123 } from "react-icons/tb";
 import {
   useResendEmailMutation,
-  useVerifyUserMutation
+  useVerifyUserMutation,
 } from "@/redux/features/auth/authApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { logOut, selectCurrentUser } from "@/redux/features/auth/authSlice";
+import {
+  logOut,
+  selectCurrentUser,
+  setVerifiedUser,
+} from "@/redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -23,7 +27,7 @@ const VerifyUser = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FormData>();
 
   const router = useRouter();
@@ -38,6 +42,7 @@ const VerifyUser = () => {
       .then((res) => {
         toast.success(res?.message);
         router.push("/");
+        dispatch(setVerifiedUser(true));
         // dispatch(setUser({ user: { email: data.email } }));
       })
       .catch((res) => {

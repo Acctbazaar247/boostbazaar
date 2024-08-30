@@ -55,11 +55,22 @@ const authSlice = createSlice({
     setOtp: (state, action) => {
       state.otp = action.payload;
     },
+    setVerifiedUser: (state, action) => {
+      state.user = state.user
+        ? { ...state.user, isVerified: action.payload }
+        : state.user;
+    },
   },
 });
 
-export const { setUser, logOut, setUserProfileImage, setOtp, setTheme } =
-  authSlice.actions;
+export const {
+  setUser,
+  logOut,
+  setUserProfileImage,
+  setOtp,
+  setTheme,
+  setVerifiedUser,
+} = authSlice.actions;
 export default authSlice.reducer;
 
 export const useCurrentToken = (state: RootState) => state.auth.accessToken;

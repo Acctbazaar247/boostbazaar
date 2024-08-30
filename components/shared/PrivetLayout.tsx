@@ -21,11 +21,16 @@ const PrivateLayout = ({
 }>) => {
   const { data } = useGetProfileQuery("");
 
+  useEffect(() => {
+    if (data?.profile) {
+      dispatch(setUser({ user: data?.user, accessToken: data.accessToken }));
+    }
+  }, []);
+
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useAppDispatch();
-  // const user = useAppSelector(selectCurrentUser);
-  const user = data?.user;
+  const user = useAppSelector(selectCurrentUser);
   const accessToken = useAppSelector(useCurrentToken);
   const theme = useAppSelector((state) => state.auth.theme);
 
