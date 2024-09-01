@@ -20,14 +20,13 @@ const ForgotPassword = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
     await forgotPassword(data.email)
       .unwrap()
       .then((res) => {

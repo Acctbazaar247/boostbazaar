@@ -71,7 +71,6 @@ const NewOrderForm = () => {
       setNowService(service);
     }
   }, [watch("service")]);
-
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     const submittedData = {
       accountCategory: category,
@@ -79,7 +78,6 @@ const NewOrderForm = () => {
       japServiceId: data.service,
       link: data.link
     };
-    console.log(data);
     await createOrder(submittedData)
       .unwrap()
       .then((res) => {

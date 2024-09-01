@@ -7,30 +7,32 @@ import {
   logOut,
   selectCurrentUser,
   setUser,
-  useCurrentToken,
+  useCurrentToken
 } from "@/redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useGetProfileQuery } from "@/redux/features/dashboard/dashboardApi";
+import Loading from "../ui/Loading";
 
 const PrivateLayout = ({
   children,
-  roles,
+  roles
 }: Readonly<{
   children: React.ReactNode;
   roles?: string[];
 }>) => {
   const { data } = useGetProfileQuery("");
 
-  useEffect(() => {
-    if (data?.profile) {
-      dispatch(setUser({ user: data?.user, accessToken: data.accessToken }));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (data?.profile) {
+  //     dispatch(setUser({ user: data?.user, accessToken: data.accessToken }));
+  //   }
+  // }, []);
 
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
+  const isLoading = useAppSelector((state) => state.auth.isLoading);
   const accessToken = useAppSelector(useCurrentToken);
   const theme = useAppSelector((state) => state.auth.theme);
 
@@ -39,9 +41,11 @@ const PrivateLayout = ({
   }, [theme]);
 
   useEffect(() => {
-    if (user?.isBlocked) {
+    if (isLoading) {
+    } else if (user?.isBlocked) {
       toast.error("Your are blocked", { toastId: 1 });
       router.push("/auth/sign-up");
+
       dispatch(logOut());
     } else if (user && user.id && user?.isVerified === false) {
       toast.error("You are not verified", { toastId: 1 });
@@ -52,13 +56,14 @@ const PrivateLayout = ({
     } else if (user && roles && !roles.includes(user?.role)) {
       const redirectTo = `/auth/sign-in?from=${encodeURIComponent(pathname)}`;
       router.push(redirectTo);
-      dispatch(logOut());
     } else if (!accessToken) {
       const redirectTo = `/auth/sign-in?from=${encodeURIComponent(pathname)}`;
       router.push(redirectTo);
     }
   }, [user, roles, accessToken, pathname, router, dispatch]);
-
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   if (user && !user.isVerified) {
     return null;
   }

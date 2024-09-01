@@ -34,7 +34,6 @@ const FundForm = () => {
       data: { amount: data.amount },
       method: data.method
     };
-    console.log(submittedData);
     await createCurrencyRequest(submittedData)
       .unwrap()
       .then((res) => {

@@ -5,7 +5,7 @@ import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import { useUpdateUserMutation } from "@/redux/features/auth/authApi";
 import {
   selectCurrentUser,
-  setUserProfileImage,
+  setUserProfileImage
 } from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import Image from "next/image";
@@ -48,7 +48,7 @@ const Page = () => {
         "https://acct-media-server.onrender.com/api/v1/uploadImg",
         {
           method: "POST",
-          body: formData,
+          body: formData
         }
       );
 
@@ -57,14 +57,13 @@ const Page = () => {
       }
 
       const data = await response.json();
-      console.log(data);
       if (data.data) {
         dispatch(setUserProfileImage(data.data.url));
         const submittedData = {
           id: user?.id,
           data: {
-            profileImg: data.data.url,
-          },
+            profileImg: data.data.url
+          }
         };
         await updateUser(submittedData)
           .unwrap()
@@ -84,7 +83,7 @@ const Page = () => {
 
     if (file?.size && file.size > maxSizeInBytes) {
       return toast.error("Your file was more than 4 Megabyte!", {
-        toastId: 1,
+        toastId: 1
       });
     }
     if (file) {
@@ -97,7 +96,6 @@ const Page = () => {
       reader.readAsDataURL(file);
     }
   };
-  console.log(profileImage);
   return (
     <AnimationWrapper className="py-12 container">
       <h1 className="heading">Profile</h1>

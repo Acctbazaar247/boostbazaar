@@ -11,30 +11,23 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER,
+  REGISTER
 } from "redux-persist";
 import serviceSlice from "../features/dashboard/serviceSlice";
-
-const persistConfig = {
-  key: "auth",
-  storage,
-};
-
-const persistedAuthSlice = persistReducer(persistConfig, authSlice);
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-    auth: persistedAuthSlice,
-    service: serviceSlice,
+    auth: authSlice,
+    service: serviceSlice
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }).concat(baseApi.middleware),
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      }
+    }).concat(baseApi.middleware)
 });
 
 export type AppDispatch = typeof store.dispatch;

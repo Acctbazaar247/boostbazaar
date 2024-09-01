@@ -7,13 +7,12 @@ const baseQuery = fetchBaseQuery({
   baseUrl: config.baseUrl,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
-    const accessToken = (getState() as RootState).auth.accessToken;
-
+    const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
       headers.set("authorization", accessToken);
     }
     return headers;
-  },
+  }
 });
 
 export const baseApi = createApi({
@@ -21,5 +20,5 @@ export const baseApi = createApi({
   baseQuery: baseQuery,
 
   endpoints: () => ({}),
-  tagTypes: tagTypesList,
+  tagTypes: tagTypesList
 });

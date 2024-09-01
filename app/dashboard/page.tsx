@@ -6,17 +6,18 @@ import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import {
   useGetMainBalanceQuery,
   useGetServicesQuery,
-  useGetSpendHistoryQuery,
+  useGetSpendHistoryQuery
 } from "@/redux/features/dashboard/dashboardApi";
 import {
   setCategory,
-  setService,
+  setService
 } from "@/redux/features/dashboard/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { useEffect } from "react";
 import Marquee from "react-fast-marquee";
+import { FaDollarSign } from "react-icons/fa";
 import { FaNairaSign } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
@@ -26,7 +27,7 @@ const Page = () => {
   const marqueTexts = [
     "We are thrilled to announce to our july customers who purchased our service above ",
     "We are thrilled to announce to our july customers who purchased our service above ",
-    "We are thrilled to announce to our july customers who purchased our service above ",
+    "We are thrilled to announce to our july customers who purchased our service above "
   ];
 
   const { data: balance } = useGetMainBalanceQuery("");
@@ -34,17 +35,15 @@ const Page = () => {
 
   const { services } = useAppSelector((store) => store.service);
   const { data, isSuccess, refetch } = useGetServicesQuery("", {
-    skip: services.length > 0,
+    skip: services.length > 0
   });
 
   useEffect(() => {
     if (data) {
-      console.log("set again");
       dispatch(setService(data?.data));
     }
     if (services?.length === 0) {
       refetch();
-      console.log("refetch now");
     }
   }, [isSuccess, data]);
 
@@ -80,7 +79,7 @@ const Page = () => {
               </Link>
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
-              <FaNairaSign />
+              <FaDollarSign />
               {balance?.data?.amount.toFixed(2)}
             </h1>
           </div>
@@ -100,7 +99,7 @@ const Page = () => {
               </Link>
             </div>
             <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
-              <FaNairaSign />
+              <FaDollarSign />
               {spendData?.data?.spend}
             </h1>
           </div>

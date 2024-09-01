@@ -7,6 +7,7 @@ type TIState = {
   accessToken: string | null;
   otp: number | null;
   theme: string;
+  isLoading: boolean;
 };
 
 const darkThemePreference = () =>
@@ -23,11 +24,12 @@ const initialState: TIState = {
     isVerified: false,
     failedLoginAttempt: 0,
     createAt: new Date(),
-    isBlocked: false,
+    isBlocked: false
   },
+  isLoading: true,
   accessToken: "",
   otp: null,
-  theme: darkThemePreference() ? "dark" : "light",
+  theme: darkThemePreference() ? "dark" : "light"
 };
 
 const authSlice = createSlice({
@@ -39,10 +41,13 @@ const authSlice = createSlice({
 
       state.user = user;
       state.accessToken = accessToken;
+      state.isLoading = false;
+      localStorage.setItem("accessToken", accessToken);
     },
     logOut: (state) => {
       state.accessToken = null;
       state.user = null;
+      localStorage.removeItem("accessToken");
     },
     setUserProfileImage: (state, action) => {
       if (state.user) {
@@ -55,12 +60,16 @@ const authSlice = createSlice({
     setOtp: (state, action) => {
       state.otp = action.payload;
     },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+
     setVerifiedUser: (state, action) => {
       state.user = state.user
         ? { ...state.user, isVerified: action.payload }
         : state.user;
-    },
-  },
+    }
+  }
 });
 
 export const {
@@ -70,6 +79,7 @@ export const {
   setOtp,
   setTheme,
   setVerifiedUser,
+  setLoading
 } = authSlice.actions;
 export default authSlice.reducer;
 
