@@ -35,7 +35,7 @@ export const servicesData = [
   },
   {
     icon: FaXTwitter, // Twitter icon for "X"
-    title: "X"
+    title: "X(twitter)"
   },
   {
     icon: FaTiktok,

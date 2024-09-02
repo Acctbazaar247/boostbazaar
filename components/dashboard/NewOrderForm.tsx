@@ -244,7 +244,10 @@ const NewOrderForm = () => {
                 <div className="size-[30px] bg-primary flex justify-center items-center rounded-full">
                   <FaTelegramPlane className="text-white"></FaTelegramPlane>
                 </div>
-                <a href="mailto:support@acctpanel.com" className="text-primary">
+                <a
+                  href="https://web.telegram.org/k/#@acctpanel1"
+                  className="text-primary"
+                >
                   @acctpanel
                 </a>
               </div>
