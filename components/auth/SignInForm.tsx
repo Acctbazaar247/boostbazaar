@@ -23,7 +23,7 @@ const SignInForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
 
   const router = useRouter();
@@ -45,7 +45,7 @@ const SignInForm = () => {
         }
       })
       .catch((res) => {
-        toast.error(res?.data?.message);
+        toast.error(res?.data?.message || "Something went wrong");
       });
   };
 

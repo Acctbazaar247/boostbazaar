@@ -8,6 +8,7 @@ import { useCurrencyRequestMutation } from "@/redux/features/dashboard/dashboard
 import { toast } from "react-toastify";
 import { redirect, useRouter } from "next/navigation";
 import PaySelection from "../ui/PaySelection";
+import AppInfo from "../ui/AppInfo";
 
 interface FormData {
   amount: number;
@@ -95,6 +96,34 @@ const FundForm = () => {
           label="Confirm"
         />
       </form>
+      <AppInfo>
+        <>
+          <p>
+            <b className="">Funding Your Account via Bank/Card Payment:</b> When
+            funding your account using Bank/Card payment, the amount will be
+            charged in Naira and automatically converted to USD in your account
+            balance after a successful deposit. The Bank and Card feature allows
+            you to fund your account via bank transfer, USSD, Apple Pay, Google
+            Pay, and debit/credit card payments—all in Naira. No additional fees
+            are charged for funding your account.
+            <br />
+            <b className="mt-2 inline-block">
+              Funding Your Account with Cryptocurrencies:
+            </b>{" "}
+            When funding with cryptocurrencies, ensure you copy the exact
+            transaction amount displayed and select the same network that you
+            are sending from. You can fund your account using USDT, Solana, LTC,
+            Tron, BNB, and more. If you encounter any issues with the payment
+            system, please contact us at{" "}
+            <a
+              className="text-primary underline"
+              href="mailto:support@acctpanel.com"
+            >
+              support@acctpanel.com
+            </a>
+          </p>
+        </>
+      </AppInfo>
     </div>
   );
 };

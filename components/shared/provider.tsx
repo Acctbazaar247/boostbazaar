@@ -3,9 +3,10 @@
 import * as React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "@/redux/app/store";
 import AntdTheme from "./AntdTheme";
+import { useAppSelector } from "@/redux/hook";
 
 type TProviders = {
   children: React.ReactNode;
@@ -14,23 +15,7 @@ type TProviders = {
 const Providers = ({ children }: TProviders) => {
   return (
     <Provider store={store}>
-      <AntdTheme>
-        {children}
-        <ToastContainer
-          position="bottom-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          stacked
-          // transition:Bounce
-        />
-      </AntdTheme>
+      <AntdTheme>{children}</AntdTheme>
     </Provider>
   );
 };

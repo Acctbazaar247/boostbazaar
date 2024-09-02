@@ -3,7 +3,7 @@
 import {
   logOut,
   selectCurrentUser,
-  setTheme,
+  setTheme
 } from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { Avatar, Drawer } from "antd";
@@ -29,38 +29,38 @@ const NavbarUser = () => {
     {
       label: "Order",
       icon: <MdAddShoppingCart />,
-      path: "/dashboard",
+      path: "/dashboard"
     },
     {
       label: "Fund",
       icon: <PiCardholderDuotone />,
-      path: "/dashboard/fund",
+      path: "/dashboard/fund"
     },
     {
       label: "History",
       icon: <RiHistoryFill />,
-      path: "/dashboard/history",
+      path: "/dashboard/history"
     },
     {
       label: "Profile",
       icon: <PiUserList />,
-      path: "/dashboard/profile",
+      path: "/dashboard/profile"
     },
     {
       label: "Complain",
       icon: <BiMessageAltEdit />,
-      path: "/dashboard/complain",
+      path: "/dashboard/complain"
     },
     {
       label: "Refer",
       icon: <VscUngroupByRefType />,
-      path: "/dashboard/refer",
+      path: "/dashboard/refer"
     },
     {
       label: "Review",
       icon: <SiReverbnation />,
-      path: "/dashboard/review",
-    },
+      path: "/dashboard/review"
+    }
   ];
 
   const user = useAppSelector(selectCurrentUser);
@@ -75,7 +75,7 @@ const NavbarUser = () => {
           <span>Hello</span>
           <p className="text-lg font-medium capitalize">{user?.name}</p>
         </div>
-        <div className="max-md:hidden flex items-center gap-8 2xl:gap-10">
+        <div className="max-xl:hidden flex items-center gap-8 2xl:gap-10">
           {navLinks.map((nav) => (
             <Link
               href={nav.path}
@@ -91,7 +91,7 @@ const NavbarUser = () => {
         </div>
         <button
           onClick={() => dispatch(logOut())}
-          className="max-md:hidden flex items-center gap-1 text-red text-lg"
+          className="max-xl:hidden flex items-center gap-1 text-red text-lg"
         >
           <LuLogOut />
           Log out
@@ -104,9 +104,9 @@ const NavbarUser = () => {
           <FaBars />
         </button> */}
         {/* this is for mobile drawaer  */}
-        <div className="md:hidden flex items-center gap-3">
+        <div className="xl:hidden flex items-center gap-3">
           <button
-            className="md:hidden bg-grey hover:bg-black/10 size-7 rounded-full flex items-center justify-center"
+            className="xl:hidden bg-grey hover:bg-black/10 size-7 rounded-full flex items-center justify-center"
             onClick={() =>
               dispatch(setTheme(theme === "light" ? "dark" : "light"))
             }
@@ -120,7 +120,7 @@ const NavbarUser = () => {
 
           <button
             onClick={() => setMobileMenu(true)}
-            className="transition-all ml-auto mr-1 md:hidden flex justify-center items-center border border-black p-1 rounded"
+            className="transition-all ml-auto mr-1 xl:hidden flex justify-center items-center border border-black p-1 rounded"
           >
             <FaBars />
           </button>

@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useGetProfileQuery } from "@/redux/features/dashboard/dashboardApi";
 import { logOut, setLoading, setUser } from "@/redux/features/auth/authSlice";
 import Loading from "../ui/Loading";
+import { ToastContainer } from "react-toastify";
 
 type TAntdTheme = {
   children: React.ReactNode;
@@ -73,6 +74,20 @@ const AntdTheme = ({ children }: TAntdTheme) => {
       ) : (
         children
       )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={theme}
+        stacked
+        // transition:Bounce
+      />
     </ConfigProvider>
   );
 };
