@@ -71,8 +71,8 @@ const ComplainForm = () => {
 
       <AppInfo>
         <p>
-          If you encounter any issues with the ticket system or haven't received
-          a response, please reach out to us via email at{" "}
+          If you encounter any issues with the ticket system or haven&apos;t
+          received a response, please reach out to us via email at{" "}
           <a
             className="text-primary underline "
             href="mailto:support@acctpanel.com"
