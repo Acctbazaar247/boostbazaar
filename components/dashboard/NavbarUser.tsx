@@ -75,12 +75,12 @@ const NavbarUser = () => {
           <span>Hello</span>
           <p className="text-lg font-medium capitalize">{user?.name}</p>
         </div>
-        <div className="max-xl:hidden flex items-center gap-8 2xl:gap-10">
+        <div className="max-xl:hidden flex items-center gap-5 2xl:gap-5">
           {navLinks.map((nav) => (
             <Link
               href={nav.path}
               key={nav.label}
-              className={`flex items-center gap-4 bg-white px-4 py-2 shadow rounded-md ${
+              className={`flex items-center gap-4 bg-white px-2 py-1 shadow rounded-md cursor-pointer ${
                 pathname === nav.path && "text-primary bg-primary/10"
               }`}
             >
@@ -104,9 +104,9 @@ const NavbarUser = () => {
           <FaBars />
         </button> */}
         {/* this is for mobile drawaer  */}
-        <div className="xl:hidden flex items-center gap-3">
+        <div className="xl:hiddden flex items-center gap-3">
           <button
-            className="xl:hidden bg-grey hover:bg-black/10 size-7 rounded-full flex items-center justify-center"
+            className="xl:hdidden bg-grey hover:bg-black/10 size-7 rounded-full flex items-center justify-center"
             onClick={() =>
               dispatch(setTheme(theme === "light" ? "dark" : "light"))
             }
