@@ -36,24 +36,24 @@ import s4 from "@/assets/image/s4.png";
 export const bannerData = [
   {
     image: b1,
-    title: "Instagram",
+    title: "Instagram"
   },
   {
     image: b2,
-    title: "Facebook",
+    title: "Facebook"
   },
   {
     image: b3,
-    title: "Linkedin",
+    title: "Linkedin"
   },
   {
     image: b4,
-    title: "Telegram",
+    title: "Telegram"
   },
   {
     image: b5,
-    title: "Youtube",
-  },
+    title: "Youtube"
+  }
 ];
 
 export const avatars = [{ image: ai1 }, { image: ai2 }, { image: ai3 }];
@@ -62,98 +62,98 @@ export const cardData = [
   {
     title: "Create Account",
     text: "Sign up for an account on BoostBazaar in less than a minute.",
-    image: h1,
+    image: h1
   },
   {
     title: "Fund Account",
     text: "Add funds to your account using your local currency or cryptocurrency.",
-    image: h2,
+    image: h2
   },
   {
     title: "Choose a Service",
     text: "Select the boosting service you want our AI to process for you.",
-    image: h3,
+    image: h3
   },
   {
     title: "Input Link",
     text: "Copy and paste the link of the platform,profile or content you want to boost or engage.",
-    image: h4,
+    image: h4
   },
   {
     title: "Work in Progress",
     text: "Sit back and watch as our AI delivers the service within seconds.",
-    image: h5,
+    image: h5
   },
   {
     title: "Complete",
     text: "Once the process is completed, you will receive a notification on your dashboard.",
-    image: h6,
-  },
+    image: h6
+  }
 ];
 
 export const servicesData = [
   {
     image: service1,
-    title: "Facebook",
+    title: "Facebook"
   },
   {
     image: service2,
-    title: "Instagram",
+    title: "Instagram"
   },
   {
     image: service3,
-    title: "Linkedin",
+    title: "Linkedin"
   },
   {
     image: service4,
-    title: "X",
+    title: "X"
   },
   {
     image: service5,
-    title: "Telegram",
+    title: "Telegram"
   },
   {
     image: service6,
-    title: "Youtube",
+    title: "Youtube"
   },
   {
     image: service7,
-    title: "Tiktok",
+    title: "Tiktok"
   },
   {
     image: service8,
-    title: "Shopify",
-  },
+    title: "Shopify"
+  }
 ];
 
 export const contactsData = [
   {
     image: c1,
     title: "About Us",
-    text: "Know about us",
+    text: "Know about us"
   },
   {
     image: c2,
     title: "Contact Us",
-    text: "Have any question?",
+    text: "Have any question?"
   },
   {
     image: c3,
     title: "24 / 7 support",
-    text: "Dedicated support",
-  },
+    text: "Dedicated support"
+  }
 ];
 
 export const navLinks = [
   { label: "Home", path: "#Home" },
   { label: "Services", path: "#Services" },
   { label: "FAQ", path: "#FAQ" },
-  { label: "Contact", path: "#Contact" },
+  { label: "Contact", path: "#Contact" }
 ];
 
 export const socialLinks = [
-  { image: s1, link: "" },
-  { image: s2, link: "" },
-  { image: s3, link: "" },
-  { image: s4, link: "" },
+  { image: s1, link: "https://t.me/acctpanel1" },
+  { image: s2, link: "https://www.facebook.com/acctpanel" },
+  { image: s3, link: "https://x.com/@acctpanel" },
+  { image: s4, link: "https://www.instagram.com/acctpanel" }
 ];

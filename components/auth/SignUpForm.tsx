@@ -39,7 +39,8 @@ const SignUpForm = () => {
 
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    await userSingUp(data)
+    const { accept, ...subData } = data;
+    await userSingUp(subData)
       .unwrap()
       .then((res) => {
         toast.success(res?.message);
