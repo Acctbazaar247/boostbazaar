@@ -185,7 +185,7 @@ const NewOrderForm = () => {
           />
         </form>
       </div>
-      <div className="md:w-[500px] w-full md:min-w-[500px]">
+      <div className="md:w-[400px] w-full md:min-w-[400px]">
         <div className="w-full py-5 bg-primary pl-[30px] pr-[20px]">
           <h2 className="text-xl text-white dark:text-[#fff] light:text-[#fff]">
             NEW ORDER

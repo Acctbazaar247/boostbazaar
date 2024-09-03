@@ -31,6 +31,10 @@ const FundForm = () => {
       toast.error("Please select a payment method below", { toastId: 1 });
       return;
     }
+    if (5 > data.amount) {
+      toast.error("Minimum fun is $5", { toastId: 1 });
+      return;
+    }
     const submittedData = {
       data: { amount: data.amount },
       method: data.method
@@ -116,7 +120,7 @@ const FundForm = () => {
             Tron, BNB, and more. If you encounter any issues with the payment
             system, please contact us at{" "}
             <a
-              className="text-primary underline"
+              className="text-primary underline "
               href="mailto:support@acctpanel.com"
             >
               support@acctpanel.com
