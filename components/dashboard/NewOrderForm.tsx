@@ -139,9 +139,12 @@ const NewOrderForm = () => {
             className="pl-4"
             register={register}
             required
-            placeholder="Enter link"
+            placeholder="Enter Link"
             error={errors.link}
           />
+          <span className="text-sm text-primary inline-block mt-2">
+            https://website.com
+          </span>
           <div>
             <AppFormInput
               name="quantity"
