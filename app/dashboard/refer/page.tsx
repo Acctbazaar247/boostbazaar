@@ -6,7 +6,10 @@ import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
+import telegram from "../../../assets/image/s1.png";
+import facebook from "../../../assets/image/s2.png";
+import x from "../../../assets/image/s3.png";
+import instagram from "../../../assets/image/s4.png";
 const Page = () => {
   const [sendTo, setSendTo] = useState("");
   const [sendInvitation, { isLoading, isSuccess }] =
@@ -63,19 +66,19 @@ const Page = () => {
         <hr className="border-primary/50 my-12" />
         <div className="flex items-center justify-between">
           <button className="flex gap-1 items-center justify-center flex-col">
-            <Image width={40} height={40} src={"/image/copy.png"} alt="image" />
+            <Image width={40} height={40} src={telegram} alt="image" />
             <p className="md:text-lg font-medium">copy</p>
           </button>
           <button className="flex gap-1 items-center justify-center flex-col">
-            <Image width={40} height={40} src={"/image/s2.png"} alt="image" />
+            <Image width={40} height={40} src={facebook} alt="image" />
             <p className="md:text-lg font-medium">Share</p>
           </button>
           <button className="flex gap-1 items-center justify-center flex-col">
-            <Image width={40} height={40} src={"/image/s3.png"} alt="image" />
+            <Image width={40} height={40} src={x} alt="image" />
             <p className="md:text-lg font-medium">Tweet</p>
           </button>
           <button className="flex gap-1 items-center justify-center flex-col">
-            <Image width={40} height={40} src={"/image/s4.png"} alt="image" />
+            <Image width={40} height={40} src={instagram} alt="image" />
             <p className="md:text-lg font-medium">Post</p>
           </button>
         </div>

@@ -11,7 +11,8 @@ import {
   FaGlobe,
   FaTwitch,
   FaStar,
-  FaEllipsisH
+  FaEllipsisH,
+  FaHeart
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
@@ -62,7 +63,7 @@ export const servicesData = [
     title: "Website"
   },
   {
-    icon: FcLike, // "Likee" using a generic icon
+    icon: FaHeart, // "Likee" using a generic icon
     title: "Likee"
   },
   {
