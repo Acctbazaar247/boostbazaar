@@ -31,7 +31,7 @@ const AppFormSelect = ({
   defaultValue,
   required,
   handleChange,
-  className,
+  className
 }: SelectFieldProps) => {
   return (
     <Controller
@@ -40,7 +40,7 @@ const AppFormSelect = ({
       rules={
         required
           ? {
-              required: `${name} field is required`,
+              required: `${name} field is required`
             }
           : undefined
       }
@@ -49,7 +49,7 @@ const AppFormSelect = ({
         <div className="w-full">
           {label && (
             <label
-              className="text-lg font-light pb-2 text-dark-grey"
+              className="text-lg font-light break-words  pb-2 text-dark-grey"
               htmlFor={name}
             >
               {label}
@@ -59,7 +59,7 @@ const AppFormSelect = ({
             onChange={handleChange ? handleChange : onChange}
             size={size}
             popupClassName="capitalize"
-            className={`${className ? className : ""} text-red`}
+            className={`${className ? className : ""}  text-red`}
             options={options}
             value={value ? value : renderValue}
             style={{ width: "100%" }}

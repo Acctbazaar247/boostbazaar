@@ -95,7 +95,7 @@ const NewOrderForm = () => {
       id="new-order-form"
       className="py-10 md:py-20 flex flex-col  lg:flex-row gap-[30px] "
     >
-      <div className="w-full">
+      <div className="w-full max-w-[900px]">
         <h1 className="heading pb-4">New Order</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -122,7 +122,11 @@ const NewOrderForm = () => {
             required
             placeholder="Enter service"
             options={selectServices.map((service) => ({
-              label: service.name,
+              label: (
+                <p className=" whitespace-pre-line w-[290px]  md:w-[400px] text-[12px] md:text-[14px] lg:text-[18px]  lg:w-[700px] leading-[19px]  ">
+                  {service.name}
+                </p>
+              ),
               value: service.service
             }))}
             control={control}
@@ -241,10 +245,7 @@ const NewOrderForm = () => {
                 <div className="size-[30px] bg-primary flex justify-center items-center rounded-full">
                   <FaTelegramPlane className="text-white"></FaTelegramPlane>
                 </div>
-                <a
-                  href="https://web.telegram.org/k/#@acctpanel1"
-                  className="text-primary"
-                >
+                <a href="https://t.me/acctpanel" className="text-primary">
                   @acctpanel
                 </a>
               </div>

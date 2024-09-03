@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hook";
 import { setUser } from "@/redux/features/auth/authSlice";
+import { Checkbox } from "antd";
 
 interface FormData {
   name: string;
@@ -75,11 +76,10 @@ const SignInForm = () => {
         error={errors.password}
       />
       <div className="flex gap-2 pb-8 pt-4">
-        <input
+        <Checkbox
           type="checkbox"
-          name="checkbox"
-          id=""
-          className="border-dark-grey h-fit mt-1 outline-none"
+          // {...register("accept", { required: true })}
+          className="custom-checkbox"
         />
         <p className="text-dark-grey font-light">Keep me logged in</p>
       </div>
