@@ -156,7 +156,7 @@ const NewOrderForm = () => {
               error={errors.quantity}
             />
             {nowService?.min && (
-              <div className="flex items-center gap-2 text-dark-grey font-normal]">
+              <div className="flex items-center text-sm mt-2 gap-2 text-dark-grey font-normal]">
                 <span>Minimum Quantity: {nowService.min}</span>
                 <span>Maximum Quantity: {nowService.max}</span>
               </div>
