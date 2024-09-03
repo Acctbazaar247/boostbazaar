@@ -189,13 +189,13 @@ const NewOrderForm = () => {
           />
         </form>
       </div>
-      <div className="md:w-[400px] w-full md:min-w-[400px]">
+      <div className="md:w-[400px] md:mt-[60px] w-full md:min-w-[400px]">
         <div className="w-full py-5 bg-primary pl-[30px] pr-[20px]">
           <h2 className="text-xl text-white dark:text-[#fff] light:text-[#fff]">
             NEW ORDER INFORMATION
           </h2>
         </div>
-        <div className="text-[14px]  dark:bg-slate-900 light:bg-slate-100 ">
+        <div className="text-[13px]  dark:bg-slate-900 light:bg-slate-100 ">
           <div className="pl-[30px] pt-4 pr-[20px]  pb-4 border-b border-slate-300">
             <h3 className="text-primary font-bold">
               Selecting Categories Not Listed
