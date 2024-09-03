@@ -13,12 +13,13 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { setUser, useCurrentToken } from "@/redux/features/auth/authSlice";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Checkbox } from "antd";
 
 interface FormData {
   name: string;
   email: string;
   password: string;
-  accept: string;
+  accept: boolean;
 }
 
 const SignUpForm = () => {
@@ -26,7 +27,8 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
+    setValue
   } = useForm<FormData>();
 
   const token = useAppSelector(useCurrentToken);
@@ -35,7 +37,6 @@ const SignUpForm = () => {
 
   const [userSingUp, { isLoading }] = useSignupUserMutation();
   const accept = watch("accept");
-  console.log("🚀 ~ SignUpForm ~ accept:", !accept);
 
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<FormData> = async (data) => {
@@ -96,10 +97,11 @@ const SignUpForm = () => {
         error={errors.password}
       />
       <div className="flex gap-2 2xl:pb-8 2xl:pt-4">
-        <input
+        <Checkbox
           type="checkbox"
-          {...register("accept", {})}
-          className="border-dark-grey h-fit mt-1 outline-none"
+          onChange={(e) => setValue("accept", e.target.checked)}
+          // {...register("accept", { required: true })}
+          className="custom-checkbox"
         />
         <p className="text-dark-grey font-light">
           By creating an account you agree to the{" "}

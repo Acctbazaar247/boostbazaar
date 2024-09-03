@@ -64,6 +64,13 @@ const AntdTheme = ({ children }: TAntdTheme) => {
           },
           Select: {
             optionSelectedColor: theme === "light" ? "#fff" : "#000"
+          },
+          Checkbox: {
+            colorBgContainer: theme === "light" ? "#fff" : "#fff", // Background color
+            // colorPrimary: theme === "light" ? "#fff" : "#fff", // Checkmark color
+            colorBorder: "#878787", // Border color
+            // colorPrimaryHover: "#878787"
+            colorInfoBorderHover: "red"
           }
         }
       }}

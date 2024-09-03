@@ -197,7 +197,6 @@ const NewOrderForm = () => {
               Selecting Categories Not Listed
             </h3>
             <p>
-              <span className=" ml-3"></span>
               If the category you need isn&#39;t listed among the main
               categories, select &quot;Others&quot; and review the service menu
               below. The service you&#39;re looking for will be listed under
@@ -207,7 +206,6 @@ const NewOrderForm = () => {
           <div className="pl-[30px] pt-4 pr-[20px]  pb-4 border-b border-slate-300">
             <h3 className="text-primary font-bold">Entering Links Correctly</h3>
             <p>
-              <span className=" ml-3"></span>
               When entering the link for the service to be delivered to, ensure
               you include &quot;<span className="text-primary">https://</span>
               &quot; before typing the rest of the URL. For example, if
@@ -225,7 +223,6 @@ const NewOrderForm = () => {
           <div className="pl-[30px] pt-4 pr-[20px]  pb-4 ">
             <h3 className="text-primary font-bold">Checking Quantity Range</h3>
             <p>
-              <span className=" ml-3"></span>
               Always verify the quantity range; each service has a different
               minimum and maximum quantity. Ensure your quantity falls within
               the specified range, which you&apos;ll see written below the
