@@ -1,12 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, Spin } from "antd";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useGetProfileQuery } from "@/redux/features/dashboard/dashboardApi";
 import { logOut, setLoading, setUser } from "@/redux/features/auth/authSlice";
 import Loading from "../ui/Loading";
 import { ToastContainer } from "react-toastify";
+import { LoadingOutlined } from "@ant-design/icons";
 
 type TAntdTheme = {
   children: React.ReactNode;
@@ -68,8 +69,17 @@ const AntdTheme = ({ children }: TAntdTheme) => {
       }}
     >
       {isLoading ? (
-        <div>
-          <Loading></Loading>
+        <div className="h-screen flex justify-center items-center">
+          {/* <Loading></Loading> */}
+          <Spin
+            indicator={
+              <LoadingOutlined
+                style={{ color: "#5D5FDF", fontSize: 48 }}
+                spin
+              />
+            }
+            size="large"
+          />
         </div>
       ) : (
         children
