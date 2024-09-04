@@ -17,6 +17,7 @@ type SelectFieldProps = {
   className?: string;
   defaultValue?: SelectOptions;
   handleChange?: (el: string) => void;
+  listHeight?: number;
   control: Control<any>;
 };
 
@@ -31,7 +32,8 @@ const AppFormSelect = ({
   defaultValue,
   required,
   handleChange,
-  className
+  className,
+  listHeight
 }: SelectFieldProps) => {
   return (
     <Controller
@@ -58,6 +60,7 @@ const AppFormSelect = ({
           <Select
             onChange={handleChange ? handleChange : onChange}
             size={size}
+            listHeight={listHeight}
             popupClassName="capitalize"
             className={`${className ? className : ""}  text-red`}
             options={options}

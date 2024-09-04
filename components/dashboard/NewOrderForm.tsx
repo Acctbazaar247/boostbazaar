@@ -119,12 +119,13 @@ const NewOrderForm = () => {
             name="service"
             label="Service"
             className=""
+            listHeight={window.innerHeight - 20}
             required
             placeholder="Enter service"
             options={selectServices.map((service) => ({
               label: (
                 <p className=" whitespace-pre-line w-[290px]  md:w-[400px] text-[12px] md:text-[14px] lg:text-[18px]  lg:w-[700px] leading-[19px]  ">
-                  {service.name}
+                  {service.service}-{service.name}
                 </p>
               ),
               value: service.service

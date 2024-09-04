@@ -23,16 +23,29 @@ type PersonalInfo = {
   profileImg?: string;
 };
 
-export type TUser = {
-  _id: string;
-  personalInfo: PersonalInfo;
-  socialLinks: TSocialLinks;
-  accountInfo: AccountInfo;
-  googleAuth: boolean;
-  blogs: string[];
-  joinedAt?: string;
-};
+export interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: UserRole;
+  phoneNumber?: string;
+  address?: string;
+  isVerified?: Boolean;
+  isBlocked?: Boolean;
+  shouldSendEmail?: Boolean;
+  profileImg: string | null;
+  updatedAt: string;
+  createdAt: string;
+  Currency?: {
+    amount: number;
+  };
+}
 
+export enum UserRole {
+  User = "user",
+  Admin = "admin"
+}
 export type TTokenUser = {
   email: string;
   name: string;
