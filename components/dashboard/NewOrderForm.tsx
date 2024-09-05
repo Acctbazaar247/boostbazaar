@@ -124,7 +124,7 @@ const NewOrderForm = () => {
             placeholder="Enter service"
             options={selectServices.map((service) => ({
               label: (
-                <p className=" whitespace-pre-line w-[290px]  md:w-[400px] text-[12px] md:text-[14px] lg:text-[18px]  lg:w-[700px] leading-[19px]  ">
+                <p className=" whitespace-pre-line w-[290px]  md:w-[400px] text-[12px] md:text-[14px] lg:text-[18px] border-b border-gray-600 pb-3  lg:w-[700px] leading-[19px]  ">
                   {service.service}-{service.name}
                 </p>
               ),
