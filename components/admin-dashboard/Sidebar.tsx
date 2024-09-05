@@ -4,7 +4,7 @@ import { LuLogOut, LuUsers } from "react-icons/lu";
 import {
   IoHomeOutline,
   IoSettingsOutline,
-  IoTicketOutline,
+  IoTicketOutline
 } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { TbUserShield } from "react-icons/tb";
@@ -13,6 +13,8 @@ import { useAppDispatch } from "@/redux/hook";
 import { logOut } from "@/redux/features/auth/authSlice";
 import { cn } from "@/utils/cn";
 import { usePathname } from "next/navigation";
+import { FaWallet } from "react-icons/fa";
+import { CiWallet } from "react-icons/ci";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch();
@@ -24,9 +26,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoHomeOutline />,
           label: "Dashboard",
-          path: "/admin-dashboard",
-        },
-      ],
+          path: "/admin-dashboard"
+        }
+      ]
     },
     {
       label: "SUPPORT",
@@ -34,7 +36,12 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoTicketOutline />,
           label: "Tickets",
-          path: "/admin-dashboard/tickets",
+          path: "/admin-dashboard/tickets"
+        },
+        {
+          icon: <CiWallet></CiWallet>,
+          label: "Topup",
+          path: "/admin-dashboard/topUpToUser"
         },
         // {
         //   icon: <TbUserShield />,
@@ -44,9 +51,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <LuUsers />,
           label: "Customers",
-          path: "/admin-dashboard/customer",
-        },
-      ],
+          path: "/admin-dashboard/customer"
+        }
+      ]
     },
     {
       label: "SHOP",
@@ -54,9 +61,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <VscBell />,
           label: "Orders",
-          path: "/admin-dashboard/orders",
-        },
-      ],
+          path: "/admin-dashboard/orders"
+        }
+      ]
     },
     {
       label: "",
@@ -64,15 +71,15 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoSettingsOutline />,
           label: "Settings",
-          path: "/admin-dashboard/setting",
+          path: "/admin-dashboard/setting"
         },
         {
           icon: <LuLogOut />,
           label: "Logout",
-          path: "",
-        },
-      ],
-    },
+          path: ""
+        }
+      ]
+    }
   ];
 
   return (
