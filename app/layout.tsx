@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/shared/provider";
-
+import icon from "./favicon.ico";
+import { config } from "@/config";
+import OnDevelopment from "@/components/OnDevelopment/OnDevelopment";
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
@@ -25,7 +27,11 @@ export default function RootLayout({
         <meta name="cryptomus" content="9f53a272" />
       </head>
       <body className={poppins.className}>
-        <Providers>{children}</Providers>
+        {config.onDevelopment ? (
+          <OnDevelopment></OnDevelopment>
+        ) : (
+          <Providers>{children}</Providers>
+        )}
       </body>
     </html>
   );

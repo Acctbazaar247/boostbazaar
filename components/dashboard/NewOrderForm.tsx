@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { useCreateOrderMutation } from "@/redux/features/dashboard/dashboardApi";
 import { toast } from "react-toastify";
 import { FaRegUser, FaTelegramPlane } from "react-icons/fa";
+import { config } from "@/config";
 
 interface FormData {
   category: string;
@@ -59,9 +60,18 @@ const NewOrderForm = () => {
       setSelectServices([]);
     }
   }, [category, services]);
-
   function calculateCharge(quantity: number, ratePerThousand: number): string {
-    return ((quantity / 1000) * (ratePerThousand * 1.1)).toFixed(2);
+    // Get the increase percentage from the environment, defaulting to 10 if not set
+    const increasePercentage = config.increaseRatePercentage;
+
+    // Calculate the increased rate based on the percentage
+    const increasedRate = (increasePercentage / 100) * ratePerThousand;
+    const rate = ratePerThousand + increasedRate;
+
+    const main = (quantity / 1000) * rate;
+    const fake = (quantity / 1000) * ratePerThousand;
+    // Calculate the total charge and return it, rounded to two decimal places
+    return [main.toFixed(3), fake].join("/");
   }
 
   useEffect(() => {
