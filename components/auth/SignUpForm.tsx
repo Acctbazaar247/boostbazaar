@@ -105,11 +105,11 @@ const SignUpForm = () => {
         />
         <p className="text-dark-grey font-light">
           By creating an account you agree to the{" "}
-          <Link href={""} className="text-primary underline underline-offset-2">
+          <Link href="/terms-of-use" className="text-primary underline underline-offset-2">
             terms of use
           </Link>{" "}
           and our{" "}
-          <Link href={""} className="text-primary underline underline-offset-2">
+          <Link href="/privacy-policy" className="text-primary underline underline-offset-2">
             privacy policy
           </Link>
         </p>

@@ -8,8 +8,8 @@ import AnimationWrapper from "../ui/AnimationWrapper";
 const FAQ = () => {
   const faqCards = [
     {
-      title: "What is BoostBazaar?",
-      text: "BoostBazaar is an SMM provider. We promote your brand with our social influence partners, We provide your brand unlimited outreach that helps your brand get the social reacton or engagement you desire.",
+      title: "What is Acctpanel?",
+      text: "Acctpanel is an SMM provider. We promote your brand with our social influence partners, We provide your brand unlimited outreach that helps your brand get the social reacton or engagement you desire.",
     },
     {
       title: "What is SMM?",
