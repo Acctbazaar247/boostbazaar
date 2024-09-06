@@ -95,7 +95,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
-        hideProgressBar={false}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}
@@ -104,6 +104,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
         pauseOnHover
         theme={theme}
         stacked
+
         // transition:Bounce
       />
     </ConfigProvider>
