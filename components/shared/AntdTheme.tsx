@@ -42,7 +42,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
       }
       dispatch(setLoading(false));
     }
-  }, [data, isError, isLoading, error]);
+  }, [data, isError, isLoading, error, isSuccess, dispatch]);
 
   const lightTheme = {
     colorBgBase: "#fff"

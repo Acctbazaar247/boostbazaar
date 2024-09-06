@@ -60,7 +60,7 @@ const PrivateLayout = ({
       const redirectTo = `/auth/sign-in?from=${encodeURIComponent(pathname)}`;
       router.push(redirectTo);
     }
-  }, [user, roles, accessToken, pathname, router, dispatch]);
+  }, [user, roles, accessToken, pathname, router, dispatch, isLoading]);
   if (isLoading) {
     return <Loading></Loading>;
   }
