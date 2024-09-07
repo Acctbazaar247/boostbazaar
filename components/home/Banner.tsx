@@ -76,12 +76,12 @@ const Banner = () => {
                   width={405}
                   className="max-2xl:size-10"
                   alt="banner image"
+                  sizes="100vw"
                   height={405}
                   unoptimized={true}
                   quality={100}
                 />
               ))}
-
               <Link
                 className="flex items-center justify-center text-center max-2xl:size-10 2xl:size-[45px] text-xs font-medium text-white bg-[#D4D4D8] border-2 border-white rounded-full hover:bg-gray-600"
                 href="#"

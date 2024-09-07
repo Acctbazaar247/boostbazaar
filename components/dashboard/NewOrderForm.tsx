@@ -69,9 +69,9 @@ const NewOrderForm = () => {
     const rate = ratePerThousand + increasedRate;
 
     const main = (quantity / 1000) * rate;
-    const fake = (quantity / 1000) * ratePerThousand;
+    // const fake = (quantity / 1000) * ratePerThousand;
     // Calculate the total charge and return it, rounded to two decimal places
-    return [main.toFixed(3), fake].join("/");
+    return [main.toFixed(3)].join("/");
   }
 
   useEffect(() => {
