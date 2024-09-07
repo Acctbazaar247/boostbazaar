@@ -4,6 +4,16 @@
 
 @import "aos/dist/aos.css";
 
+@layer utilities {
+  .ant-select.service {
+    @apply !h-[80px];
+    /* display: none ; */
+  }
+  .service .ant-select-selection-item > p {
+    @apply !border-none;
+    /* display: none; */
+  }
+}
 @layer components {
   .center {
     @apply flex items-center justify-center text-center;

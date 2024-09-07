@@ -63,7 +63,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
             headerBg: theme === "light" ? "#fff" : "#000"
           },
           Select: {
-            optionSelectedColor: theme === "light" ? "#fff" : "#000",
+            optionSelectedColor: theme === "light" ? "#000" : "#000",
             colorTextPlaceholder: "#999"
           },
           Checkbox: {

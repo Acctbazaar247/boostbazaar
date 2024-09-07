@@ -25,9 +25,9 @@ const Page = () => {
   const theme = useAppSelector((state) => state.auth.theme);
   const dispatch = useAppDispatch();
   const marqueTexts = [
-    "We are thrilled to announce to our july customers who purchased our service above ",
-    "We are thrilled to announce to our july customers who purchased our service above ",
-    "We are thrilled to announce to our july customers who purchased our service above "
+    "Boost your influence, amplify your reach—AcctPanel, powered by AI.",
+    "Boost your influence, amplify your reach—AcctPanel, powered by AI. ",
+    "Boost your influence, amplify your reach—AcctPanel, powered by AI."
   ];
 
   const { data: balance } = useGetMainBalanceQuery("");

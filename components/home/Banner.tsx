@@ -71,12 +71,14 @@ const Banner = () => {
             <div className="flex -space-x-4 rtl:space-x-reverse">
               {avatars.map((av, i) => (
                 <Image
-                  key={i}
-                  className="max-2xl:size-10"
                   src={av.image}
+                  key={i}
+                  width={405}
+                  className="max-2xl:size-10"
                   alt="banner image"
-                  width={45}
-                  height={45}
+                  height={405}
+                  unoptimized={true}
+                  quality={100}
                 />
               ))}
 
