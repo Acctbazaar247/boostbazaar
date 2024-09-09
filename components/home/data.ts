@@ -61,7 +61,7 @@ export const avatars = [{ image: ai1 }, { image: ai2 }, { image: ai3 }];
 export const cardData = [
   {
     title: "Create Account",
-    text: "Sign up for an account on BoostBazaar in less than a minute.",
+    text: "Sign up for an account on Acctpanel in less than a minute.",
     image: h1
   },
   {
