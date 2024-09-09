@@ -17,7 +17,7 @@ const FAQ = () => {
     },
     {
       title: "What payment options do you accept?",
-      text: "At BoostBazzar our goal is to run seamless and easy means of payment options which includes Debit/Credit cards or cryptocurrency payments such as BTC, USDT etc.",
+      text: "At Acctpanel our goal is to run seamless and easy means of payment options which includes Debit/Credit cards or cryptocurrency payments such as BTC, USDT etc.",
     },
     {
       title: "What social media platform can i promote?",

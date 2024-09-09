@@ -19,7 +19,7 @@ const WhyChoose = () => {
       >
         <h1 className="heading">Why Choose Us?</h1>
         <p className="text-dark-grey text-xl 2xl:text-2xl font-light leading-8">
-          BoostBazaar is an innovative platform designed to offer a
+          Acctpanel is an innovative platform designed to offer a
           comprehensive suite of Social Media Services. Users can conveniently
           access and purchase various services, including social media
           followers, likes, views, watch time, and comments, all in one place.
