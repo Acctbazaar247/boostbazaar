@@ -9,18 +9,18 @@ const HomeLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  useEffect(() => {
-    const tawk = document.createElement("script");
-    tawk.async = true;
-    tawk.src = `https://embed.tawk.to/${config.tawkId}/DEFAULT`;
-    tawk.charset = "UTF-8";
-    tawk.setAttribute("crossorigin", "*");
-    document.body.appendChild(tawk);
-    console.log(tawk.src);
-    return () => {
-      document.body.removeChild(tawk);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const tawk = document.createElement("script");
+  //   tawk.async = true;
+  //   tawk.src = `https://embed.tawk.to/${config.tawkId}/DEFAULT`;
+  //   tawk.charset = "UTF-8";
+  //   tawk.setAttribute("crossorigin", "*");
+  //   document.body.appendChild(tawk);
+  //   console.log(tawk.src);
+  //   return () => {
+  //     document.body.removeChild(tawk);
+  //   };
+  // }, []);
   return (
     <section className="overflow-hidden">
       <Navbar />
