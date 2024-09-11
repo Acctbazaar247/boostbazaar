@@ -91,6 +91,11 @@ const Page = () => {
         return <p className="text-center">{id?.toFixed(2)}</p>;
       },
     },
+    {
+      title: "Status",
+      dataIndex: "status",
+      className: "min-w-[120px] md:min-w-[145px] text-center",
+    },
     // {
     //   title: "Status",
     //   dataIndex: "status",
