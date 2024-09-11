@@ -12,7 +12,7 @@ import {
   FaTwitch,
   FaStar,
   FaEllipsisH,
-  FaHeart
+  FaHeart,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
@@ -20,111 +20,111 @@ import { FcLike } from "react-icons/fc";
 export const servicesData = [
   {
     icon: FaFacebook,
-    title: "Facebook"
+    title: "Facebook",
   },
   {
     icon: FaInstagram,
-    title: "Instagram"
+    title: "Instagram",
   },
   {
     icon: FaTelegram,
-    title: "Telegram"
+    title: "Telegram",
   },
   {
     icon: FaYoutube,
-    title: "Youtube"
+    title: "Youtube",
   },
   {
     icon: FaXTwitter, // Twitter icon for "X"
-    title: "X(twitter)"
+    title: "X (twitter)",
   },
   {
     icon: FaTiktok,
-    title: "Tiktok"
+    title: "Tiktok",
   },
   {
     icon: FaLinkedin,
-    title: "LinkedIn"
+    title: "LinkedIn",
   },
   {
     icon: FaSpotify,
-    title: "Spotify"
+    title: "Spotify",
   },
   {
     icon: FaSnapchatGhost,
-    title: "Snapchat"
+    title: "Snapchat",
   },
   {
     icon: FaGoogle,
-    title: "Google"
+    title: "Google",
   },
   {
     icon: FaGlobe, // General web icon for "Website"
-    title: "Website"
+    title: "Website",
   },
   {
     icon: FaHeart, // "Likee" using a generic icon
-    title: "Likee"
+    title: "Likee",
   },
   {
     icon: FaTwitch,
-    title: "Twitch"
+    title: "Twitch",
   },
   {
     icon: FaStar, // "Reviews" using a star icon
-    title: "Reviews"
+    title: "Reviews",
   },
   {
     icon: FaEllipsisH, // "Others" using a generic icon
-    title: "Others"
-  }
+    title: "Others",
+  },
 ];
 
 export const servicesCategory = [
   {
-    name: "Facebook"
+    name: "Facebook",
   },
   {
-    name: "Instagram"
+    name: "Instagram",
   },
   {
-    name: "Telegram"
+    name: "Telegram",
   },
   {
-    name: "Youtube"
+    name: "Youtube",
   },
   {
-    name: "X"
+    name: "X",
   },
   {
-    name: "TikTok"
+    name: "TikTok",
   },
   {
-    name: "LinkedIn"
+    name: "LinkedIn",
   },
 
   {
-    name: "Spotify"
+    name: "Spotify",
   },
   {
-    name: "Snapchat"
+    name: "Snapchat",
   },
   {
-    name: "Google"
+    name: "Google",
   },
   {
-    name: "Website"
+    name: "Website",
   },
   {
-    name: "Likee"
+    name: "Likee",
   },
   {
-    name: "Twitch"
+    name: "Twitch",
   },
   {
-    name: "Reviews"
+    name: "Reviews",
   },
   {
-    name: "Others"
-  }
+    name: "Others",
+  },
 ];

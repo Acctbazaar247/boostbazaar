@@ -10,7 +10,7 @@ import { categorizeServices } from "@/utils/categorizedArray";
 import AppFormSelect from "../ui/AppFormSelect";
 import {
   setCategorizedService,
-  setCategory
+  setCategory,
 } from "@/redux/features/dashboard/serviceSlice";
 import { useEffect, useState } from "react";
 import { useCreateOrderMutation } from "@/redux/features/dashboard/dashboardApi";
@@ -34,7 +34,7 @@ const NewOrderForm = () => {
     control,
     watch,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FormData>();
 
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -87,7 +87,7 @@ const NewOrderForm = () => {
       accountCategory: category,
       quantity: data.quantity,
       japServiceId: data.service,
-      link: data.link
+      link: data.link,
     };
     await createOrder(submittedData)
       .unwrap()
@@ -120,7 +120,7 @@ const NewOrderForm = () => {
             placeholder="Enter category"
             options={servicesCategory.map((cat) => ({
               value: cat.name,
-              label: cat.name
+              label: cat.name === "X" ? "X (twitter)" : cat.name,
             }))}
             control={control}
           />
@@ -138,7 +138,7 @@ const NewOrderForm = () => {
                   {service.service}-{service.name}
                 </p>
               ),
-              value: service.service
+              value: service.service,
             }))}
             control={control}
           />

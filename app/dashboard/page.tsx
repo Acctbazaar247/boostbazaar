@@ -6,11 +6,11 @@ import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import {
   useGetMainBalanceQuery,
   useGetServicesQuery,
-  useGetSpendHistoryQuery
+  useGetSpendHistoryQuery,
 } from "@/redux/features/dashboard/dashboardApi";
 import {
   setCategory,
-  setService
+  setService,
 } from "@/redux/features/dashboard/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { cn } from "@/utils/cn";
@@ -27,7 +27,7 @@ const Page = () => {
   const marqueTexts = [
     "Boost your influence, amplify your reach—AcctPanel, powered by AI.",
     "Boost your influence, amplify your reach—AcctPanel, powered by AI. ",
-    "Boost your influence, amplify your reach—AcctPanel, powered by AI."
+    "Boost your influence, amplify your reach—AcctPanel, powered by AI.",
   ];
 
   const { data: balance } = useGetMainBalanceQuery("");
@@ -35,7 +35,7 @@ const Page = () => {
 
   const { services } = useAppSelector((store) => store.service);
   const { data, isSuccess, refetch } = useGetServicesQuery("", {
-    skip: services.length > 0
+    skip: services.length > 0,
   });
 
   useEffect(() => {
@@ -110,7 +110,13 @@ const Page = () => {
             <Link
               key={i}
               href={"/dashboard/#new-order-form"}
-              onClick={() => dispatch(setCategory(service.title))}
+              onClick={() =>
+                dispatch(
+                  setCategory(
+                    service.title === "X(twitter)" ? "X" : service.title
+                  )
+                )
+              }
               className="bg-white text-dark-grey flex justify-center p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
             >
               {/* <div className="relative">
