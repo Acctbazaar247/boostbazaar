@@ -93,7 +93,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
         children
       )}
       <ToastContainer
-        position="bottom-right"
+        position="bottom-left"
         autoClose={3000}
         hideProgressBar={true}
         newestOnTop={false}
