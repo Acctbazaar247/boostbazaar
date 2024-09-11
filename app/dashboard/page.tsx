@@ -113,7 +113,7 @@ const Page = () => {
               onClick={() =>
                 dispatch(
                   setCategory(
-                    service.title === "X(twitter)" ? "X" : service.title
+                    service.title === "X (twitter)" ? "X" : service.title
                   )
                 )
               }
