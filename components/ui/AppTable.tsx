@@ -29,7 +29,7 @@ const AppTable = ({
           loadingComponent={loadingComponent || <AppTableSkeleton />}
           queryData={infoQuery}
           showData={(data) => {
-            // console.log(data.data);
+            // console.log(data);
             return (
               <Table
                 showHeader={header}

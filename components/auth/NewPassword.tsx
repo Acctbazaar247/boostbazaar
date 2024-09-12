@@ -42,7 +42,7 @@ const NewPassword = () => {
     await changePassword(submittedData)
       .unwrap()
       .then((res) => {
-        console.log("🚀 ~ .then ~ res:", res);
+        // console.log("🚀 ~ .then ~ res:", res);
         toast.success(res?.message);
         // dispatch(setOtp({ otp: res.code }));
         router.push("/auth/sign-in");

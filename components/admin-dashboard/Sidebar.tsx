@@ -4,7 +4,7 @@ import { LuLogOut, LuUsers } from "react-icons/lu";
 import {
   IoHomeOutline,
   IoSettingsOutline,
-  IoTicketOutline
+  IoTicketOutline,
 } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { TbUserShield } from "react-icons/tb";
@@ -26,9 +26,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoHomeOutline />,
           label: "Dashboard",
-          path: "/admin-dashboard"
-        }
-      ]
+          path: "/admin-dashboard",
+        },
+      ],
     },
     {
       label: "SUPPORT",
@@ -36,24 +36,24 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoTicketOutline />,
           label: "Tickets",
-          path: "/admin-dashboard/tickets"
+          path: "/admin-dashboard/tickets",
         },
         {
           icon: <CiWallet></CiWallet>,
-          label: "Topup",
-          path: "/admin-dashboard/topUpToUser"
+          label: "Transactions",
+          path: "/admin-dashboard/transactions",
         },
-        // {
-        //   icon: <TbUserShield />,
-        //   label: "Agents",
-        //   path: "/admin-dashboard/agents",
-        // },
+        {
+          icon: <TbUserShield />,
+          label: "Agents",
+          path: "/admin-dashboard/agents",
+        },
         {
           icon: <LuUsers />,
           label: "Customers",
-          path: "/admin-dashboard/customer"
-        }
-      ]
+          path: "/admin-dashboard/customer",
+        },
+      ],
     },
     {
       label: "SHOP",
@@ -61,9 +61,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <VscBell />,
           label: "Orders",
-          path: "/admin-dashboard/orders"
-        }
-      ]
+          path: "/admin-dashboard/orders",
+        },
+      ],
     },
     {
       label: "",
@@ -71,21 +71,21 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoSettingsOutline />,
           label: "Settings",
-          path: "/admin-dashboard/setting"
+          path: "/admin-dashboard/setting",
         },
         {
           icon: <LuLogOut />,
           label: "Logout",
-          path: ""
-        }
-      ]
-    }
+          path: "",
+        },
+      ],
+    },
   ];
 
   return (
     <div
       className={cn(
-        "md:w-72 shadow-lg md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8",
+        "md:w-60 shadow-lg md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8",
         className
       )}
     >

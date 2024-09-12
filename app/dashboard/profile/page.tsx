@@ -57,7 +57,7 @@ const Page = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       if (data.data) {
         dispatch(setUserProfileImage(data.data.url));
         const submittedData = {
@@ -97,7 +97,7 @@ const Page = () => {
       reader.readAsDataURL(file);
     }
   };
-  console.log(profileImage);
+  // console.log(profileImage);
   return (
     <AnimationWrapper className="py-12 container">
       <h1 className="heading">Profile</h1>
