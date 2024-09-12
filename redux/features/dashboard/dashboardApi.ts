@@ -61,6 +61,13 @@ const userDashboardApi = baseApi.injectEndpoints({
       }),
       // providesTags: [tagTypes.dashboard],
     }),
+    getTableCurrencyRequest: builder.query({
+      query: (query) => ({
+        url: `/currency-request${query ? `?${query}` : ""}`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
     getMainBalance: builder.query({
       query: () => ({
         url: `/currency/single-user-currency`,
@@ -93,6 +100,13 @@ const userDashboardApi = baseApi.injectEndpoints({
     getOrders: builder.query({
       query: (id) => ({
         url: `/order${id ? `?orderById=${id}` : ""}`,
+        method: "GET",
+      }),
+      // providesTags: [tagTypes.dashboard],
+    }),
+    getableOrders: builder.query({
+      query: (query) => ({
+        url: `/order${query ? `?${query}` : ""}`,
         method: "GET",
       }),
       // providesTags: [tagTypes.dashboard],
@@ -139,4 +153,6 @@ export const {
   useGetOrdersQuery,
   useUpdateTicketMutation,
   useGetProfileQuery,
+  useGetTableCurrencyRequestQuery,
+  useGetableOrdersQuery,
 } = userDashboardApi;

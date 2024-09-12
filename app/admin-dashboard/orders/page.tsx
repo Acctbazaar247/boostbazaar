@@ -1,17 +1,31 @@
 "use client";
 
 import AppTable from "@/components/ui/AppTable";
-import { useGetOrdersQuery } from "@/redux/features/dashboard/dashboardApi";
-import { useState } from "react";
+import { useGetableOrdersQuery } from "@/redux/features/dashboard/dashboardApi";
+import { useMemo, useState } from "react";
 
 const Page = () => {
   const [page, setPage] = useState(1);
+
+  const queryString = useMemo(() => {
+    const info = {
+      page,
+    };
+    const queryString = Object.keys(info).reduce((pre, key: string) => {
+      const value = info[key as keyof typeof info];
+      if (value) {
+        return pre + `${Boolean(pre.length) ? "&" : ""}${key}=${value}`;
+      }
+      return pre;
+    }, "");
+    return queryString;
+  }, [page]);
 
   const columns = [
     {
       title: "jap OrderId",
       dataIndex: "japOrderId",
-      className: "min-w-[150px]",
+      className: "min-w-[120px]",
     },
     {
       title: "orderBy",
@@ -23,10 +37,10 @@ const Page = () => {
             <img
               src={orderBy?.profileImg}
               alt=""
-              className="rounded-full w-10 h-10"
+              className="rounded-full size-8"
             />
             <div className="text-dark-grey">
-              <h3 className=" text-lg">{orderBy?.name}</h3>
+              <h3 className="">{orderBy?.name}</h3>
             </div>
           </div>
         );
@@ -35,22 +49,22 @@ const Page = () => {
     {
       title: "Charge",
       dataIndex: "charge",
-      className: "min-w-[150px]",
+      className: "min-w-[90px]",
     },
     {
       title: "Quantity",
       dataIndex: "quantity",
-      className: "min-w-[150px]",
+      className: "min-w-[90px]",
     },
     {
       title: "Link",
       dataIndex: "link",
-      className: "min-w-[150px]",
+      className: "min-w-[100px]",
     },
     {
       title: "Status",
       dataIndex: "status",
-      className: "min-w-[150px]",
+      className: "min-w-[100px]",
     },
     // {
     //   title: "Amount",
@@ -64,7 +78,7 @@ const Page = () => {
     // },
   ];
 
-  const userQuery = useGetOrdersQuery("");
+  const userQuery = useGetableOrdersQuery(queryString);
 
   return (
     <div className="">
