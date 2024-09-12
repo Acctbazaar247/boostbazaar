@@ -5,6 +5,7 @@ import { useGetTableCurrencyRequestQuery } from "@/redux/features/dashboard/dash
 import { cn } from "@/utils/cn";
 import { formatDate } from "@/utils/formateDate";
 import { useMemo, useState } from "react";
+import { FaDollarSign } from "react-icons/fa";
 import { FaNairaSign } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
@@ -13,7 +14,7 @@ const Page = () => {
 
   const queryString = useMemo(() => {
     const info = {
-      page,
+      page
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -43,7 +44,7 @@ const Page = () => {
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Amount",
@@ -51,10 +52,10 @@ const Page = () => {
       className: "min-w-[145px]",
       render: (amount: string) => (
         <div className="pl-4 flex items-center gap-1">
-          <FaNairaSign />
+          <FaDollarSign />
           {amount}
         </div>
-      ),
+      )
     },
     {
       title: "Date",
@@ -64,7 +65,7 @@ const Page = () => {
         <div className="pl-4 flex items-center gap-1">
           {formatDate(createdAt)}
         </div>
-      ),
+      )
     },
     {
       title: "Status",
@@ -88,8 +89,8 @@ const Page = () => {
           />
           {status}
         </p>
-      ),
-    },
+      )
+    }
   ];
 
   const transactionsQuery = useGetTableCurrencyRequestQuery(queryString);

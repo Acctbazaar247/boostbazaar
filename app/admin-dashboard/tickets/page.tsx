@@ -137,7 +137,7 @@ const Page = () => {
                       status === ETickets.sloved && "bg-[#058803]"
                     )}
                   >
-                    {status}
+                    {status === ETickets.sloved ? "solved" : status}
 
                     <IoIosArrowDown />
                   </div>
@@ -151,7 +151,9 @@ const Page = () => {
                           key={stat.status}
                           button={
                             <button className="hover:bg-blue-50 w-full">
-                              {stat.status}
+                              {stat.status === ETickets.sloved
+                                ? "solved"
+                                : stat.status}
                             </button>
                           }
                           cancelButtonTitle="No, Don’t"

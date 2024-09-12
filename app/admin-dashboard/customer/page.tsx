@@ -4,6 +4,7 @@ import AppTable from "@/components/ui/AppTable";
 import { useGetUsersQuery } from "@/redux/features/auth/authApi";
 import { useGetTicketsQuery } from "@/redux/features/dashboard/dashboardApi";
 import { useState } from "react";
+import { FaDollarSign } from "react-icons/fa";
 
 const Page = () => {
   const [page, setPage] = useState(1);
@@ -27,12 +28,12 @@ const Page = () => {
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Role",
       dataIndex: "role",
-      className: "min-w-[150px]",
+      className: "min-w-[150px]"
     },
     {
       title: "Amount",
@@ -40,10 +41,11 @@ const Page = () => {
       className: "min-w-[145px]",
       render: (Currency: any) => (
         <div className="flex items-center gap-1 justify-center">
+          <FaDollarSign></FaDollarSign>
           {Currency?.amount?.toFixed(2)}
         </div>
-      ),
-    },
+      )
+    }
   ];
 
   const userQuery = useGetUsersQuery("");
