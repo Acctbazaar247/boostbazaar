@@ -10,7 +10,7 @@ import { categorizeServices } from "@/utils/categorizedArray";
 import AppFormSelect from "../ui/AppFormSelect";
 import {
   setCategorizedService,
-  setCategory,
+  setCategory
 } from "@/redux/features/dashboard/serviceSlice";
 import { useEffect, useState } from "react";
 import { useCreateOrderMutation } from "@/redux/features/dashboard/dashboardApi";
@@ -34,7 +34,7 @@ const NewOrderForm = () => {
     control,
     watch,
     reset,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormData>();
 
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -45,7 +45,7 @@ const NewOrderForm = () => {
   const { categorizedService, category, services } = useAppSelector(
     (store) => store.service
   );
-
+  console.table(services);
   useEffect(() => {
     dispatch(setCategorizedService(categorizeServices(services)));
 
@@ -60,15 +60,23 @@ const NewOrderForm = () => {
       setSelectServices([]);
     }
   }, [category, services]);
-  function calculateCharge(quantity: number, ratePerThousand: number): string {
+  function calculateCharge(
+    quantity: number,
+    ratePerThousand: number,
+    shouldCalculate1000: boolean
+  ): string {
     // Get the increase percentage from the environment, defaulting to 10 if not set
     const increasePercentage = config.increaseRatePercentage;
 
     // Calculate the increased rate based on the percentage
     const increasedRate = (increasePercentage / 100) * ratePerThousand;
     const rate = ratePerThousand + increasedRate;
-
-    const main = (quantity / 1000) * rate;
+    let main = 0;
+    if (shouldCalculate1000) {
+      main = (quantity / 1000) * rate;
+    } else {
+      main = rate;
+    }
     // const fake = (quantity / 1000) * ratePerThousand;
     // Calculate the total charge and return it, rounded to two decimal places
     return [main.toFixed(3)].join("/");
@@ -87,7 +95,7 @@ const NewOrderForm = () => {
       accountCategory: category,
       quantity: data.quantity,
       japServiceId: data.service,
-      link: data.link,
+      link: data.link
     };
     await createOrder(submittedData)
       .unwrap()
@@ -120,7 +128,7 @@ const NewOrderForm = () => {
             placeholder="Enter category"
             options={servicesCategory.map((cat) => ({
               value: cat.name,
-              label: cat.name === "X" ? "X (twitter)" : cat.name,
+              label: cat.name === "X" ? "X (twitter)" : cat.name
             }))}
             control={control}
           />
@@ -138,7 +146,7 @@ const NewOrderForm = () => {
                   {service.service}-{service.name}
                 </p>
               ),
-              value: service.service,
+              value: service.service
             }))}
             control={control}
           />
@@ -184,7 +192,8 @@ const NewOrderForm = () => {
               nowService && watch("quantity")
                 ? calculateCharge(
                     parseFloat(watch("quantity")),
-                    parseFloat(nowService.rate)
+                    parseFloat(nowService.rate),
+                    Boolean(nowService.min !== "1" && nowService.max !== "1")
                   )
                 : 0
             }
