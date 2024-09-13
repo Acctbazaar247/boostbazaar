@@ -10,7 +10,7 @@ const Page = () => {
 
   const queryString = useMemo(() => {
     const info = {
-      page,
+      page
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -26,7 +26,12 @@ const Page = () => {
     {
       title: "jap OrderId",
       dataIndex: "japOrderId",
-      className: "min-w-[120px]",
+      className: "min-w-[120px]"
+    },
+    {
+      title: "jap Service Id",
+      dataIndex: "japServiceId",
+      className: "min-w-[120px]"
     },
     {
       title: "orderBy",
@@ -48,28 +53,28 @@ const Page = () => {
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Charge",
       dataIndex: "charge",
-      className: "min-w-[90px]",
+      className: "min-w-[90px]"
     },
     {
       title: "Quantity",
       dataIndex: "quantity",
-      className: "min-w-[90px]",
+      className: "min-w-[90px]"
     },
     {
       title: "Link",
       dataIndex: "link",
-      className: "min-w-[100px]",
+      className: "min-w-[100px]"
     },
     {
       title: "Status",
       dataIndex: "status",
-      className: "min-w-[100px]",
-    },
+      className: "min-w-[100px]"
+    }
     // {
     //   title: "Amount",
     //   dataIndex: "Currency",
