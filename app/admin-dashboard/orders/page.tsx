@@ -2,6 +2,7 @@
 
 import AppTable from "@/components/ui/AppTable";
 import { useGetableOrdersQuery } from "@/redux/features/dashboard/dashboardApi";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 const Page = () => {
@@ -30,17 +31,20 @@ const Page = () => {
     {
       title: "orderBy",
       dataIndex: "orderBy",
-      className: "min-w-[150px]",
+      className: "min-w-[180px]",
       render: (orderBy: any, record: any) => {
         return (
           <div className="flex items-center gap-1">
-            <img
+            <Image
               src={orderBy?.profileImg}
               alt=""
+              width={40}
+              height={40}
               className="rounded-full size-8"
             />
             <div className="text-dark-grey">
               <h3 className="">{orderBy?.name}</h3>
+              <h3 className="">{orderBy?.email}</h3>
             </div>
           </div>
         );

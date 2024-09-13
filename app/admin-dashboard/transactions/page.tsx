@@ -4,6 +4,7 @@ import AppTable from "@/components/ui/AppTable";
 import { useGetTableCurrencyRequestQuery } from "@/redux/features/dashboard/dashboardApi";
 import { cn } from "@/utils/cn";
 import { formatDate } from "@/utils/formateDate";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
 import { FaNairaSign } from "react-icons/fa6";
@@ -14,7 +15,7 @@ const Page = () => {
 
   const queryString = useMemo(() => {
     const info = {
-      page
+      page,
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -34,9 +35,11 @@ const Page = () => {
       render: (ownBy: any, record: any) => {
         return (
           <div className="flex items-center gap-1">
-            <img
+            <Image
               src={ownBy?.profileImg}
               alt=""
+              width={40}
+              height={40}
               className="rounded-full size-8"
             />
             <div className="text-dark-grey">
@@ -44,7 +47,7 @@ const Page = () => {
             </div>
           </div>
         );
-      }
+      },
     },
     {
       title: "Amount",
@@ -55,7 +58,7 @@ const Page = () => {
           <FaDollarSign />
           {amount}
         </div>
-      )
+      ),
     },
     {
       title: "Date",
@@ -65,7 +68,7 @@ const Page = () => {
         <div className="pl-4 flex items-center gap-1">
           {formatDate(createdAt)}
         </div>
-      )
+      ),
     },
     {
       title: "Status",
@@ -89,8 +92,8 @@ const Page = () => {
           />
           {status}
         </p>
-      )
-    }
+      ),
+    },
   ];
 
   const transactionsQuery = useGetTableCurrencyRequestQuery(queryString);
