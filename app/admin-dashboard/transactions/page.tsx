@@ -4,7 +4,9 @@ import AppTable from "@/components/ui/AppTable";
 import { useGetTableCurrencyRequestQuery } from "@/redux/features/dashboard/dashboardApi";
 import { cn } from "@/utils/cn";
 import { formatDate } from "@/utils/formateDate";
+import Image from "next/image";
 import { useMemo, useState } from "react";
+import { FaDollarSign } from "react-icons/fa";
 import { FaNairaSign } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
@@ -33,9 +35,11 @@ const Page = () => {
       render: (ownBy: any, record: any) => {
         return (
           <div className="flex items-center gap-1">
-            <img
+            <Image
               src={ownBy?.profileImg}
               alt=""
+              width={40}
+              height={40}
               className="rounded-full size-8"
             />
             <div className="text-dark-grey">
@@ -51,7 +55,7 @@ const Page = () => {
       className: "min-w-[145px]",
       render: (amount: string) => (
         <div className="pl-4 flex items-center gap-1">
-          <FaNairaSign />
+          <FaDollarSign />
           {amount}
         </div>
       ),

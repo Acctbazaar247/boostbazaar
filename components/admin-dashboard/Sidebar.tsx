@@ -4,7 +4,7 @@ import { LuLogOut, LuUsers } from "react-icons/lu";
 import {
   IoHomeOutline,
   IoSettingsOutline,
-  IoTicketOutline,
+  IoTicketOutline
 } from "react-icons/io5";
 import { VscBell } from "react-icons/vsc";
 import { TbUserShield } from "react-icons/tb";
@@ -26,9 +26,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoHomeOutline />,
           label: "Dashboard",
-          path: "/admin-dashboard",
-        },
-      ],
+          path: "/admin-dashboard"
+        }
+      ]
     },
     {
       label: "SUPPORT",
@@ -36,24 +36,24 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoTicketOutline />,
           label: "Tickets",
-          path: "/admin-dashboard/tickets",
+          path: "/admin-dashboard/tickets"
         },
         {
           icon: <CiWallet></CiWallet>,
           label: "Transactions",
-          path: "/admin-dashboard/transactions",
+          path: "/admin-dashboard/transactions"
         },
-        {
-          icon: <TbUserShield />,
-          label: "Agents",
-          path: "/admin-dashboard/agents",
-        },
+        // {
+        //   icon: <TbUserShield />,
+        //   label: "Agents",
+        //   path: "/admin-dashboard/agents",
+        // },
         {
           icon: <LuUsers />,
           label: "Customers",
-          path: "/admin-dashboard/customer",
-        },
-      ],
+          path: "/admin-dashboard/customer"
+        }
+      ]
     },
     {
       label: "SHOP",
@@ -61,9 +61,9 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <VscBell />,
           label: "Orders",
-          path: "/admin-dashboard/orders",
-        },
-      ],
+          path: "/admin-dashboard/orders"
+        }
+      ]
     },
     {
       label: "",
@@ -71,15 +71,15 @@ const Sidebar = ({ className }: { className?: string }) => {
         {
           icon: <IoSettingsOutline />,
           label: "Settings",
-          path: "/admin-dashboard/setting",
+          path: "/admin-dashboard/setting"
         },
         {
           icon: <LuLogOut />,
           label: "Logout",
-          path: "",
-        },
-      ],
-    },
+          path: ""
+        }
+      ]
+    }
   ];
 
   return (

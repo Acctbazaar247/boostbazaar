@@ -6,7 +6,7 @@ type TAppInput = {
   name?: string;
   type: "password" | "number" | "text" | "date" | "url" | "file" | "email";
   placeholder: string;
-  icon?: string;
+  icon?: any;
   disabled?: boolean;
   error?: any;
   value?: any;
@@ -23,7 +23,7 @@ const AppInput = ({
   setValue,
   disabled,
   value,
-  className
+  className,
 }: TAppInput) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -41,7 +41,7 @@ const AppInput = ({
           error && "border-red"
         }`}
       />
-      <i className={`fi ${icon} input-icon ${error && "top-1/4"}`}></i>
+      <span className={`input-icon ${error && "text-red"}`}>{icon}</span>
 
       {type === "password" ? (
         <i

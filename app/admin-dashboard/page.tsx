@@ -18,6 +18,7 @@ import dynamic from "next/dynamic";
 import { Progress } from "antd";
 import Loading from "@/components/ui/Loading";
 import { useMemo } from "react";
+import { FaDollarSign } from "react-icons/fa";
 
 enum EAccountCategory {
   YOUTUBE = "Youtube",
@@ -138,7 +139,7 @@ const Page = () => {
           >
             <p className="text-dark-grey uppercase text-xs">{stat.label}</p>
             <h2 className="font-bold text-xl flex items-center gap-1">
-              {stat.isNiger && <FaNairaSign className="text-black/70" />}
+              {stat.isNiger && <FaDollarSign className="text-black/70" />}
               {stat.value}
             </h2>
           </div>
@@ -235,7 +236,7 @@ const Page = () => {
               </p>
               <div className="flex flex-col gap-1">
                 <span className="flex items-center gap-1">
-                  <FaNairaSign />
+                  <FaDollarSign />
                   {trans?.amount}
                 </span>
                 <span className="text-dark-grey text-sm">
@@ -275,7 +276,7 @@ const Page = () => {
                 <div className="space-y-1">
                   <p className="text-black flex items-center gap-1">
                     {" "}
-                    <FaNairaSign />
+                    <FaDollarSign />
                     {user?.Currency?.amount.toFixed(2)}
                   </p>
                   {/* <p className="text-[#8DD56C] text-sm">Online</p> */}
