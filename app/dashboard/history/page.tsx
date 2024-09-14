@@ -16,6 +16,7 @@ import { useAppSelector } from "@/redux/hook";
 import { cn } from "@/utils/cn";
 import { getTimeAgo } from "@/utils/getTimeAgo";
 import { useState } from "react";
+import { FaDollarSign } from "react-icons/fa";
 import { FaNairaSign } from "react-icons/fa6";
 
 const Page = () => {
@@ -85,7 +86,7 @@ const Page = () => {
       render: (id: any, record: any) => {
         return (
           <p className="pl-2 flex  items-center gap-1">
-            <FaNairaSign></FaNairaSign> {id?.toFixed(2)}
+            <FaDollarSign></FaDollarSign> {id?.toFixed(2)}
           </p>
         );
       }
