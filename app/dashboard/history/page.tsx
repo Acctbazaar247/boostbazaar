@@ -16,6 +16,7 @@ import { useAppSelector } from "@/redux/hook";
 import { cn } from "@/utils/cn";
 import { getTimeAgo } from "@/utils/getTimeAgo";
 import { useState } from "react";
+import { FaNairaSign } from "react-icons/fa6";
 
 const Page = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -31,7 +32,7 @@ const Page = () => {
 
   const orderColumns = [
     {
-      title: "Jap Order ID",
+      title: "Order ID",
       dataIndex: "japOrderId",
       className: "min-w-[120px] md:min-w-[145px]"
     },
@@ -76,17 +77,17 @@ const Page = () => {
         return <p>{id}</p>;
       }
     },
-    {
-      title: "Own By Id",
-      dataIndex: "ownById",
-      className: "min-w-[130px] md:min-w-[150px]"
-    },
+
     {
       title: "Amount",
       dataIndex: "amount",
       className: "min-w-[120px] md:min-w-[145px]",
       render: (id: any, record: any) => {
-        return <p className="text-center">{id?.toFixed(2)}</p>;
+        return (
+          <p className="pl-2 flex  items-center gap-1">
+            <FaNairaSign></FaNairaSign> {id?.toFixed(2)}
+          </p>
+        );
       }
     },
     {
@@ -127,24 +128,27 @@ const Page = () => {
         setActiveTab={setActiveTab}
         tabs={tabs}
       />
-      <div className="  pb-4  ">
-        <AppInfo>
-          <p>
-            {" "}
-            Orders are typically processed within 0 seconds to 24 hours,
-            depending on the service’s quantity and complexity. We kindly ask
-            for your patience during this time. If your order is not delivered
-            within 24 hours, please contact us via Telegram @acctpanel or email{" "}
-            <a
-              className="text-primary underline cursor-pointer"
-              href="mailto:support@acctpanel.com "
-            >
-              support@acctpanel.com
-            </a>{" "}
-            for assistance.
-          </p>
-        </AppInfo>
-      </div>
+      {activeTab === "deposit" ? null : (
+        <div className="  pb-4  ">
+          <AppInfo>
+            <p>
+              {" "}
+              Orders are typically processed within 0 seconds to 24 hours,
+              depending on the service’s quantity and complexity. We kindly ask
+              for your patience during this time. If your order is not delivered
+              within 24 hours, please contact us via Telegram @acctpanel or
+              email{" "}
+              <a
+                className="text-primary underline cursor-pointer"
+                href="mailto:support@acctpanel.com "
+              >
+                support@acctpanel.com
+              </a>{" "}
+              for assistance.
+            </p>
+          </AppInfo>
+        </div>
+      )}
       <AppTable
         setPage={setPage}
         columns={activeTab === "deposit" ? depositColumns : orderColumns}

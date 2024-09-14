@@ -56,7 +56,7 @@ const FundForm = () => {
   };
 
   const options = [
-    { label: "Paystack", value: "paystack" },
+    { label: "Flutterwave", value: "flutturewave" },
     { label: "Cryptomus", value: "cryptomus" }
   ];
 
