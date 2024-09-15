@@ -5,6 +5,7 @@ import AppTable from "@/components/ui/AppTable";
 import { useGetUsersQuery } from "@/redux/features/auth/authApi";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { FaDollarSign } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
 const Page = () => {
@@ -14,7 +15,7 @@ const Page = () => {
   const queryString = useMemo(() => {
     const info = {
       page,
-      searchTerm: search.length ? search : undefined,
+      searchTerm: search.length ? search : undefined
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -47,12 +48,12 @@ const Page = () => {
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Role",
       dataIndex: "role",
-      className: "min-w-[150px]",
+      className: "min-w-[150px]"
     },
     {
       title: "Amount",
@@ -60,10 +61,10 @@ const Page = () => {
       className: "min-w-[145px]",
       render: (Currency: any) => (
         <div className="flex items-center gap-1 justify-center">
-          {Currency?.amount?.toFixed(2)}
+          <FaDollarSign></FaDollarSign> {Currency?.amount?.toFixed(2)}
         </div>
-      ),
-    },
+      )
+    }
   ];
 
   const userQuery = useGetUsersQuery(queryString);

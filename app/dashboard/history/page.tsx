@@ -60,7 +60,14 @@ const Page = () => {
     {
       title: "Charge",
       dataIndex: "charge",
-      className: "min-w-[120px] md:min-w-[145px]"
+      className: "min-w-[120px] md:min-w-[145px]",
+      render: (charge: number) => {
+        return (
+          <p className="pl-2 flex  items-center gap-1">
+            <FaDollarSign></FaDollarSign> {charge?.toFixed(2)}
+          </p>
+        );
+      }
     },
     {
       title: "Status",

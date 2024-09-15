@@ -1,5 +1,6 @@
 "use client";
 
+import AppInput from "@/components/ui/AppInput";
 import AppTable from "@/components/ui/AppTable";
 import { useGetTableCurrencyRequestQuery } from "@/redux/features/dashboard/dashboardApi";
 import { cn } from "@/utils/cn";
@@ -9,13 +10,16 @@ import { useMemo, useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
 import { FaNairaSign } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
+import { IoSearch } from "react-icons/io5";
 
 const Page = () => {
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const queryString = useMemo(() => {
     const info = {
-      page
+      page,
+      searchTerm
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -25,7 +29,7 @@ const Page = () => {
       return pre;
     }, "");
     return queryString;
-  }, [page]);
+  }, [page, searchTerm]);
 
   const columns = [
     {
@@ -106,6 +110,12 @@ const Page = () => {
   return (
     <div className="">
       <h1 className="heading pb-10">Transactions</h1>
+      <AppInput
+        placeholder="Search By ID"
+        type="text"
+        icon={<IoSearch />}
+        setValue={(e) => setSearchTerm(e?.target?.value)}
+      />
       <AppTable
         setPage={setPage}
         columns={columns}
