@@ -15,7 +15,7 @@ const Page = () => {
 
   const queryString = useMemo(() => {
     const info = {
-      page,
+      page
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -28,6 +28,10 @@ const Page = () => {
   }, [page]);
 
   const columns = [
+    {
+      title: "Id",
+      dataIndex: "id"
+    },
     {
       title: "orderBy",
       dataIndex: "ownBy",
@@ -44,10 +48,11 @@ const Page = () => {
             />
             <div className="text-dark-grey">
               <h3 className="">{ownBy?.name}</h3>
+              <h3 className="">{ownBy?.email}</h3>
             </div>
           </div>
         );
-      },
+      }
     },
     {
       title: "Amount",
@@ -58,7 +63,7 @@ const Page = () => {
           <FaDollarSign />
           {amount}
         </div>
-      ),
+      )
     },
     {
       title: "Date",
@@ -68,7 +73,7 @@ const Page = () => {
         <div className="pl-4 flex items-center gap-1">
           {formatDate(createdAt)}
         </div>
-      ),
+      )
     },
     {
       title: "Status",
@@ -92,8 +97,8 @@ const Page = () => {
           />
           {status}
         </p>
-      ),
-    },
+      )
+    }
   ];
 
   const transactionsQuery = useGetTableCurrencyRequestQuery(queryString);

@@ -17,6 +17,8 @@ import { useCreateOrderMutation } from "@/redux/features/dashboard/dashboardApi"
 import { toast } from "react-toastify";
 import { FaRegUser, FaTelegramPlane } from "react-icons/fa";
 import { config } from "@/config";
+import { IoReload } from "react-icons/io5";
+import { Tooltip } from "antd";
 
 interface FormData {
   category: string;
@@ -114,7 +116,20 @@ const NewOrderForm = () => {
       className="py-10 md:py-20 flex flex-col  lg:flex-row gap-[30px] "
     >
       <div className="w-full max-w-[900px]">
-        <h1 className="heading pb-4">New Order</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="heading pb-4">New Order</h1>
+          <Tooltip title="Reset">
+            <button
+              className="p-2 bg-primary rounded"
+              onClick={() => {
+                reset();
+                dispatch(setCategory(""));
+              }}
+            >
+              <IoReload></IoReload>
+            </button>
+          </Tooltip>
+        </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-5"

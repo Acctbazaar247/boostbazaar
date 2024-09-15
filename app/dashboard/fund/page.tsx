@@ -3,7 +3,7 @@ import AnimationWrapper from "@/components/ui/AnimationWrapper";
 
 const page = () => {
   return (
-    <div className="py-20 container">
+    <div className=" container">
       <AnimationWrapper>
         <FundForm />
       </AnimationWrapper>

@@ -39,11 +39,11 @@ const PaySelection = ({
                 if (handleBankClick) {
                   handleBankClick();
                 }
-                setSelectedOption("paystack");
+                setSelectedOption("flutterwave");
                 // router.push("https://nowpayments.io/payment/?iid=4613115863");
               }}
               className={`w-full py-4 px-2 border rounded transition-all disabled:opacity-90 ${
-                selectedOption === "paystack"
+                selectedOption === "flutterwave"
                   ? "border-primary bg-primary/10 text-primary shadow"
                   : "text-dark-grey border-dark-grey"
               }`}

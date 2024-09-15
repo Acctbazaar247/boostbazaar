@@ -35,12 +35,12 @@ const Page = () => {
 
   const columns = [
     {
-      title: "jap OrderId",
+      title: "OrderId",
       dataIndex: "japOrderId",
       className: "min-w-[120px]",
     },
     {
-      title: "jap Service Id",
+      title: "Service Id",
       dataIndex: "japServiceId",
       className: "min-w-[120px]",
     },
