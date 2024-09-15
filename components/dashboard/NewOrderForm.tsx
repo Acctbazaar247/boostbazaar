@@ -94,7 +94,7 @@ const NewOrderForm = () => {
   }, [watch("service")]);
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     const submittedData = {
-      accountCategory: category,
+      accountCategory: category === "X" ? "Twitter" : category,
       quantity: data.quantity,
       japServiceId: data.service,
       link: data.link
