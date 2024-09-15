@@ -15,6 +15,7 @@ import { cn } from "@/utils/cn";
 import { usePathname } from "next/navigation";
 import { FaWallet } from "react-icons/fa";
 import { CiWallet } from "react-icons/ci";
+import { FaArrowsDownToPeople } from "react-icons/fa6";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch();
@@ -42,6 +43,11 @@ const Sidebar = ({ className }: { className?: string }) => {
           icon: <CiWallet></CiWallet>,
           label: "Transactions",
           path: "/admin-dashboard/transactions"
+        },
+        {
+          icon: <FaArrowsDownToPeople></FaArrowsDownToPeople>,
+          label: "Top up",
+          path: "/admin-dashboard/topUpToUser"
         },
         // {
         //   icon: <TbUserShield />,
