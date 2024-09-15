@@ -65,7 +65,7 @@ const Page = () => {
       ),
     },
   ];
-  console.log("search :>> ", search);
+
   const userQuery = useGetUsersQuery(queryString);
 
   return (
