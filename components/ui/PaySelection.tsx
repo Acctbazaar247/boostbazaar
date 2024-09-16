@@ -58,7 +58,9 @@ const PaySelection = ({
                   className="text-5xl"
                   icon={faBank}
                 ></FontAwesomeIcon> */}
-                <p className="mt-2 ">Bank / Card Payment</p>
+                <p className="mt-2 ">
+                  Pay with Naira (₦) via Bank Transfer / Card Payment.
+                </p>
               </div>
             </button>
             <button
@@ -86,7 +88,9 @@ const PaySelection = ({
                 <div className="flex justify-center mb-4">
                   <CiBitcoin className="text-[60px]" />
                 </div>
-                <p className="mt-2 ">Crypto Payment</p>
+                <p className="mt-2 ">
+                  Pay with Crypto ($) Via USDT, Bitcoin, LTC, Sol, BNB, etc..
+                </p>
               </div>
             </button>
           </div>

@@ -70,11 +70,11 @@ const FundForm = () => {
         <AppFormInput
           name="amount"
           type="number"
-          label="Amount"
+          label="USD Amount ($)"
           className="pl-4"
           register={register}
           required
-          placeholder="Enter amount"
+          placeholder="Enter amount in $"
           error={errors.amount}
         />
 
