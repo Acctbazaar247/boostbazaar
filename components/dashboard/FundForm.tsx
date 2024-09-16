@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { redirect, useRouter } from "next/navigation";
 import PaySelection from "../ui/PaySelection";
 import AppInfo from "../ui/AppInfo";
+import { FaDollarSign } from "react-icons/fa";
 
 interface FormData {
   amount: number;
@@ -67,16 +68,23 @@ const FundForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-4 md:space-y-8"
       >
-        <AppFormInput
-          name="amount"
-          type="number"
-          label="USD Amount ($)"
-          className="pl-4"
-          register={register}
-          required
-          placeholder="Enter amount in $"
-          error={errors.amount}
-        />
+        <div>
+          <AppFormInput
+            name="amount"
+            type="number"
+            label="Amount in USD ($)"
+            className="pl-10"
+            register={register}
+            required
+            icon={<FaDollarSign></FaDollarSign>}
+            placeholder="Enter amount "
+            error={errors.amount}
+            min={5}
+          />
+          <p className="mt-2 text-sm text-primary">
+            * Minimum funding amount is $5
+          </p>
+        </div>
 
         {/* <AppFormSelect
           name="method"
