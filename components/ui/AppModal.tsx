@@ -30,7 +30,7 @@ const AppModal = ({
   cancelButtonAction,
   modalOpen,
   setModalOpen,
-  closeable,
+  closeable
 }: TAppModalProps) => {
   const [open, setOpen] = useState(false);
 
@@ -74,7 +74,7 @@ const AppModal = ({
                       cancelButtonAction();
                     }
                   }}
-                  className="text-black px-4 py-1 rounded-full bg-[#E8E8E8] hover:bg-textGreyBlack/15 text-sm"
+                  className="text-black px-4 py-1 rounded-full light:bg-[#E8E8E8] hover:bg-textGreyBlack/15 text-sm"
                 >
                   {cancelButtonTitle}
                 </button>

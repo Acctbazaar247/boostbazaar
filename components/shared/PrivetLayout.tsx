@@ -69,6 +69,7 @@ const PrivateLayout = ({
   }
 
   if (user && user.isBlocked) {
+    toast.error("Your are blocked", { toastId: 1 });
     return null;
   }
 

@@ -72,7 +72,7 @@ const FundForm = () => {
           <AppFormInput
             name="amount"
             type="number"
-            label="Amount in USD ($)"
+            label="Amount in USD"
             className="pl-10"
             register={register}
             required
