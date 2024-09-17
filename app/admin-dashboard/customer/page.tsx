@@ -88,7 +88,7 @@ const Page = () => {
           <div className="flex items-center justify-evenly gap-1">
             <AppModal
               button={
-                <button className="appOutlineBtnSmDelete">
+                <button className="appBtn bg-primary p-2 text-[#fff] rounded cursor-pointer ">
                   {record?.isBlocked ? "UnBlock" : "Block"}
                 </button>
               }
@@ -112,7 +112,11 @@ const Page = () => {
             </AppModal>
 
             <AppModal
-              button={<button className="appBtnSm">Delete</button>}
+              button={
+                <button className="appBtn bg-red p-2 text-[#fff] rounded cursor-pointer ">
+                  Delete
+                </button>
+              }
               cancelButtonTitle="No, Don’t"
               primaryButtonTitle="Yes. Remove"
               primaryButtonAction={() => deleteUser(record?.id)}
