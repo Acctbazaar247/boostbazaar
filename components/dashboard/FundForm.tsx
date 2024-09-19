@@ -32,7 +32,7 @@ const FundForm = () => {
       toast.error("Please select a payment method below", { toastId: 1 });
       return;
     }
-    if (5 > data.amount) {
+    if (8 > data.amount) {
       toast.error("Minimum fun is $5", { toastId: 1 });
       return;
     }
@@ -82,7 +82,7 @@ const FundForm = () => {
             min={5}
           />
           <p className="mt-2 text-sm text-primary">
-            * Minimum funding amount is $5
+            * Minimum funding amount is $8
           </p>
         </div>
 
