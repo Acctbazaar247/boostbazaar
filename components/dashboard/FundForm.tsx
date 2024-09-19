@@ -33,7 +33,7 @@ const FundForm = () => {
       return;
     }
     if (8 > data.amount) {
-      toast.error("Minimum fun is $5", { toastId: 1 });
+      toast.error("Minimum fun is $8", { toastId: 1 });
       return;
     }
     const submittedData = {
