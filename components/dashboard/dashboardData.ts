@@ -15,7 +15,6 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FcLike } from "react-icons/fc";
 
 export const servicesData = [
   {
@@ -40,7 +39,7 @@ export const servicesData = [
   },
   {
     icon: FaTiktok,
-    title: "Tiktok",
+    title: "TikTok",
   },
   {
     icon: FaLinkedin,
