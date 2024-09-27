@@ -6,7 +6,7 @@ import AppTable from "@/components/ui/AppTable";
 import { useGetUsersQuery } from "@/redux/features/auth/authApi";
 import {
   useDeleteUserMutation,
-  useEditUserMutation
+  useEditUserMutation,
 } from "@/redux/features/user/userApi";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -19,10 +19,11 @@ const Page = () => {
   const [editUser, { isLoading, isError, isSuccess, error }] =
     useEditUserMutation();
   const [deleteUser, { isLoading: isDeleteLoading }] = useDeleteUserMutation();
+
   const queryString = useMemo(() => {
     const info = {
       page,
-      searchTerm: search.length ? search : undefined
+      searchTerm: search.length ? search : undefined,
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
@@ -33,6 +34,7 @@ const Page = () => {
     }, "");
     return queryString;
   }, [page, search]);
+
   const handleBlockUser = (id: string, isBlocked: boolean) => {
     editUser({ id, isBlocked });
   };
@@ -40,7 +42,7 @@ const Page = () => {
   const columns = [
     {
       title: "Own By Id",
-      dataIndex: "id"
+      dataIndex: "id",
     },
     {
       title: "Name",
@@ -62,12 +64,12 @@ const Page = () => {
             </div>
           </div>
         );
-      }
+      },
     },
     {
       title: "Role",
       dataIndex: "role",
-      className: "min-w-[150px]"
+      className: "min-w-[150px]",
     },
     {
       title: "Amount",
@@ -77,7 +79,7 @@ const Page = () => {
         <div className="flex items-center gap-1 justify-center">
           <FaDollarSign></FaDollarSign> {Currency?.amount?.toFixed(2)}
         </div>
-      )
+      ),
     },
     {
       title: "Action",
@@ -133,8 +135,8 @@ const Page = () => {
             </AppModal>
           </div>
         );
-      }
-    }
+      },
+    },
   ];
 
   const userQuery = useGetUsersQuery(queryString);

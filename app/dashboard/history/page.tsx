@@ -2,60 +2,84 @@
 
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import AppInfo from "@/components/ui/AppInfo";
-import AppModal from "@/components/ui/AppModal";
 import AppTable from "@/components/ui/AppTable";
 import AppTabs from "@/components/ui/AppTabs";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import {
   useGetCurrencyRequestQuery,
-  useGetDepositHistoryQuery,
   useGetOrdersQuery,
-  useGetTicketsQuery
 } from "@/redux/features/dashboard/dashboardApi";
 import { useAppSelector } from "@/redux/hook";
-import { cn } from "@/utils/cn";
-import { getTimeAgo } from "@/utils/getTimeAgo";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
-import { FaNairaSign } from "react-icons/fa6";
 
 const Page = () => {
   const user = useAppSelector(selectCurrentUser);
   const tabs = [
     { label: "Order", value: "order" },
-    { label: "Deposit", value: "deposit" }
+    { label: "Deposit", value: "deposit" },
   ];
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState(tabs[0].value);
 
-  const orderQuery = useGetOrdersQuery(user?.id);
-  const depositQuery = useGetCurrencyRequestQuery(user?.id);
+  const orderQueryString = useMemo(() => {
+    const info = {
+      page,
+      orderById: user?.id,
+    };
+    const queryString = Object.keys(info).reduce((pre, key: string) => {
+      const value = info[key as keyof typeof info];
+      if (value) {
+        return pre + `${Boolean(pre.length) ? "&" : ""}${key}=${value}`;
+      }
+      return pre;
+    }, "");
+    return queryString;
+  }, [page, user]);
+
+  const currencyQueryString = useMemo(() => {
+    const info = {
+      page,
+      ownById: user?.id,
+    };
+    const queryString = Object.keys(info).reduce((pre, key: string) => {
+      const value = info[key as keyof typeof info];
+      if (value) {
+        return pre + `${Boolean(pre.length) ? "&" : ""}${key}=${value}`;
+      }
+      return pre;
+    }, "");
+    return queryString;
+  }, [page, user]);
+
+  const orderQuery = useGetOrdersQuery(orderQueryString);
+  const depositQuery = useGetCurrencyRequestQuery(currencyQueryString);
 
   const orderColumns = [
     {
       title: "Order ID",
       dataIndex: "japOrderId",
-      className: "min-w-[120px] md:min-w-[145px]"
+      className: "min-w-[120px] md:min-w-[145px]",
     },
     {
       title: "Category",
       dataIndex: "accountCategory",
-      className: "min-w-[130px] md:min-w-[150px]"
+      className: "min-w-[130px] md:min-w-[150px]",
     },
     {
       title: "Link",
       dataIndex: "link",
-      className: "min-w-[120px] md:min-w-[145px]"
+      className: "min-w-[120px] md:min-w-[145px]",
     },
     {
       title: "Service ID",
       dataIndex: "japServiceId",
-      className: "min-w-[120px] md:min-w-[145px]"
+      className: "min-w-[120px] md:min-w-[145px]",
     },
     {
       title: "Quantity",
       dataIndex: "quantity",
-      className: "min-w-[120px] md:min-w-[145px]"
+      className: "min-w-[120px] md:min-w-[145px]",
     },
     {
       title: "Charge",
@@ -67,13 +91,13 @@ const Page = () => {
             <FaDollarSign></FaDollarSign> {charge?.toFixed(2)}
           </p>
         );
-      }
+      },
     },
     {
       title: "Status",
       dataIndex: "status",
-      className: "min-w-[120px] md:min-w-[145px]"
-    }
+      className: "min-w-[120px] md:min-w-[145px]",
+    },
   ];
 
   const depositColumns = [
@@ -83,7 +107,7 @@ const Page = () => {
       className: "md:min-w-[150px]",
       render: (id: any, record: any) => {
         return <p>{id}</p>;
-      }
+      },
     },
 
     {
@@ -96,13 +120,13 @@ const Page = () => {
             <FaDollarSign></FaDollarSign> {id?.toFixed(2)}
           </p>
         );
-      }
+      },
     },
     {
       title: "Status",
       dataIndex: "status",
-      className: "min-w-[120px] md:min-w-[145px] text-center"
-    }
+      className: "min-w-[120px] md:min-w-[145px] text-center",
+    },
     // {
     //   title: "Status",
     //   dataIndex: "status",
@@ -136,6 +160,7 @@ const Page = () => {
         setActiveTab={setActiveTab}
         tabs={tabs}
       />
+
       {activeTab === "deposit" ? null : (
         <div className="  pb-4  ">
           <AppInfo>
@@ -157,6 +182,7 @@ const Page = () => {
           </AppInfo>
         </div>
       )}
+
       <AppTable
         setPage={setPage}
         columns={activeTab === "deposit" ? depositColumns : orderColumns}
