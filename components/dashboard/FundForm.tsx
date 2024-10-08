@@ -32,6 +32,10 @@ const FundForm = () => {
       toast.error("Please select a payment method below", { toastId: 1 });
       return;
     }
+    if (data.method === "flutturewave") {
+      toast.error("Flutterwave is coming soon", { toastId: 1 });
+      return;
+    }
     if (8 > data.amount) {
       toast.error("Minimum fun is $8", { toastId: 1 });
       return;

@@ -39,7 +39,7 @@ const PaySelection = ({
                 if (handleBankClick) {
                   handleBankClick();
                 }
-                setSelectedOption("flutterwave");
+                // setSelectedOption("flutterwave");
                 // router.push("https://nowpayments.io/payment/?iid=4613115863");
               }}
               className={`w-full py-4 px-2 border rounded transition-all disabled:opacity-90 ${
@@ -61,6 +61,7 @@ const PaySelection = ({
                 <p className="mt-2 ">
                   Pay with Naira (₦) via Bank Transfer / Card Payment.
                 </p>
+                <p className="font-bold text-xl text-primary">Coming soon...</p>
               </div>
             </button>
             <button
