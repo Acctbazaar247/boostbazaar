@@ -61,7 +61,6 @@ const PaySelection = ({
                 <p className="mt-2 ">
                   Pay with Naira (₦) via Bank Transfer / Card Payment.
                 </p>
-                <p className="font-bold text-xl text-primary">Coming soon...</p>
               </div>
             </button>
             <button
