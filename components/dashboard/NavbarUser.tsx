@@ -52,6 +52,11 @@ const NavbarUser = () => {
       path: "/dashboard/complain"
     },
     {
+      label: "Marketplace",
+      icon: <MdAddShoppingCart />,
+      path: "https://www.acctbazaar.com"
+    },
+    {
       label: "Refer",
       icon: <VscUngroupByRefType />,
       path: "/dashboard/refer"
@@ -80,12 +85,14 @@ const NavbarUser = () => {
             <Link
               href={nav.path}
               key={nav.label}
-              className={`flex items-center gap-4 bg-white px-2 py-1 shadow rounded-md cursor-pointer ${
+              className={`flex items-center gap-4 bg-white px-2 text-sm 2xl:text-md py-1 shadow rounded-md cursor-pointer ${
                 pathname === nav.path && "text-primary bg-primary/10"
               }`}
             >
               {nav.label}{" "}
-              <h1 className="bg-primary rounded p-1 text-white">{nav.icon}</h1>
+              <span className="bg-primary rounded p-1 text-white">
+                {nav.icon}
+              </span>
             </Link>
           ))}
         </div>

@@ -155,5 +155,5 @@ export const socialLinks = [
   { image: s1, link: "https://t.me/acctpanel1" },
   { image: s2, link: "https://www.facebook.com/acctpanel" },
   { image: s3, link: "https://x.com/@acctpanel" },
-  { image: s4, link: "https://www.instagram.com/acctpanel" }
+  { image: s4, link: "https://instagram.com/acctpanelcom" }
 ];
