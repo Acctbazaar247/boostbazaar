@@ -52,7 +52,7 @@ const NavbarUser = () => {
       path: "/dashboard/complain"
     },
     {
-      label: "Account Marketplace",
+      label: "Buy Account",
       icon: <MdAddShoppingCart />,  
       path: "https://www.acctbazaar.com"
     },
