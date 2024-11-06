@@ -6,5 +6,5 @@ export const config = {
   increaseRatePercentage: parseFloat(
     process.env.NEXT_PUBLIC_INCREASE_RATE_PERCENTAGE || ""
   ),
-  onDevelopment: JSON.parse(process.env.NEXT_PUBLIC_ON_DEVELOPMENT || "true")
+  onDevelopment: JSON.parse(process.env.NEXT_PUBLIC_ON_DEVELOPMENT || "")
 };
