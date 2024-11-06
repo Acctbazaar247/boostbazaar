@@ -52,6 +52,11 @@ const NavbarUser = () => {
       path: "/dashboard/complain"
     },
     {
+      label: "Account Marketplace",
+      icon: <MdAddShoppingCart />,  
+      path: "https://www.acctbazaar.com"
+    },
+    {
       label: "Refer",
       icon: <VscUngroupByRefType />,
       path: "/dashboard/refer"
