@@ -10,6 +10,7 @@ import { redirect, useRouter } from "next/navigation";
 import PaySelection from "../ui/PaySelection";
 import AppInfo from "../ui/AppInfo";
 import { FaDollarSign } from "react-icons/fa";
+import { config } from "@/config";
 
 interface FormData {
   amount: number;
@@ -36,8 +37,8 @@ const FundForm = () => {
       toast.error("Flutterwave is coming soon", { toastId: 1 });
       return;
     }
-    if (8 > data.amount) {
-      toast.error("Minimum fun is $8", { toastId: 1 });
+    if (config.minAddFund > data.amount) {
+      toast.error(`Minimum fun is $${config.minAddFund}`, { toastId: 1 });
       return;
     }
     const submittedData = {
@@ -86,7 +87,7 @@ const FundForm = () => {
             min={5}
           />
           <p className="mt-2 text-sm text-primary">
-            * Minimum funding amount is $8
+            * Minimum funding amount is ${config.minAddFund}
           </p>
         </div>
 

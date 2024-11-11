@@ -3,6 +3,9 @@ export const config = {
   baseUrl: process.env.NEXT_PUBLIC_SERVER_URL,
   tawkId: process.env.NEXT_PUBLIC_TAWK_TO_PROPERTY_ID,
   topupMax: 100,
+  minAddFund: parseFloat(
+    (process.env.NEXT_PUBLIC_MIN_ADD_FUND as string) || "8"
+  ),
   increaseRatePercentage: parseFloat(
     process.env.NEXT_PUBLIC_INCREASE_RATE_PERCENTAGE || ""
   ),
