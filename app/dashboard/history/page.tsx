@@ -166,11 +166,10 @@ const Page = () => {
           <AppInfo>
             <p>
               {" "}
-              Orders are typically processed within 0 seconds to 24 hours,
-              depending on the service’s quantity and complexity. We kindly ask
-              for your patience during this time. If your order is not delivered
-              within 24 hours, please contact us via Telegram @acctpanel or
-              email{" "}
+              Orders are processed within 0 seconds to 24 hours, 
+              though some may take 0–7 days or up to 30 days, depending on complexity. 
+              If your order does not begin within 24 hours, please contact us via Telegram 
+              @acctpanel or email <a href="mailto:support@acctpanel.com">support@acctpanel.com</a>.{" "}
               <a
                 className="text-primary underline cursor-pointer"
                 href="mailto:support@acctpanel.com "
