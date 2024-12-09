@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CiBank, CiBitcoin } from "react-icons/ci";
+import { toast } from "react-toastify";
 
 type Props = {
   onChange?: (option: string | null) => void;
@@ -31,15 +32,16 @@ const PaySelection = ({
           <h1 className="text-xl font-semibold mb-1">Choose Payment Option</h1>
           {description ? <p className="">{description}</p> : null}
           {/* Radio buttons for payment options */}
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 flex-row-reverse">
             <button
               type="button"
               disabled={isDisabled}
               onClick={() => {
-                if (handleBankClick) {
-                  handleBankClick();
-                }
-                setSelectedOption("flutterwave");
+                toast.error("Currently not available", { toastId: "1" });
+                // if (handleBankClick) {
+                //   handleBankClick();
+                // }
+                // setSelectedOption("flutterwave");
                 // router.push("https://nowpayments.io/payment/?iid=4613115863");
               }}
               className={`w-full py-4 px-2 border rounded transition-all disabled:opacity-90 ${
