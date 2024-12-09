@@ -33,7 +33,7 @@ const PaySelection = ({
           {description ? <p className="">{description}</p> : null}
           {/* Radio buttons for payment options */}
           <div className="flex gap-4 mt-4 flex-row-reverse">
-            <button
+            {/* <button
               type="button"
               disabled={isDisabled}
               onClick={() => {
@@ -51,20 +51,20 @@ const PaySelection = ({
               }`}
             >
               <div>
-                {/* <img src="" alt="" /> */}
+                 <img src="" alt="" /> 
                 <div className="flex justify-center mb-4">
                   <CiBank className="text-[60px]" />
                 </div>
 
-                {/* <FontAwesomeIcon
+                <FontAwesomeIcon
                   className="text-5xl"
                   icon={faBank}
-                ></FontAwesomeIcon> */}
+                ></FontAwesomeIcon>
                 <p className="mt-2 ">
                   Pay with Naira (₦) via Bank Transfer / Card Payment.
                 </p>
               </div>
-            </button>
+            </button> */}
             <button
               type="button"
               disabled={isDisabled}
