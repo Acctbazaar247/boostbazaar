@@ -43,8 +43,8 @@ export interface IUser {
 }
 
 export enum UserRole {
-  User = "user",
-  Admin = "admin"
+  User = 'user',
+  Admin = 'admin',
 }
 export type TTokenUser = {
   email: string;
@@ -76,20 +76,20 @@ export interface TFlat {
 }
 
 export const USER_ROLE = {
-  admin: "admin",
-  user: "user"
+  admin: 'admin',
+  user: 'user',
 } as const;
 
 export const BookingStatus = {
-  PENDING: "PENDING",
-  APPROVED: "APPROVED",
-  REJECTED: "REJECTED"
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
 };
 
 export const NotificationType = {
-  comment: "comment",
-  reply: "reply",
-  like: "like"
+  comment: 'comment',
+  reply: 'reply',
+  like: 'like',
 };
 
 export type TUserRole = keyof typeof USER_ROLE;
@@ -140,3 +140,18 @@ export interface CategorizedService {
   name: string;
   services: IService[];
 }
+export type TSmsPoolService = {
+  ID: number;
+  name: string;
+  favourite: number;
+};
+
+export type TSmsPoolServiceCountry = {
+  success_rate: number;
+  price: string;
+  low_price: string;
+  country_id: string;
+  name: string;
+  short_name: string;
+  stock: number;
+};

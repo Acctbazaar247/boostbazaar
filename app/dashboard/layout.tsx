@@ -3,6 +3,7 @@ import PrivetLayout from "@/components/shared/PrivetLayout";
 
 const DashboardLayout = ({
   children
+  
 }: Readonly<{
   children: React.ReactNode;
 }>) => {

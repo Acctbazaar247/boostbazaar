@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "aos/dist/aos.css";
+@import 'aos/dist/aos.css';
 
 @layer utilities {
   .ant-select.service {
@@ -48,6 +48,15 @@
   /* .ant-table-thead .ant-table-cell {
   @apply !bg-white border-none;
 } */
+  .sms-pool-service-toggle-single-button {
+    @apply px-2 py-3 rounded-[6px] text-sm border border-transparent font-medium transition-all duration-200;
+  }
+  .sms-pool-service-toggle-single-button-inactive {
+    @apply bg-gray-100 dark:bg-[transparent] text-black shadow dark:shadow-white border-gray-600 light:border-gray-300  hover:opacity-60;
+  }
+  .sms-pool-service-toggle-single-button-active {
+    @apply bg-[#5d5fdf] text-[#fff];
+  }
 }
 
 body {

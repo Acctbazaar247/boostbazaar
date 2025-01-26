@@ -20,7 +20,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
   const [shouldRender, setShouldRender] = React.useState<Boolean>(false);
   const { data, isSuccess, isError, isLoading, error } = useGetProfileQuery(
     "",
-    { skip: Boolean(user?.email) }
+    // { skip: Boolean(user?.email) }
   );
 
   React.useEffect(() => {

@@ -45,9 +45,9 @@ const authSlice = createSlice({
       localStorage.setItem("accessToken", accessToken);
     },
     logOut: (state) => {
+      localStorage.removeItem("accessToken");
       state.accessToken = null;
       state.user = null;
-      localStorage.removeItem("accessToken");
     },
     setUserProfileImage: (state, action) => {
       if (state.user) {
