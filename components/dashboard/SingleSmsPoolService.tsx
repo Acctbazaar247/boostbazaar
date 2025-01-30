@@ -1,3 +1,4 @@
+import { config } from '@/config';
 import { TSmsPoolServiceCountry } from '@/types';
 import Image from 'next/image';
 import React from 'react';
@@ -9,6 +10,10 @@ type Props = {
 
 const SingleSmsPoolService = (props: Props) => {
   const { data } = props;
+  const { smsPoolServiceChargeInPercentage } = config;
+  const serviceCharge =
+    (parseFloat(data.price) * smsPoolServiceChargeInPercentage) / 100;
+  console.log({ serviceCharge, smsPoolServiceChargeInPercentage });
   return (
     <div className="bg-white p-4 space-y-4 rounded-lg">
       <div className="flex gap-2  justify-between items-center">
@@ -35,13 +40,13 @@ const SingleSmsPoolService = (props: Props) => {
         <div>
           <h6 className="text-sm font-bold text-black">Lowest Price</h6>
           <div className="flex items-center mt-2 border light:border-gray-300 dark:border-gray-500 rounded-md p-2 gap-2">
-            <p>${data.low_price}</p>
+            <p>${(parseFloat(data.low_price) + serviceCharge).toFixed(2)}</p>
           </div>
         </div>
         <div>
           <h6 className="text-sm font-bold text-black">Highest Price</h6>
           <div className="flex items-center mt-2 border light:border-gray-300 dark:border-gray-500 rounded-md p-2 gap-2">
-            <p>${data.price}</p>
+            <p>${(parseFloat(data.price) + serviceCharge).toFixed(2)}</p>
           </div>
         </div>
       </div>

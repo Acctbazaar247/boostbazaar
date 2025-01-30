@@ -10,6 +10,7 @@ import {
 import Loading from '../ui/Loading';
 import { TSmsPoolService, TSmsPoolServiceCountry } from '@/types';
 import SingleSmsPoolService from './SingleSmsPoolService';
+import AppErrorComponent from '../ui/AppErrorComponent';
 
 type Props = {};
 
@@ -94,7 +95,11 @@ const SmsPoolService = (props: Props) => {
   ]);
 
   if (isError) {
-    return <div>Error</div>;
+    return (
+      <div>
+        <AppErrorComponent></AppErrorComponent>
+      </div>
+    );
   }
   if (isLoading) {
     return (

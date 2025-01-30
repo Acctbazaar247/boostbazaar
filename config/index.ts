@@ -4,10 +4,13 @@ export const config = {
   tawkId: process.env.NEXT_PUBLIC_TAWK_TO_PROPERTY_ID,
   topupMax: 100,
   minAddFund: parseFloat(
-    (process.env.NEXT_PUBLIC_MIN_ADD_FUND as string) || "8"
+    (process.env.NEXT_PUBLIC_MIN_ADD_FUND as string) || '8',
   ),
   increaseRatePercentage: parseFloat(
-    process.env.NEXT_PUBLIC_INCREASE_RATE_PERCENTAGE || ""
+    process.env.NEXT_PUBLIC_INCREASE_RATE_PERCENTAGE || '',
   ),
-  onDevelopment: JSON.parse(process.env.NEXT_PUBLIC_ON_DEVELOPMENT || "")
+  onDevelopment: JSON.parse(process.env.NEXT_PUBLIC_ON_DEVELOPMENT || ''),
+  smsPoolServiceChargeInPercentage: parseFloat(
+    process.env.NEXT_PUBLIC_SMSPOOL_SERVICE_CHARGE_IN_PERCENTAGE as string,
+  ),
 };

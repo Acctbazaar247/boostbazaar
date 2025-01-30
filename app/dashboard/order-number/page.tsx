@@ -6,7 +6,7 @@ import React from 'react';
 
 type Props = {};
 
-const SmsPoolPage = (props: Props) => {
+const OrderNumberPage = (props: Props) => {
   return (
     <div>
       <AnimationWrapper>
@@ -18,4 +18,4 @@ const SmsPoolPage = (props: Props) => {
   );
 };
 
-export default SmsPoolPage;
+export default OrderNumberPage;
