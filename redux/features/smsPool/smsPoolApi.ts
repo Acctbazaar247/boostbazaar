@@ -45,6 +45,15 @@ export const smsPoolApi = baseApi.injectEndpoints({
         };
       },
     }),
+    buySmsPool: builder.mutation({
+      query: info => {
+        return {
+          url: '/sms-pool/order',
+          method: 'POST',
+          body: info,
+        };
+      },
+    }),
   }),
 });
 export const {
@@ -54,4 +63,5 @@ export const {
   useEditSmsPoolMutation,
   useGetSmsPoolByIdQuery,
   useGetSmsPoolCountryByServiceQuery,
+  useBuySmsPoolMutation,
 } = smsPoolApi;

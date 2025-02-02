@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { UseFormRegister } from "react-hook-form";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useState } from 'react';
+import { UseFormRegister } from 'react-hook-form';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 
 type TAppFormInput = {
   name: string;
-  type: "password" | "number" | "text" | "date" | "url" | "file" | "email";
+  type: 'password' | 'number' | 'text' | 'date' | 'url' | 'file' | 'email';
   placeholder: string;
   label: string;
   className?: string;
@@ -38,7 +38,7 @@ const AppFormInput = ({
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <div className={`w-[100%] ${error ? "mb-1" : "2xl:mb-4"}`}>
+    <div className={`w-[100%] ${error ? 'mb-1' : '2xl:mb-4'}`}>
       <label className="text-lg font-light pb-2 text-dark-grey" htmlFor={name}>
         {label}
       </label>
@@ -46,34 +46,34 @@ const AppFormInput = ({
         <input
           {...register(name, {
             ...(required && { required: true }),
-            ...(type === "number" && { valueAsNumber: true, min, max }),
+            ...(type === 'number' && { valueAsNumber: true, min, max }),
           })}
           type={
-            type === "password" ? (passwordVisible ? "text" : "password") : type
+            type === 'password' ? (passwordVisible ? 'text' : 'password') : type
           }
           min={min || 0}
           max={max}
           value={value}
           disabled={disabled}
           placeholder={placeholder}
-          className={`input-box ${error && "border-red"} ${className}`}
+          className={`input-box ${error && 'border-red'} ${className}`}
         />
-        <span className={`input-icon ${error && "text-red"}`}>{icon}</span>
+        <span className={`input-icon ${error && 'text-red'}`}>{icon}</span>
 
-        {type === "password" ? (
+        {type === 'password' ? (
           !passwordVisible ? (
             <FaRegEyeSlash
               className="input-icon left-[auto] right-4 cursor-pointer"
-              onClick={() => setPasswordVisible((currentVal) => !currentVal)}
+              onClick={() => setPasswordVisible(currentVal => !currentVal)}
             />
           ) : (
             <FaRegEye
               className="input-icon left-[auto] right-4 cursor-pointer"
-              onClick={() => setPasswordVisible((currentVal) => !currentVal)}
+              onClick={() => setPasswordVisible(currentVal => !currentVal)}
             />
           )
         ) : (
-          ""
+          ''
         )}
       </div>
       {error && (

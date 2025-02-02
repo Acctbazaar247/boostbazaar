@@ -274,7 +274,11 @@ const SmsPoolService = (props: Props) => {
         <div className="mt-10 grid grid-cols-3 gap-4">
           {filteredData?.map(
             (single: TSmsPoolServiceCountry, index: number) => (
-              <SingleSmsPoolService key={index} data={single} />
+              <SingleSmsPoolService
+                selectedService={selectedService || ''}
+                key={index}
+                data={single}
+              />
             ),
           )}
         </div>

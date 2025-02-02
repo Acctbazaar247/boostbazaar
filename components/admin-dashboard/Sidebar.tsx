@@ -1,53 +1,53 @@
-"use client";
+'use client';
 
-import { LuLogOut, LuUsers } from "react-icons/lu";
+import { LuLogOut, LuUsers } from 'react-icons/lu';
 import {
   IoHomeOutline,
   IoSettingsOutline,
-  IoTicketOutline
-} from "react-icons/io5";
-import { VscBell } from "react-icons/vsc";
-import { TbUserShield } from "react-icons/tb";
-import Link from "next/link";
-import { useAppDispatch } from "@/redux/hook";
-import { logOut } from "@/redux/features/auth/authSlice";
-import { cn } from "@/utils/cn";
-import { usePathname } from "next/navigation";
-import { FaWallet } from "react-icons/fa";
-import { CiWallet } from "react-icons/ci";
-import { FaArrowsDownToPeople } from "react-icons/fa6";
+  IoTicketOutline,
+} from 'react-icons/io5';
+import { VscBell } from 'react-icons/vsc';
+import { TbUserShield } from 'react-icons/tb';
+import Link from 'next/link';
+import { useAppDispatch } from '@/redux/hook';
+import { logOut } from '@/redux/features/auth/authSlice';
+import { cn } from '@/utils/cn';
+import { usePathname } from 'next/navigation';
+import { FaWallet } from 'react-icons/fa';
+import { CiWallet } from 'react-icons/ci';
+import { FaArrowsDownToPeople } from 'react-icons/fa6';
 
 const Sidebar = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch();
   const pathname = usePathname();
   const navLinks = [
     {
-      label: "",
+      label: '',
       navs: [
         {
           icon: <IoHomeOutline />,
-          label: "Dashboard",
-          path: "/admin-dashboard"
-        }
-      ]
+          label: 'Dashboard',
+          path: '/admin-dashboard',
+        },
+      ],
     },
     {
-      label: "SUPPORT",
+      label: 'SUPPORT',
       navs: [
         {
           icon: <IoTicketOutline />,
-          label: "Tickets",
-          path: "/admin-dashboard/tickets"
+          label: 'Tickets',
+          path: '/admin-dashboard/tickets',
         },
         {
           icon: <CiWallet></CiWallet>,
-          label: "Transactions",
-          path: "/admin-dashboard/transactions"
+          label: 'Transactions',
+          path: '/admin-dashboard/transactions',
         },
         {
           icon: <FaArrowsDownToPeople></FaArrowsDownToPeople>,
-          label: "Top up",
-          path: "/admin-dashboard/topUpToUser"
+          label: 'Top up',
+          path: '/admin-dashboard/topUpToUser',
         },
         // {
         //   icon: <TbUserShield />,
@@ -56,43 +56,63 @@ const Sidebar = ({ className }: { className?: string }) => {
         // },
         {
           icon: <LuUsers />,
-          label: "Customers",
-          path: "/admin-dashboard/customer"
-        }
-      ]
+          label: 'Customers',
+          path: '/admin-dashboard/customer',
+        },
+      ],
     },
     {
-      label: "SHOP",
+      label: 'Payments',
+      navs: [
+        {
+          icon: <IoTicketOutline />,
+          label: 'Manage Bank',
+          path: '/admin-dashboard/manage-bank',
+        },
+        {
+          icon: <CiWallet></CiWallet>,
+          label: 'Crypto Bank',
+          path: '/admin-dashboard/manage-crypto-bank',
+        },
+        {
+          icon: <FaArrowsDownToPeople></FaArrowsDownToPeople>,
+          label: 'Manual Payment',
+          path: '/admin-dashboard/manage-manual-payment',
+        },
+      ],
+    },
+    {
+      label: 'SHOP',
       navs: [
         {
           icon: <VscBell />,
-          label: "Orders",
-          path: "/admin-dashboard/orders"
-        }
-      ]
+          label: 'Orders',
+          path: '/admin-dashboard/orders',
+        },
+      ],
     },
     {
-      label: "",
+      label: '',
       navs: [
         {
           icon: <IoSettingsOutline />,
-          label: "Settings",
-          path: "/admin-dashboard/setting"
+          label: 'Settings',
+          path: '/admin-dashboard/setting',
         },
         {
           icon: <LuLogOut />,
-          label: "Logout",
-          path: ""
-        }
-      ]
-    }
+          label: 'Logout',
+          path: '',
+        },
+      ],
+    },
   ];
 
   return (
     <div
       className={cn(
-        "md:w-60 shadow-lg md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8",
-        className
+        'md:w-60 shadow-lg md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8',
+        className,
       )}
     >
       {navLinks.map((navLink, index) => (
@@ -101,7 +121,7 @@ const Sidebar = ({ className }: { className?: string }) => {
             {navLink.label}
           </h3>
           {navLink.navs.map((nav, i) =>
-            nav.label === "Logout" ? (
+            nav.label === 'Logout' ? (
               <button
                 key={i}
                 onClick={() => dispatch(logOut())}
@@ -114,13 +134,13 @@ const Sidebar = ({ className }: { className?: string }) => {
                 key={i}
                 href={nav.path}
                 className={cn(
-                  "text-black hover:text-primary flex items-center gap-3 py-1.5 max-sm:font-normal",
-                  pathname === nav.path && "text-primary"
+                  'text-black hover:text-primary flex items-center gap-3 py-1.5 max-sm:font-normal',
+                  pathname === nav.path && 'text-primary',
                 )}
               >
                 <span className="text-lg">{nav.icon}</span> {nav.label}
               </Link>
-            )
+            ),
           )}
         </div>
       ))}

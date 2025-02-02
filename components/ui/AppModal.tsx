@@ -1,6 +1,7 @@
-import { Modal } from "antd";
-import { ReactNode, useState } from "react";
-import "./custom.css";
+import { Modal } from 'antd';
+import { ReactNode, useState } from 'react';
+import './custom.css';
+import { IoMdClose } from 'react-icons/io';
 
 type TAppModalProps = {
   button?: ReactNode;
@@ -12,7 +13,7 @@ type TAppModalProps = {
   cancelButtonTitle?: string;
   cancelButtonAction?: () => void;
   handleClose?: (
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
   ) => void;
   modalOpen?: boolean;
   closeable?: boolean;
@@ -30,7 +31,7 @@ const AppModal = ({
   cancelButtonAction,
   modalOpen,
   setModalOpen,
-  closeable
+  closeable,
 }: TAppModalProps) => {
   const [open, setOpen] = useState(false);
 
@@ -46,7 +47,11 @@ const AppModal = ({
     <div className="">
       {button && <div onClick={() => handleOpen(true)}>{button}</div>}
       <Modal
-        closeIcon={closeable}
+        closeIcon={
+          <div>
+            <IoMdClose className="text-dark-grey text-lg"></IoMdClose>
+          </div>
+        }
         maskClosable={closeable}
         title={
           <div>

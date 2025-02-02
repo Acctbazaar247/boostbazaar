@@ -13,4 +13,14 @@ export const config = {
   smsPoolServiceChargeInPercentage: parseFloat(
     process.env.NEXT_PUBLIC_SMSPOOL_SERVICE_CHARGE_IN_PERCENTAGE as string,
   ),
+
+  manualDepositMinMoney: parseFloat(
+    process.env.NEXT_PUBLIC_MANUAL_DEPOSIT_MIN_MONEY as string,
+  ),
+  manualDollarRate: parseFloat(
+    process.env.NEXT_PUBLIC_MANUAL_DEPOSIT_DOLLAR_RATE as string,
+  ),
+  isManualDepositActive: JSON.parse(
+    process.env.NEXT_PUBLIC_IS_MANUAL_DEPOSIT_ACTIVE as string,
+  ),
 };

@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
+import { AnimatePresence, motion } from 'framer-motion';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 type TAppTabs = {
   tabs: {
@@ -15,24 +15,24 @@ const AppTabs = ({ className, tabs, activeTab, setActiveTab }: TAppTabs) => {
   return (
     <AnimatePresence>
       <div className={`flex gap-2 md:gap-8 border-b border-b-[#EAECEE]`}>
-        {tabs.map((tab) => (
+        {tabs.map(tab => (
           <button
             key={tab.label}
             onClick={() => setActiveTab(tab.value ? tab.value : tab.label)}
             className={`${
               activeTab === (tab.value ? tab.value : tab.label)
-                ? "text-primary"
-                : "hover:text-primary text-[#827E7E]"
+                ? 'text-primary'
+                : 'hover:text-primary text-[#827E7E]'
             } relative px-2 py-1 md:py-1.5 text-xs md:text-sm font-medium transition ${className}`}
             style={{
-              WebkitTapHighlightColor: "transparent",
+              WebkitTapHighlightColor: 'transparent',
             }}
           >
             {activeTab === (tab.value ? tab.value : tab.label) && (
               <motion.span
                 layoutId="bubble"
                 className={`absolute inset-0 z-10 border-b md:border-b-2 border-b-primary`}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
               />
             )}
             {tab.label}

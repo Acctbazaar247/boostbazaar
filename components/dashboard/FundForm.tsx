@@ -1,146 +1,67 @@
-"use client";
+'use client';
 
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import AppButton from "../ui/AppButton";
-import AppFormInput from "../ui/AppFormInput";
-import AppFormSelect from "../ui/AppFormSelect";
-import { useCurrencyRequestMutation } from "@/redux/features/dashboard/dashboardApi";
-import { toast } from "react-toastify";
-import { redirect, useRouter } from "next/navigation";
-import PaySelection from "../ui/PaySelection";
-import AppInfo from "../ui/AppInfo";
-import { FaDollarSign } from "react-icons/fa";
-import { config } from "@/config";
-
-interface FormData {
-  amount: number;
-  method: string;
-}
+import { useState } from 'react';
+import OnlinePayment from './OnlinePayment';
+import ManualPayment from './ManualPayment';
+import { BsBank2 } from 'react-icons/bs';
+import { BsCashCoin } from 'react-icons/bs';
+import { config } from '@/config';
 
 const FundForm = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-    reset
-  } = useForm<FormData>();
-  const router = useRouter();
-  const [createCurrencyRequest, { isLoading }] = useCurrencyRequestMutation();
-
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
-    if (!data.method) {
-      toast.error("Please select a payment method below", { toastId: 1 });
-      return;
-    }
-    if (data.method === "flutturewave") {
-      toast.error("Flutterwave is coming soon", { toastId: 1 });
-      return;
-    }
-    if (config.minAddFund > data.amount) {
-      toast.error(`Minimum fun is $${config.minAddFund}`, { toastId: 1 });
-      return;
-    }
-    const submittedData = {
-      data: { amount: data.amount },
-      method: data.method
-    };
-    await createCurrencyRequest(submittedData)
-      .unwrap()
-      .then((res) => {
-        // toast.success(res?.message);
-        if (res?.data?.url) {
-          router.replace(res?.data?.url);
-          // redirect(res.data.url);
-          // return { props: {} };
-        }
-        reset();
-      })
-      .catch((res) => {
-        toast.error(res?.data?.message);
-      });
-  };
-
-  const options = [
-    { label: "Flutterwave", value: "flutturewave" },
-    { label: "Cryptomus", value: "cryptomus" }
-  ];
-
+  const [paymentType, setPaymentType] = useState<'online' | 'manual' | null>(
+    null,
+  );
+  if (paymentType === 'online')
+    return <OnlinePayment setPaymentType={setPaymentType} />;
+  if (paymentType === 'manual')
+    return <ManualPayment setPaymentType={setPaymentType} />;
   return (
-    <div className="py-10 md:py-20">
-      <h1 className="heading pb-4">Fund account</h1>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-4 md:space-y-8"
-      >
-        <div>
-          <AppFormInput
-            name="amount"
-            type="number"
-            label="Amount in USD"
-            className="pl-10"
-            register={register}
-            required
-            icon={<FaDollarSign></FaDollarSign>}
-            placeholder="Enter amount "
-            error={errors.amount}
-            min={5}
-          />
-          <p className="mt-2 text-sm text-primary">
-            * Minimum funding amount is ${config.minAddFund}
-          </p>
-        </div>
+    <div className="mt-10">
+      <h2 className="text-2xl md:text-3xl text-primary  ">
+        Choose a Payment Type
+      </h2>
 
-        {/* <AppFormSelect
-          name="method"
-          label="Deposit Method"
-          required
-          placeholder="Enter method"
-          options={options}
-          control={control}
-        /> */}
-        <Controller
-          name="method"
-          control={control}
-          render={({ fieldState, field }) => {
-            return <PaySelection onChange={field.onChange}></PaySelection>;
-          }}
-        ></Controller>
-        <AppButton
-          disabled={isLoading}
-          type="submit"
-          className="w-full py-3"
-          label="Confirm"
-        />
-      </form>
-      <AppInfo>
-        <>
-          <p>
-            <b className="">Funding Your Account via Bank/Card Payment:</b> When
-            funding your account using Bank/Card payment, the amount will be
-            charged in Naira and automatically converted to USD in your account
-            balance after a successful deposit. The Bank and Card feature allows
-            you to fund your account via bank transfer, USSD, Apple Pay, Google
-            Pay, and debit/credit card payments—all in Naira. No additional fees
-            are charged for funding your account.
-            <br />
-            <b className="mt-2 inline-block">
-              Funding Your Account with Cryptocurrencies:
-            </b>{" "}
-            When funding with cryptocurrencies, ensure you copy the exact
-            transaction amount displayed and select the same network that you
-            are sending from. You can fund your account using USDT, Solana, LTC,
-            Tron, BNB, and more. If you encounter any issues with the payment
-            system, please contact us at{" "}
-            <a
-              className="text-primary underline "
-              href="mailto:support@acctpanel.com"
-            >
-              support@acctpanel.com
-            </a>
-          </p>
-        </>
-      </AppInfo>
+      {/* two option online or manual */}
+      <div className=" grid grid-cols-1 md:grid-cols-2  w-full mt-5   gap-5 md:gap-5">
+        <button
+          className="p-2 py-4 md:p-4 border  rounded-lg transition-all border-borderColor w-full   text-left group hover:border-primary "
+          onClick={() => setPaymentType('online')}
+        >
+          <div>
+            <div className="flex justify-center items-center">
+              <BsCashCoin className="size-10 group-hover:text-primary  transition-all"></BsCashCoin>
+            </div>
+            <div>
+              <h3 className="text-center text-textBlack mt-2 group-hover:text-primary font-bold transition-all">
+                Automatic Deposit
+              </h3>
+              <p className="text-xs md:text-sm text-center text-textGrey">
+                Instant deposit via Bank, Card, or Crypto.
+              </p>
+            </div>
+          </div>
+        </button>
+        <button
+          disabled={!config.isManualDepositActive}
+          className="gap-5 p-2 py-4 md:p-4 border  disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-borderColor disabled:hover:text-textGrey rounded-lg transition-all w-full  text-left group hover:border-primary border-borderColor"
+          onClick={() => setPaymentType('manual')}
+        >
+          <div className="w-full">
+            <div className="flex justify-center items-center">
+              <BsBank2 className="size-10 group-hover:text-primary transition-all"></BsBank2>
+            </div>
+            <div>
+              <h3 className="text-textBlack  text-center mt-2 group-hover:text-primary font-bold transition-all">
+                Manual Deposit
+              </h3>
+              <p className="text-xs text-center md:text-sm text-textGrey">
+                Processed in 3-5 minutes via bank transfer or crypto. Best for
+                crypto payments.
+              </p>
+            </div>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };
