@@ -1,4 +1,3 @@
+// import { RootState } from "@/redux/app/store";
 
-import { RootState } from "@/redux/app/store";
-
-export const selectorSmsPool = (state: RootState) => state.smsPool;
+// export const selectorSmsPool = (state: RootState) => state.smsPool;
