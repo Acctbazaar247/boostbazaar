@@ -1,4 +1,5 @@
 import { baseApi } from '@/redux/api/baseApi';
+import { tagTypes } from '@/redux/api/tagTypesList';
 
 export const smsPoolApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -53,6 +54,7 @@ export const smsPoolApi = baseApi.injectEndpoints({
           body: info,
         };
       },
+      invalidatesTags: [tagTypes.smsPoolOrder],
     }),
   }),
 });

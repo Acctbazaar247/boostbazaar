@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { ConfigProvider, Spin } from "antd";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { useGetProfileQuery } from "@/redux/features/dashboard/dashboardApi";
-import { logOut, setLoading, setUser } from "@/redux/features/auth/authSlice";
-import Loading from "../ui/Loading";
-import { ToastContainer } from "react-toastify";
-import { LoadingOutlined } from "@ant-design/icons";
+import * as React from 'react';
+import { ConfigProvider, Spin } from 'antd';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { useGetProfileQuery } from '@/redux/features/dashboard/dashboardApi';
+import { logOut, setLoading, setUser } from '@/redux/features/auth/authSlice';
+import Loading from '../ui/Loading';
+import { ToastContainer } from 'react-toastify';
+import { LoadingOutlined } from '@ant-design/icons';
 
 type TAntdTheme = {
   children: React.ReactNode;
@@ -15,11 +15,11 @@ type TAntdTheme = {
 
 const AntdTheme = ({ children }: TAntdTheme) => {
   const dispatch = useAppDispatch();
-  const theme = useAppSelector((state) => state.auth.theme);
-  const user = useAppSelector((state) => state.auth.user);
+  const theme = useAppSelector(state => state.auth.theme);
+  const user = useAppSelector(state => state.auth.user);
   const [shouldRender, setShouldRender] = React.useState<Boolean>(false);
   const { data, isSuccess, isError, isLoading, error } = useGetProfileQuery(
-    "",
+    '',
     // { skip: Boolean(user?.email) }
   );
 
@@ -30,8 +30,8 @@ const AntdTheme = ({ children }: TAntdTheme) => {
           dispatch(
             setUser({
               user: data?.data?.user,
-              accessToken: data?.data?.accessToken
-            })
+              accessToken: data?.data?.accessToken,
+            }),
           );
           setShouldRender(true);
         }
@@ -45,35 +45,46 @@ const AntdTheme = ({ children }: TAntdTheme) => {
   }, [data, isError, isLoading, error, isSuccess, dispatch]);
 
   const lightTheme = {
-    colorBgBase: "#fff"
+    colorBgBase: '#fff',
   };
 
   const darkTheme = {
-    colorBgBase: "#000",
-    colorText: "#fff"
+    colorBgBase: '#000',
+    colorText: '#fff',
     // controlItemBgHover: "#fff",
   };
 
   return (
     <ConfigProvider
       theme={{
-        token: theme === "light" ? lightTheme : darkTheme,
+        token: theme === 'light' ? lightTheme : darkTheme,
         components: {
           Table: {
-            headerBg: theme === "light" ? "#fff" : "#000"
+            headerBg: theme === 'light' ? '#fff' : '#4E4E4EFF',
+
+            rowHoverBg: theme === 'light' ? '#F4F4F4FF' : '#2D2D2DFF',
+            colorBgContainer: theme === 'light' ? '#fff' : '#434242FF',
           },
           Select: {
-            optionSelectedColor: theme === "light" ? "#000" : "#000",
-            colorTextPlaceholder: "#999"
+            optionSelectedColor: theme === 'light' ? '#000' : '#000',
+            colorTextPlaceholder: '#999',
           },
           Checkbox: {
-            colorBgContainer: theme === "light" ? "#fff" : "#fff", // Background color
+            colorBgContainer: theme === 'light' ? '#fff' : '#fff', // Background color
             // colorPrimary: theme === "light" ? "#fff" : "#fff", // Checkmark color
-            colorBorder: "#878787", // Border color
+            colorBorder: '#878787', // Border color
             // colorPrimaryHover: "#878787"
-            colorInfoBorderHover: "red"
-          }
-        }
+            colorInfoBorderHover: 'red',
+          },
+          Empty: {
+            colorTextDescription: theme === 'light' ? '#000' : '#fff',
+          },
+          Modal: {
+            contentBg: theme === 'light' ? '#fff' : '#2D2D2DFF',
+            headerBg: theme === 'light' ? '#fff' : '#2D2D2DFF',
+            colorBgMask: theme === 'light' ? 'rgba(0,0,0,0.88)' : '#0000009E',
+          },
+        },
       }}
     >
       {isLoading ? (
@@ -82,7 +93,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
           <Spin
             indicator={
               <LoadingOutlined
-                style={{ color: "#5D5FDF", fontSize: 48 }}
+                style={{ color: '#5D5FDF', fontSize: 48 }}
                 spin
               />
             }

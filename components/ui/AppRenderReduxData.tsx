@@ -1,7 +1,7 @@
-import React from "react";
-import { Empty } from "antd";
-import AppErrorComponent from "./AppErrorComponent";
-import Loading from "./Loading";
+import React from 'react';
+import { Empty } from 'antd';
+import AppErrorComponent from './AppErrorComponent';
+import Loading from './Loading';
 
 type Props = {
   queryData: any;
@@ -42,7 +42,7 @@ const AppRenderReduxData = ({
     content = (
       <Empty
         description="No Data Found"
-        className="min-h-[70dvh] flex flex-col text-xl font-medium gap-4 items-center justify-center"
+        className="min-h-[70dvh]   flex flex-col text-xl font-medium gap-4 items-center justify-center"
       />
     );
   }

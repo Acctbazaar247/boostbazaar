@@ -12,22 +12,34 @@ import {
 import { useGetManualCurrencyRequestsQuery } from '@/redux/features/manualCurrencyRequest/manualCurrencyRequestApi';
 import { useAppSelector } from '@/redux/hook';
 import appDateFormate from '@/utils/appDateFormate';
-import { Dispatch, SetStateAction, useMemo, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { FaDollarSign } from 'react-icons/fa';
 import { GoDotFill } from 'react-icons/go';
 import dateFormat from 'dateformat';
 import { ManualCurrencyRequest } from '@/types';
+import MyNumbersTable from '@/components/dashboard/MyNumbersTable';
+import { useSearchParams } from 'next/navigation';
 const Page = () => {
   const user = useAppSelector(selectCurrentUser);
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
+
   const tabs = [
     { label: 'Order', value: 'order' },
+    { label: 'Phone Number', value: 'phone-number' },
     { label: 'Deposit', value: 'deposit' },
     { label: 'Manual Payment', value: 'manual' },
   ];
   const [page, setPage] = useState(1);
-  const [activeTab, setActiveTab] = useState<'order' | 'deposit' | 'manual'>(
-    'order',
-  );
+  const [activeTab, setActiveTab] = useState<
+    'order' | 'deposit' | 'manual' | 'phone-number'
+  >('order');
+
+  useEffect(() => {
+    if (tab && tabs.some(taba => taba.value === tab)) {
+      setActiveTab(tab as 'order' | 'deposit' | 'manual' | 'phone-number');
+    }
+  }, [tab]);
 
   const orderQueryString = useMemo(() => {
     const info = {
@@ -246,23 +258,27 @@ const Page = () => {
         </div>
       ) : null}
 
-      <AppTable
-        setPage={setPage}
-        columns={
-          activeTab === 'deposit'
-            ? depositColumns
-            : activeTab === 'manual'
-              ? manualColumns
-              : orderColumns
-        }
-        infoQuery={
-          activeTab === 'deposit'
-            ? depositQuery
-            : activeTab === 'manual'
-              ? manualQuery
-              : orderQuery
-        }
-      />
+      {activeTab === 'phone-number' ? (
+        <MyNumbersTable />
+      ) : (
+        <AppTable
+          setPage={setPage}
+          columns={
+            activeTab === 'deposit'
+              ? depositColumns
+              : activeTab === 'manual'
+                ? manualColumns
+                : orderColumns
+          }
+          infoQuery={
+            activeTab === 'deposit'
+              ? depositQuery
+              : activeTab === 'manual'
+                ? manualQuery
+                : orderQuery
+          }
+        />
+      )}
     </AnimationWrapper>
   );
 };

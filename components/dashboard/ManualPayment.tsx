@@ -531,7 +531,7 @@ const ManualPayment = ({ setPaymentType }: Props) => {
         )}
         <button
           disabled={imageLoading || submitManualPaymentLoading}
-          className=" rounded-lg  px-7 py-2 bg-primary   text-light  hover:opacity-80 transition-all disabled:opacity-80"
+          className=" rounded-lg  px-7 py-2 bg-primary   text-[#fff]  hover:opacity-80 transition-all disabled:opacity-80"
           onClick={() => {
             if (step === 4) {
               setPaymentType(null);

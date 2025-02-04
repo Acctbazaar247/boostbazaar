@@ -57,6 +57,13 @@
   .sms-pool-service-toggle-single-button-active {
     @apply bg-[#5d5fdf] text-[#fff];
   }
+
+  .phone-oder-details-box {
+    @apply border light:border-gray-900 dark:border-gray-500 rounded p-2;
+  }
+  .phone-oder-details-box-heading {
+    @apply font-semibold text-base light:text-black dark:text-[#fff];
+  }
 }
 
 body {

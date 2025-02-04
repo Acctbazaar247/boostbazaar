@@ -1,5 +1,6 @@
 import ReviewForm from '@/components/dashboard/ReviewForm';
 import SmsPoolService from '@/components/dashboard/SmsPoolService';
+import UserBalanceAndSpend from '@/components/dashboard/UserBalanceAndSpend';
 import AnimationWrapper from '@/components/ui/AnimationWrapper';
 
 import React from 'react';
@@ -11,7 +12,10 @@ const OrderNumberPage = (props: Props) => {
     <div>
       <AnimationWrapper>
         <div className="py-20 container">
-          <SmsPoolService></SmsPoolService>
+          <UserBalanceAndSpend></UserBalanceAndSpend>
+          <div className="mt-10">
+            <SmsPoolService></SmsPoolService>
+          </div>
         </div>
       </AnimationWrapper>
     </div>

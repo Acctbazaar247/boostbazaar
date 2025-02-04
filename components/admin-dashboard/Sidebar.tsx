@@ -13,7 +13,7 @@ import { useAppDispatch } from '@/redux/hook';
 import { logOut } from '@/redux/features/auth/authSlice';
 import { cn } from '@/utils/cn';
 import { usePathname } from 'next/navigation';
-import { FaWallet } from 'react-icons/fa';
+import { FaPhone, FaWallet } from 'react-icons/fa';
 import { CiWallet } from 'react-icons/ci';
 import { FaArrowsDownToPeople } from 'react-icons/fa6';
 
@@ -89,6 +89,11 @@ const Sidebar = ({ className }: { className?: string }) => {
           label: 'Orders',
           path: '/admin-dashboard/orders',
         },
+        {
+          icon: <FaPhone />,
+          label: 'Manage Number',
+          path: '/admin-dashboard/manage-number',
+        },
       ],
     },
     {
@@ -111,7 +116,7 @@ const Sidebar = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        'md:w-60 shadow-lg md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8',
+        'md:w-60 shadow-lg overflow-y-auto md:border-r border-dark-grey/50 flex flex-col justify-between md:pt-6 md:pb-12 md:px-8',
         className,
       )}
     >

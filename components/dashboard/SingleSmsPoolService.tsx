@@ -1,12 +1,13 @@
 import { config } from '@/config';
 import { TSmsPoolServiceCountry } from '@/types';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaRocket, FaShoppingCart } from 'react-icons/fa';
 import AppPopover from '../ui/AppPopover';
 import AppModal from '../ui/AppModal';
 import { useBuySmsPoolMutation } from '@/redux/features/smsPool/smsPoolApi';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   data: TSmsPoolServiceCountry;
@@ -16,7 +17,10 @@ type Props = {
 const SingleSmsPoolService = (props: Props) => {
   const { data } = props;
   const { smsPoolServiceChargeInPercentage } = config;
+  const router = useRouter();
   const [buySmsPool, { isLoading, isSuccess }] = useBuySmsPoolMutation();
+  //   modal open
+  const [modalOpen, setModalOpen] = useState(false);
   const serviceCharge =
     (parseFloat(data.price) * smsPoolServiceChargeInPercentage) / 100;
 
@@ -83,9 +87,12 @@ const SingleSmsPoolService = (props: Props) => {
           <AppModal
             // title="Buy SMS"
             // closeable={<div>dfd</div>}
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
             button={
               <button
                 disabled={data.stock == 0}
+                onClick={() => setModalOpen(true)}
                 className="bg-primary disabled:opacity-70 disabled:cursor-not-allowed flex gap-4 items-center text-[#fff] px-4 py-2 rounded-md"
               >
                 <FaRocket /> <span>Purchase</span>
@@ -102,7 +109,10 @@ const SingleSmsPoolService = (props: Props) => {
                     You have successfully purchased the service.
                   </p>
                   <button
-                    onClick={handleOrder}
+                    onClick={() => {
+                      router.push('/dashboard/history?tab=phone-number');
+                      setModalOpen(false);
+                    }}
                     className="bg-primary disabled:opacity-30 transition-all hover:opacity-90 text-white font-bold py-2 px-4 rounded"
                   >
                     Ok
@@ -129,7 +139,7 @@ const SingleSmsPoolService = (props: Props) => {
                     <button
                       onClick={handleOrder}
                       disabled={isLoading}
-                      className="bg-primary disabled:opacity-30 transition-all hover:opacity-90 text-white font-bold py-2 px-4 rounded"
+                      className="bg-primary text-[#fff] disabled:opacity-30 transition-all hover:opacity-90   py-2 px-4 rounded"
                     >
                       Confirm Purchase
                     </button>

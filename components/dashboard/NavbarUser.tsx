@@ -29,7 +29,7 @@ const NavbarUser = () => {
     {
       label: 'Order',
       icon: <MdAddShoppingCart />,
-      path: '/dashboard',
+      path: '/dashboard/order',
     },
     {
       label: 'Fund',
@@ -81,8 +81,9 @@ const NavbarUser = () => {
     <section className="py-4 bg-primary/5 max-md:px-4">
       <div className="md:w-11/12 mx-auto flex items-center justify-between">
         <div className="flex items-center gap-1">
-          <Avatar icon={<LuUser2 />} size={'large'} src={user?.profileImg} />
-          <span>Hello</span>
+          <Link href="/dashboard">
+            <Avatar icon={<LuUser2 />} size={'large'} src={user?.profileImg} />
+          </Link>
           <p className="text-lg font-medium capitalize">{user?.name}</p>
         </div>
         <div className="max-xl:hidden flex items-center gap-2 2xl:gap-2">

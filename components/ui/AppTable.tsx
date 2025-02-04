@@ -1,9 +1,9 @@
-import { Table } from "antd";
-import { ReactNode } from "react";
-import AppRenderReduxData from "./AppRenderReduxData";
-import AppTableSkeleton from "./AppTableSkeleton";
-import "./custom.css";
-import { cn } from "@/utils/cn";
+import { Table } from 'antd';
+import { ReactNode } from 'react';
+import AppRenderReduxData from './AppRenderReduxData';
+import AppTableSkeleton from './AppTableSkeleton';
+import './custom.css';
+import { cn } from '@/utils/cn';
 
 type TTableProps = {
   columns: any;
@@ -28,14 +28,14 @@ const AppTable = ({
         <AppRenderReduxData
           loadingComponent={loadingComponent || <AppTableSkeleton />}
           queryData={infoQuery}
-          showData={(data) => {
+          showData={data => {
             // console.log(data);
             return (
               <Table
                 showHeader={header}
                 columns={columns}
                 rowClassName={
-                  rowClassName ? (data) => cn("", rowClassName(data)) : cn("")
+                  rowClassName ? data => cn('', rowClassName(data)) : cn('')
                 }
                 dataSource={
                   Array.isArray(data?.data) ? data?.data : [data?.data]
@@ -44,7 +44,7 @@ const AppTable = ({
                 pagination={
                   setPage
                     ? {
-                        onChange: (value) => setPage(value),
+                        onChange: value => setPage(value),
                         pageSize: data?.meta?.limit,
                         total: data?.meta?.total,
                         current: data?.meta?.page,

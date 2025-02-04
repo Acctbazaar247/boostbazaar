@@ -22,45 +22,95 @@ const FundForm = () => {
       </h2>
 
       {/* two option online or manual */}
-      <div className=" grid grid-cols-1 md:grid-cols-2  w-full mt-5   gap-5 md:gap-5">
-        <button
-          className="p-2 py-4 md:p-4 border  rounded-lg transition-all border-borderColor w-full   text-left group hover:border-primary "
+      <div className="grid gap-6 md:grid-cols-2 pt-5">
+        {/* Automatic Deposit Card */}
+        <div
           onClick={() => setPaymentType('online')}
+          className={`
+            cursor-pointer rounded-xl border p-6 transition-all duration-300
+            ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
+          `}
         >
-          <div>
-            <div className="flex justify-center items-center">
-              <BsCashCoin className="size-10 group-hover:text-primary  transition-all"></BsCashCoin>
-            </div>
-            <div>
-              <h3 className="text-center text-textBlack mt-2 group-hover:text-primary font-bold transition-all">
-                Automatic Deposit
-              </h3>
-              <p className="text-xs md:text-sm text-center text-textGrey">
-                Instant deposit via Bank, Card, or Crypto.
-              </p>
-            </div>
+          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
+            <svg
+              className="h-7 w-7 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
           </div>
-        </button>
-        <button
-          disabled={!config.isManualDepositActive}
-          className="gap-5 p-2 py-4 md:p-4 border  disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-borderColor disabled:hover:text-textGrey rounded-lg transition-all w-full  text-left group hover:border-primary border-borderColor"
+
+          <div className="mb-8">
+            <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
+              Automatic Deposit
+            </h2>
+            <p className="text-gray-400">
+              Instant deposit via Bank, Card, or Crypto.
+            </p>
+          </div>
+
+          <button
+            className={`
+            rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
+           ${'bg-primary text-[#fff] hover:bg-gray-700'}
+         `}
+            onClick={() => setPaymentType('online')}
+          >
+            Proceed
+          </button>
+        </div>
+
+        {/* Manual Deposit Card */}
+        <div
           onClick={() => setPaymentType('manual')}
+          className={`
+              cursor-pointer rounded-xl border p-6 transition-all duration-300
+              ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
+            `}
         >
-          <div className="w-full">
-            <div className="flex justify-center items-center">
-              <BsBank2 className="size-10 group-hover:text-primary transition-all"></BsBank2>
-            </div>
-            <div>
-              <h3 className="text-textBlack  text-center mt-2 group-hover:text-primary font-bold transition-all">
-                Manual Deposit
-              </h3>
-              <p className="text-xs text-center md:text-sm text-textGrey">
-                Processed in 3-5 minutes via bank transfer or crypto. Best for
-                crypto payments.
-              </p>
-            </div>
+          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
+            <svg
+              className="h-7 w-7 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              />
+            </svg>
           </div>
-        </button>
+
+          <div className="mb-8">
+            <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
+              Manual Deposit
+            </h2>
+            <p className="text-gray-400">
+              Processed in 3-5 minutes via bank transfer or crypto. Best for
+              crypto payments.
+            </p>
+          </div>
+
+          <button
+            onClick={() => setPaymentType('manual')}
+            className={`
+                 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
+                ${'bg-primary text-[#fff] hover:bg-gray-700'}
+              `}
+          >
+            Proceed
+          </button>
+        </div>
       </div>
     </div>
   );

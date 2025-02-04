@@ -24,8 +24,7 @@ const SmsPoolService = (props: Props) => {
   >('highest');
   const [searchQuery, setSearchQuery] = React.useState('');
   const [sortOrder, setSortOrder] = React.useState('lowest');
-  const [showAllCountries, setShowAllCountries] = React.useState(true);
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [showAllCountries, setShowAllCountries] = React.useState(false);
   const [allServices, setAllServices] = React.useState<TSmsPoolService[]>([]);
   const { data: smsPools, isLoading, isError } = useGetSmsPoolsQuery({});
   const {

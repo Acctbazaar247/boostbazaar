@@ -1,145 +1,109 @@
-"use client";
+'use client';
 
-import { servicesData } from "@/components/dashboard/dashboardData";
-import NewOrderForm from "@/components/dashboard/NewOrderForm";
-import LoadingManage from "@/components/shared/LoadingManage";
-import AnimationWrapper from "@/components/ui/AnimationWrapper";
-import {
-  useGetMainBalanceQuery,
-  useGetServicesQuery,
-  useGetSpendHistoryQuery,
-} from "@/redux/features/dashboard/dashboardApi";
-import {
-  setCategory,
-  setService,
-} from "@/redux/features/dashboard/serviceSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { cn } from "@/utils/cn";
-import Link from "next/link";
-import { useEffect } from "react";
-import Marquee from "react-fast-marquee";
-import { FaDollarSign } from "react-icons/fa";
-import { FaNairaSign } from "react-icons/fa6";
-import { GoDotFill } from "react-icons/go";
-
+import AnimationWrapper from '@/components/ui/AnimationWrapper';
+import Link from 'next/link';
+import { BsRocketTakeoff } from 'react-icons/bs';
+import { FaRocket, FaRocketchat } from 'react-icons/fa';
 const Page = () => {
-  const theme = useAppSelector((state) => state.auth.theme);
-  const dispatch = useAppDispatch();
-  const marqueTexts = [
-    "Boost your influence, amplify your reach—AcctPanel, powered by AI.",
-    "Boost your influence, amplify your reach—AcctPanel, powered by AI. ",
-    "Boost your influence, amplify your reach—AcctPanel, powered by AI.",
-  ];
-
-  const { data: balance } = useGetMainBalanceQuery("");
-  const { data: spendData } = useGetSpendHistoryQuery("");
-
-  const { services } = useAppSelector((store) => store.service);
-  const { data, isSuccess, refetch, isLoading } = useGetServicesQuery("", {
-    skip: services.length > 0,
-  });
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setService(data?.data));
-    }
-    if (services?.length === 0) {
-      refetch();
-    }
-  }, [isSuccess, data]);
-
   return (
-    <LoadingManage loading={isLoading}>
-      <AnimationWrapper>
-        <Marquee
-          speed={40}
-          direction="right"
-          className="w-fit bg-primary/5 my-10 md:my-16 py-3 text-sm"
-          autoFill={true}
-        >
-          {marqueTexts.map((text, i) => (
-            <p key={text + i} className=" flex items-center gap-1 pl-12">
-              <GoDotFill />
-              {text}
-            </p>
-          ))}
-        </Marquee>
-
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-5 md:gap-20">
-            <div className="border border-primary/50 bg-primary/10 p-5 space-y-5 rounded-lg">
-              <div className="flex items-center justify-between">
-                <h3 className="text-dark-grey">Main balance</h3>
-                <Link
-                  href={"/dashboard/fund"}
-                  className={cn(
-                    "bg-white font-light rounded px-2 py-1",
-                    theme === "light" ? "text-primary" : "text-[#fff]"
-                  )}
-                >
-                  Add funds
-                </Link>
-              </div>
-              <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
-                <FaDollarSign />
-                {balance?.data?.amount.toFixed(2)}
-              </h1>
-            </div>
-
-            {/* fund 2 */}
-            <div className="border border-primary/50 bg-primary/10 p-5 space-y-5 rounded-lg">
-              <div className="flex items-center justify-between">
-                <h3 className="text-dark-grey">Spend</h3>
-                <Link
-                  href={"/dashboard/history"}
-                  className={cn(
-                    "bg-white font-light rounded px-2 py-1",
-                    theme === "light" ? "text-primary" : "text-[#fff]"
-                  )}
-                >
-                  History
-                </Link>
-              </div>
-              <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
-                <FaDollarSign />
-                {spendData?.data?.spend}
-              </h1>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-10 pt-10 md:pt-20">
-            {servicesData.map((service, i) => (
-              <Link
-                key={i}
-                href={"/dashboard/#new-order-form"}
-                onClick={() =>
-                  dispatch(
-                    setCategory(
-                      service.title === "X (twitter)" ? "X" : service.title
-                    )
-                  )
-                }
-                className="bg-white text-dark-grey flex justify-center p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
-              >
-                {/* <div className="relative">
-                <Image
-                  src={service.image}
-                  width={400}
-                  height={180}
-                  alt="logo"
-                  className="w-full h-auto"
-                />
-              </div> */}
-                {<service.icon className="text-3xl "></service.icon>}
-                <h3 className="text-base md:text-2xl  ">{service.title}</h3>
-              </Link>
-            ))}
-          </div>
-
-          <NewOrderForm />
+    <AnimationWrapper>
+      <div className="container">
+        <div className=" mt-10">
+          <h1 className="text-3xl font-semibold leading-tight text-primary  md:text-4xl mb-4">
+            Welcome to Acctpanel
+          </h1>
+          <p className="text-lg light:text-gray-600 dark:text-gray-400 mb-8">
+            Explore our services to boost your online presence and expand your
+            communication capabilities.
+          </p>
         </div>
-      </AnimationWrapper>
-    </LoadingManage>
+        <div className="grid gap-8 md:grid-cols-2  ">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <div className="p-6">
+              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                <BsRocketTakeoff className="text-primary" />
+              </div>
+              <h2 className="text-xl font-semibold mb-2">
+                Boost Your Social Media
+              </h2>
+              <p className=" light:text-gray-600 dark:text-gray-400 mb-4">
+                Increase your followers, likes, and engagement across platforms.
+              </p>
+              <ul className="list-disc list-inside mb-4 space-y-1 light:text-gray-600 dark:text-gray-400">
+                <li>Gain more followers</li>
+                <li>Increase post engagement</li>
+                <li>Improve your online visibility</li>
+              </ul>
+              <Link
+                href="/dashboard/order"
+                className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md  bg-primary text-[#fff]"
+              >
+                Get Started
+                <svg
+                  className="ml-2 -mr-1 h-4 w-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <div className="p-6">
+              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+              </div>
+              <h2 className="text-xl font-semibold mb-2">Buy Phone Numbers</h2>
+              <p className="light:text-gray-600 dark:text-gray-400 mb-4">
+                Get virtual phone numbers for your business or personal use.
+              </p>
+              <ul className="list-disc list-inside mb-4 space-y-1 light:text-gray-600 dark:text-gray-400">
+                <li>Local and international numbers</li>
+                <li>Flexible plans and pricing</li>
+                <li>Easy management and forwarding</li>
+              </ul>
+              <Link
+                href="/dashboard/order-number"
+                className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md  bg-primary text-[#fff]"
+              >
+                Explore Numbers
+                <svg
+                  className="ml-2 -mr-1 h-4 w-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </AnimationWrapper>
   );
 };
 

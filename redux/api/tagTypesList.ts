@@ -6,6 +6,7 @@ export enum tagTypes {
   bank = 'bank',
   cryptoBank = 'cryptoBank',
   manualPayment = 'manualPayment',
+  smsPoolOrder = 'smsPoolOrder',
 }
 
 export const tagTypesList = Object.values(tagTypes);

@@ -238,3 +238,51 @@ export interface ManualCurrencyRequest {
   cryptoBankId?: string; // Optional, related CryptoBank ID
   cryptoBank?: CryptoBank; // Optional relation to CryptoBank model
 }
+
+export enum ESmsPoolOrderStatus {
+  pending = 'pending',
+  completed = 'completed',
+  cancelled = 'cancelled',
+  refunded = 'refunded',
+}
+export type IOrderHistory = {
+  cost: string;
+  order_code: string;
+  phonenumber: string;
+  cc: string;
+  number: string;
+  code: string;
+  full_code: string;
+  short_name: string;
+  service: string;
+  status: string;
+  pool_name: string;
+  pool: number;
+  timestamp: string;
+  completed_on: string;
+  expiry: number;
+  time_left: number;
+};
+export interface SmsPoolOrder {
+  id: string; // UUID
+  serviceId: string;
+  countryId: string;
+  orderId: string;
+  phoneNumber: string;
+  number: string;
+  pool: string;
+  cc: string;
+  orderById: string;
+  country: string;
+  service: string;
+  status: ESmsPoolOrderStatus; // Default: pending
+  orderBy: IUser; // Relation to User model
+  cost: number;
+  createdAt: Date; // Default: now()
+  updatedAt: Date; // Updated automatically
+}
+
+export type ISmsPoolOrderDetails = {
+  info: SmsPoolOrder;
+  details: IOrderHistory;
+};
