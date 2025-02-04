@@ -21,7 +21,7 @@ const Page = () => {
           <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
             <div className="p-6">
               <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                <BsRocketTakeoff className="text-primary" />
+                <BsRocketTakeoff className="text-xl text-primary" />
               </div>
               <h2 className="text-xl font-semibold mb-2">
                 Boost Your Social Media
