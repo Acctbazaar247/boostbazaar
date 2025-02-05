@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import AppButton from "../ui/AppButton";
-import AppFormInput from "../ui/AppFormInput";
-import AppFormTextArea from "../ui/AppFormTextArea";
-import { toast } from "react-toastify";
-import { useCreateTicketMutation } from "@/redux/features/dashboard/dashboardApi";
-import AppInfo from "../ui/AppInfo";
+import { SubmitHandler, useForm } from 'react-hook-form';
+import AppButton from '../ui/AppButton';
+import AppFormInput from '../ui/AppFormInput';
+import AppFormTextArea from '../ui/AppFormTextArea';
+import { toast } from 'react-toastify';
+import { useCreateTicketMutation } from '@/redux/features/dashboard/dashboardApi';
+import AppInfo from '../ui/AppInfo';
+import AppFormSelect from '../ui/AppFormSelect';
 
 interface FormData {
   subject: string;
@@ -18,19 +19,20 @@ const ComplainForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
+    control,
   } = useForm<FormData>();
 
   const [createTicket, { isLoading }] = useCreateTicketMutation();
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<FormData> = async data => {
     await createTicket(data)
       .unwrap()
-      .then((res) => {
+      .then(res => {
         toast.success(res?.message);
         reset();
       })
-      .catch((res) => {
+      .catch(res => {
         toast.error(res?.data?.message);
       });
   };
@@ -41,15 +43,18 @@ const ComplainForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border border-primary/80 rounded-lg p-4 md:p-8 space-y-4 md:space-y-8"
       >
-        <AppFormInput
+        <AppFormSelect
           name="subject"
-          type="text"
+          options={[
+            { label: 'SMS service issues', value: 'SMS service issues' },
+            { label: 'Boost Service issues', value: 'Boost Service issues' },
+            { label: 'Payment issues', value: 'Payment issues' },
+            { label: 'Something Else', value: 'Something Else' },
+          ]}
           label="Subject"
-          className="pl-4"
-          register={register}
           required
           placeholder="Enter subject"
-          error={errors.subject}
+          control={control}
         />
 
         <AppFormTextArea
@@ -72,13 +77,13 @@ const ComplainForm = () => {
       <AppInfo>
         <p>
           If you encounter any issues with the ticket system or haven&apos;t
-          received a response, please reach out to us via email at{" "}
+          received a response, please reach out to us via email at{' '}
           <a
             className="text-primary underline "
             href="mailto:support@acctpanel.com"
           >
             support@acctpanel.com
-          </a>{" "}
+          </a>{' '}
           Our technical support is available in English.
         </p>
       </AppInfo>

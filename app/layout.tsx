@@ -1,30 +1,34 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
-import Providers from "@/components/shared/provider";
-import icon from "./favicon.ico";
-import { config } from "@/config";
-import OnDevelopment from "@/components/OnDevelopment/OnDevelopment";
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import './globals.css';
+import Providers from '@/components/shared/provider';
+import icon from './favicon.ico';
+import { config } from '@/config';
+import OnDevelopment from '@/components/OnDevelopment/OnDevelopment';
 const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  style: ["normal"]
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  style: ['normal'],
 });
 
 export const metadata: Metadata = {
-  title: "Acctpanel",
+  title: 'Acctpanel',
   description:
-    "Get your Brands Pictures, Videos buzzing with Followers, Likes, Views, etc without breaking a sweat."
+    'Get your Brands Pictures, Videos buzzing with Followers, Likes, Views, etc without breaking a sweat.',
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -37,7 +41,7 @@ export default function RootLayout({
               s1.setAttribute('crossorigin','*');
               s0.parentNode.insertBefore(s1,s0);
               })();
-            `
+            `,
           }}
         />
       </head>

@@ -135,9 +135,10 @@ const SmsPoolService = (props: Props) => {
                   onChange={selectedService => {
                     setSelectedService(selectedService);
                   }}
+                  className="text-[20px]"
                   value={selectedService || null}
                   options={allServices.map((single: TSmsPoolService) => ({
-                    label: single.name,
+                    label: <span className="text-[16px]">{single.name}</span>,
                     value: single.ID,
                   }))}
                 ></Select>
@@ -152,7 +153,7 @@ const SmsPoolService = (props: Props) => {
                     placeholder="Search for a country"
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-4 border border-gray-600 light:border-gray-300 focus:shadow-none rounded-lg  bg-transparent  text-black transition-colors duration-200"
+                    className="w-full pl-10 text-[16px] pr-4 py-4 border border-gray-600 light:border-gray-300 focus:shadow-none rounded-lg  bg-transparent  text-black transition-colors duration-200"
                   />
                 </div>
               </div>

@@ -207,11 +207,12 @@ const ManualPayment = ({ setPaymentType }: Props) => {
                             ) || null,
                           );
                         }}
-                        showSearch
                         className="my-select w-full h-10 mt-1"
                         placeholder="Select Bank"
                         options={bankBanks?.data?.map((bank: Bank) => ({
-                          label: bank.bankName,
+                          label: (
+                            <span className="text-[16px]">{bank.bankName}</span>
+                          ),
                           value: bank.id,
                         }))}
                       />
@@ -259,11 +260,12 @@ const ManualPayment = ({ setPaymentType }: Props) => {
                             ) || null,
                           );
                         }}
-                        showSearch
                         className="my-select w-full h-10 mt-1"
                         placeholder="Select crypto"
                         options={cryptoBanks?.data?.map((bank: CryptoBank) => ({
-                          label: bank.name,
+                          label: (
+                            <span className="text-[16px]">{bank.name}</span>
+                          ),
                           value: bank.id,
                         }))}
                       />

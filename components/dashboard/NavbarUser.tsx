@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { BiMessageAltEdit } from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa6';
-import { LuLogOut, LuUser2 } from 'react-icons/lu';
+import { LuHome, LuLogOut, LuUser2 } from 'react-icons/lu';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { PiCardholderDuotone, PiUserList } from 'react-icons/pi';
 import { RiHistoryFill } from 'react-icons/ri';
@@ -27,12 +27,22 @@ const NavbarUser = () => {
 
   const navLinks = [
     {
-      label: 'Order',
+      label: 'Home',
+      icon: <LuHome />,
+      path: '/dashboard',
+    },
+    {
+      label: 'Boost Service',
       icon: <MdAddShoppingCart />,
       path: '/dashboard/order',
     },
     {
-      label: 'Fund',
+      label: 'SMS Service',
+      icon: <SiReverbnation />,
+      path: '/dashboard/order-number',
+    },
+    {
+      label: 'Deposit',
       icon: <PiCardholderDuotone />,
       path: '/dashboard/fund',
     },
@@ -47,30 +57,25 @@ const NavbarUser = () => {
       path: '/dashboard/profile',
     },
     {
-      label: 'Complain',
+      label: 'Tickets',
       icon: <BiMessageAltEdit />,
       path: '/dashboard/complain',
     },
-    {
-      label: 'Marketplace',
-      icon: <MdAddShoppingCart />,
-      path: 'https://www.acctbazaar.com',
-    },
-    {
-      label: 'Refer',
-      icon: <VscUngroupByRefType />,
-      path: '/dashboard/refer',
-    },
-    {
-      label: 'Review',
-      icon: <SiReverbnation />,
-      path: '/dashboard/review',
-    },
-    {
-      label: 'Order Number',
-      icon: <SiReverbnation />,
-      path: '/dashboard/order-number',
-    },
+    // {
+    //   label: 'Marketplace',
+    //   icon: <MdAddShoppingCart />,
+    //   path: 'https://www.acctbazaar.com',
+    // },
+    // {
+    //   label: 'Refer',
+    //   icon: <VscUngroupByRefType />,
+    //   path: '/dashboard/refer',
+    // },
+    // {
+    //   label: 'Review',
+    //   icon: <SiReverbnation />,
+    //   path: '/dashboard/review',
+    // },
   ];
 
   const user = useAppSelector(selectCurrentUser);
