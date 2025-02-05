@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import Providers from '@/components/shared/provider';
-import icon from './favicon.ico';
 import { config } from '@/config';
 import OnDevelopment from '@/components/OnDevelopment/OnDevelopment';
 const poppins = Poppins({
@@ -29,6 +28,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         />
+        <link rel="icon" href={'/favicon.ico'} />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import logo from "@/assets/image/favicon.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '@/assets/image/favicon.png';
 
 type TLogo = {
   isLink?: boolean;
   imageClassName?: string;
   parentClassName?: string;
-  variant?: "sm" | "md";
+  variant?: 'sm' | 'md';
 };
 
 const Logo = ({
@@ -17,28 +17,28 @@ const Logo = ({
 }: TLogo) => {
   return isLink ? (
     <Link
-      href={"/"}
+      href={'/'}
       className={`flex items-center select-none ${parentClassName}`}
     >
       <Image
-        src={logo}
+        src={'/assets/logo/logo.PNG'}
         alt="logo"
         width={32}
         height={32}
         className={`object-cover ${
-          variant === "md" ? "max-sm:w-7" : variant === "sm" ? "max-sm:w-5" : ""
+          variant === 'md' ? 'max-sm:w-7' : variant === 'sm' ? 'max-sm:w-5' : ''
         } ${imageClassName}`}
       />
       <h2
-        className={`text-3xl font-semibold  ${
-          variant === "md"
-            ? "max-sm:text-2xl"
-            : variant === "sm"
-            ? "max-sm:text-base"
-            : ""
+        className={`text-3xl font-semibold ml-1  ${
+          variant === 'md'
+            ? 'max-sm:text-2xl'
+            : variant === 'sm'
+              ? 'max-sm:text-base'
+              : ''
         }`}
       >
-        cctpanel
+        Acctpanel
       </h2>
     </Link>
   ) : (

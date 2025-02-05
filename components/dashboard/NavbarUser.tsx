@@ -149,13 +149,13 @@ const NavbarUser = () => {
       <Drawer
         width={300}
         className="md:hidden"
-        // title={<Logo variant="md" />}
+        title={<Logo variant="md" />}
         placement={'left'}
         closable={false}
         onClose={() => setMobileMenu(false)}
         open={mobileMenu}
       >
-        <div className="space-y-2 max-sm:pt-14">
+        <div className="space-y-2 max-sm:pt-2">
           <Avatar size={'large'} src={user?.profileImg} />
           <p className="text-lg font-medium capitalize">
             <span className="text-dark-grey">Hello</span> {user?.name} !

@@ -27,8 +27,8 @@ const Page = () => {
   const tabs = [
     { label: 'Order', value: 'order' },
     { label: 'Phone Number', value: 'phone-number' },
-    { label: 'Deposit', value: 'deposit' },
-    { label: 'Manual Payment', value: 'manual' },
+    { label: 'Automatic Deposit', value: 'deposit' },
+    { label: 'Manual Deposit', value: 'manual' },
   ];
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState<

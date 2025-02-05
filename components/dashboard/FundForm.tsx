@@ -6,6 +6,7 @@ import ManualPayment from './ManualPayment';
 import { BsBank2 } from 'react-icons/bs';
 import { BsCashCoin } from 'react-icons/bs';
 import { config } from '@/config';
+import Link from 'next/link';
 
 const FundForm = () => {
   const [paymentType, setPaymentType] = useState<'online' | 'manual' | null>(
@@ -25,7 +26,7 @@ const FundForm = () => {
       <div className="grid gap-6 md:grid-cols-2 pt-5">
         {/* Automatic Deposit Card */}
         <div
-          onClick={() => setPaymentType('online')}
+          // onClick={() => setPaymentType('online')}
           className={`
             cursor-pointer rounded-xl border p-6 transition-all duration-300
             ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
@@ -55,21 +56,28 @@ const FundForm = () => {
               Instant deposit via Bank, Card, or Crypto.
             </p>
           </div>
-
-          <button
-            className={`
-            rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
-           ${'bg-primary text-[#fff] hover:bg-gray-700'}
-         `}
-            onClick={() => setPaymentType('online')}
-          >
-            Proceed
-          </button>
+          <div className="flex flex-col gap-4">
+            <button
+              className={`
+              rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
+             ${'bg-primary text-[#fff] hover:bg-gray-700'}
+           `}
+              onClick={() => setPaymentType('online')}
+            >
+              Proceed
+            </button>
+            <Link
+              href="/dashboard/history?tab=deposit"
+              className="text-sm text-gray-400 hover:text-gray-600"
+            >
+              View Previous Transactions
+            </Link>
+          </div>
         </div>
 
         {/* Manual Deposit Card */}
         <div
-          onClick={() => setPaymentType('manual')}
+          // onClick={() => setPaymentType('manual')}
           className={`
               cursor-pointer rounded-xl border p-6 transition-all duration-300
               ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
@@ -101,15 +109,23 @@ const FundForm = () => {
             </p>
           </div>
 
-          <button
-            onClick={() => setPaymentType('manual')}
-            className={`
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => setPaymentType('manual')}
+              className={`
                  rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
                 ${'bg-primary text-[#fff] hover:bg-gray-700'}
               `}
-          >
-            Proceed
-          </button>
+            >
+              Proceed
+            </button>
+            <Link
+              href="/dashboard/history?tab=manual"
+              className="text-sm text-gray-400 hover:text-gray-600"
+            >
+              View Previous Transactions
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -68,7 +68,7 @@ const Page = () => {
 
         <div className="container">
           <UserBalanceAndSpend></UserBalanceAndSpend>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-10 pt-10 md:pt-20">
+          <div className="grid grid-cols-3 xl:grid-cols-5 gap-2 md:gap-10 pt-10 md:pt-20">
             {servicesData.map((service, i) => (
               <Link
                 key={i}
@@ -80,7 +80,7 @@ const Page = () => {
                     ),
                   )
                 }
-                className="bg-white text-dark-grey flex justify-center p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
+                className="bg-white text-dark-grey flex justify-center p-1 py-2 md:p-5 items-center gap-3 hover:bg-primary/10 cursor-pointer drop-shadow-md border border-primary/50 rounded-lg text-center"
               >
                 {/* <div className="relative">
                 <Image
@@ -91,8 +91,8 @@ const Page = () => {
                   className="w-full h-auto"
                 />
               </div> */}
-                {<service.icon className="text-3xl "></service.icon>}
-                <h3 className="text-base md:text-2xl  ">{service.title}</h3>
+                {<service.icon className="text-xs md:text-3xl "></service.icon>}
+                <h3 className="text-xs md:text-2xl  ">{service.title}</h3>
               </Link>
             ))}
           </div>
