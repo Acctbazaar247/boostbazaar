@@ -25,15 +25,15 @@ const Page = () => {
   const tab = searchParams.get('tab');
 
   const tabs = [
-    { label: 'Order', value: 'order' },
-    { label: 'Phone Number', value: 'phone-number' },
+    { label: 'Automatic Deposit', value: 'deposit' },
+    { label: 'Manual Deposit', value: 'manual' },
   ];
   const [page, setPage] = useState(1);
-  const [activeTab, setActiveTab] = useState<'order' | 'phone-number'>('order');
+  const [activeTab, setActiveTab] = useState<'deposit' | 'manual'>('deposit');
 
   useEffect(() => {
     if (tab && tabs.some(taba => taba.value === tab)) {
-      setActiveTab(tab as 'order' | 'phone-number');
+      setActiveTab(tab as 'deposit' | 'manual');
     }
   }, [tab]);
 
@@ -221,7 +221,7 @@ const Page = () => {
   ];
   return (
     <AnimationWrapper className="container py-12">
-      <h1 className="heading mb-2 md:mb-4">History</h1>
+      <h1 className="heading mb-2 md:mb-4 ">Deposit History</h1>
 
       <AppTabs
         className="!text-xl"
@@ -230,39 +230,11 @@ const Page = () => {
         tabs={tabs}
       />
 
-      {activeTab === 'order' ? (
-        <div className="  pb-4  ">
-          <AppInfo>
-            <p>
-              {' '}
-              Orders are processed within 0 seconds to 24 hours, though some may
-              take 0–7 days or up to 30 days, depending on complexity. If your
-              order does not begin within 24 hours, please contact us via
-              Telegram @acctpanel or email{' '}
-              <a href="mailto:support@acctpanel.com">
-                support@acctpanel.com
-              </a>.{' '}
-              <a
-                className="text-primary underline cursor-pointer"
-                href="mailto:support@acctpanel.com "
-              >
-                support@acctpanel.com
-              </a>{' '}
-              for assistance.
-            </p>
-          </AppInfo>
-        </div>
-      ) : null}
-
-      {activeTab === 'phone-number' ? (
-        <MyNumbersTable />
-      ) : (
-        <AppTable
-          setPage={setPage}
-          columns={orderColumns}
-          infoQuery={orderQuery}
-        />
-      )}
+      <AppTable
+        setPage={setPage}
+        columns={activeTab === 'deposit' ? depositColumns : manualColumns}
+        infoQuery={activeTab === 'deposit' ? depositQuery : manualQuery}
+      />
     </AnimationWrapper>
   );
 };

@@ -67,7 +67,7 @@ const FundForm = () => {
               Proceed
             </button>
             <Link
-              href="/dashboard/history?tab=deposit"
+              href="/dashboard/deposit-history?tab=deposit"
               className="text-sm text-gray-400 hover:text-gray-600"
             >
               View Previous Transactions
@@ -120,7 +120,7 @@ const FundForm = () => {
               Proceed
             </button>
             <Link
-              href="/dashboard/history?tab=manual"
+              href="/dashboard/deposit-history?tab=manual"
               className="text-sm text-gray-400 hover:text-gray-600"
             >
               View Previous Transactions

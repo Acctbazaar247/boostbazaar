@@ -72,7 +72,7 @@ const Page = () => {
             {servicesData.map((service, i) => (
               <Link
                 key={i}
-                href={'/dashboard/#new-order-form'}
+                href={'/dashboard/order/#new-order-form'}
                 onClick={() =>
                   dispatch(
                     setCategory(
