@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { useCreateTicketMutation } from '@/redux/features/dashboard/dashboardApi';
 import AppInfo from '../ui/AppInfo';
 import AppFormSelect from '../ui/AppFormSelect';
-
+import Swal from 'sweetalert2';
 interface FormData {
   subject: string;
   message: string;
@@ -29,7 +29,11 @@ const ComplainForm = () => {
     await createTicket(data)
       .unwrap()
       .then(res => {
-        toast.success(res?.message);
+        Swal.fire(
+          'Success',
+          'Your ticket has been successfully submitted. We will be in touch with you shortly via email.',
+          'success',
+        );
         reset();
       })
       .catch(res => {
