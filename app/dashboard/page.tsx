@@ -4,6 +4,8 @@ import AnimationWrapper from '@/components/ui/AnimationWrapper';
 import Link from 'next/link';
 import { BsRocketTakeoff } from 'react-icons/bs';
 import { FaRocket, FaRocketchat } from 'react-icons/fa';
+import { IoRocketSharp } from 'react-icons/io5';
+import { MdOutlineTextsms } from 'react-icons/md';
 const Page = () => {
   return (
     <AnimationWrapper>
@@ -21,7 +23,7 @@ const Page = () => {
           <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
             <div className="p-6">
               <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                <BsRocketTakeoff className="text-xl text-primary" />
+                <IoRocketSharp className="text-xl text-primary" />
               </div>
               <h2 className="text-xl font-semibold mb-2">
                 Boost Your Social Media
@@ -57,20 +59,7 @@ const Page = () => {
           <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
             <div className="p-6">
               <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
+                <MdOutlineTextsms className="text-xl text-primary"></MdOutlineTextsms>
               </div>
               <h2 className="text-xl font-semibold mb-2">Buy Phone Numbers</h2>
               <p className="light:text-gray-600 dark:text-gray-400 mb-4">

@@ -13,13 +13,14 @@ import { useState } from 'react';
 import { BiMessageAltEdit } from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa6';
 import { LuHome, LuLogOut, LuUser2 } from 'react-icons/lu';
-import { MdAddShoppingCart } from 'react-icons/md';
+import { MdAddShoppingCart, MdOutlineTextsms } from 'react-icons/md';
 import { PiCardholderDuotone, PiUserList } from 'react-icons/pi';
 import { RiHistoryFill } from 'react-icons/ri';
 import { SiReverbnation } from 'react-icons/si';
 import { VscUngroupByRefType } from 'react-icons/vsc';
 import Logo from '../ui/Logo';
 import { FiMoon, FiSun } from 'react-icons/fi';
+import { IoRocketSharp } from 'react-icons/io5';
 
 const NavbarUser = () => {
   const pathname = usePathname();
@@ -33,12 +34,12 @@ const NavbarUser = () => {
     },
     {
       label: 'Boost Service',
-      icon: <MdAddShoppingCart />,
+      icon: <IoRocketSharp />,
       path: '/dashboard/order',
     },
     {
       label: 'SMS Service',
-      icon: <SiReverbnation />,
+      icon: <MdOutlineTextsms />,
       path: '/dashboard/order-number',
     },
     {
@@ -101,7 +102,7 @@ const NavbarUser = () => {
               }`}
             >
               {nav.label}{' '}
-              <span className="bg-primary rounded p-1 text-white">
+              <span className="bg-primary rounded p-1 text-[#fff]">
                 {nav.icon}
               </span>
             </Link>
