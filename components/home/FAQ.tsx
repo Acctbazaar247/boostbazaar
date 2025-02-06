@@ -8,20 +8,20 @@ import AnimationWrapper from "../ui/AnimationWrapper";
 const FAQ = () => {
   const faqCards = [
     {
-      title: "What is Acctpanel?",
-      text: "Acctpanel is an SMM provider. We promote your brand with our social influence partners, We provide your brand unlimited outreach that helps your brand get the social reacton or engagement you desire.",
+      title: "What is an SMM Panel?",
+      text: "An SMM panel is an online platform that provides social media marketing (SMM) services, including engagement boosts like followers, likes, views, and comments. AcctPanel is a powerful SMM panel offering both engagement services and SMS verification. We help brands grow their social presence by providing seamless access to real interactions and verification solutions for various online platforms.",
     },
     {
-      title: "What is SMM?",
-      text: "Social media marketing (SMM) is the use of Social media platforms to interact with customers to build brands, increase sales, and drive website traffic.",
+      title: "What is SMS Service?",
+      text: "SMS service allows users to send and receive text messages for verification, authentication, and communication purposes across various platforms. AcctPanel provides reliable SMS verification services, enabling users to receive one-time passwords (OTPs) and verification codes for different online platforms. This ensures seamless access to services like social media accounts, financial platforms, and other digital tools requiring phone verification.",
     },
     {
       title: "What payment options do you accept?",
-      text: "At Acctpanel our goal is to run seamless and easy means of payment options which includes Debit/Credit cards or cryptocurrency payments such as BTC, USDT etc.",
+      text: "At AcctPanel, we aim to provide seamless and convenient payment options, including debit/credit cards, cryptocurrency payments like BTC and USDT, and bank transfers for the Nigerian market.",
     },
     {
-      title: "What social media platform can i promote?",
-      text: "We promote social medias like Facebook, X which was Twitter, Telegram, Youtube, Instagram Snapchat and lots more.",
+      title: "What services does AcctPanel offer?",
+      text: "AcctPanel provides both SMS verification services and SMM panel solutions. For SMS services, we support verification for various online platforms, ensuring secure and seamless account creation and access. For social media marketing, we help boost engagement on platforms like Facebook, X (formerly Twitter), Telegram, YouTube, Instagram, Snapchat, and many more, offering services such as followers, likes, views, and comments.",
     },
   ];
   return (

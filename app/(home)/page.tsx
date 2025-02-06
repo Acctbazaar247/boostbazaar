@@ -13,7 +13,7 @@ const page = () => {
       <Aos />
       <Banner />
       <HowWorks />
-      <Stats />
+      {/* <Stats /> */}
       <Services />
       <WhyChoose />
       <FAQ />

@@ -2,6 +2,9 @@ import Image from "next/image";
 import { servicesData } from "./data";
 import e from "@/assets/image/e.png";
 import se from "@/assets/image/se.png";
+import mac from "@/assets/image/mac.png";
+import iphone from "@/assets/image/phone.png";
+
 
 const Services = () => {
   return (
@@ -10,7 +13,7 @@ const Services = () => {
       id="Services"
       className="container scroll-m-28 md:scroll-m-44"
     >
-      <div className="bg-primary-7 relative pt-16 pb-10 md:py-20 center flex-col rounded-t-lg shadow-md -mb-0.5">
+      <div className="bg-primary-7 relative mt-32 pt-16 pb-10 md:py-20 center flex-col rounded-t-lg shadow-md -mb-0.5">
         <h1 className="heading">Our Services</h1>
         <p className="leading-6 text-dark-grey">
           Unlimited services that keeps your brand atop
@@ -26,7 +29,28 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-10">
+      {/* Images Section */}
+      <div className="flex flex-col md:flex-row gap-4 md:gap-10 justify-center items-center mt-[-2rem] md:mt-[-5rem]">
+        {/* MacBook Image */}
+        <div className="w-full md:w-[65%] lg:w-[60%] xl:w-[55%] relative  md:block">
+          <Image
+            src={mac}
+            alt="MacBook"
+            className="w-full h-auto object-contain"
+          />
+        </div>
+
+        {/* iPhone Image */}
+        <div className="w-[70%] md:w-[30%] lg:w-[25%] xl:w-[22%] relative">
+          <Image
+            src={iphone}
+            alt="iPhone"
+            className="w-full h-auto object-contain"
+          />
+        </div>
+      </div>
+
+      {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-10">
         {servicesData.map((service, i) => (
           <div
             key={i}
@@ -46,7 +70,7 @@ const Services = () => {
             </h3>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };

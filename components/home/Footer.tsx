@@ -26,14 +26,16 @@ const Footer = () => {
           <Link key={i} href={link.link}>
             <Image
               src={link.image}
-              width={40}
-              height={40}
+              width={25}
+              height={25}
               alt="logo"
               className="aspect-square"
             />
           </Link>
         ))}
       </div>
+      
+      <p className="text-center text-sm md:text-base pb-2">Copyright © 2025 AcctPanel. All rights reserved.</p>
     </div>
   );
 };

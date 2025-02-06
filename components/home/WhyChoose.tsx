@@ -19,15 +19,11 @@ const WhyChoose = () => {
       >
         <h1 className="heading">Why Choose Us?</h1>
         <p className="text-dark-grey text-xl 2xl:text-2xl font-light leading-8">
-          Acctpanel is an innovative platform designed to offer a
-          comprehensive suite of Social Media Services. Users can conveniently
-          access and purchase various services, including social media
-          followers, likes, views, watch time, and comments, all in one place.
-          The goal is to create a platform that is both esthetically pleasing
-          and user- friendly.
+          AcctPanel is a cutting-edge platform offering engagement and SMS verification services. Users can easily purchase SMS for online platforms, social media followers, likes, views, watch time, and comments—all in one place.           
         </p>
+        
         <p className="text-dark-grey text-xl 2xl:text-2xl font-light leading-8">
-          We ensure adequate security, services and satisfaction.
+          Designed for a seamless experience, we prioritize security, quality services, and user satisfaction.
         </p>
 
         <Logo parentClassName="lg:pt-8 2xl:pt-12" />

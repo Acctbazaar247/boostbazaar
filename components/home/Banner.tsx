@@ -8,7 +8,7 @@ import { MdOutlineHomeRepairService } from 'react-icons/md';
 import Marquee from 'react-fast-marquee';
 import { useEffect, useState } from 'react';
 import { avatars, bannerData } from './data';
-import banner from '@/assets/image/banner.png';
+import banner from '@/assets/image/new-banner.png';
 import bannerB from '@/assets/image/banner-b.png';
 
 const Banner = () => {
@@ -64,10 +64,10 @@ const Banner = () => {
             />
           </div>
           <p className="font-light text-dark-grey py-6 2xl:py-9">
-            Elevate your online presence with unlimited outreach.
+            Access 1,000+ SMS verification and engagement services through our platform.
           </p>
 
-          <div className="pb-10 2xl:pb-20 flex items-center gap-6">
+          {/* <div className="pb-10 2xl:pb-20 flex items-center gap-6">
             <div className="flex -space-x-4 rtl:space-x-reverse">
               {avatars.map((av, i) => (
                 <Image
@@ -96,12 +96,12 @@ const Banner = () => {
                   <FaStar className="text-[#F0C867] md:text-lg" key={index} />
                 ))}
             </div>
-          </div>
+          </div> */}
         </div>
         {/* this is right side div  */}
         <div data-aos="fade-left" className=" flex items-end justify-end">
           <Image
-            className="-mb-4 md:-mb-5 2xl:-mb-6 max-2xl:w-[480px] aspect-square"
+            className="mb-4 md:mb-5 2xl:mb-6 max-2xl:w-[480px] aspect-square"
             src={banner}
             alt="banner image"
             width={600}
