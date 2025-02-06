@@ -138,7 +138,7 @@ const SmsPoolService = (props: Props) => {
                   className="text-[20px]"
                   value={selectedService || null}
                   options={allServices.map((single: TSmsPoolService) => ({
-                    label: <span className="text-[16px]">{single.name}</span>,
+                    label: single.name,
                     value: single.ID,
                   }))}
                 ></Select>

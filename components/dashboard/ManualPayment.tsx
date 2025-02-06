@@ -20,6 +20,8 @@ import { config } from '@/config';
 import AppImageUpload from '../ui/AppImageUpload';
 import { Bank } from '@/types';
 import { CryptoBank } from '@/types';
+import { CiBank } from 'react-icons/ci';
+import { RiExchangeDollarLine } from 'react-icons/ri';
 
 type Props = {
   setPaymentType: (paymentType: 'online' | 'manual' | null) => void;
@@ -179,13 +181,9 @@ const ManualPayment = ({ setPaymentType }: Props) => {
           }`}
         >
           <div className="flex gap-5">
-            <Image
-              width={32}
-              height={32}
-              className="size-8"
-              src={'/assets/icons/card-receive.png'}
-              alt="bank payment"
-            />
+            <div className="min-w-[36px]">
+              <CiBank className="text-primary text-4xl" />
+            </div>
             <div className="space-y-1 w-full">
               <h3 className="text-textBlack font-bold">Bank Transfer</h3>
               <p className="text-sm text-textGrey">
@@ -232,13 +230,9 @@ const ManualPayment = ({ setPaymentType }: Props) => {
             selectedOption === 'crypto' ? 'border-primary' : ''
           }`}
         >
-          <Image
-            width={32}
-            height={32}
-            className="size-8"
-            src={'/assets/icons/doller-recive.png'}
-            alt="crypto payment"
-          />
+          <div className="min-w-[36px]">
+            <RiExchangeDollarLine className="text-primary text-4xl" />
+          </div>
           <div className="space-y-1">
             <h3 className="text-textBlack font-bold">Crypto Payment</h3>
             <p className="text-sm text-textGrey">

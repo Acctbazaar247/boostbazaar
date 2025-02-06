@@ -16,7 +16,7 @@ export default function MyNumbersTable(props: IMyNumbersTableProps) {
   const query = useGetSmsPoolOrderQuery(
     {
       page: page,
-      ownById: user?.id,
+      orderById: user?.id,
     },
     { refetchOnMountOrArgChange: true },
   );

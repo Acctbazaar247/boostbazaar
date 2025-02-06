@@ -48,7 +48,7 @@ const NavbarUser = () => {
       path: '/dashboard/fund',
     },
     {
-      label: 'History',
+      label: 'Order History',
       icon: <RiHistoryFill />,
       path: '/dashboard/history',
     },
