@@ -64,7 +64,8 @@ const Banner = () => {
             />
           </div>
           <p className="font-light text-dark-grey py-6 2xl:py-9">
-            Access 1,000+ SMS verification and engagement services through our platform.
+            Access 1,000+ SMS verification and engagement services
+            through our platform.
           </p>
 
           {/* <div className="pb-10 2xl:pb-20 flex items-center gap-6">
@@ -121,7 +122,7 @@ const Banner = () => {
             <div key={i} className="center gap-1 pl-5 lg:pl-40">
               <Image
                 className="max-sm:w-3.5 max-2xl:w-9 h-auto"
-                src={bann.image}
+                src={bann.image || ''}
                 alt="banner image"
                 width={i == 0 ? 50 : 45}
                 height={i == 0 ? 50 : 45}
