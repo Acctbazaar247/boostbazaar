@@ -25,8 +25,8 @@ const Page = () => {
   const tab = searchParams.get('tab');
 
   const tabs = [
-    { label: 'Order', value: 'order' },
-    { label: 'Phone Number', value: 'phone-number' },
+    { label: 'Boost Service', value: 'order' },
+    { label: 'SMS Service', value: 'phone-number' },
   ];
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState<'order' | 'phone-number'>('order');
@@ -221,7 +221,7 @@ const Page = () => {
   ];
   return (
     <AnimationWrapper className="container py-12">
-      <h1 className="heading mb-2 md:mb-4">History</h1>
+      <h1 className="heading mb-2 md:mb-4">Order History</h1>
 
       <AppTabs
         className="!text-xl"
@@ -234,14 +234,9 @@ const Page = () => {
         <div className="  pb-4  ">
           <AppInfo>
             <p>
-              {' '}
-              Orders are processed within 0 seconds to 24 hours, though some may
-              take 0–7 days or up to 30 days, depending on complexity. If your
-              order does not begin within 24 hours, please contact us via
-              Telegram @acctpanel or email{' '}
-              <a href="mailto:support@acctpanel.com">
-                support@acctpanel.com
-              </a>.{' '}
+              Boost services are processed within 0 seconds to 24 hours, but
+              some may take 0-7 days or up to 30 days, depending on complexity.
+              If your service does not start within 24 hours, email{' '}
               <a
                 className="text-primary underline cursor-pointer"
                 href="mailto:support@acctpanel.com "

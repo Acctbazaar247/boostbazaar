@@ -68,6 +68,7 @@ const AntdTheme = ({ children }: TAntdTheme) => {
           Select: {
             optionSelectedColor: theme === 'light' ? '#000' : '#000',
             colorTextPlaceholder: '#999',
+            fontSize: 16,
           },
           Checkbox: {
             colorBgContainer: theme === 'light' ? '#fff' : '#fff', // Background color

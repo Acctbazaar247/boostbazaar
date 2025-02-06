@@ -1,15 +1,27 @@
 'use client';
 
 import AnimationWrapper from '@/components/ui/AnimationWrapper';
+import { config } from '@/config';
 import Link from 'next/link';
 import { BsRocketTakeoff } from 'react-icons/bs';
 import { FaRocket, FaRocketchat } from 'react-icons/fa';
+import { FaX } from 'react-icons/fa6';
 import { IoRocketSharp } from 'react-icons/io5';
 import { MdOutlineTextsms } from 'react-icons/md';
+import { useState } from 'react';
 const Page = () => {
+  const [show, setShow] = useState(true);
   return (
     <AnimationWrapper>
       <div className="container">
+        {config.dashboardMessage?.startsWith(' ') ? null : show ? (
+          <div className="bg-primary py-2 px-4 gap-2 rounded flex justify-between items-center mt-10">
+            <p className=" rounded text-[#fff]">{config.dashboardMessage}</p>
+            <button onClick={() => setShow(false)}>
+              <FaX></FaX>
+            </button>
+          </div>
+        ) : null}
         <div className=" mt-10">
           <h1 className="text-3xl font-semibold leading-tight text-primary  md:text-4xl mb-4">
             Welcome to Acctpanel

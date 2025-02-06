@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import AppButton from "../ui/AppButton";
-import Link from "next/link";
-import { FaStar, FaUser } from "react-icons/fa";
-import { MdOutlineHomeRepairService } from "react-icons/md";
-import Marquee from "react-fast-marquee";
-import { useEffect, useState } from "react";
-import { avatars, bannerData } from "./data";
-import banner from "@/assets/image/banner.png";
-import bannerB from "@/assets/image/banner-b.png";
+import Image from 'next/image';
+import AppButton from '../ui/AppButton';
+import Link from 'next/link';
+import { FaStar, FaUser } from 'react-icons/fa';
+import { MdOutlineHomeRepairService } from 'react-icons/md';
+import Marquee from 'react-fast-marquee';
+import { useEffect, useState } from 'react';
+import { avatars, bannerData } from './data';
+import banner from '@/assets/image/banner.png';
+import bannerB from '@/assets/image/banner-b.png';
 
 const Banner = () => {
   const [speed, setSpeed] = useState(50);
@@ -20,10 +20,10 @@ const Banner = () => {
     };
 
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -39,12 +39,12 @@ const Banner = () => {
             Unlimited Packages For You
           </h2>
           <h1 className="heading font-medium pt-5 text-black">
-            Giving Your Brand <span className="text-primary">Unlimited</span>{" "}
-            Outreach Is Our Priority
+            Cheapest and Fastest Engagements & Online SMS Verification
           </h1>
           <p className="font-light text-dark-grey max-w-[540px] py-4 2xl:py-6">
-            Get your Brands Pictures, Videos buzzing with Followers, Likes,
-            Views, etc without breaking a sweat.
+            Boost your brand with real engagement—followers, likes, and
+            views—while also ensuring seamless SMS verifications for hassle-free
+            account setups.
           </p>
 
           <div className="flex items-center max-sm:justify-between gap-2 md:gap-5">
