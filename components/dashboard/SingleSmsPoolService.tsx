@@ -23,7 +23,7 @@ const SingleSmsPoolService = (props: Props) => {
   //   modal open
   const [modalOpen, setModalOpen] = useState(false);
   const serviceCharge =
-    (parseFloat(data.price) * smsPoolServiceChargeInPercentage) / 100;
+    (parseFloat(data.price) / 100) * smsPoolServiceChargeInPercentage;
 
   const handleOrder = () => {
     buySmsPool({
@@ -65,13 +65,13 @@ const SingleSmsPoolService = (props: Props) => {
         <div>
           <h6 className="text-sm font-bold text-black">Lowest Price</h6>
           <div className="flex items-center mt-2 border light:border-gray-300 dark:border-gray-500 rounded-md p-2 gap-2">
-            <p>${(parseFloat(data.low_price) + serviceCharge).toFixed(2)}</p>
+            <p>${(parseFloat(data.low_price) + serviceCharge).toFixed(3)}</p>
           </div>
         </div>
         <div>
           <h6 className="text-sm font-bold text-black">Highest Price</h6>
           <div className="flex items-center mt-2 border light:border-gray-300 dark:border-gray-500 rounded-md p-2 gap-2">
-            <p>${(parseFloat(data.price) + serviceCharge).toFixed(2)}</p>
+            <p>${(parseFloat(data.price) + serviceCharge).toFixed(3)}</p>
           </div>
         </div>
       </div>
@@ -128,11 +128,11 @@ const SingleSmsPoolService = (props: Props) => {
                     Are you sure you want to purchase this SMS service? It will
                     cost you between{' '}
                     <span className="text-primary font-bold ml-1">
-                      ${(parseFloat(data.low_price) + serviceCharge).toFixed(2)}
+                      ${(parseFloat(data.low_price) + serviceCharge).toFixed(3)}
                     </span>{' '}
                     to
                     <span className="text-primary font-bold ml-1">
-                      ${(parseFloat(data.price) + serviceCharge).toFixed(2)}
+                      ${(parseFloat(data.price) + serviceCharge).toFixed(3)}
                     </span>
                     .
                   </p>
