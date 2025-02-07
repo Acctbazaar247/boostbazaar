@@ -11,7 +11,6 @@ import Loading from '../ui/Loading';
 import { TSmsPoolService, TSmsPoolServiceCountry } from '@/types';
 import SingleSmsPoolService from './SingleSmsPoolService';
 import AppErrorComponent from '../ui/AppErrorComponent';
-import AppInfo from '../ui/AppInfo';
 
 type Props = {};
 
@@ -222,17 +221,6 @@ const SmsPoolService = (props: Props) => {
                 </div>
               </div>
             </div>
-                    
-            <div className="  pb-4  ">
-              <AppInfo>
-                <p>
-                  SMS services codes are  processed within 0-30 seconds, but some might  
-                  take up to a minute depending on platform. 
-                  If you don’t get your code click “refund” and restart the process.{' '}
-                </p>
-              </AppInfo>
-            </div>
-
 
             {/* Creative Toggle for Show/Hide Countries Without Stock */}
             <div className="flex items-center justify-between bg-transparent border border-gray-600 light:border-gray-300  rounded-lg p-4 transition-colors duration-200">

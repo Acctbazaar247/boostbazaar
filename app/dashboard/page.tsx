@@ -18,7 +18,7 @@ const Page = () => {
           <div className="bg-primary py-2 px-4 gap-2 rounded flex justify-between items-center mt-10">
             <p className=" rounded text-[#fff]">{config.dashboardMessage}</p>
             <button onClick={() => setShow(false)}>
-              <FaX></FaX>
+              <FaX className="text-[#fff]"></FaX>
             </button>
           </div>
         ) : null}

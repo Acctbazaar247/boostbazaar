@@ -221,10 +221,12 @@ const Page = () => {
   ];
   return (
     <AnimationWrapper className="container py-12">
-      <h1 className="heading mb-2 md:mb-4">Order History</h1>
+      <h1 className="text-2xl md:text-4xl font-medium heading   mb-2 md:mb-4">
+        Order History
+      </h1>
 
       <AppTabs
-        className="!text-xl"
+        className="!text-base md:!text-xl"
         activeTab={activeTab}
         setActiveTab={setActiveTab as Dispatch<SetStateAction<string>>}
         tabs={tabs}
@@ -247,7 +249,17 @@ const Page = () => {
             </p>
           </AppInfo>
         </div>
-      ) : null}
+      ) : (
+        <div className="  pb-4  ">
+          <AppInfo>
+            <p>
+              SMS services codes are processed within 0-30 seconds, but some
+              might take up to a minute depending on platform. If you don't get
+              you code click "Refund" and restart the process
+            </p>
+          </AppInfo>
+        </div>
+      )}
 
       {activeTab === 'phone-number' ? (
         <MyNumbersTable />

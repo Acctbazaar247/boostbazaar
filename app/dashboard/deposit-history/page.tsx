@@ -221,10 +221,12 @@ const Page = () => {
   ];
   return (
     <AnimationWrapper className="container py-12">
-      <h1 className="heading mb-2 md:mb-4 ">Deposit History</h1>
+      <h1 className="text-2xl md:text-4xl font-medium heading mb-2 md:mb-4 ">
+        Deposit History
+      </h1>
 
       <AppTabs
-        className="!text-xl"
+        className="!text-base md:!text-xl"
         activeTab={activeTab}
         setActiveTab={setActiveTab as Dispatch<SetStateAction<string>>}
         tabs={tabs}
