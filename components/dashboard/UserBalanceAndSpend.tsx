@@ -12,7 +12,13 @@ import { FaDollarSign } from 'react-icons/fa';
 type Props = {};
 
 const UserBalanceAndSpend = (props: Props) => {
-  const { data: balance } = useGetMainBalanceQuery('');
+  const { data: balance } = useGetMainBalanceQuery('', {
+    refetchOnMountOrArgChange: true,
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
+    // every 5 seconds
+    pollingInterval: 5000,
+  });
   const { data: spendData } = useGetSpendHistoryQuery('');
   const theme = useAppSelector(state => state.auth.theme);
   return (
@@ -32,7 +38,7 @@ const UserBalanceAndSpend = (props: Props) => {
         </div>
         <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
           <FaDollarSign />
-          {balance?.data?.amount.toFixed(2)}
+          {balance?.data?.amount.toFixed(4)}
         </h1>
       </div>
 

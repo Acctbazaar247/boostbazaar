@@ -8,6 +8,7 @@ import AppModal from '../ui/AppModal';
 import { useBuySmsPoolMutation } from '@/redux/features/smsPool/smsPoolApi';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { Spin } from 'antd';
 
 type Props = {
   data: TSmsPoolServiceCountry;
@@ -18,7 +19,7 @@ const SingleSmsPoolService = (props: Props) => {
   const { data } = props;
   const { smsPoolServiceChargeInPercentage } = config;
   const router = useRouter();
-  const [buySmsPool, { isLoading, isSuccess }] = useBuySmsPoolMutation();
+  const [buySmsPool, { isLoading, isSuccess, reset }] = useBuySmsPoolMutation();
   //   modal open
   const [modalOpen, setModalOpen] = useState(false);
   const serviceCharge =
@@ -99,7 +100,7 @@ const SingleSmsPoolService = (props: Props) => {
               </button>
             }
           >
-            <div className="w-[400px] p-4">
+            <div className="md:w-[400px] p-4">
               {isSuccess ? (
                 <div>
                   <h2 className="text-xl font-semibold text-light  mb-3">
@@ -113,9 +114,9 @@ const SingleSmsPoolService = (props: Props) => {
                       router.push('/dashboard/history?tab=phone-number');
                       setModalOpen(false);
                     }}
-                    className="bg-primary disabled:opacity-30 transition-all hover:opacity-90 text-white font-bold py-2 px-4 rounded"
+                    className="bg-primary disabled:opacity-30 transition-all hover:opacity-90 text-[#fff] font-bold py-2 px-4 rounded"
                   >
-                    Ok
+                    View Number
                   </button>
                 </div>
               ) : (
@@ -127,7 +128,7 @@ const SingleSmsPoolService = (props: Props) => {
                     Are you sure you want to purchase this SMS service? It will
                     cost you between{' '}
                     <span className="text-primary font-bold ml-1">
-                      ${(parseFloat(data.price) + serviceCharge).toFixed(2)}
+                      ${(parseFloat(data.low_price) + serviceCharge).toFixed(2)}
                     </span>{' '}
                     to
                     <span className="text-primary font-bold ml-1">
@@ -136,13 +137,17 @@ const SingleSmsPoolService = (props: Props) => {
                     .
                   </p>
                   <div className="flex justify-end gap-4">
-                    <button
-                      onClick={handleOrder}
-                      disabled={isLoading}
-                      className="bg-primary text-[#fff] disabled:opacity-30 transition-all hover:opacity-90   py-2 px-4 rounded"
-                    >
-                      Confirm Purchase
-                    </button>
+                    {isLoading ? (
+                      <Spin></Spin>
+                    ) : (
+                      <button
+                        onClick={handleOrder}
+                        disabled={isLoading}
+                        className="bg-primary text-[#fff] disabled:opacity-30 transition-all hover:opacity-90   py-2 px-4 rounded"
+                      >
+                        Confirm Purchase
+                      </button>
+                    )}
                   </div>
                 </div>
               )}
