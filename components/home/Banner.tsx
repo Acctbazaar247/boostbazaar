@@ -29,7 +29,7 @@ const Banner = () => {
 
   return (
     <section id="Home" className="md:h-screen">
-      <div className="md:h-[89%] container grid grid-cols-1 md:grid-cols-2 xl:mt-[-10rem]">
+      <div className="md:h-[89%] container grid grid-cols-1 md:grid-cols-2 xl:mt-[-5rem]">
         {/* this is left div  */}
         <div
           data-aos="fade-right"

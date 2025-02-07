@@ -69,7 +69,7 @@ export default function MyNumbersTable(props: IMyNumbersTableProps) {
       key: 'cost',
       render: (text: any, record: any) => (
         <div>
-          <p>{text.toFixed(4)}</p>
+          <p>{text.toFixed(3)}</p>
         </div>
       ),
     },
