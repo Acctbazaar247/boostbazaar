@@ -254,9 +254,8 @@ const Page = () => {
           <AppInfo>
             <p>
               SMS services codes are processed within 0-30 seconds, but some
-              might take up to a minute depending on platform. If you
-              don`&apos;t get you code click &lsquo;Refund&lsquo; and restart
-              the process
+              might take up to a minute depending on platform. If you don&apos;t
+              get you code click &lsquo;Refund&lsquo; and restart the process
             </p>
           </AppInfo>
         </div>
