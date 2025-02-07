@@ -31,7 +31,7 @@ const Services = () => {
       {/* Images Section */}
       <div className="flex flex-col md:flex-row gap-4 md:gap-10 justify-center items-center mt-[-2rem] md:mt-[-5rem]">
         {/* MacBook Image */}
-        <div className="w-full md:w-[65%] lg:w-[60%] xl:w-[55%] relative  md:block">
+        <div className="w-full md:w-[75%] lg:w-[70%] xl:w-[65%] relative md:block">
           <Image
             src={mac}
             alt="MacBook"
@@ -40,7 +40,7 @@ const Services = () => {
         </div>
 
         {/* iPhone Image */}
-        <div className="w-[70%] md:w-[30%] lg:w-[25%] xl:w-[22%] relative">
+        <div className="w-[80%] md:w-[35%] lg:w-[30%] xl:w-[25%] relative">
           <Image
             src={iphone}
             alt="iPhone"
@@ -48,6 +48,7 @@ const Services = () => {
           />
         </div>
       </div>
+
 
       {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-10">
         {servicesData.map((service, i) => (
