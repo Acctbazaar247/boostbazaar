@@ -1,10 +1,9 @@
-import Image from "next/image";
-import { servicesData } from "./data";
-import e from "@/assets/image/e.png";
-import se from "@/assets/image/se.png";
-import mac from "@/assets/image/mac.png";
-import iphone from "@/assets/image/phone.png";
-
+import Image from 'next/image';
+import { servicesData } from './data';
+import e from '@/assets/image/e.png';
+import se from '@/assets/image/se.png';
+import mac from '@/assets/image/mac.png';
+import iphone from '@/assets/image/phone.png';
 
 const Services = () => {
   return (
