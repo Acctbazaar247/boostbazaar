@@ -58,7 +58,7 @@ const UserBalanceAndSpend = (props: Props) => {
         </div>
         <h1 className="text-2xl text-black/80 font-bold flex items-center gap-1">
           <FaDollarSign />
-          {spendData?.data?.spend}
+          {spendData?.data?.spend.toFixed(3)}
         </h1>
       </div>
     </div>

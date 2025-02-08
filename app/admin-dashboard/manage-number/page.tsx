@@ -8,6 +8,7 @@ import useDebounce from '@/hooks/useDebounce';
 import { selectCurrentUser } from '@/redux/features/auth/authSlice';
 import { useGetSmsPoolOrderQuery } from '@/redux/features/smsPoolOrder/smsPoolOrderApi';
 import { useAppSelector } from '@/redux/hook';
+import { IUser } from '@/types';
 import { Select } from 'antd';
 import React, { useState } from 'react';
 
@@ -79,6 +80,18 @@ const ManageNumber = (props: Props) => {
       render: (text: any, record: any) => (
         <div>
           <p>{text.toFixed(4)}</p>
+        </div>
+      ),
+    },
+    {
+      title: 'OrderBy',
+      dataIndex: 'orderBy',
+      key: 'id',
+      render: (text: IUser, record: any) => (
+        <div>
+          <p>{text?.name}</p>
+          <p>{text?.email}</p>
+          <p>{text?.id}</p>
         </div>
       ),
     },
