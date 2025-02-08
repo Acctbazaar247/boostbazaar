@@ -32,21 +32,26 @@ const FundForm = () => {
             ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
           `}
         >
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
-            <svg
-              className="h-7 w-7 text-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+          <div className='flex items-center gap-4 text-primary'>
+            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
+              <svg
+                className="h-7 w-7 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            
+            <h4 className='pb-3'>Minumum funding Amount is $8</h4>
           </div>
+          
 
           <div className="mb-8">
             <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
@@ -82,21 +87,25 @@ const FundForm = () => {
               ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
             `}
         >
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
-            <svg
-              className="h-7 w-7 text-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-              />
-            </svg>
+          <div className='flex items-center gap-4 text-primary'>
+            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
+              <svg
+                className="h-7 w-7 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
+              </svg>
+            </div>
+            <h4 className='pb-3'>Minumum funding Amount is $5</h4>
           </div>
+          
 
           <div className="mb-8">
             <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">

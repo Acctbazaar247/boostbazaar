@@ -88,9 +88,9 @@ const OnlinePayment = (props: Props) => {
             error={errors.amount}
             min={5}
           />
-          <p className="mt-2 text-sm text-primary">
+          {/* <p className="mt-2 text-sm text-primary">
             * Minimum funding amount is ${config.minAddFund}
-          </p>
+          </p> */}
         </div>
 
         {/* <AppFormSelect
