@@ -59,10 +59,11 @@ const FundForm = () => {
           <div className="flex flex-col gap-4">
             <button
               className={`
-              rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
+              rounded-lg px-4 disabled:cursor-not-allowed disabled:opacity-60 py-2.5 text-sm font-medium transition-colors
              ${'bg-primary text-[#fff] hover:bg-gray-700'}
            `}
               onClick={() => setPaymentType('online')}
+              disabled={!config.isAutomaticDepositActive}
             >
               Proceed
             </button>

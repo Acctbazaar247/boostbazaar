@@ -32,7 +32,7 @@ const SingleSmsPoolService = (props: Props) => {
     })
       .unwrap()
       .then(res => {
-        toast.success('SMS pool purchased successfully');
+        toast.success('Purchase successful');
       })
       .catch(err => {
         toast.error(err.data?.message || 'Something went wrong');

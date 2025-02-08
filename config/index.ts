@@ -23,5 +23,8 @@ export const config = {
   isManualDepositActive: JSON.parse(
     process.env.NEXT_PUBLIC_IS_MANUAL_DEPOSIT_ACTIVE as string,
   ),
+  isAutomaticDepositActive: JSON.parse(
+    process.env.NEXT_PUBLIC_IS_AUTOMATIC_DEPOSIT_ACTIVE as string,
+  ),
   dashboardMessage: process.env.NEXT_PUBLIC_DASHBOARD_MESSAGE,
 };
