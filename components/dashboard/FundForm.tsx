@@ -52,9 +52,7 @@ const FundForm = () => {
             <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
               Automatic Deposit
             </h2>
-            <p className="text-gray-400">
-              Instant deposit via Bank, Card, or Crypto.
-            </p>
+            <p className="text-gray-400">Instant deposit via crypto payment</p>
           </div>
           <div className="flex flex-col gap-4">
             <button
