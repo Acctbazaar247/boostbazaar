@@ -49,7 +49,7 @@ const FundForm = () => {
               </svg>
             </div>
             
-            <h4 className='pb-3'>Minumum funding Amount is $8</h4>
+            <h4 className='pb-3'>Minimum Deposit $8 </h4>
           </div>
           
 
@@ -103,7 +103,7 @@ const FundForm = () => {
                 />
               </svg>
             </div>
-            <h4 className='pb-3'>Minumum funding Amount is $5</h4>
+            <h4 className='pb-3'>Minimum Deposit $5</h4>
           </div>
           
 
