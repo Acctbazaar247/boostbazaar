@@ -79,7 +79,7 @@ const ManageNumber = (props: Props) => {
       key: 'cost',
       render: (text: any, record: any) => (
         <div>
-          <p>{text.toFixed(4)}</p>
+          <p>{text.toFixed(3)}</p>
         </div>
       ),
     },
@@ -183,7 +183,11 @@ const ManageNumber = (props: Props) => {
           onChange={e => setStatus(e)}
         ></Select>
       </div>
-      <AppTable columns={columns} infoQuery={query}></AppTable>
+      <AppTable
+        setPage={setPage}
+        columns={columns}
+        infoQuery={query}
+      ></AppTable>
     </div>
   );
 };
