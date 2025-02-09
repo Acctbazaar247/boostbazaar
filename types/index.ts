@@ -45,6 +45,8 @@ export interface IUser {
 export enum UserRole {
   User = 'user',
   Admin = 'admin',
+  FinanceAdmin = 'financeAdmin',
+  CustomerCare = 'customerCare',
 }
 export type TTokenUser = {
   email: string;
@@ -78,6 +80,8 @@ export interface TFlat {
 export const USER_ROLE = {
   admin: 'admin',
   user: 'user',
+  financeAdmin: 'financeAdmin',
+  customerCare: 'customerCare',
 } as const;
 
 export const BookingStatus = {

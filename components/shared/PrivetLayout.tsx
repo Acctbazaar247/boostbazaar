@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import React, { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import {
   logOut,
   selectCurrentUser,
   setUser,
-  useCurrentToken
-} from "@/redux/features/auth/authSlice";
-import { toast } from "react-toastify";
-import { useGetProfileQuery } from "@/redux/features/dashboard/dashboardApi";
-import Loading from "../ui/Loading";
+  useCurrentToken,
+} from '@/redux/features/auth/authSlice';
+import { toast } from 'react-toastify';
+import { useGetProfileQuery } from '@/redux/features/dashboard/dashboardApi';
+import Loading from '../ui/Loading';
 
 const PrivateLayout = ({
   children,
-  roles
+  roles,
 }: Readonly<{
   children: React.ReactNode;
   roles?: string[];
 }>) => {
-  const { data } = useGetProfileQuery("");
+  const { data } = useGetProfileQuery('');
 
   // useEffect(() => {
   //   if (data?.profile) {
@@ -32,25 +32,25 @@ const PrivateLayout = ({
   const router = useRouter();
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
-  const isLoading = useAppSelector((state) => state.auth.isLoading);
+  const isLoading = useAppSelector(state => state.auth.isLoading);
   const accessToken = useAppSelector(useCurrentToken);
-  const theme = useAppSelector((state) => state.auth.theme);
+  const theme = useAppSelector(state => state.auth.theme);
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.body.setAttribute('data-theme', theme);
   }, [theme]);
 
   useEffect(() => {
     if (isLoading) {
     } else if (user?.isBlocked) {
-      toast.error("Your are blocked", { toastId: 1 });
-      router.push("/auth/sign-up");
+      toast.error('Your are blocked', { toastId: 1 });
+      router.push('/auth/sign-up');
 
       dispatch(logOut());
     } else if (user && user.id && user?.isVerified === false) {
-      toast.error("You are not verified", { toastId: 1 });
+      toast.error('You are not verified', { toastId: 1 });
       const redirectTo = `/auth/verify-user?from=${encodeURIComponent(
-        pathname
+        pathname,
       )}`;
       router.push(redirectTo);
     } else if (user && roles && !roles.includes(user?.role)) {
@@ -69,7 +69,7 @@ const PrivateLayout = ({
   }
 
   if (user && user.isBlocked) {
-    toast.error("Your are blocked", { toastId: 1 });
+    toast.error('Your are blocked', { toastId: 1 });
     return null;
   }
 
@@ -77,7 +77,6 @@ const PrivateLayout = ({
   if ((user && roles && !roles.includes(user?.role)) || !accessToken) {
     return null;
   }
-
   return <>{children}</>;
 };
 

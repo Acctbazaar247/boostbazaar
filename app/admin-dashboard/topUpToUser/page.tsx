@@ -1,18 +1,19 @@
-"use client";
-import { Avatar, Button, TableProps } from "antd";
-import React, { useState, useMemo } from "react";
-import { toast } from "react-toastify";
-import AppInput from "@/components/ui/AppInput";
-import { LuCircleDollarSign } from "react-icons/lu";
-import AppTable from "@/components/ui/AppTable";
-import { useEditCurrencyMutation } from "@/redux/features/currency/currencyApi";
-import useDebounce from "@/hooks/useDebounce";
-import { useGetUsersQuery } from "@/redux/features/auth/authApi";
-import { config } from "@/config";
-import { IUser, UserRole } from "@/types";
+'use client';
+import { Avatar, Button, TableProps } from 'antd';
+import React, { useState, useMemo } from 'react';
+import { toast } from 'react-toastify';
+import AppInput from '@/components/ui/AppInput';
+import { LuCircleDollarSign } from 'react-icons/lu';
+import AppTable from '@/components/ui/AppTable';
+import { useEditCurrencyMutation } from '@/redux/features/currency/currencyApi';
+import useDebounce from '@/hooks/useDebounce';
+import { useGetUsersQuery } from '@/redux/features/auth/authApi';
+import { config } from '@/config';
+import { IUser, UserRole } from '@/types';
+import PrivetLayout from '@/components/shared/PrivetLayout';
 
 const TopUpToUser = () => {
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
   const [amount, setAmount] = useState(0);
   const [editCurrency, { isLoading: isEditLoading }] =
     useEditCurrencyMutation();
@@ -24,15 +25,15 @@ const TopUpToUser = () => {
       role: UserRole.User,
       page,
       limit: 50,
-      searchTerm: debouncedSearch.length ? debouncedSearch : undefined
+      searchTerm: debouncedSearch.length ? debouncedSearch : undefined,
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
       const value = info[key as keyof typeof info];
       if (value) {
-        return pre + `${Boolean(pre.length) ? "&" : ""}${key}=${value}`;
+        return pre + `${Boolean(pre.length) ? '&' : ''}${key}=${value}`;
       }
       return pre;
-    }, "");
+    }, '');
     return queryString;
   }, [debouncedSearch, page]);
 
@@ -40,7 +41,7 @@ const TopUpToUser = () => {
 
   const handleTopup = (userId: string) => {
     if (!amount) {
-      toast.error("Please enter amount to Topup");
+      toast.error('Please enter amount to Topup');
       return;
     }
     if (amount > config.topupMax) {
@@ -51,20 +52,20 @@ const TopUpToUser = () => {
       .unwrap()
       .then((res: any) => {
         if (res.message) {
-          toast.success(res.message || "success");
+          toast.success(res.message || 'success');
         }
       })
       .catch((err: any) => {
-        toast.error(err?.data?.message || "something went wrong");
+        toast.error(err?.data?.message || 'something went wrong');
       });
   };
 
-  const columns: TableProps<IUser>["columns"] = [
+  const columns: TableProps<IUser>['columns'] = [
     {
-      title: "Name",
-      dataIndex: "profileImg",
-      key: "id",
-      className: "text-sm lg:text-base",
+      title: 'Name',
+      dataIndex: 'profileImg',
+      key: 'id',
+      className: 'text-sm lg:text-base',
       render: (profileImg, data) => {
         return (
           <div className="flex items-center gap-1">
@@ -72,28 +73,28 @@ const TopUpToUser = () => {
             <p className="capitalize">{data?.name}</p>
           </div>
         );
-      }
+      },
     },
     {
-      title: "Email",
-      dataIndex: "email",
-      className: "text-sm lg:text-base",
-      key: "id"
+      title: 'Email',
+      dataIndex: 'email',
+      className: 'text-sm lg:text-base',
+      key: 'id',
     },
     {
-      title: "Currency",
-      dataIndex: "Currency",
-      key: "id",
-      className: "text-sm lg:text-base",
-      render: (currency) => {
+      title: 'Currency',
+      dataIndex: 'Currency',
+      key: 'id',
+      className: 'text-sm lg:text-base',
+      render: currency => {
         return <span>{currency?.amount}</span>;
-      }
+      },
     },
 
     {
-      title: "Action",
-      className: "text-sm lg:text-base",
-      key: "action",
+      title: 'Action',
+      className: 'text-sm lg:text-base',
+      key: 'action',
       render: (_, record) => (
         <div className="px-2 py-3 flex items-center justify-center gap-2 ">
           <Button
@@ -101,11 +102,11 @@ const TopUpToUser = () => {
             onClick={() => handleTopup(record.id)}
             type="primary"
           >
-            Top up {amount ? "$" + amount : ""}
+            Top up {amount ? '$' + amount : ''}
           </Button>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   const handleSearchChange = (e: any) => {
@@ -113,7 +114,7 @@ const TopUpToUser = () => {
   };
 
   return (
-    <>
+    <PrivetLayout roles={[UserRole.Admin, UserRole.FinanceAdmin]}>
       <h2 className="title text-center mb-5">Topup users</h2>
 
       <div className="flex flex-col md:flex-row items-center gap-4 my-5 md:my-10 justify-between">
@@ -140,7 +141,7 @@ const TopUpToUser = () => {
         <button
           className="appBtn"
           onClick={() => {
-            setSearch("");
+            setSearch('');
           }}
         >
           Reset
@@ -155,7 +156,7 @@ const TopUpToUser = () => {
           //   loadingComponent={<TableLoading columnNumber={columns.length} />}
         />
       </div>
-    </>
+    </PrivetLayout>
   );
 };
 

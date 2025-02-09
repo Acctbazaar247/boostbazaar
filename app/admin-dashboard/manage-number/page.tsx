@@ -1,5 +1,6 @@
 'use client';
 import MyNumberDetails from '@/components/dashboard/MyNumberDetails';
+import PrivetLayout from '@/components/shared/PrivetLayout';
 import AppFormSelect from '@/components/ui/AppFormSelect';
 import AppInput from '@/components/ui/AppInput';
 import AppModal from '@/components/ui/AppModal';
@@ -8,7 +9,7 @@ import useDebounce from '@/hooks/useDebounce';
 import { selectCurrentUser } from '@/redux/features/auth/authSlice';
 import { useGetSmsPoolOrderQuery } from '@/redux/features/smsPoolOrder/smsPoolOrderApi';
 import { useAppSelector } from '@/redux/hook';
-import { IUser } from '@/types';
+import { IUser, UserRole } from '@/types';
 import { Select } from 'antd';
 import React, { useState } from 'react';
 
@@ -141,7 +142,9 @@ const ManageNumber = (props: Props) => {
     },
   ];
   return (
-    <div>
+    <PrivetLayout
+      roles={[UserRole.Admin, UserRole.FinanceAdmin, UserRole.CustomerCare]}
+    >
       <h2 className="text-2xl font-bold mb-4">All Order Numbers</h2>
       <div className="flex gap-4">
         {/*  */}
@@ -188,7 +191,7 @@ const ManageNumber = (props: Props) => {
         columns={columns}
         infoQuery={query}
       ></AppTable>
-    </div>
+    </PrivetLayout>
   );
 };
 

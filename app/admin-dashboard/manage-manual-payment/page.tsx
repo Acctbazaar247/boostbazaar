@@ -10,8 +10,9 @@ import AppButton from '@/components/ui/AppButton';
 import AppModal from '@/components/ui/AppModal';
 import AppInput from '@/components/ui/AppInput';
 import { FaDollarSign } from 'react-icons/fa';
-import { ManualCurrencyRequest } from '@/types';
+import { ManualCurrencyRequest, UserRole } from '@/types';
 import ManualPaymentViewModal from '@/components/admin-dashboard/ManualPaymentViewModal';
+import PrivetLayout from '@/components/shared/PrivetLayout';
 type Props = {};
 
 const ManageManualPayment = (props: Props) => {
@@ -127,7 +128,9 @@ const ManageManualPayment = (props: Props) => {
     [],
   );
   return (
-    <div>
+    <PrivetLayout
+      roles={[UserRole.Admin, UserRole.FinanceAdmin, UserRole.CustomerCare]}
+    >
       <div className="mb-2">
         <AppInput
           placeholder="Search by id"
@@ -144,7 +147,7 @@ const ManageManualPayment = (props: Props) => {
           infoQuery={requestQuery}
         />
       </div>
-    </div>
+    </PrivetLayout>
   );
 };
 

@@ -93,7 +93,7 @@ const AppModal = ({
                       primaryButtonAction();
                     }
                   }}
-                  className="bg-primary px-4 py-1 rounded-full text-white text-sm"
+                  className="bg-primary px-4 py-1 rounded-full text-[#fff] text-sm"
                 >
                   {primaryButtonTitle}
                 </button>
