@@ -12,6 +12,7 @@ type TTableProps = {
   infoQuery?: any;
   setPage?: (value: number) => void;
   rowClassName?: any;
+  scroll?: boolean;
 };
 
 const AppTable = ({
@@ -21,6 +22,7 @@ const AppTable = ({
   loadingComponent,
   rowClassName,
   setPage,
+  scroll,
 }: TTableProps) => {
   return (
     <div className="overflow-x-auto w-full">
@@ -41,6 +43,7 @@ const AppTable = ({
                   Array.isArray(data?.data) ? data?.data : [data?.data]
                 }
                 rowKey="id"
+                scroll={{ x: scroll || undefined }}
                 pagination={
                   setPage
                     ? {

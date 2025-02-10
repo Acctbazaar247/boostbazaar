@@ -22,78 +22,21 @@ export default function MyNumbersTable(props: IMyNumbersTableProps) {
   );
   console.log(query);
   const columns = [
-    {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-      render: (text: any, record: any) => (
-        <div>
-          <p>{text}</p>
-        </div>
-      ),
-    },
+    // {
+    //   title: 'ID',
+    //   dataIndex: 'id',
+    //   key: 'id',
+    //   render: (text: any, record: any) => (
+    //     <div>
+    //       <p>{text}</p>
+    //     </div>
+    //   ),
+    // },
 
     {
-      title: 'Number Id',
-      dataIndex: 'orderId',
-      key: 'orderId',
-    },
-    // {
-    //   title: 'Phone Number',
-    //   dataIndex: 'phoneNumber',
-    //   key: 'phoneNumber',
-    // },
-    {
-      title: 'Country',
-      dataIndex: 'country',
-      key: 'country',
-      render: (text: any, record: any) => (
-        <div>
-          <p>{text}</p>
-        </div>
-      ),
-    },
-    {
-      title: 'Service',
-      dataIndex: 'service',
-      key: 'service',
-      render: (text: any, record: any) => (
-        <div>
-          <p>{text}</p>
-        </div>
-      ),
-    },
-    {
-      title: 'Cost',
-      dataIndex: 'cost',
-      key: 'cost',
-      render: (text: any, record: any) => (
-        <div>
-          <p>{text.toFixed(3)}</p>
-        </div>
-      ),
-    },
-    // createdAt
-    {
-      title: 'Date',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
-      render: (text: any, record: any) => (
-        <div>
-          <p>
-            {new Date(text).toLocaleDateString()}{' '}
-            {new Date(text).toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-              hour12: true,
-            })}
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: 'View',
+      title: 'Action',
       key: 'view',
+      align: 'center',
       render: (text: any, record: any) => (
         <AppModal
           title="Order Details"
@@ -107,10 +50,79 @@ export default function MyNumbersTable(props: IMyNumbersTableProps) {
         </AppModal>
       ),
     },
+    {
+      title: 'Number Id',
+      dataIndex: 'orderId',
+      align: 'center',
+      key: 'orderId',
+      render: (text: any, record: any) => (
+        <div>
+          <p className="text-xs md:text-sm">{text}</p>
+        </div>
+      ),
+    },
+    // {
+    //   title: 'Phone Number',
+    //   dataIndex: 'phoneNumber',
+    //   key: 'phoneNumber',
+    // },
+    {
+      title: 'Country',
+      dataIndex: 'country',
+      key: 'country',
+      align: 'center',
+      render: (text: any, record: any) => (
+        <div>
+          <p className="text-xs md:text-sm">{text}</p>
+        </div>
+      ),
+    },
+    {
+      title: 'Service',
+      width: 10,
+      dataIndex: 'service',
+      align: 'center',
+      key: 'service',
+      render: (text: any, record: any) => (
+        <div>
+          <p className="text-xs md:text-sm">{text}</p>
+        </div>
+      ),
+    },
+    {
+      title: 'Cost',
+      dataIndex: 'cost',
+      key: 'cost',
+      align: 'center',
+      render: (text: any, record: any) => (
+        <div>
+          <p className="text-xs md:text-sm">{text.toFixed(3)}</p>
+        </div>
+      ),
+    },
+    // createdAt
+    {
+      title: 'Date',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      align: 'center',
+      render: (text: any, record: any) => (
+        <div>
+          <p className="text-xs md:text-sm">
+            {new Date(text).toLocaleDateString()}{' '}
+            {new Date(text).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            })}
+          </p>
+        </div>
+      ),
+    },
   ];
   return (
-    <div>
-      <AppTable columns={columns} infoQuery={query}></AppTable>
+    <div className=" ">
+      <AppTable scroll={true} columns={columns} infoQuery={query}></AppTable>
     </div>
   );
 }

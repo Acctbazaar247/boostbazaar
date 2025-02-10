@@ -77,7 +77,7 @@ const MyNumberDetails = ({ id, isAdmin }: Props) => {
           className="bg-primary mt-3 text-[#fff] px-4 py-2 rounded"
           onClick={() => refetch()}
         >
-          Re try
+          Retry
         </button>
       </div>
     );
