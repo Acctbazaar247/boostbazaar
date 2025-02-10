@@ -1,30 +1,30 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { FaNairaSign } from "react-icons/fa6";
-import { IoIosArrowForward } from "react-icons/io";
+import Link from 'next/link';
+import { FaNairaSign } from 'react-icons/fa6';
+import { IoIosArrowForward } from 'react-icons/io';
 import {
   useGetAdminOverviewQuery,
   useGetCurrencyRequestQuery,
-} from "@/redux/features/dashboard/dashboardApi";
-import { BsThreeDots } from "react-icons/bs";
-import { cn } from "@/utils/cn";
-import { GoDotFill } from "react-icons/go";
-import { formatDate } from "@/utils/formateDate";
-import { ApexOptions } from "apexcharts";
-import { useGetUsersQuery } from "@/redux/features/auth/authApi";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { Progress } from "antd";
-import Loading from "@/components/ui/Loading";
-import { useMemo } from "react";
-import { FaDollarSign } from "react-icons/fa";
+} from '@/redux/features/dashboard/dashboardApi';
+import { BsThreeDots } from 'react-icons/bs';
+import { cn } from '@/utils/cn';
+import { GoDotFill } from 'react-icons/go';
+import { formatDate } from '@/utils/formateDate';
+import { ApexOptions } from 'apexcharts';
+import { useGetUsersQuery } from '@/redux/features/auth/authApi';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { Progress } from 'antd';
+import Loading from '@/components/ui/Loading';
+import { useMemo } from 'react';
+import { FaDollarSign } from 'react-icons/fa';
 
 enum EAccountCategory {
-  YOUTUBE = "Youtube",
-  FACEBOOK = "Facebook",
-  INSTAGRAM = "Instagram",
-  TWITTER = "Twitter",
+  YOUTUBE = 'Youtube',
+  FACEBOOK = 'Facebook',
+  INSTAGRAM = 'Instagram',
+  TWITTER = 'Twitter',
 }
 
 type TTrafic = {
@@ -33,20 +33,32 @@ type TTrafic = {
 };
 
 const Page = () => {
-  const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  const ReactApexChart = dynamic(() => import('react-apexcharts'), {
     ssr: false, // This ensures the component is only rendered on the client side
   });
 
-  const { data: transactions } = useGetCurrencyRequestQuery("");
+  const { data: transactions } = useGetCurrencyRequestQuery('', {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
 
-  const { data: adminOverview, isLoading } = useGetAdminOverviewQuery("");
+  const { data: adminOverview, isLoading } = useGetAdminOverviewQuery('', {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
 
-  const { data: usersData } = useGetUsersQuery("");
+  const { data: usersData } = useGetUsersQuery('', {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
 
   const maxValue = useMemo(() => {
     if (!adminOverview?.data?.trafic?.length) return 0;
     return Math.max(
-      ...adminOverview.data.trafic.map((single: any) => single.count)
+      ...adminOverview.data.trafic.map((single: any) => single.count),
     );
   }, [adminOverview]);
 
@@ -66,22 +78,22 @@ const Page = () => {
   const transformData = (data: OriginalData): Stat[] => {
     return [
       {
-        label: "Today’s Sale",
+        label: 'Today’s Sale',
         value: data?.totalTodaySale.toLocaleString(), // Format number with commas
         isNiger: true,
       },
       {
-        label: "Total Sales",
+        label: 'Total Sales',
         value: data?.totalSale.toLocaleString(), // Format number with commas
         isNiger: true,
       },
       {
-        label: "Total Orders",
+        label: 'Total Orders',
         value: data?.totalOrder.toLocaleString(), // Format number with commas
         isNiger: false,
       },
       {
-        label: "Total Customers",
+        label: 'Total Customers',
         value: data?.totalUser.toLocaleString(), // Format number with commas
         isNiger: false,
       },
@@ -91,17 +103,17 @@ const Page = () => {
   const stats = transformData(adminOverview?.data);
 
   const series = (adminOverview?.data?.trafic || []).map(
-    (data: TTrafic) => data.count
+    (data: TTrafic) => data.count,
   );
 
   const labels = (adminOverview?.data?.trafic || []).map(
-    (data: TTrafic) => data.accountCategory
+    (data: TTrafic) => data.accountCategory,
   );
 
   const options: ApexOptions = {
     chart: {
       width: 380,
-      type: "pie",
+      type: 'pie',
     },
     labels: labels,
     legend: {
@@ -115,7 +127,7 @@ const Page = () => {
             width: 200,
           },
           legend: {
-            position: "bottom",
+            position: 'bottom',
           },
         },
       },
@@ -132,7 +144,7 @@ const Page = () => {
         happening with your store today
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((stat) => (
+        {stats.map(stat => (
           <div
             key={stat.label}
             className="bg-white border border-dark-grey/20 rounded-md p-3 space-y-4"
@@ -189,7 +201,7 @@ const Page = () => {
                     className="w-full"
                   /> */}
                 </div>
-              )
+              ),
             )}
           </div>
         </div>
@@ -200,7 +212,7 @@ const Page = () => {
           <h2 className="flex items-center justify-between">
             <span className="font-bold text-black">Transactions</span>
             <Link
-              href={"/admin-dashboard/transactions"}
+              href={'/admin-dashboard/transactions'}
               className="text-primary flex items-center gap-1"
             >
               See All Transactions <IoIosArrowForward />
@@ -219,17 +231,17 @@ const Page = () => {
             >
               <p
                 className={cn(
-                  "flex items-center w-fit text-sm gap-1 px-3 py-1 rounded-full",
-                  trans?.status === "pending" && "bg-[#FEF9C3] text-[#713F12]",
-                  trans?.status === "approved" && "bg-[#DCFCE7] text-[#14532D]",
-                  trans?.status === "denied" && "bg-[#FEE2E2] text-[#7F1D1D]"
+                  'flex items-center w-fit text-sm gap-1 px-3 py-1 rounded-full',
+                  trans?.status === 'pending' && 'bg-[#FEF9C3] text-[#713F12]',
+                  trans?.status === 'approved' && 'bg-[#DCFCE7] text-[#14532D]',
+                  trans?.status === 'denied' && 'bg-[#FEE2E2] text-[#7F1D1D]',
                 )}
               >
                 <GoDotFill
                   className={cn(
-                    trans?.status === "pending" && "text-[#FACC15]",
-                    trans?.status === "approved" && "text-[#22C55E]",
-                    trans?.status === "denied" && "text-[#EF4444]"
+                    trans?.status === 'pending' && 'text-[#FACC15]',
+                    trans?.status === 'approved' && 'text-[#22C55E]',
+                    trans?.status === 'denied' && 'text-[#EF4444]',
                   )}
                 />
                 {trans?.status}
@@ -275,7 +287,7 @@ const Page = () => {
                 </div>
                 <div className="space-y-1">
                   <p className="text-black flex items-center gap-1">
-                    {" "}
+                    {' '}
                     <FaDollarSign />
                     {user?.Currency?.amount.toFixed(2)}
                   </p>
@@ -285,7 +297,7 @@ const Page = () => {
             ))}
           </div>
           <Link
-            href={"admin-dashboard/customer"}
+            href={'admin-dashboard/customer'}
             className="text-dark-grey uppercase flex items-center mt-3 gap-1"
           >
             See All customers <IoIosArrowForward />
