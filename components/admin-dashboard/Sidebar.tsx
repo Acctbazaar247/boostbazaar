@@ -24,7 +24,6 @@ const Sidebar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
   let navLinks: any[] = [];
 
-  // Filter navLinks based on user role
   if (user) {
     if (user.role === 'financeAdmin') {
       navLinks = [
