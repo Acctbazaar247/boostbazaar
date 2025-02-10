@@ -39,11 +39,23 @@ const Page = () => {
     ssr: false, // This ensures the component is only rendered on the client side
   });
 
-  const { data: transactions } = useGetCurrencyRequestQuery('');
+  const { data: transactions } = useGetCurrencyRequestQuery('', {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
 
-  const { data: adminOverview, isLoading } = useGetAdminOverviewQuery('');
+  const { data: adminOverview, isLoading } = useGetAdminOverviewQuery('', {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
 
-  const { data: usersData } = useGetUsersQuery('');
+  const { data: usersData } = useGetUsersQuery('', {
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
+  });
 
   const maxValue = useMemo(() => {
     if (!adminOverview?.data?.trafic?.length) return 0;
