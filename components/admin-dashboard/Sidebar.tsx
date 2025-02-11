@@ -28,16 +28,6 @@ const Sidebar = ({ className }: { className?: string }) => {
     if (user.role === 'financeAdmin') {
       navLinks = [
         {
-          label: '',
-          navs: [
-            {
-              icon: <IoHomeOutline />,
-              label: 'Dashboard',
-              path: '/admin-dashboard',
-            },
-          ],
-        },
-        {
           label: 'SUPPORT',
           navs: [
             {
@@ -105,16 +95,6 @@ const Sidebar = ({ className }: { className?: string }) => {
       ];
     } else if (user.role === 'customerCare') {
       navLinks = [
-        {
-          label: '',
-          navs: [
-            {
-              icon: <IoHomeOutline />,
-              label: 'Dashboard',
-              path: '/admin-dashboard',
-            },
-          ],
-        },
         {
           label: 'SUPPORT',
           navs: [
