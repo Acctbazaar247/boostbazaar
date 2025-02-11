@@ -69,6 +69,7 @@ const Page = () => {
     totalSale: number;
     totalTodaySale: number;
     totalUser: number;
+    smsPoolBalance: string;
   };
 
   type Stat = {
@@ -98,6 +99,11 @@ const Page = () => {
         label: 'Total Customers',
         value: data?.totalUser.toLocaleString(), // Format number with commas
         isNiger: false,
+      },
+      {
+        label: 'SMS Balance',
+        value: data?.smsPoolBalance.toLocaleString(), // Format number with commas
+        isNiger: true,
       },
     ];
   };
@@ -148,7 +154,7 @@ const Page = () => {
           <span className="font-bold text-black pr-2"> Hey CEO</span>here’s
           what’s happening with your store today
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {stats.map(stat => (
             <div
               key={stat.label}
