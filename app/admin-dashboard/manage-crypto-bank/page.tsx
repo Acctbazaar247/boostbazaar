@@ -1,5 +1,6 @@
 'use client';
 import CryptoInfoForm from '@/components/admin-dashboard/CryptoInfoForm';
+import PrivetLayout from '@/components/shared/PrivetLayout';
 import AppModal from '@/components/ui/AppModal';
 import AppSwitch from '@/components/ui/AppSwitch';
 import AppTable from '@/components/ui/AppTable';
@@ -8,7 +9,7 @@ import {
   useEditCryptoBankMutation,
   useGetCryptoBanksQuery,
 } from '@/redux/features/cryptoBank/cryptoBankApi';
-import { CryptoBank } from '@/types';
+import { CryptoBank, UserRole } from '@/types';
 import { Switch } from 'antd';
 import React, { useState } from 'react';
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
@@ -114,7 +115,7 @@ const ManageCryptoBank = (props: Props) => {
   ];
 
   return (
-    <div>
+    <PrivetLayout roles={[UserRole.Admin]}>
       <div className="flex justify-between items-center">
         <h1 className="heading pb-10">Manage Crypto Bank</h1>
         <AppModal
@@ -140,7 +141,7 @@ const ManageCryptoBank = (props: Props) => {
           infoQuery={cryptoBankQuery}
         />
       </div>
-    </div>
+    </PrivetLayout>
   );
 };
 

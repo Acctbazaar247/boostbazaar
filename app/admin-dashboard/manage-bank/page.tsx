@@ -1,5 +1,6 @@
 'use client';
 import BankInfoForm from '@/components/admin-dashboard/BankInfoForm';
+import PrivetLayout from '@/components/shared/PrivetLayout';
 import AppInput from '@/components/ui/AppInput';
 import AppModal from '@/components/ui/AppModal';
 import AppSwitch from '@/components/ui/AppSwitch';
@@ -9,6 +10,7 @@ import {
   useEditBankMutation,
   useGetBanksQuery,
 } from '@/redux/features/bank/bankApi';
+import { UserRole } from '@/types';
 import { Switch } from 'antd';
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
@@ -119,7 +121,7 @@ const ManageBank = (props: Props) => {
   ];
 
   return (
-    <div>
+    <PrivetLayout roles={[UserRole.Admin]}>
       <div className="flex justify-between items-center">
         <h1 className="heading pb-10">Manage Bank</h1>
         <AppModal
@@ -140,7 +142,7 @@ const ManageBank = (props: Props) => {
       <div className="h-[65dvh] overflow-auto">
         <AppTable setPage={setPage} columns={columns} infoQuery={bankQuery} />
       </div>
-    </div>
+    </PrivetLayout>
   );
 };
 
