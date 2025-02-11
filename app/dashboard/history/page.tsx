@@ -253,10 +253,9 @@ const Page = () => {
         <div className="  pb-4  ">
           <AppInfo>
             <p>
-              SMS codes are typically processed within 0-30 seconds. However, in
-              some cases, a phone number may need to be activated, which can
-              cause certain SMS verification codes to take up to 5 minutes to
-              arrive.
+              Refresh your browser before clicking {`"View"`} to ensure the
+              number is displayed. SMS codes usually arrive within 30 seconds
+              but may take up to 5 minutes if activation is required.
             </p>
           </AppInfo>
         </div>
