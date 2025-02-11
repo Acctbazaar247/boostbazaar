@@ -21,7 +21,8 @@ import { useMemo } from 'react';
 import { FaDollarSign } from 'react-icons/fa';
 import PrivetLayout from '@/components/shared/PrivetLayout';
 import { UserRole } from '@/types';
-
+import { useAppSelector } from '@/redux/hook';
+import { useRouter } from 'next/navigation';
 enum EAccountCategory {
   YOUTUBE = 'Youtube',
   FACEBOOK = 'Facebook',
@@ -38,7 +39,7 @@ const Page = () => {
   const ReactApexChart = dynamic(() => import('react-apexcharts'), {
     ssr: false, // This ensures the component is only rendered on the client side
   });
-
+  const user = useAppSelector(state => state.auth.user);
   const { data: transactions } = useGetCurrencyRequestQuery('', {
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -107,7 +108,7 @@ const Page = () => {
       },
     ];
   };
-
+  const router = useRouter();
   const stats = transformData(adminOverview?.data);
 
   const series = (adminOverview?.data?.trafic || []).map(
@@ -145,6 +146,10 @@ const Page = () => {
     return <Loading></Loading>;
   }
   const roundedMaxCount = Math.ceil(maxValue / 10) * 10;
+  if (user?.role !== UserRole.Admin) {
+    router.push('/admin-dashboard/tickets');
+    return <Loading></Loading>;
+  }
   return (
     <PrivetLayout
       roles={[UserRole.Admin, UserRole.CustomerCare, UserRole.FinanceAdmin]}

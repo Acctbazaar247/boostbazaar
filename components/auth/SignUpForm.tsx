@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import AppFormInput from "../ui/AppFormInput";
-import { FaRegUser } from "react-icons/fa6";
-import { FiMail } from "react-icons/fi";
-import { MdOutlineLock } from "react-icons/md";
-import AppButton from "../ui/AppButton";
-import Link from "next/link";
-import { useSignupUserMutation } from "@/redux/features/auth/authApi";
-import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { setUser, useCurrentToken } from "@/redux/features/auth/authSlice";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Checkbox } from "antd";
+import { SubmitHandler, useForm } from 'react-hook-form';
+import AppFormInput from '../ui/AppFormInput';
+import { FaRegUser } from 'react-icons/fa6';
+import { FiMail } from 'react-icons/fi';
+import { MdOutlineLock } from 'react-icons/md';
+import AppButton from '../ui/AppButton';
+import Link from 'next/link';
+import { useSignupUserMutation } from '@/redux/features/auth/authApi';
+import { toast } from 'react-toastify';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { setUser, useCurrentToken } from '@/redux/features/auth/authSlice';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Checkbox } from 'antd';
 
 interface FormData {
   name: string;
@@ -28,7 +28,7 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue
+    setValue,
   } = useForm<FormData>();
 
   const token = useAppSelector(useCurrentToken);
@@ -36,28 +36,28 @@ const SignUpForm = () => {
   const router = useRouter();
 
   const [userSingUp, { isLoading }] = useSignupUserMutation();
-  const accept = watch("accept");
+  const accept = watch('accept');
 
   const dispatch = useAppDispatch();
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<FormData> = async data => {
     const { accept, ...subData } = data;
     await userSingUp(subData)
       .unwrap()
-      .then((res) => {
+      .then(res => {
         toast.success(res?.message);
         dispatch(
-          setUser({ user: res.data.user, accessToken: res.data.accessToken })
+          setUser({ user: res.data.user, accessToken: res.data.accessToken }),
         );
-        router.push("/auth/verify-user");
+        router.push('/auth/verify-user');
       })
-      .catch((res) => {
+      .catch(res => {
         toast.error(res?.data?.message);
       });
   };
 
   useEffect(() => {
     if (token) {
-      router.push("/");
+      router.push('/dashboard');
     }
   }, []);
 
@@ -99,17 +99,23 @@ const SignUpForm = () => {
       <div className="flex gap-2 2xl:pb-8 2xl:pt-4">
         <Checkbox
           type="checkbox"
-          onChange={(e) => setValue("accept", e.target.checked)}
+          onChange={e => setValue('accept', e.target.checked)}
           // {...register("accept", { required: true })}
           className="custom-checkbox"
         />
         <p className="text-dark-grey font-light">
-          By creating an account you agree to the{" "}
-          <Link href="/terms-of-use" className="text-primary underline underline-offset-2">
+          By creating an account you agree to the{' '}
+          <Link
+            href="/terms-of-use"
+            className="text-primary underline underline-offset-2"
+          >
             terms of use
-          </Link>{" "}
-          and our{" "}
-          <Link href="/privacy-policy" className="text-primary underline underline-offset-2">
+          </Link>{' '}
+          and our{' '}
+          <Link
+            href="/privacy-policy"
+            className="text-primary underline underline-offset-2"
+          >
             privacy policy
           </Link>
         </p>
@@ -122,8 +128,8 @@ const SignUpForm = () => {
         label="Create account"
       />
       <p className="text-center">
-        Already have an account?{" "}
-        <Link href={"/auth/sign-in"} className="text-primary font-medium">
+        Already have an account?{' '}
+        <Link href={'/auth/sign-in'} className="text-primary font-medium">
           Log in
         </Link>
       </p>

@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/utils/cn';
 import { useState } from 'react';
 
 type TAppInput = {
@@ -31,9 +32,10 @@ const AppInput = ({
 
   return (
     <div
-      className={`relative w-[100%] ${error ? 'mb-1' : 'mb-4'} ${
-        wrapperClassName || ''
-      }`}
+      className={cn(
+        `relative w-[100%] ${error ? 'mb-1' : 'mb-4'} `,
+        wrapperClassName,
+      )}
     >
       <input
         defaultValue={value}
