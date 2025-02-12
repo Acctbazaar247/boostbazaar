@@ -1,7 +1,7 @@
 import {
   useEditSmsPoolOrderMutation,
   useEditSmsPoolOrderStatusMutation,
-  useGetSmsPoolByIdQuery,
+  useGetSmsPoolOrderByIdQuery,
 } from '@/redux/features/smsPoolOrder/smsPoolOrderApi';
 import Loading from '../ui/Loading';
 import { ISmsPoolOrderDetails } from '@/types';
@@ -15,7 +15,7 @@ interface Props {
 
 const MyNumberDetails = ({ id, isAdmin }: Props) => {
   const { isLoading, isFetching, data, isError, refetch } =
-    useGetSmsPoolByIdQuery(id, {});
+    useGetSmsPoolOrderByIdQuery(id, {});
   const [refundSmsPool, { isLoading: isRefunding }] =
     useEditSmsPoolOrderMutation();
   const [editSmsPoolOrderStatus, { isLoading: isUpdateLoading }] =

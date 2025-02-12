@@ -52,11 +52,14 @@ const Page = () => {
     refetchOnReconnect: true,
   });
 
-  const { data: usersData } = useGetUsersQuery('', {
-    refetchOnFocus: true,
-    refetchOnMountOrArgChange: true,
-    refetchOnReconnect: true,
-  });
+  const { data: usersData } = useGetUsersQuery(
+    { role: 'user' },
+    {
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+      refetchOnReconnect: true,
+    },
+  );
 
   const maxValue = useMemo(() => {
     if (!adminOverview?.data?.trafic?.length) return 0;

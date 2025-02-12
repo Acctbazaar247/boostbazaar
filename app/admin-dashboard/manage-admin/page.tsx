@@ -18,9 +18,13 @@ import { IoSearch } from 'react-icons/io5';
 
 function ManageAdmin() {
   const defaultValue = { value: 'user', label: 'User' };
-  const [role, setRole] = useState<SelectOptions>(defaultValue);
+  const [role, setRole] = useState<SelectOptions>({
+    value: 'user',
+    label: 'User',
+  });
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
+
   const queryInfo = useGetUsersQuery({
     page,
     role: role.value,

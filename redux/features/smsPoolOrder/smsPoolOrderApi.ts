@@ -12,7 +12,7 @@ export const smsPoolApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.smsPoolOrder],
     }),
-    getSmsPoolById: builder.query({
+    getSmsPoolOrderById: builder.query({
       query: id => `/sms-pool-order/${id}`,
     }),
     addSmsPool: builder.mutation({
@@ -56,7 +56,7 @@ export const smsPoolApi = baseApi.injectEndpoints({
 });
 export const {
   useGetSmsPoolOrderQuery,
-  useGetSmsPoolByIdQuery,
+  useGetSmsPoolOrderByIdQuery,
   useAddSmsPoolMutation,
   useEditSmsPoolOrderMutation,
   useDeleteSmsPoolMutation,
