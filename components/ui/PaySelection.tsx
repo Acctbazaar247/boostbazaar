@@ -1,7 +1,8 @@
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { CiBank, CiBitcoin } from "react-icons/ci";
-import { toast } from "react-toastify";
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { CiBank, CiBitcoin } from 'react-icons/ci';
+import { FaPiggyBank } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 type Props = {
   onChange?: (option: string | null) => void;
@@ -16,7 +17,7 @@ const PaySelection = ({
   handleCryptoClick,
   isDisabled,
   description,
-  handleBankClick
+  handleBankClick,
 }: Props) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   useEffect(() => {
@@ -33,38 +34,34 @@ const PaySelection = ({
           {description ? <p className="">{description}</p> : null}
           {/* Radio buttons for payment options */}
           <div className="flex gap-4 mt-4 flex-row-reverse">
-            {/* <button
+            <button
               type="button"
               disabled={isDisabled}
               onClick={() => {
-                toast.error("Currently not available", { toastId: "1" });
-                // if (handleBankClick) {
-                //   handleBankClick();
-                // }
-                // setSelectedOption("flutterwave");
+                // toast.error('Currently not available', { toastId: '1' });
+                if (handleBankClick) {
+                  handleBankClick();
+                }
+                setSelectedOption('flutterwave');
                 // router.push("https://nowpayments.io/payment/?iid=4613115863");
               }}
               className={`w-full py-4 px-2 border rounded transition-all disabled:opacity-90 ${
-                selectedOption === "flutterwave"
-                  ? "border-primary bg-primary/10 text-primary shadow"
-                  : "text-dark-grey border-dark-grey"
+                selectedOption === 'flutterwave'
+                  ? 'border-primary bg-primary/10 text-primary shadow'
+                  : 'text-dark-grey border-dark-grey'
               }`}
             >
               <div>
-                 <img src="" alt="" /> 
+                <img src="" alt="" />
                 <div className="flex justify-center mb-4">
                   <CiBank className="text-[60px]" />
                 </div>
 
-                <FontAwesomeIcon
-                  className="text-5xl"
-                  icon={faBank}
-                ></FontAwesomeIcon>
                 <p className="mt-2 ">
                   Pay with Naira (₦) via Bank Transfer / Card Payment.
                 </p>
               </div>
-            </button> */}
+            </button>
             <button
               type="button"
               disabled={isDisabled}
@@ -72,13 +69,13 @@ const PaySelection = ({
                 if (handleCryptoClick) {
                   handleCryptoClick();
                 }
-                setSelectedOption("nowpayment");
+                setSelectedOption('nowpayment');
                 // router.push("https://nowpayments.io/payment/?iid=4613115863");
               }}
               className={`w-full py-4 px-2 border rounded transition-all ${
-                selectedOption === "nowpayment"
-                  ? "border-primary bg-primary/10 text-primary shadow"
-                  : "text-dark-grey border-dark-grey"
+                selectedOption === 'nowpayment'
+                  ? 'border-primary bg-primary/10 text-primary shadow'
+                  : 'text-dark-grey border-dark-grey'
               }`}
             >
               <div>

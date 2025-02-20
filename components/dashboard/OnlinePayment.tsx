@@ -35,17 +35,14 @@ const OnlinePayment = (props: Props) => {
       toast.error('Please select a payment method below', { toastId: 1 });
       return;
     }
-    if (data.method === 'flutturewave') {
-      toast.error('Flutterwave is coming soon', { toastId: 1 });
-      return;
-    }
     if (config.minAddFund > data.amount) {
       toast.error(`Minimum fun is $${config.minAddFund}`, { toastId: 1 });
       return;
     }
+
     const submittedData = {
       data: { amount: data.amount },
-      method: data.method,
+      method: data.method === 'flutterwave' ? 'korapay' : data.method,
     };
     await createCurrencyRequest(submittedData)
       .unwrap()
@@ -62,11 +59,6 @@ const OnlinePayment = (props: Props) => {
         toast.error(res?.data?.message);
       });
   };
-
-  const options = [
-    { label: 'Flutterwave', value: 'flutturewave' },
-    { label: 'Cryptomus', value: 'cryptomus' },
-  ];
 
   return (
     <div className="py-10 md:py-20">
