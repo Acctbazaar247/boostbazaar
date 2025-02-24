@@ -32,7 +32,7 @@ const FundForm = () => {
             ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
           `}
         >
-          <div className='flex items-center gap-4 text-primary'>
+          <div className="flex items-center gap-4 text-primary">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
               <svg
                 className="h-7 w-7 text-primary"
@@ -48,16 +48,18 @@ const FundForm = () => {
                 />
               </svg>
             </div>
-            
-            <h4 className='pb-3'>Minimum Deposit $8 </h4>
+
+            {/* <h4 className='pb-3'>Minimum Deposit $8 </h4> */}
           </div>
-          
 
           <div className="mb-8">
             <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
               Automatic Deposit
             </h2>
-            <p className="text-gray-400">Instant deposit via crypto payment</p>
+            <p className="text-gray-400">
+              Instant deposit confirmation via Bank Transfer, Card payment and
+              Crypto
+            </p>
           </div>
           <div className="flex flex-col gap-4">
             <button
@@ -87,7 +89,7 @@ const FundForm = () => {
               ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
             `}
         >
-          <div className='flex items-center gap-4 text-primary'>
+          <div className="flex items-center gap-4 text-primary">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
               <svg
                 className="h-7 w-7 text-primary"
@@ -103,9 +105,8 @@ const FundForm = () => {
                 />
               </svg>
             </div>
-            <h4 className='pb-3'>Minimum Deposit $5</h4>
+            {/* <h4 className="pb-3">Minimum Deposit $5</h4> */}
           </div>
-          
 
           <div className="mb-8">
             <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
