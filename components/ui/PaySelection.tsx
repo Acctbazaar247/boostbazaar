@@ -35,7 +35,7 @@ const PaySelection = ({
           <h1 className="text-xl font-semibold mb-1">Choose Payment Option</h1>
           {description ? <p className="">{description}</p> : null}
           {/* Radio buttons for payment options */}
-          <div className="flex gap-4 mt-4 flex-col-reverse md:flex-row-reverse">
+          <div className="flex gap-4 mt-4 flex-col md:flex-row">
             <button
               type="button"
               disabled={isDisabled}
@@ -57,14 +57,13 @@ const PaySelection = ({
                 </div>
                 <div className="space-y-1 w-full">
                   <div className="flex items-center gap-4">
-                    <h3 className="text-textBlack font-bold">Bank Transfer</h3>
-                    <p className="text-primary">
-                      Minimum deposit ${config.minAddFund}
-                    </p>
+                    <h3 className="text-textBlack font-bold">
+                      Bank/Card Payment
+                    </h3>
+                    <p className="text-primary">Minimum ${config.minAddFund}</p>
                   </div>
                   <p className="text-sm text-textGrey">
-                    Make a deposit using bank transfer to our available bank
-                    options.
+                    Deposit funds directly using Bank transfer or card payment.
                   </p>
                 </div>
               </div>
@@ -117,7 +116,7 @@ const PaySelection = ({
                 <div className="flex items-center gap-4">
                   <h3 className="text-textBlack font-bold">Crypto Payment</h3>
                   <p className="text-primary">
-                    Minimum deposit ${config.minAddFundCrypto}
+                    Minimum ${config.minAddFundCrypto}
                   </p>
                 </div>
                 <p className="text-sm text-textGrey">
