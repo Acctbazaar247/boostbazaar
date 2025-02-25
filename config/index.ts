@@ -17,8 +17,8 @@ export const config = {
   manualDepositMinMoney: parseFloat(
     process.env.NEXT_PUBLIC_MANUAL_DEPOSIT_MIN_MONEY as string,
   ),
-  manualDepositMinMoneyCrypto: parseFloat(
-    process.env.NEXT_PUBLIC_MANUAL_DEPOSIT_MIN_MONEY_CRYPTO as string,
+  minAddFundCrypto: parseFloat(
+    process.env.NEXT_PUBLIC_MIN_ADD_FUND_CRYPTO as string,
   ),
   manualDollarRate: parseFloat(
     process.env.NEXT_PUBLIC_MANUAL_DEPOSIT_DOLLAR_RATE as string,

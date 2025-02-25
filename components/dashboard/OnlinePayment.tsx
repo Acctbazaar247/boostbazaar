@@ -17,7 +17,7 @@ type Props = {
 
 interface FormData {
   amount: number;
-  method: string;
+  method: 'korapay' | 'nowpayment';
 }
 const OnlinePayment = (props: Props) => {
   const {
@@ -26,6 +26,7 @@ const OnlinePayment = (props: Props) => {
     control,
     formState: { errors },
     reset,
+    watch,
   } = useForm<FormData>();
   const router = useRouter();
   const [createCurrencyRequest, { isLoading }] = useCurrencyRequestMutation();
@@ -35,14 +36,23 @@ const OnlinePayment = (props: Props) => {
       toast.error('Please select a payment method below', { toastId: 1 });
       return;
     }
-    if (config.minAddFund > data.amount) {
-      toast.error(`Minimum fun is $${config.minAddFund}`, { toastId: 1 });
-      return;
+    if (data.method === 'korapay') {
+      if (config.minAddFund > data.amount) {
+        toast.error(`Minimum fun is $${config.minAddFund}`, { toastId: 1 });
+        return;
+      }
+    } else {
+      if (config.minAddFundCrypto > data.amount) {
+        toast.error(`Minimum fun is $${config.minAddFundCrypto}`, {
+          toastId: 1,
+        });
+        return;
+      }
     }
 
     const submittedData = {
       data: { amount: data.amount },
-      method: data.method === 'flutterwave' ? 'korapay' : data.method,
+      method: data.method,
     };
     await createCurrencyRequest(submittedData)
       .unwrap()
@@ -78,7 +88,11 @@ const OnlinePayment = (props: Props) => {
             icon={<FaDollarSign></FaDollarSign>}
             placeholder="Enter amount "
             error={errors.amount}
-            min={5}
+            min={
+              watch('method') === 'korapay'
+                ? config.minAddFund
+                : config.minAddFundCrypto
+            }
           />
           {/* <p className="mt-2 text-sm text-primary">
             * Minimum funding amount is ${config.minAddFund}

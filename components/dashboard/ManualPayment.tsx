@@ -72,13 +72,10 @@ const ManualPayment = ({ setPaymentType }: Props) => {
           return;
         }
         // check amount
-        if (amount < config.manualDepositMinMoneyCrypto) {
-          toast.error(
-            `Minimum amount is ${config.manualDepositMinMoneyCrypto}`,
-            {
-              toastId: 'min-amount',
-            },
-          );
+        if (amount < config.manualDepositMinMoney) {
+          toast.error(`Minimum amount is ${config.manualDepositMinMoney}`, {
+            toastId: 'min-amount',
+          });
           return;
         }
         setStep(2);
@@ -188,12 +185,7 @@ const ManualPayment = ({ setPaymentType }: Props) => {
               <CiBank className="text-primary text-4xl" />
             </div>
             <div className="space-y-1 w-full">
-              <div className="flex gap-4">
-                <h3 className="text-textBlack  font-bold">Bank Transfer</h3>
-                <p className="text-primary">
-                  Minimum deposit ${config.manualDepositMinMoney}
-                </p>
-              </div>
+              <h3 className="text-textBlack font-bold">Bank Transfer</h3>
               <p className="text-sm text-textGrey">
                 Make a deposit using bank transfer to our available bank
                 options.
@@ -242,12 +234,7 @@ const ManualPayment = ({ setPaymentType }: Props) => {
             <RiExchangeDollarLine className="text-primary text-4xl" />
           </div>
           <div className="space-y-1">
-            <div className="flex gap-4">
-              <h3 className="text-textBlack font-bold">Crypto Payment</h3>
-              <p className="text-primary">
-                Minimum deposit ${config.manualDepositMinMoneyCrypto}
-              </p>
-            </div>
+            <h3 className="text-textBlack font-bold">Crypto Payment</h3>
             <p className="text-sm text-textGrey">
               Deposit popular cryptocurrencies like BTC, USDT, BNB, and more.
             </p>
