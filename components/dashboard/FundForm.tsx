@@ -50,7 +50,7 @@ const FundForm = () => {
 
           <div className="mb-8">
             <h2 className="mb-2 text-xl font-semibold light:text-[#000] dark:text-[#fff]">
-              Automatic Deposit
+              Quick Deposit
             </h2>
             <p className="text-gray-400">
               Instant deposit confirmation via Bank Transfer, Card payment and Crypto
