@@ -1,35 +1,33 @@
-'use client';
-
+"use client"
 import { useState } from 'react';
 import OnlinePayment from './OnlinePayment';
 import ManualPayment from './ManualPayment';
-import { BsBank2 } from 'react-icons/bs';
-import { BsCashCoin } from 'react-icons/bs';
 import { config } from '@/config';
 import Link from 'next/link';
 
 const FundForm = () => {
-  const [paymentType, setPaymentType] = useState<'online' | 'manual' | null>(
-    null,
-  );
-  if (paymentType === 'online')
+  const [paymentType, setPaymentType] = useState<'online' | 'manual' | null>(null);
+
+  if (paymentType === 'online') {
     return <OnlinePayment setPaymentType={setPaymentType} />;
-  if (paymentType === 'manual')
+  }
+  if (paymentType === 'manual') {
     return <ManualPayment setPaymentType={setPaymentType} />;
+  }
+
   return (
     <div className="mt-10">
-      <h2 className="text-2xl md:text-3xl text-primary  ">
+      <h2 className="text-2xl md:text-3xl text-primary">
         Choose a Payment Type
       </h2>
 
-      {/* two option online or manual */}
+      {/* Two options: online or manual */}
       <div className="grid gap-6 md:grid-cols-2 pt-5">
         {/* Automatic Deposit Card */}
         <div
-          // onClick={() => setPaymentType('online')}
           className={`
             cursor-pointer rounded-xl border p-6 transition-all duration-300
-            ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
+            light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626]
           `}
         >
           <div className="flex items-center gap-4 text-primary">
@@ -48,8 +46,6 @@ const FundForm = () => {
                 />
               </svg>
             </div>
-
-            {/* <h4 className='pb-3'>Minimum Deposit $8 </h4> */}
           </div>
 
           <div className="mb-8">
@@ -57,16 +53,16 @@ const FundForm = () => {
               Automatic Deposit
             </h2>
             <p className="text-gray-400">
-              Instant deposit confirmation via Bank Transfer, Card payment and
-              Crypto
+              Instant deposit confirmation via Bank Transfer, Card payment and Crypto
             </p>
           </div>
+
           <div className="flex flex-col gap-4">
             <button
               className={`
-              rounded-lg px-4 disabled:cursor-not-allowed disabled:opacity-60 py-2.5 text-sm font-medium transition-colors
-             ${'bg-primary text-[#fff] hover:bg-gray-700'}
-           `}
+                rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
+                bg-primary text-[#fff] hover:bg-gray-700
+              `}
               onClick={() => setPaymentType('online')}
               disabled={!config.isAutomaticDepositActive}
             >
@@ -83,11 +79,11 @@ const FundForm = () => {
 
         {/* Manual Deposit Card */}
         <div
-          // onClick={() => setPaymentType('manual')}
+          style={{ display: config.isManualDepositActive ? 'block' : 'none' }}
           className={`
-              cursor-pointer rounded-xl border p-6 transition-all duration-300
-              ${'light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626] '}
-            `}
+            cursor-pointer rounded-xl border p-6 transition-all duration-300
+            light:border-[#e2e1e1] dark:border-[#555454] light:bg-white dark:bg-[#282626]
+          `}
         >
           <div className="flex items-center gap-4 text-primary">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/20">
@@ -105,7 +101,6 @@ const FundForm = () => {
                 />
               </svg>
             </div>
-            {/* <h4 className="pb-3">Minimum Deposit $5</h4> */}
           </div>
 
           <div className="mb-8">
@@ -113,18 +108,16 @@ const FundForm = () => {
               Manual Deposit
             </h2>
             <p className="text-gray-400">
-              Processed in 3-5 minutes via bank transfer or crypto. Best for
-              crypto payments.
+              Processed in 3-5 minutes via bank transfer or crypto. Best for crypto payments.
             </p>
           </div>
 
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setPaymentType('manual')}
-              disabled={!config.isManualDepositActive}
               className={`
-                 rounded-lg px-4 py-2.5 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-60 transition-colors
-                ${'bg-primary text-[#fff] hover:bg-gray-700'}
+                rounded-lg px-4 py-2.5 text-sm font-medium transition-colors
+                bg-primary text-[#fff] hover:bg-gray-700
               `}
             >
               Proceed
