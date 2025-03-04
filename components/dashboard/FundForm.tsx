@@ -18,7 +18,7 @@ const FundForm = () => {
   return (
     <div className="mt-10">
       <h2 className="text-2xl md:text-3xl text-primary">
-        Choose a Payment Type
+        Choose a Payment Option
       </h2>
 
       {/* Two options: online or manual */}
