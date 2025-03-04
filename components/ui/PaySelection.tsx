@@ -1,4 +1,6 @@
 import { config } from '@/config';
+import { oxDepositOption } from '@/utils/oxProcessData';
+import { Select } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { CiBank, CiBitcoin } from 'react-icons/ci';
@@ -12,6 +14,8 @@ type Props = {
   handleBankClick?: () => void;
   isDisabled?: boolean;
   description?: string;
+  currency?: string;
+  setCurrency: (currency: string) => void;
 };
 
 const PaySelection = ({
@@ -20,6 +24,8 @@ const PaySelection = ({
   isDisabled,
   description,
   handleBankClick,
+  currency,
+  setCurrency,
 }: Props) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   useEffect(() => {
@@ -35,7 +41,7 @@ const PaySelection = ({
           <h1 className="text-xl font-semibold mb-1">Choose Payment Option</h1>
           {description ? <p className="">{description}</p> : null}
           {/* Radio buttons for payment options */}
-          <div className="flex gap-4 mt-4 flex-col md:flex-row">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-4 mt-4 flex-col md:flex-row">
             <button
               type="button"
               disabled={isDisabled}
@@ -123,6 +129,49 @@ const PaySelection = ({
                   Deposit popular cryptocurrencies like BTC, USDT, BNB, and
                   more.
                 </p>
+              </div>
+            </button>
+            <button
+              type="button"
+              disabled={isDisabled}
+              onClick={() => {
+                if (handleCryptoClick) {
+                  handleCryptoClick();
+                }
+                setSelectedOption('ox-process');
+                // router.push("https://nowpayments.io/payment/?iid=4613115863");
+              }}
+              className={`flex gap-5 p-4 border border-borderColor rounded-lg transition-all w-full text-left ${
+                selectedOption === 'ox-process' ? 'border-primary' : ''
+              }`}
+            >
+              <div className="min-w-[36px]">
+                <RiExchangeDollarLine className="text-primary text-4xl" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-4">
+                  <h3 className="text-textBlack font-bold">
+                    Ox Crypto Payment
+                  </h3>
+                  <p className="text-primary">
+                    Minimum ${config.minAddFundCrypto}
+                  </p>
+                </div>
+                <p className="text-sm text-textGrey">
+                  Deposit popular cryptocurrencies like BTC, USDT, BNB, and
+                  more.
+                </p>
+                {selectedOption === 'ox-process' && (
+                  <div className="w-full pt-2">
+                    <Select
+                      className="w-full"
+                      placeholder="Select a Crypto"
+                      options={oxDepositOption}
+                      onChange={setCurrency}
+                      value={currency}
+                    />
+                  </div>
+                )}
               </div>
             </button>
           </div>

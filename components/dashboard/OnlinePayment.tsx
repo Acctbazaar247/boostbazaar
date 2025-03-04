@@ -17,7 +17,8 @@ type Props = {
 
 interface FormData {
   amount: number;
-  method: 'korapay' | 'nowpayment';
+  method: 'korapay' | 'nowpayment' | 'ox-process';
+  currency?: string;
 }
 const OnlinePayment = (props: Props) => {
   const {
@@ -27,6 +28,7 @@ const OnlinePayment = (props: Props) => {
     formState: { errors },
     reset,
     watch,
+    setValue,
   } = useForm<FormData>();
   const router = useRouter();
   const [createCurrencyRequest, { isLoading }] = useCurrencyRequestMutation();
@@ -50,10 +52,23 @@ const OnlinePayment = (props: Props) => {
       }
     }
 
-    const submittedData = {
+    const submittedData: {
+      data: {
+        amount: number;
+        currency?: string;
+      };
+      method: string;
+    } = {
       data: { amount: data.amount },
       method: data.method,
     };
+    if (data.method === 'ox-process' && !data.currency) {
+      toast.error('Please select a crypto network', { toastId: 1 });
+      return;
+    }
+    if (data.method === 'ox-process') {
+      submittedData.data.currency = data.currency;
+    }
     await createCurrencyRequest(submittedData)
       .unwrap()
       .then(res => {
@@ -111,7 +126,13 @@ const OnlinePayment = (props: Props) => {
           name="method"
           control={control}
           render={({ fieldState, field }) => {
-            return <PaySelection onChange={field.onChange}></PaySelection>;
+            return (
+              <PaySelection
+                currency={watch('currency')}
+                setCurrency={value => setValue('currency', value)}
+                onChange={field.onChange}
+              ></PaySelection>
+            );
           }}
         ></Controller>
         <div className="flex gap-3">
