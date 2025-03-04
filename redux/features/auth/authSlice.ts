@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
-import { TTokenUser } from "@/types";
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
+import { TTokenUser } from '@/types';
 
 type TIState = {
   user: TTokenUser | null;
@@ -11,29 +11,29 @@ type TIState = {
 };
 
 const darkThemePreference = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-color-scheme:dark)").matches;
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-color-scheme:dark)').matches;
 
 const initialState: TIState = {
   user: {
-    email: "",
-    name: "",
-    id: "",
-    profileImg: "",
-    role: "",
+    email: '',
+    name: '',
+    id: '',
+    profileImg: '',
+    role: '',
     isVerified: false,
     failedLoginAttempt: 0,
     createAt: new Date(),
-    isBlocked: false
+    isBlocked: false,
   },
   isLoading: true,
-  accessToken: "",
+  accessToken: '',
   otp: null,
-  theme: darkThemePreference() ? "dark" : "light"
+  theme: darkThemePreference() ? 'dark' : 'light',
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -42,10 +42,10 @@ const authSlice = createSlice({
       state.user = user;
       state.accessToken = accessToken;
       state.isLoading = false;
-      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem('accessToken', accessToken);
     },
-    logOut: (state) => {
-      localStorage.removeItem("accessToken");
+    logOut: state => {
+      localStorage.removeItem('accessToken');
       state.accessToken = null;
       state.user = null;
     },
@@ -68,8 +68,8 @@ const authSlice = createSlice({
       state.user = state.user
         ? { ...state.user, isVerified: action.payload }
         : state.user;
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -79,7 +79,7 @@ export const {
   setOtp,
   setTheme,
   setVerifiedUser,
-  setLoading
+  setLoading,
 } = authSlice.actions;
 export default authSlice.reducer;
 
