@@ -42,38 +42,43 @@ const PaySelection = ({
           {description ? <p className="">{description}</p> : null}
           {/* Radio buttons for payment options */}
           <div className="grid grid-cols-1 md:grid-cols-2  gap-4 mt-4 flex-col md:flex-row">
-            <button
-              type="button"
-              disabled={isDisabled}
-              onClick={() => {
-                // toast.error('Currently not available', { toastId: '1' });
-                if (handleBankClick) {
-                  handleBankClick();
-                }
-                setSelectedOption('korapay');
-                // router.push("https://nowpayments.io/payment/?iid=4613115863");
-              }}
-              className={`gap-5 p-4 border border-borderColor cursor-pointer rounded-lg transition-all w-full text-left ${
-                selectedOption === 'korapay' ? 'border-primary' : ''
-              }`}
-            >
-              <div className="flex gap-5">
-                <div className="min-w-[36px]">
-                  <CiBank className="text-primary text-4xl" />
-                </div>
-                <div className="space-y-1 w-full">
-                  <div className="flex items-center gap-4">
-                    <h3 className="text-textBlack font-bold">
-                      Bank/Card Payment
-                    </h3>
-                    <p className="text-primary">Minimum ${config.minAddFund}</p>
+            <div>
+              <button
+                type="button"
+                disabled={isDisabled}
+                onClick={() => {
+                  // toast.error('Currently not available', { toastId: '1' });
+                  if (handleBankClick) {
+                    handleBankClick();
+                  }
+                  setSelectedOption('korapay');
+                  // router.push("https://nowpayments.io/payment/?iid=4613115863");
+                }}
+                className={`gap-5 p-4 border border-borderColor cursor-pointer rounded-lg transition-all w-full text-left ${
+                  selectedOption === 'korapay' ? 'border-primary' : ''
+                }`}
+              >
+                <div className="flex gap-5">
+                  <div className="min-w-[36px]">
+                    <CiBank className="text-primary text-4xl" />
                   </div>
-                  <p className="text-sm text-textGrey">
-                    Deposit funds directly using Bank transfer or card payment.
-                  </p>
+                  <div className="space-y-1 w-full">
+                    <div className="flex items-center gap-4">
+                      <h3 className="text-textBlack font-bold">
+                        Bank/Card Payment
+                      </h3>
+                      <p className="text-primary">
+                        Minimum ${config.minAddFund}
+                      </p>
+                    </div>
+                    <p className="text-sm text-textGrey">
+                      Deposit funds directly using Bank transfer or card
+                      payment.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
+            </div>
             {/* <button
               type="button"
               disabled={isDisabled}
@@ -101,7 +106,7 @@ const PaySelection = ({
             </button> 
             
             */}
-            <button
+            {/* <button
               type="button"
               disabled={isDisabled}
               onClick={() => {
@@ -130,7 +135,7 @@ const PaySelection = ({
                   more.
                 </p>
               </div>
-            </button>
+            </button> */}
             <button
               type="button"
               disabled={isDisabled}
@@ -150,9 +155,7 @@ const PaySelection = ({
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-4">
-                  <h3 className="text-textBlack font-bold">
-                    Ox Crypto Payment
-                  </h3>
+                  <h3 className="text-textBlack font-bold">Crypto Payment</h3>
                   <p className="text-primary">
                     Minimum ${config.minAddFundCrypto}
                   </p>
